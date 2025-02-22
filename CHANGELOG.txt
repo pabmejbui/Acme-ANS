@@ -9,3 +9,4 @@
 # they accept any liabilities with respect to them.
 
 D01 - This is the project version of the first deliverable
+D02 - This is the project version of the second deliverable
