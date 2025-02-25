@@ -1,0 +1,5 @@
+# messages-es.i18n
+
+validation.airport.iataCode = El código IATA debe tener exactamente tres letras mayúsculas y ser único.
+validation.airport.email = El formato del correo electrónico no es válido.
+validation.airport.phoneNumber = El número de teléfono debe tener entre 6 y 15 dígitos y puede comenzar con '+'.
