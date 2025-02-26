@@ -47,12 +47,11 @@ public class Experience extends AbstractEntity {
 
 	@Optional
 	@Column(unique = true, nullable = true) //Preguntar si es redundate
-	@Pattern(regexp = "^[A-Z]{4}-[0-9]{2}$") //Los dos ultimos digitos deben corresponder con el año actual
+	@Pattern(regexp = "^[A-Z]{4}-[0-9]{2}$", message = "{validation.experience.promotionCode}")
 	@Automapped
 	private String				promotionCode;
 
 	@Optional
-	@Column(unique = true)
 	@ValidMoney
 	@Automapped
 	private Money				discountAmount;
