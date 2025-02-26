@@ -70,7 +70,7 @@ public class Airline extends AbstractEntity {
 	private String				email;
 
 	@Optional
-	@ValidString(pattern = "^\\+?\\d{6,15}$") // Es así para un teléfono?
+	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	@Automapped
 	private String				phoneNumber;
 
@@ -82,6 +82,5 @@ public class Airline extends AbstractEntity {
 	// Derived attributes
 
 	// Relationships
-	// ¿Hay relación varias aerolíneas pertenecen a un aeropuerto.?
 
 }
