@@ -15,5 +15,3 @@ authenticated.consumer.form.label.sector = Sector
 
 authenticated.consumer.form.button.create = Registrar
 authenticated.consumer.form.button.update = Actualizar
-
-validation.experience.promotionCode = Los dos últimos digitos deben coincidir con el año actual.

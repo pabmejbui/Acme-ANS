@@ -5,8 +5,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
@@ -14,6 +12,7 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
+import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,7 +29,7 @@ public class Experience extends AbstractEntity {
 
 	@Mandatory
 	@NotBlank
-	@Size(max = 50)
+	@ValidString(max = 50)
 	@Automapped
 	private String				name;
 
@@ -46,8 +45,8 @@ public class Experience extends AbstractEntity {
 	private Double				averageDwellTime;
 
 	@Optional
-	@Column(unique = true, nullable = true) //Preguntar si es redundate
-	@Pattern(regexp = "^[A-Z]{4}-[0-9]{2}$", message = "{validation.experience.promotionCode}")
+	@Column(unique = true)
+	@ValidString(pattern = "^[A-Z]{4}-[0-9]{2}$")
 	@Automapped
 	private String				promotionCode;
 
