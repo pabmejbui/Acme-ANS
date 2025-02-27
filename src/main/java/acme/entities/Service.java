@@ -24,7 +24,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Experience extends AbstractEntity {
+public class Service extends AbstractEntity {
 
 	//Serialisation version ------------------------
 	private static final long	serialVersionUID	= 1L;
