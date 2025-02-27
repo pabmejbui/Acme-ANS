@@ -15,3 +15,5 @@ authenticated.consumer.form.label.sector = Sector
 
 authenticated.consumer.form.button.create = Register
 authenticated.consumer.form.button.update = Update
+
+validation.experience.promotionCode = The promotion code must end with the last two digits of the current year.
