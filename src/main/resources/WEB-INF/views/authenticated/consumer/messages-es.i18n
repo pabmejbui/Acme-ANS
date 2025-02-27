@@ -15,3 +15,5 @@ authenticated.consumer.form.label.sector = Sector
 
 authenticated.consumer.form.button.create = Registrar
 authenticated.consumer.form.button.update = Actualizar
+
+validation.experience.promotionCode = El código de promoción debe terminar con los últimos dos dígitos del año actual.

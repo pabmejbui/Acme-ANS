@@ -1,8 +1,12 @@
 
 package acme.entities;
 
+import java.beans.Transient;
+import java.time.Year;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -54,4 +58,25 @@ public class Experience extends AbstractEntity {
 	@ValidMoney
 	@Automapped
 	private Money				discountAmount;
+
+	// Derived attributes -----------------------------------------------------
+
+
+	@Transient
+	@AssertTrue(message = "{validation.experience.promotionCode}")
+	public boolean isValidPromotionCode() {
+		if (this.promotionCode == null)
+			return true;
+
+		String currentYearSuffix = String.valueOf(Year.now().getValue()).substring(2); //obtiene 2 ultimas año
+		String codeYearSuffix = this.promotionCode.substring(this.promotionCode.length() - 2); //obtiene 2 ultimas del codigo
+		return codeYearSuffix.equals(currentYearSuffix); //compara y devuelve
+	}
+
+	// Relationships ----------------------------------------------------------
+
+	//		@ManyToOne(optional = false)
+	//		@JoinColumn(name = "airport_id", nullable = false)
+	//		private Airport airport; 	//OJO!! Descomentar cuando se implemente la entidad Airport*************
+
 }
