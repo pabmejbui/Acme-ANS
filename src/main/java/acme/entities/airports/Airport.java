@@ -14,16 +14,18 @@ package acme.entities.airports;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.URL;
+import javax.validation.constraints.NotNull;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
-import acme.client.components.validation.ValidUuid;
+import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidEmail;
+import acme.client.components.validation.ValidString;
+import acme.client.components.validation.ValidUrl;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,42 +40,48 @@ public class Airport extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@Length(max = 50)
+	@ValidString(max = 50)
 	@NotBlank
 	@Automapped
 	private String				name;
 
 	@Mandatory
-	@ValidUuid
-	@Column(unique = true, length = 3)
-	@Pattern(regexp = "^[A-Z]{3}$", message = "{validation.airport.iataCode}")
+	@ValidString(pattern = "^[A-Z]{3}$")
+	@NotBlank
+	@Column(unique = true)
+	@Automapped
 	private String				iataCode;
 
 	@Mandatory
+	@Enumerated(EnumType.STRING)
+	@NotNull
 	@Automapped
 	private OperationalScope	operationalScope;
 
 	@Mandatory
-	@Length(max = 50)
+	@ValidString(max = 50)
 	@NotBlank
 	@Automapped
 	private String				city;
 
 	@Mandatory
-	@Length(max = 50)
+	@ValidString(max = 50)
 	@NotBlank
 	@Automapped
 	private String				country;
 
-	@URL
+	@Optional
+	@ValidUrl
 	@Automapped
 	private String				website;
 
-	@Pattern(regexp = "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$", message = "{validation.airport.email}")
+	@Optional
+	@ValidEmail
 	@Automapped
 	private String				email;
 
-	@Pattern(regexp = "^\\+?\\d{6,15}$", message = "{validation.airport.phoneNumber}")
+	@Optional
+	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	@Automapped
 	private String				phoneNumber;
 
