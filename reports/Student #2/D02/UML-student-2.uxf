@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>18</x>
+      <y>156</y>
+      <w>378</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>      «Entity»  
+      Customer {ValidCustomer}
+--
+      + customerId: String {Mandatory, ValidString(pattern("^[A-Z]{2,3}\\d{6}$")), Unique, Automapped}
+      + phoneNumber: String {Mandatory, ValidString(pattern("^\\+?\\d{6,15}$")), Automapped}
+      + address: String {Mandatory, ValidString(max=255), Automapped}
+      + city: String {Mandatory, ValidString(max=50), Automapped}
+      + country: String {Mandatory, ValidString(max=50), Automapped}
+      + earnedPoints: Integer {Optional, ValidNumber(max=500000), Automapped}
+--
+      #Operation(i: int): int
+      +AbstractOperation()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>462</x>
+      <y>156</y>
+      <w>510</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>«Entity»  
+Booking {ValidBooking}
+--
+      + locatorCcode: String {Mandatory, ValidString(pattern("^[A-Z0-9]{6,8}$")), Unique, Automapped}
+      + purchaseMoment: Date {Mandatory, ValidMoment(past = true),Temporal(TemporarlType.TIMESTAMP), Automapped}
+      + travelClass: Enum {Mandatory, Values("ECONOMY", "BUSINESS"), Automapped}
+      + price: Double {Mandatory, ValidMoney, Automapped}
+      + lastCardNibble: Intege {Optional, ValidNumber(4), Automapped}
+--
+      #Operation(i: int): int
+      /+AbstractOperation()/
+    </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>456</x>
+      <y>414</y>
+      <w>456</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>      «Entity»  
+      Passenger {ValidPassenger}
+--
+      + fullName: String {Mandatory, ValidString(max=256), Automapped}
+      + email: String {Mandatory, ValidEmail, Automapped}
+      + passporNumber: String {Mandatory, ValidString(pattern("^[A-Z0-9]{6,9}$")), Automapped}
+      + dateOfBirth: Date {Mandatory, ValidMoment(past = true),Temporal(TemporarlType.TIMESTAMP), Automapped}
+      + specialNeeds: String {Optional, ValidString(max=51), Automapped}
+--
+      #Operation(i: int): int
+      /+AbstractOperation()/
+    </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>222</y>
+      <w>84</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=*</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>252</y>
+      <w>24</w>
+      <h>174</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=*</panel_attributes>
+    <additional_attributes>10.0;270.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
