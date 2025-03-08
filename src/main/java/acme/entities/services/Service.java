@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.services;
 
 import java.beans.Transient;
 import java.time.Year;
@@ -7,8 +7,6 @@ import java.time.Year;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.AssertTrue;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
@@ -16,6 +14,7 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
+import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
 import lombok.Getter;
@@ -32,19 +31,17 @@ public class Service extends AbstractEntity {
 	//Atributes ------------------------------------
 
 	@Mandatory
-	@NotBlank
 	@ValidString(max = 50)
 	@Automapped
 	private String				name;
 
 	@Mandatory
 	@ValidUrl
-	@NotBlank
 	@Automapped
 	private String				pictureUrl;
 
 	@Mandatory
-	@NotNull
+	@ValidNumber
 	@Automapped
 	private Double				averageDwellTime;
 
