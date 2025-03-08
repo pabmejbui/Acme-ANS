@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.customers;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidPhone;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,16 +24,16 @@ public class Customer extends AbstractEntity {
 
 	// Attributes----------------------------------------
 
+	@Mandatory
 	@NotBlank
 	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
 	@Column(unique = true)
 	@Automapped
-	@Mandatory
 	private String				idCustomer;
 
 	@Mandatory
 	@NotBlank
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidPhone
 	@Automapped
 	private String				phoneNumber;
 
@@ -60,17 +61,6 @@ public class Customer extends AbstractEntity {
 	private Integer				earnedPoints;
 
 	// Derived attributes--------------------------------
-
-	//	@Transient
-	//	@AssertTrue(message = "{validation.customer.idCustomer}")
-	//	public boolean isValidIdCustomer() {
-	//		if (this.idCustomer == null)
-	//			return true;
-	//
-	//		String customer = this.idCustomer;
-	//		String initialCustomer = String.valueOf(name.charAt(0)) + String.valueOf(surname1.charAt(0));
-	//		return customer.equals(initialCustomer); //compara y devuelve
-	//	}
 
 	// Relationships-------------------------------------
 
