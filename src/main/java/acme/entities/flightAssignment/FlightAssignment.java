@@ -51,5 +51,5 @@ public class FlightAssignment extends AbstractEntity {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "flight_crew_member_id", nullable = false)
-	private FlightCrewMembers	flightCrewMember;
+	private FlightCrewMember	flightCrewMember;
 }
