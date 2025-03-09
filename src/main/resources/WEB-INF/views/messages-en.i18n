@@ -1,0 +1,18 @@
+# menu-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+# Manager validation messages #########################################################333
+
+manager.validation.identifier.not-null = Identifier must not be null or empty.
+manager.validation.identifier.bad-format = Identifier must contain 2 or 3 uppercase letters followed by exactly 6 digits.
+manager.validation.fullname.missing = User's full name is required to validate the identifier.
+manager.validation.identifier.initials-mismatch = Identifier initials do not match user's name.
+manager.validation.birthDate.null = Birth date is required.
+manager.validation.age.less-than-18 = The manager must be at least 18 years old.
