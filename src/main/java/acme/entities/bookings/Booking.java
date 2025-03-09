@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -71,7 +72,13 @@ public class Booking extends AbstractEntity {
 
 	@Mandatory
 	@Valid
-	@ManyToOne(optional = false)
+	@OneToOne(optional = false)
 	private Passenger			passenger;
+
+	//Descomentar cuando esté creada
+	//	@Mandatory
+	//	@Valid
+	//	@ManyToOne(optional = false)
+	//	private Flight				flight;
 
 }

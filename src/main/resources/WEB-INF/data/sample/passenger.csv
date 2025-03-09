@@ -1,0 +1,3 @@
+key,fullName,email,passportNumber,dateOfBirth,specialNeeds
+passenger-01,John Doe,johndoe@example.com,A12345678,1985/06/15 08:30,Wheelchair assistance
+passenger-02,jane Smith,janesmith@example.com,B98765432,1990/09/25 14:45,Vegetarian meal
