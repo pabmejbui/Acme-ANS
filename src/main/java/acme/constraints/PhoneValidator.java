@@ -23,22 +23,15 @@ public class PhoneValidator extends AbstractValidator<ValidPhone, String> {
 
 		assert context != null;
 
-		boolean result;
+		if (phoneNumber == null || phoneNumber.isBlank())
+			return true;
 
-		if (phoneNumber == null)
-			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else {
+		String phonePattern = "^\\+?\\d{6,15}$";
 
-			String phonePattern = "^\\+?\\d{6,15}$";
+		if (!phoneNumber.matches(phonePattern))
+			super.state(context, false, "*", "acme.validation.phone.bad-format-phone.message");
 
-			if (!phoneNumber.matches(phonePattern))
-				super.state(context, false, "*", "acme.validation.phone.bad-format-phone.message");
-
-		}
-
-		result = !super.hasErrors(context);
-
-		return result;
+		return !super.hasErrors(context);
 
 	}
 }
