@@ -13,13 +13,13 @@ import javax.validation.Payload;
 	ElementType.FIELD, ElementType.PARAMETER, ElementType.ANNOTATION_TYPE, ElementType.METHOD
 })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = PhoneValidator.class)
+@Constraint(validatedBy = NibbleValidator.class)
 
-public @interface ValidPhone {
+public @interface ValidNibble {
 
 	// Standard validation properties
 
-	String message() default "Phone number bad format";
+	String message() default "The last four digits of the credit card are not valid";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
