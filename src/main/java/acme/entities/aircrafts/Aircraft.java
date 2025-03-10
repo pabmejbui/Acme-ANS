@@ -36,6 +36,7 @@ public class Aircraft extends AbstractEntity {
 	@Automapped
 	@Mandatory
 	@Column(unique = true)
+	@ValidString(max = 50)
 	private String				registrationNumber;
 
 	@Automapped
