@@ -15,9 +15,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
-
-import acme.entities.flightCrewMembers.FlightCrewMember;
-
+import acme.realms.flightCrewMembers.FlightCrewMember;
 import lombok.Getter;
 import lombok.Setter;
 
