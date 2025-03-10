@@ -36,4 +36,7 @@ flight.validation.flightNumber.mismatch = El número de vuelo debe comenzar con 
 flight.validation.leg.schedule.null = La hora de salida y llegada programada no pueden ser nulas.
 flight.validation.scheduledArrival.min-duration = La llegada programada debe ser al menos 1 minuto después de la salida programada.
 
+# Mensajes de validación de system configuration #########################################################
 
+acme.validation.currency.invalid = La moneda debe tener exactamente tres letras mayúsculas (p. ej., USD, EUR).
+acme.validation.acceptedCurrencies.invalid = Las monedas aceptadas deben ser una lista separada por comas de códigos de tres letras (p. ej., USD, EUR, GBP).
