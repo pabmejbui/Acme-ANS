@@ -41,6 +41,11 @@ public class Airline extends AbstractEntity {
 	@Mandatory
 	private String				iataCode;
 
+	@ValidUrl
+	@Automapped
+	@Mandatory
+	private String				website;
+
 	@Automapped
 	@Valid
 	@Mandatory
@@ -51,11 +56,6 @@ public class Airline extends AbstractEntity {
 	@Automapped
 	@Mandatory
 	private Date				foundationMoment;
-
-	@ValidUrl
-	@Automapped
-	@Optional
-	private String				website;
 
 	@Automapped
 	@Optional
