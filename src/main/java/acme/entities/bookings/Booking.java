@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -18,8 +19,8 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
-import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidNibble;
 import acme.entities.passenger.Passenger;
 import acme.realms.Customer;
 import lombok.Getter;
@@ -56,7 +57,7 @@ public class Booking extends AbstractEntity {
 	private Money				price;
 
 	@Optional
-	@ValidNumber(min = 4, max = 4)
+	@ValidNibble
 	@Automapped
 	private Integer				lastCardNibble;
 
@@ -71,7 +72,13 @@ public class Booking extends AbstractEntity {
 
 	@Mandatory
 	@Valid
-	@ManyToOne(optional = false)
+	@OneToOne(optional = false)
 	private Passenger			passenger;
+
+	//Descomentar cuando esté creada
+	//	@Mandatory
+	//	@Valid
+	//	@ManyToOne(optional = false)
+	//	private Flight				flight;
 
 }

@@ -1,0 +1,3 @@
+key,locatorCode,purchaseMoment,travelClass,price,lastCardNibble,key:customer,key:passenger
+booking-01,ABC1234,2000/01/01 00:00,ECONOMY,USD 3500,9936,customer-01,passenger-01
+booking-02,XYZ5678,2000/03/01 01:00,BUSINESS,EUR 1500,1234,customer-02,passenger-02
