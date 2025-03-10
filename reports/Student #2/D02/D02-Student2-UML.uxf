@@ -58,8 +58,9 @@ bg=green</panel_attributes>
       + fullName: String {Mandatory, ValidString(max=256), Automapped}
       + email: String {Mandatory, ValidEmail, Automapped}
       + passportNumber: String {Mandatory, ValidString(pattern("^[A-Z0-9]{6,9}$")), Automapped}
-      + dateOfBirth: Date {Mandatory, ValidMoment(past=true),Temporal(TemporarlType.DATE), Automapped}
+      + dateOfBirth: Date {Mandatory, ValidMoment(past=true),Temporal(TemporarlType.TIMESTAMP), Automapped}
       + specialNeeds: String {Optional, ValidString(max=51), Automapped}
+      + draftMode: boolean{Mandatory, Valid, Automapped}
 --
 
 bg=green
