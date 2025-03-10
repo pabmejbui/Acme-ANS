@@ -45,6 +45,7 @@ public class ActivityLog extends AbstractEntity {
 	private Integer				severityLevel;
 
 	// Relationships
+
 	@Mandatory
 	@ManyToOne(optional = false)
 	@Automapped
