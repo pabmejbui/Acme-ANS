@@ -4,7 +4,6 @@ package acme.entities.activityLog;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import acme.client.components.basis.AbstractEntity;
@@ -46,7 +45,8 @@ public class ActivityLog extends AbstractEntity {
 	private Integer				severityLevel;
 
 	// Relationships
+	@Mandatory
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "flight_assignment_id", nullable = false)
+	@Automapped
 	private FlightAssignment	flightAssignment;
 }
