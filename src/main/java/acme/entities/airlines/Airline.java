@@ -5,8 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -43,8 +41,8 @@ public class Airline extends AbstractEntity {
 	@Mandatory
 	private String				iataCode;
 
-	@Enumerated(EnumType.STRING)
 	@Automapped
+	@Valid
 	@Mandatory
 	private AirlineType			type;
 
