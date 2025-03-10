@@ -4,10 +4,10 @@ target/
 
 ### STS ###
 .apt_generated
-#.classpath
+.classpath
 .factorypath
 .project
-#.settings
+.settings
 .springBeans
 
 ### IntelliJ IDEA ###
@@ -30,3 +30,4 @@ nbdist/
 mvnw
 
 mvnw\.cmd
+

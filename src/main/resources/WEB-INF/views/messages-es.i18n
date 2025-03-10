@@ -1,0 +1,30 @@
+# menu-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+# Mensajes de validación de manager ####################################################
+
+manager.validation.identifier.not-null = El identificador es obligatorio.
+manager.validation.identifier.bad-format = El identificador debe tener 2 o 3 letras mayúsculas seguidas de 6 dígitos.
+manager.validation.fullname.missing = El nombre completo del usuario es obligatorio para validar el identificador.
+manager.validation.identifier.initials-mismatch = Las iniciales del identificador no coinciden con el nombre del usuario.
+manager.validation.birthDate.null = La fecha de nacimiento es obligatoria.
+manager.validation.age.less-than-18 = El manager debe tener al menos 18 años.
+
+# Mensajes de validación de customer ####################################################
+
+customer.validation.identifier.not-null = El identificador es obligatorio.
+customer.validation.identifier.bad-format = El identificador debe tener 2 o 3 letras mayúsculas seguidas de 6 dígitos.
+customer.validation.fullname.missing = El nombre completo del usuario es obligatorio para validar el identificador.
+customer.validation.identifier.initials-mismatch = Las iniciales del identificador no coinciden con el nombre del usuario.
+
+# Mensajes de validación de leg #########################################################
+flight.validation.flightNumber.not-null = El número de vuelo no puede ser nulo.
+flight.validation.flightNumber.mismatch = El número de vuelo debe comenzar por el código IATA de la aerolínea seguido de 4 dígitos.
+flight.validation.flightNumber.missing = Falta información sobre la aerolínea o el vuelo para validar el número de vuelo.
