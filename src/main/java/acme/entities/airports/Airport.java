@@ -17,7 +17,8 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-import acme.client.components.basis.AbstractEntity;
+import org.dom4j.tree.AbstractEntity;
+
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;

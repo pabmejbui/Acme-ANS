@@ -1,0 +1,18 @@
+key,name,iataCode,operationalScope,city,country,website,email,phoneNumber
+airport-01,Jerez Aiport,XRY,REGIONAL,Jerez,Spain,http://www.lorem-ipsum.org,jerezairport@hotmail.es,+34655767676
+airport-02,L,LOR,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null
+airport-03,Lo,AAA,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null
+airport-04,Lorem ipsum dolor sit amete consectetur adipiscin,AAB,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null
+airport-05,Lorem ipsum dolor sit amete consectetur adipiscing,AAC,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null
+airport-06,Lorem,ZZY,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null
+airport-07,Lorem,ZZZ,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null
+airport-08,Lorem,AAD,DOMESTIC,Lorem,Lorem,http://www.lorem-ipsum.org,null,null
+airport-09,Lorem,AAE,INTERNATIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null
+airport-10,Lorem,AAF,REGIONAL,L,Lorem,http://www.lorem-ipsum.org,null,null
+airport-11,Lorem,AAG,REGIONAL,Lo,Lorem,http://www.lorem-ipsum.org,null,null
+airport-12,Lorem,AAH,REGIONAL,Lorem ipsum dolor sit amete consectetur adipiscin,Lorem,http://www.lorem-ipsum.org,null,null
+airport-13,Lorem,AAI,REGIONAL,Lorem ipsum dolor sit amete consectetur adipiscing,Lorem,http://www.lorem-ipsum.org,null,null
+airport-14,Lorem,AAJ,REGIONAL,Lorem,L,http://www.lorem-ipsum.org,null,null
+airport-15,Lorem,AAK,REGIONAL,Lorem,Lo,http://www.lorem-ipsum.org,null,null
+airport-16,Lorem,AAL,REGIONAL,Lorem,Lorem ipsum dolor sit amete consectetur adipiscin,http://www.lorem-ipsum.org,null,null
+airport-17,Lorem,AAM,REGIONAL,Lorem,Lorem ipsum dolor sit amete consectetur adipiscing,http://www.lorem-ipsum.org,null,null
