@@ -32,7 +32,7 @@ public class Claim extends AbstractEntity {
 	@Mandatory
 	@Column(unique = true)
 	@Automapped
-	private String				id;
+	private String				identifier;
 
 	@Mandatory
 	@ValidMoment(past = true)

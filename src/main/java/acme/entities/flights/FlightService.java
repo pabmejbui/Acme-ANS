@@ -6,10 +6,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import acme.client.services.AbstractService;
+import acme.realms.Manager;
 
 @Service
 @Transactional
-public class FlightService extends AbstractService {
+public class FlightService extends AbstractService<Manager, Flight> {
 
 	@Autowired
 	private FlightRepository flightRepository;
