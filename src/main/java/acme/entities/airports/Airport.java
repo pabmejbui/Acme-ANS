@@ -16,8 +16,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -39,50 +37,45 @@ public class Airport extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
+	@Automapped
 	@Mandatory
 	@ValidString(max = 50)
-	@NotBlank
-	@Automapped
 	private String				name;
 
+	@Automapped
 	@Mandatory
 	@ValidString(pattern = "^[A-Z]{3}$")
-	@NotBlank
 	@Column(unique = true)
-	@Automapped
 	private String				iataCode;
 
+	@Automapped
 	@Mandatory
 	@Enumerated(EnumType.STRING)
-	@NotNull
-	@Automapped
 	private OperationalScope	operationalScope;
 
+	@Automapped
 	@Mandatory
 	@ValidString(max = 50)
-	@NotBlank
-	@Automapped
 	private String				city;
 
+	@Automapped
 	@Mandatory
 	@ValidString(max = 50)
-	@NotBlank
-	@Automapped
 	private String				country;
 
+	@Automapped
 	@Optional
 	@ValidUrl
-	@Automapped
 	private String				website;
 
+	@Automapped
 	@Optional
 	@ValidEmail
-	@Automapped
 	private String				email;
 
+	@Automapped
 	@Optional
 	@ValidString(pattern = "^\\+?\\d{6,15}$")
-	@Automapped
 	private String				phoneNumber;
 
 	// Derived attributes -----------------------------------------------------
