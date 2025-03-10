@@ -2,6 +2,7 @@
 package acme.entities.services;
 
 import javax.persistence.Entity;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
@@ -50,6 +51,11 @@ public class Service extends AbstractEntity {
 	@ValidMoney
 	@Automapped
 	private Money				discountAmount;
+
+	@Mandatory
+	@Valid
+	@Automapped
+	private Boolean				draftMode;
 
 	// Derived attributes -----------------------------------------------------
 
