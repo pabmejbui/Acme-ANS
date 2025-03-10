@@ -1,0 +1,8 @@
+key,name,pictureUrl,averageDwellTime,promotionCode,discountAmount
+service-01,Lounge Access,https://example.com/lounge.jpg,3.0,LOUN-25,USD 20.00
+service-02,Fast Track Security,https://example.com/fast-track.jpg,1.0,FAST-25,EUR 10.00
+service-03,VIP Parking,https://example.com/parking.jpg,5.0,,USD 15.00
+service-04,Priority Boarding,https://example.com/boarding.jpg,0.5,PRIO-25,GBP 5.00
+service-05,Meet & Greet,https://example.com/meet-greet.jpg,2.0,GRET-25,EUR 25.00
+service-06,Airport Shuttle,https://example.com/shuttle.jpg,1.5,,
+
