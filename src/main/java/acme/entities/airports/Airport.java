@@ -16,9 +16,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.validation.Valid;
 
-import org.dom4j.tree.AbstractEntity;
-
+import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
@@ -79,8 +79,9 @@ public class Airport extends AbstractEntity {
 	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	private String				phoneNumber;
 
-	// Derived attributes -----------------------------------------------------
-
-	// Relationships ----------------------------------------------------------
+	@Automapped
+	@Mandatory
+	@Valid
+	private Boolean				draftMode;
 
 }
