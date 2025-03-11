@@ -1,0 +1,6 @@
+key,identifier,registrationMoment,passengerEmail,description,type,indicator,draftMode
+claim-01,CLM001,2024/02/15 08:30,john.doe@example.com,"Lost luggage during flight.",LUGGAGE_ISSUES,ACCEPTED,false
+claim-02,CLM002,2024/03/10 14:45,jane.smith@example.com,"Flight delay compensation request.",FLIGHT_ISSUES,ACCEPTED,true
+claim-03,CLM003,2024-01-25 11:20,mark.johnson@example.com,"Damaged item in checked baggage.",LUGGAGE_ISSUES,REJECTED,false
+claim-04,CLM004,2023/12/05 09:00,sarah.wilson@example.com,"Service complaint about staff behavior.",SECURITY_INCIDENT,ACCEPTED,true
+claim-05,CLM005,2024/02/28 16:10,mike.brown@example.com,"Refund request due to flight cancellation.",OTHER_ISSUES,REJECTED,false

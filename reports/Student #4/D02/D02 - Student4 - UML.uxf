@@ -24,14 +24,14 @@
 
 
 // This text will be stored with each diagram;  use it for notes.</help_text>
-  <zoom_level>12</zoom_level>
+  <zoom_level>11</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>492</x>
-      <y>12</y>
-      <w>840</w>
-      <h>180</h>
+      <x>385</x>
+      <y>110</y>
+      <w>770</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Role&gt;&gt;
 Assitance Agents
@@ -49,10 +49,10 @@ bg=white</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>156</x>
-      <y>36</y>
-      <w>276</w>
-      <h>60</h>
+      <x>77</x>
+      <y>132</y>
+      <w>253</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>The first two or three letters of 
 the id correspond to their initials
@@ -63,10 +63,10 @@ bg=pink</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>420</x>
-      <y>60</y>
-      <w>96</w>
-      <h>36</h>
+      <x>319</x>
+      <y>154</y>
+      <w>88</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
     <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
@@ -74,15 +74,15 @@ bg=pink</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>492</x>
-      <y>324</y>
-      <w>852</w>
-      <h>240</h>
+      <x>385</x>
+      <y>396</y>
+      <w>781</w>
+      <h>220</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Claim
 --
-+ id: String {Mandatory, Column(unique=true), Automapped}
++ identifier: String {Mandatory, Column(unique=true), Automapped}
 + registrationMoment: Date {Mandatory, ValidMoment(past=true), Temporal(TemporalType.Date), Automapped}
 + passengerEmail: String {Mandatory, ValidString, Automapped}
 + description: String {Mandatory, ValidString(max=255), Automapped}
@@ -101,10 +101,10 @@ bg=white</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>204</x>
-      <y>708</y>
-      <w>204</w>
-      <h>96</h>
+      <x>121</x>
+      <y>748</y>
+      <w>187</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enum&gt;&gt;
 Resolution
@@ -118,10 +118,10 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>876</x>
-      <y>180</y>
-      <w>156</w>
-      <h>168</h>
+      <x>737</x>
+      <y>264</y>
+      <w>143</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
@@ -132,10 +132,10 @@ registered by &gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>864</x>
-      <y>552</y>
-      <w>144</w>
-      <h>180</h>
+      <x>726</x>
+      <y>605</y>
+      <w>132</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
@@ -146,15 +146,15 @@ keep track of &gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>480</x>
-      <y>708</y>
-      <w>864</w>
-      <h>216</h>
+      <x>374</x>
+      <y>748</y>
+      <w>792</w>
+      <h>198</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 TrackingLog
 --
-+ id: String {Mandatory, Column(unique=true), Automapped}
++ identifier: String {Mandatory, Column(unique=true), Automapped}
 + lastUpdateMoment: Date {Mandatory, ValidMoment, Temporal(TemporalType.Date), Automapped}
 + step: String {Mandatory, ValidString(max=50), Automapped}
 + resolutionPercentage: Double {Mandatory, ValidNumber(min=0,max=100), Automapped}
@@ -171,10 +171,10 @@ bg=white</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1548</x>
-      <y>48</y>
-      <w>264</w>
-      <h>84</h>
+      <x>1353</x>
+      <y>143</y>
+      <w>242</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Airline
@@ -186,10 +186,10 @@ bg=white</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1320</x>
-      <y>72</y>
-      <w>252</w>
-      <h>60</h>
+      <x>1144</x>
+      <y>165</y>
+      <w>231</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
@@ -200,10 +200,10 @@ are workers of an &gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1488</x>
-      <y>312</y>
-      <w>324</w>
-      <h>360</h>
+      <x>1298</x>
+      <y>385</y>
+      <w>297</w>
+      <h>330</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 AssistanceAgentDashboard
@@ -230,10 +230,10 @@ bg=white</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>72</x>
-      <y>828</y>
-      <w>360</w>
-      <h>72</h>
+      <x>0</x>
+      <y>858</y>
+      <w>330</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>The resolution have to indicate the reason 
 why was rejected or the compensation to offer
@@ -244,10 +244,10 @@ bg=pink</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>420</x>
-      <y>852</y>
-      <w>84</w>
-      <h>36</h>
+      <x>319</x>
+      <y>880</y>
+      <w>77</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
     <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
@@ -255,10 +255,10 @@ bg=pink</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>216</x>
-      <y>360</y>
-      <w>204</w>
-      <h>144</h>
+      <x>132</x>
+      <y>429</y>
+      <w>187</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enum&gt;&gt;
 ClaimType
