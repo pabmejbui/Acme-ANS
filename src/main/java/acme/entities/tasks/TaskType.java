@@ -1,5 +1,5 @@
 /*
- * Status.java
+ * TaskType.java
  *
  * Copyright (C) 2025 Andrés García.
  *
@@ -10,8 +10,8 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.entities.maintenanceRecords;
+package acme.entities.tasks;
 
-public enum Status {
-	PENDING, IN_PROGRESS, COMPLETED
+public enum TaskType {
+	MAINTENANCE, INSPECTION, REPAIR, SYSTEM, CHECK
 }

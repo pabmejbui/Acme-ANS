@@ -1,5 +1,5 @@
 /*
- * MaintenanceRecord.java
+ * Task.java
  *
  * Copyright (C) 2025 Andrés García.
  *
@@ -10,33 +10,23 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.entities.maintenanceRecords;
-
-import java.util.Date;
+package acme.entities.tasks;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
-import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
-import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidMoney;
+import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.entities.aircrafts.Aircraft;
-import acme.realms.Technician;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class MaintenanceRecord extends AbstractEntity {
+public class Task extends AbstractEntity {
 	// Serialisation version --------------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
@@ -44,46 +34,27 @@ public class MaintenanceRecord extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@Temporal(TemporalType.TIMESTAMP)
-	@ValidMoment(past = true)
-	@Automapped
-	private Date				maintenanceDate;
-
-	@Mandatory
 	@Valid
 	@Automapped
-	private MaintenanceStatus	maintenanceStatus;
+	private TaskType			taskType;
 
 	@Mandatory
-	@Temporal(TemporalType.TIMESTAMP)
-	@ValidMoment(past = false)
+	@ValidString(min = 1, max = 255)
 	@Automapped
-	private Date				nextInspectionDate;
+	private String				description;
 
 	@Mandatory
-	@ValidMoney
+	@ValidNumber(min = 0, max = 10)
 	@Automapped
-	private Money				estimatedCost;
+	private Integer				priority;
 
-	@Optional
-	@ValidString(min = 0, max = 255)
+	@Mandatory
+	@ValidNumber(min = 0, max = 1000)
 	@Automapped
-	private String				notes;
+	private Integer				estimatedDuration;
 
+	@Automapped
 	@Mandatory
 	@Valid
-	@Automapped
 	private Boolean				draftMode;
-
-	// Relationships  ---------------------------------------------------------
-
-	@Mandatory
-	@ManyToOne(optional = false)
-	@Automapped
-	private Technician			techinican;
-
-	@Mandatory
-	@ManyToOne(optional = false)
-	@Automapped
-	private Aircraft			aircraft;
 }
