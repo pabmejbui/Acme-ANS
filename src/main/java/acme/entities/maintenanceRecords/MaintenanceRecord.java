@@ -1,5 +1,5 @@
 /*
- * Airport.java
+ * MaintenanceRecord.java
  *
  * Copyright (C) 2025 Andrés García.
  *
@@ -10,78 +10,80 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.entities.airports;
+package acme.entities.maintenanceRecords;
 
-import javax.persistence.Column;
+import java.util.Date;
+
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidEmail;
+import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
-import acme.client.components.validation.ValidUrl;
+import acme.entities.aircrafts.Aircraft;
+import acme.realms.Technician;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Airport extends AbstractEntity {
+public class MaintenanceRecord extends AbstractEntity {
 	// Serialisation version --------------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
-	@Automapped
 	@Mandatory
-	@ValidString(max = 50)
-	private String				name;
-
+	@Temporal(TemporalType.TIMESTAMP)
+	@ValidMoment(past = true)
 	@Automapped
-	@Mandatory
-	@ValidString(pattern = "^[A-Z]{3}$")
-	@Column(unique = true)
-	private String				iataCode;
+	private Date				maintenanceDate;
 
-	@Automapped
-	@Mandatory
-	@Enumerated(EnumType.STRING)
-	private OperationalScope	operationalScope;
-
-	@Automapped
-	@Mandatory
-	@ValidString(max = 50)
-	private String				city;
-
-	@Automapped
-	@Mandatory
-	@ValidString(max = 50)
-	private String				country;
-
-	@Automapped
-	@Optional
-	@ValidUrl
-	private String				website;
-
-	@Automapped
-	@Optional
-	@ValidEmail
-	private String				email;
-
-	@Automapped
-	@Optional
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
-	private String				phoneNumber;
-
-	@Automapped
 	@Mandatory
 	@Valid
+	@Automapped
+	private MaintenanceStatus	maintenanceStatus;
+
+	@Mandatory
+	@Temporal(TemporalType.TIMESTAMP)
+	@ValidMoment(past = false)
+	@Automapped
+	private Date				nextInspectionDate;
+
+	@Mandatory
+	@ValidMoney
+	@Automapped
+	private Money				estimatedCost;
+
+	@Optional
+	@ValidString(min = 0, max = 255)
+	@Automapped
+	private String				notes;
+
+	@Mandatory
+	@Valid
+	@Automapped
 	private Boolean				draftMode;
 
+	// Relationships  ---------------------------------------------------------
+
+	@Mandatory
+	@ManyToOne(optional = false)
+	@Automapped
+	private Technician			techinican;
+
+	@Mandatory
+	@ManyToOne(optional = false)
+	@Automapped
+	private Aircraft			aircraft;
 }

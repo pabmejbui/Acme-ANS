@@ -40,7 +40,7 @@ public class FlightAssignment extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@Automapped
-	private AssignmentStatus	status;
+	private AssignmentStatus	currentStatus;
 
 	@Optional
 	@ValidString(max = 255)

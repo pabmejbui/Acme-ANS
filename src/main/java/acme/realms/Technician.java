@@ -1,5 +1,5 @@
 /*
- * Airport.java
+ * Technician.java
  *
  * Copyright (C) 2025 Andrés García.
  *
@@ -10,78 +10,62 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.entities.airports;
+package acme.realms;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.validation.Valid;
 
-import acme.client.components.basis.AbstractEntity;
+import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidEmail;
+import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidLicense;
+import acme.constraints.ValidPhone;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Airport extends AbstractEntity {
+public class Technician extends AbstractRole {
+
 	// Serialisation version --------------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
-	@Automapped
 	@Mandatory
-	@ValidString(max = 50)
-	private String				name;
-
-	@Automapped
-	@Mandatory
-	@ValidString(pattern = "^[A-Z]{3}$")
 	@Column(unique = true)
-	private String				iataCode;
-
+	@ValidLicense
 	@Automapped
+	private String				licenseNumber;
+
 	@Mandatory
-	@Enumerated(EnumType.STRING)
-	private OperationalScope	operationalScope;
-
+	@ValidPhone
 	@Automapped
-	@Mandatory
-	@ValidString(max = 50)
-	private String				city;
-
-	@Automapped
-	@Mandatory
-	@ValidString(max = 50)
-	private String				country;
-
-	@Automapped
-	@Optional
-	@ValidUrl
-	private String				website;
-
-	@Automapped
-	@Optional
-	@ValidEmail
-	private String				email;
-
-	@Automapped
-	@Optional
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	private String				phoneNumber;
 
+	@Mandatory
+	@ValidString(min = 1, max = 50)
 	@Automapped
+	private String				specialisation;
+
 	@Mandatory
 	@Valid
-	private Boolean				draftMode;
+	@Automapped
+	private Boolean				healthTestPassed;
 
+	@Mandatory
+	@ValidNumber(min = 0, max = 120)
+	@Automapped
+	private Integer				yearsOfExperience;
+
+	@Optional
+	@ValidString(min = 1, max = 255)
+	@Automapped
+	private String				certifications;
 }

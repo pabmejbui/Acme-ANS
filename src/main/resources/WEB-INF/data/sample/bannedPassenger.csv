@@ -1,0 +1,6 @@
+key,fullName,dateOfBirth,passportNumber,nationality,reasonForBan,banIssuedDate,liftDate
+banned-passenger-01,John Doe,2000/07/15 00:00,AB123456,USA,Security threat,2022/01/10 00:00,null
+banned-passenger-02,Ana Martínez,2001/02/28 00:00,XY987654,Spain,Fraudulent activity,2022/05/20 00:00,2022/06/01 00:00
+banned-passenger-03,Luca Bianchi,2002/11/03 00:00,CD654321,Italy,Violent behavior,2021/09/15 00:00, null
+banned-passenger-04,Sophie Dubois,2003/06/25 00:00,EF456789,France,Illegal smuggling,2020/12/05 00:00,2022/07/20 00:00
+banned-passenger-05,Karl Schmidt,2000/01/01 00:00,GH112233,Germany,Repeated rule violations,2022/06/30 00:00,null

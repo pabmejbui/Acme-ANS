@@ -1,5 +1,5 @@
 
-package acme.entities.passenger;
+package acme.entities.bannedPassengers;
 
 import java.util.Date;
 
@@ -11,7 +11,6 @@ import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
 import acme.constraints.ValidPassport;
@@ -21,22 +20,21 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Passenger extends AbstractEntity {
-	// Serialisation version --------------------------------------------------
+public class BannedPassenger extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	// Attributes -------------------------------------------------------------
-
+	// Attributes
 	@Mandatory
-	@ValidString(max = 256)
+	@ValidString(max = 50)
 	@Automapped
 	private String				fullName;
 
 	@Mandatory
-	@ValidEmail
+	@ValidMoment(past = true)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Automapped
-	private String				email;
+	private Date				dateOfBirth;
 
 	@Mandatory
 	@ValidPassport
@@ -44,20 +42,24 @@ public class Passenger extends AbstractEntity {
 	private String				passportNumber;
 
 	@Mandatory
-	@ValidMoment(past = true)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				dateOfBirth;
-
-	@Optional
-	@ValidString(max = 51)
+	@ValidString(max = 50)
 	@Automapped
-	private String				specialNeeds;
+	private String				nationality;
 
 	@Mandatory
+	@ValidString
 	@Automapped
-	private boolean				draftMode;
+	private String				reasonForBan;
 
-	// Derived attributes--------------------------------
+	@Mandatory
+	@ValidMoment(past = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	@Automapped
+	private Date				banIssuedDate;
 
-	// Relationships-------------------------------------
+	@Optional
+	@ValidMoment(past = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	@Automapped
+	private Date				liftDate;
 }

@@ -1,5 +1,5 @@
 /*
- * Airport.java
+ * Review.java
  *
  * Copyright (C) 2025 Andrés García.
  *
@@ -10,28 +10,29 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.entities.airports;
+package acme.entities.reviews;
 
-import javax.persistence.Column;
+import java.util.Date;
+
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidEmail;
+import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.client.components.validation.ValidUrl;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Airport extends AbstractEntity {
+public class Review extends AbstractEntity {
 	// Serialisation version --------------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
@@ -45,43 +46,32 @@ public class Airport extends AbstractEntity {
 
 	@Automapped
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{3}$")
-	@Column(unique = true)
-	private String				iataCode;
-
-	@Automapped
-	@Mandatory
-	@Enumerated(EnumType.STRING)
-	private OperationalScope	operationalScope;
+	@ValidMoment(past = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				moment;
 
 	@Automapped
 	@Mandatory
 	@ValidString(max = 50)
-	private String				city;
+	private String				subject;
 
 	@Automapped
 	@Mandatory
-	@ValidString(max = 50)
-	private String				country;
+	@ValidString(max = 255)
+	private String				text;
 
 	@Automapped
 	@Optional
-	@ValidUrl
-	private String				website;
+	@ValidNumber(min = 0, max = 10, fraction = 2)
+	private Double				score;
 
 	@Automapped
 	@Optional
-	@ValidEmail
-	private String				email;
-
-	@Automapped
-	@Optional
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
-	private String				phoneNumber;
+	@Valid
+	private Boolean				recommended;
 
 	@Automapped
 	@Mandatory
 	@Valid
 	private Boolean				draftMode;
-
 }
