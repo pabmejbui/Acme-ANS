@@ -16,7 +16,7 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
-import acme.entities.trackingLog.Resolution;
+import acme.entities.trackingLogs.Resolution;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,12 +31,11 @@ public class Claim extends AbstractEntity {
 	//Attributes
 	@Mandatory
 	@Column(unique = true)
-	@Automapped
 	private String				identifier;
 
 	@Mandatory
 	@ValidMoment(past = true)
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Automapped
 	private Date				registrationMoment;
 
@@ -65,16 +64,12 @@ public class Claim extends AbstractEntity {
 	@Automapped
 	private Boolean				draftMode;
 
-
 	//Derived attributes
 	@Transient
-	private Duration getTimeSinceRegistration() {
-		return null;
-	}
+	private Duration			getTimeSinceRegistration;
 
 	@Transient
-	private Integer getNumberOfTrackingLogs() {
-		return null;
-	}
+	private Integer				getNumberOfTrackingLogs;
 
+	// Relationships
 }
