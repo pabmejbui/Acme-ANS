@@ -15,19 +15,21 @@ package acme.entities.maintenanceRecords;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
+import acme.entities.aircrafts.Aircraft;
+import acme.realms.Technician;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,34 +43,47 @@ public class MaintenanceRecord extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	@Automapped
 	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
+	@ValidMoment(past = true)
+	@Automapped
 	private Date				maintenanceDate;
 
-	@Automapped
 	@Mandatory
-	@Enumerated(EnumType.STRING)
+	@Valid
+	@Automapped
 	private Status				status;
 
-	@Automapped
 	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment(past = false)
+	@Automapped
 	private Date				nextInspectionDate;
 
-	@Automapped
 	@Mandatory
-	@ValidNumber
-	private Double				estimatedCost;
-
+	@ValidMoney
 	@Automapped
+	private Money				estimatedCost;
+
 	@Optional
-	@ValidString(max = 255)
+	@ValidString(min = 0, max = 255)
+	@Automapped
 	private String				notes;
 
-	@Automapped
 	@Mandatory
 	@Valid
+	@Automapped
 	private Boolean				draftMode;
+
+	// Relationships  ---------------------------------------------------------
+
+	@Mandatory
+	@ManyToOne(optional = false)
+	@Automapped
+	private Technician			techinican;
+
+	@Mandatory
+	@ManyToOne(optional = false)
+	@Automapped
+	private Aircraft			aircraft;
 }
