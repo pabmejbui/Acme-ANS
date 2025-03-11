@@ -24,7 +24,20 @@ customer.validation.identifier.bad-format = El identificador debe tener 2 o 3 le
 customer.validation.fullname.missing = El nombre completo del usuario es obligatorio para validar el identificador.
 customer.validation.identifier.initials-mismatch = Las iniciales del identificador no coinciden con el nombre del usuario.
 
+# Mensajes de validación de flight number #########################################################
+
+flight.validation.flightNumber.not-null = El número de vuelo no puede estar vacío o nulo.
+flight.validation.flightNumber.bad-format = El número de vuelo debe tener tres letras mayúsculas seguidas de cuatro dígitos (ejemplo: AMX1234).
+flight.validation.flightNumber.missing-airline = No se puede determinar el código IATA de la aerolínea para este vuelo.
+flight.validation.flightNumber.mismatch = El número de vuelo debe comenzar con el código IATA de la aerolínea.
+
 # Mensajes de validación de leg #########################################################
-flight.validation.flightNumber.not-null = El número de vuelo no puede ser nulo.
-flight.validation.flightNumber.mismatch = El número de vuelo debe comenzar por el código IATA de la aerolínea seguido de 4 dígitos.
-flight.validation.flightNumber.missing = Falta información sobre la aerolínea o el vuelo para validar el número de vuelo.
+
+flight.validation.leg.schedule.null = La hora de salida y llegada programada no pueden ser nulas.
+flight.validation.scheduledArrival.min-duration = La llegada programada debe ser al menos 1 minuto después de la salida programada.
+
+# Mensajes de validación de system configuration #########################################################
+
+acme.validation.currency.invalid = La moneda debe tener exactamente tres letras mayúsculas (p. ej., USD, EUR).
+acme.validation.acceptedCurrencies.invalid = Las monedas aceptadas deben ser una lista separada por comas de códigos de tres letras (p. ej., USD, EUR, GBP).
+acme.validation.license.bad-format.message=El formato de la licencia no es válido. Debe cumplir con el patrón requerido.

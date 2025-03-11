@@ -24,7 +24,20 @@ customer.validation.identifier.bad-format = Identifier must contain 2 or 3 upper
 customer.validation.fullname.missing = User's full name is required to validate the identifier.
 customer.validation.identifier.initials-mismatch = Identifier initials do not match user's name.
 
+# Flight number validation messages #########################################################
+
+flight.validation.flightNumber.not-null = Flight number cannot be null or empty.
+flight.validation.flightNumber.bad-format = Flight number must have three uppercase letters followed by four digits (e.g., AMX1234).
+flight.validation.flightNumber.missing-airline = Cannot determine airline IATA code for this flight.
+flight.validation.flightNumber.mismatch = Flight number must start with the airline’s IATA code.
+
 # Leg validation messages #########################################################
-flight.validation.flightNumber.not-null = Flight number must not be null.
-flight.validation.flightNumber.mismatch = Flight number must start with airline's IATA code followed by exactly 4 digits.
-flight.validation.flightNumber.missing = Missing airline or flight information required to validate flight number.
+
+flight.validation.leg.schedule.null = Scheduled departure and arrival times cannot be null.
+flight.validation.scheduledArrival.min-duration = Scheduled arrival must be at least 1 minute after the scheduled departure.
+
+# System configuration messages #######################################################
+
+acme.validation.currency.invalid = Currency must be exactly three uppercase letters (e.g., USD, EUR).
+acme.validation.acceptedCurrencies.invalid = Accepted currencies must be a comma-separated list of three-letter codes (e.g., USD, EUR, GBP).
+acme.validation.license.bad-format.message=The license format is invalid. It must match the required pattern.
