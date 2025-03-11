@@ -29,9 +29,9 @@ public class PassportValidator extends AbstractValidator<ValidPassport, String> 
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
 
-			String phonePattern = "^[A-Z0-9]{6,9}$";
+			String passportPattern = "^[A-Z0-9]{6,9}$";
 
-			if (!passportNumber.matches(phonePattern))
+			if (!passportNumber.matches(passportPattern))
 				super.state(context, false, "*", "acme.validation.phone.bad-format-passport.message");
 
 		}
