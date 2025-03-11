@@ -1,12 +1,13 @@
 
 package acme.entities.trackingLogs;
 
-import java.beans.Transient;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -15,6 +16,12 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Getter
+@Setter
 
 public class TrackingLog extends AbstractEntity {
 
@@ -29,7 +36,6 @@ public class TrackingLog extends AbstractEntity {
 	@Mandatory
 	@ValidMoment
 	@Temporal(TemporalType.TIMESTAMP)
-	@Automapped
 	private Date				lastUpdateMoment;
 
 	@Mandatory
@@ -53,14 +59,10 @@ public class TrackingLog extends AbstractEntity {
 	private String				resolution;
 
 	@Mandatory
-	@Valid
 	@Automapped
-	private Boolean				draftMode;
-
+	private boolean				draftMode;
 
 	// Derived attributes
 	@Transient
-	private String getResolution() {
-		return null;
-	}
+	private String				getResolution;
 }
