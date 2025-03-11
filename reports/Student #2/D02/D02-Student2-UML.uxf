@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>36</x>
-      <y>144</y>
+      <y>138</y>
       <w>378</w>
       <h>114</h>
     </coordinates>
@@ -27,7 +27,7 @@ bg=green</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>480</x>
-      <y>144</y>
+      <y>138</y>
       <w>474</w>
       <h>102</h>
     </coordinates>
@@ -39,6 +39,7 @@ Booking
       + travelClass: Enum {Mandatory, Valid, Automapped}
       + price: Money {Mandatory, ValidMoney, Automapped}
       + lastCardNibble: Integer {Optional, ValidNibble, Automapped}
+      + draftMode: Boolean {Mandatory, Valid, Automapped}
 --
 
 bg=green</panel_attributes>
@@ -48,7 +49,7 @@ bg=green</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>474</x>
-      <y>342</y>
+      <y>336</y>
       <w>456</w>
       <h>102</h>
     </coordinates>
@@ -58,8 +59,9 @@ bg=green</panel_attributes>
       + fullName: String {Mandatory, ValidString(max=256), Automapped}
       + email: String {Mandatory, ValidEmail, Automapped}
       + passportNumber: String {Mandatory, ValidString(pattern("^[A-Z0-9]{6,9}$")), Automapped}
-      + dateOfBirth: Date {Mandatory, ValidMoment(past=true),Temporal(TemporarlType.DATE), Automapped}
+      + dateOfBirth: Date {Mandatory, ValidMoment(past=true),Temporal(TemporarlType.TIMESTAMP), Automapped}
       + specialNeeds: String {Optional, ValidString(max=51), Automapped}
+      + draftMode: boolean{Mandatory, Valid, Automapped}
 --
 
 bg=green
@@ -70,7 +72,7 @@ bg=green
     <id>UMLClass</id>
     <coordinates>
       <x>492</x>
-      <y>66</y>
+      <y>60</y>
       <w>126</w>
       <h>54</h>
     </coordinates>
@@ -87,7 +89,7 @@ bg=green</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>708</x>
-      <y>240</y>
+      <y>234</y>
       <w>96</w>
       <h>114</h>
     </coordinates>
@@ -101,7 +103,7 @@ must be registered &gt;</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>816</x>
-      <y>36</y>
+      <y>30</y>
       <w>132</w>
       <h>48</h>
     </coordinates>
@@ -116,7 +118,7 @@ bg=green</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>876</x>
-      <y>78</y>
+      <y>72</y>
       <w>54</w>
       <h>78</h>
     </coordinates>
@@ -130,7 +132,7 @@ purhase a</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>72</x>
-      <y>282</y>
+      <y>276</y>
       <w>138</w>
       <h>30</h>
     </coordinates>
@@ -144,7 +146,7 @@ bg=pink</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>114</x>
-      <y>252</y>
+      <y>246</y>
       <w>18</w>
       <h>42</h>
     </coordinates>
@@ -155,7 +157,7 @@ bg=pink</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>408</x>
-      <y>180</y>
+      <y>174</y>
       <w>84</w>
       <h>30</h>
     </coordinates>
@@ -169,7 +171,7 @@ make a &gt;</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>264</x>
-      <y>288</y>
+      <y>282</y>
       <w>174</w>
       <h>180</h>
     </coordinates>
