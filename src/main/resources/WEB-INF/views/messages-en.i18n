@@ -40,3 +40,4 @@ flight.validation.scheduledArrival.min-duration = Scheduled arrival must be at l
 
 acme.validation.currency.invalid = Currency must be exactly three uppercase letters (e.g., USD, EUR).
 acme.validation.acceptedCurrencies.invalid = Accepted currencies must be a comma-separated list of three-letter codes (e.g., USD, EUR, GBP).
+acme.validation.license.bad-format.message=The license format is invalid. It must match the required pattern.

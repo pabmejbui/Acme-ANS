@@ -10,63 +10,62 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.entitiest.technicians;
+package acme.realms;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.Valid;
 
-import acme.client.components.basis.AbstractEntity;
+import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidLicense;
+import acme.constraints.ValidPhone;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Technician extends AbstractEntity {
+public class Technician extends AbstractRole {
+
 	// Serialisation version --------------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
-	@Automapped
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
 	@Column(unique = true)
+	@ValidLicense
+	@Automapped
 	private String				licenseNumber;
 
-	@Automapped
 	@Mandatory
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidPhone
+	@Automapped
 	private String				phoneNumber;
 
-	@Automapped
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
+	@Automapped
 	private String				specialisation;
 
-	@Automapped
 	@Mandatory
 	@Valid
+	@Automapped
 	private Boolean				healthTestPassed;
 
-	@Automapped
 	@Mandatory
+	@ValidNumber(min = 0, max = 120)
+	@Automapped
 	private Integer				yearsOfExperience;
 
-	@Automapped
 	@Optional
-	@ValidString(max = 255)
-	private String				certifications;
-
+	@ValidString(min = 1, max = 255)
 	@Automapped
-	@Mandatory
-	@Valid
-	private Boolean				draftMode;
-
+	private String				certifications;
 }
