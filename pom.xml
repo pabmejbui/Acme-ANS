@@ -5,46 +5,66 @@
   -   
   - Copyright (C) 2012-2025 Rafael Corchuelo. 
   -
-  - In keeping with the traditional purpose of furthering education and research, it is 
-  - the policy of the copyright owner to permit non-commercial use and redistribution of 
-  - this software. It has been tested carefully, but it is not guaranteed for any particular 
-  - purposes. The copyright owner does not offer any warranties or representations, nor do 
+  - In keeping with the traditional purpose of furthering education and research,
+it is 
+  - the policy of the copyright owner to permit non-commercial use and
+redistribution of 
+  - this software. It has been tested carefully, but it is not guaranteed for any
+particular 
+  - purposes. The copyright owner does not offer any warranties or
+representations, nor do 
   - they accept any liabilities with respect to them. 
   -->
-  
 <!DOCTYPE xml>
 
-<project 
+<project
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<artifactId>Acme-ANS</artifactId>
 	<version>D02</version>
 	<packaging>war</packaging>
-	
+
 	<parent>
 		<groupId>Acme</groupId>
 		<artifactId>pom</artifactId>
 		<version>25.2.0</version>
 		<relativePath>../../pom-25.2.0.xml</relativePath>
 	</parent>
-	
-	<dependencies>
-        <dependency>
-            <groupId>org.apache.httpcomponents.client5</groupId>
-            <artifactId>httpclient5</artifactId>
-            <version>5.2</version>
-        </dependency>
 
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.15.0</version>
-        </dependency>
-    </dependencies>
-	
-	
+	<dependencies>
+		<!-- Spring Boot Web Dependency -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- Jackson: para deserializar el JSON -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+
+		<!-- Dependencia para Hibernate Validator -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.2.0.Final</version> <!-- Puedes usar la última versión
+			disponible -->
+		</dependency>
+
+		<!-- Procesador de anotaciones de Hibernate Validator -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator-annotation-processor</artifactId>
+			<version>6.2.0.Final</version> <!-- Debes usar la misma versión que
+			la de hibernate-validator -->
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+
 </project>
