@@ -23,7 +23,6 @@ public class FlightNumberValidator extends AbstractValidator<ValidFlightNumber, 
 		assert leg != null && context != null;
 
 		boolean valid = true;
-
 		String flightNumber = leg.getFlightNumber();
 
 		if (flightNumber == null || flightNumber.isBlank()) {
@@ -31,16 +30,21 @@ public class FlightNumberValidator extends AbstractValidator<ValidFlightNumber, 
 			return false;
 		}
 
-		String airlineIataCode = null;
+		if (!flightNumber.matches(FlightNumberValidator.FLIGHT_NUMBER_PATTERN)) {
+			super.state(context, false, "flightNumber", "flight.validation.flightNumber.bad-format");
+			valid = false;
+		}
 
+		String airlineIataCode = null;
 		if (leg.getFlight() == null || leg.getFlight().getManager() == null || leg.getFlight().getManager().getAirline() == null || leg.getFlight().getManager().getAirline().getIataCode() == null) {
 
 			super.state(context, false, "flightNumber", "flight.validation.flightNumber.missing-airline");
 			valid = false;
-		} else {
+		} else
 			airlineIataCode = leg.getFlight().getManager().getAirline().getIataCode();
-			String expectedPattern = "^" + airlineIataCode + "\\d{4}$";
 
+		if (valid && airlineIataCode != null) {
+			String expectedPattern = "^" + airlineIataCode + "\\d{4}$";
 			if (!flightNumber.matches(expectedPattern)) {
 				super.state(context, false, "flightNumber", "flight.validation.flightNumber.mismatch");
 				valid = false;
