@@ -1,0 +1,6 @@
+key,identifier,lastUpdateMoment,step,resolutionPercentage,indicator,resolution,draftMode
+trackingLog-01,TLG001,2024/02/15 08:30,"Initial assessment",10.0,REJECTED,"Claim received and under review.",true
+trackingLog-02,TLG002,2023/12/05 09:00,"Investigation ongoing",50.0,ACCEPTED,"Gathering additional details.",true
+trackingLog-03,TLG003,2024/03/10 14:45,"Resolution proposed",75.0,ACCEPTED,"A resolution has been suggested.",false
+trackingLog-04,TLG004,2024/02/28 16:10,"Final decision",100.0,ACCEPTED,"Claim approved and settled.",false
+trackingLog-05,TLG005,2024-01-25 11:20,"Claim rejected",100.0,REJECTED,"Claim does not meet requirements.",false
