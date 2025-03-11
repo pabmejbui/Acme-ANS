@@ -41,3 +41,7 @@ flight.validation.scheduledArrival.min-duration = La llegada programada debe ser
 acme.validation.currency.invalid = La moneda debe tener exactamente tres letras mayúsculas (p. ej., USD, EUR).
 acme.validation.acceptedCurrencies.invalid = Las monedas aceptadas deben ser una lista separada por comas de códigos de tres letras (p. ej., USD, EUR, GBP).
 acme.validation.license.bad-format.message=El formato de la licencia no es válido. Debe cumplir con el patrón requerido.
+
+# Mensajes de validacion de Banned Passenger ############################################################
+banned.passenger.validation..ban.issued.date.null = La fecha de baneo no puede ser nula.
+banned.passenger.validation.lift.date.min-duration = La fecha de desbaneo tiene que ser posterior a la fecha de baneo.
