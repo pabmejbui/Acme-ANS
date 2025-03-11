@@ -1,5 +1,5 @@
 /*
- * Status.java
+ * MaintenanceStatus.java
  *
  * Copyright (C) 2025 Andrés García.
  *
@@ -12,6 +12,6 @@
 
 package acme.entities.maintenanceRecords;
 
-public enum Status {
+public enum MaintenanceStatus {
 	PENDING, IN_PROGRESS, COMPLETED
 }

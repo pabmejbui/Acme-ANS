@@ -52,7 +52,7 @@ public class MaintenanceRecord extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@Automapped
-	private Status				status;
+	private MaintenanceStatus	maintenanceStatus;
 
 	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)

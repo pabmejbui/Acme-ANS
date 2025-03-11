@@ -1,5 +1,5 @@
 /*
- * Task.java
+ * MaintenanceRecordTask.java
  *
  * Copyright (C) 2025 Andrés García.
  *
@@ -10,51 +10,35 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.entities.tasks;
+package acme.entities.maintenanceRecords;
 
 import javax.persistence.Entity;
-import javax.validation.Valid;
+import javax.persistence.ManyToOne;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
-import acme.client.components.validation.ValidNumber;
-import acme.client.components.validation.ValidString;
+import acme.entities.tasks.Task;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Task extends AbstractEntity {
-	// Serialisation version --------------------------------------------------
+public class MaintenanceRecordTask extends AbstractEntity {
+	// Serialisation identifier -----------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
-	// Attributes -------------------------------------------------------------
+	// Relationships ----------------------------------------------------------
 
 	@Mandatory
-	@Valid
+	@ManyToOne(optional = false)
 	@Automapped
-	private TaskType			taskType;
+	private MaintenanceRecord	maintenanceRecord;
 
 	@Mandatory
-	@ValidString(min = 1, max = 255)
+	@ManyToOne(optional = false)
 	@Automapped
-	private String				description;
-
-	@Mandatory
-	@ValidNumber(min = 0, max = 10)
-	@Automapped
-	private Integer				priority;
-
-	@Mandatory
-	@ValidNumber(min = 0, max = 1000)
-	@Automapped
-	private Integer				estimatedDuration;
-
-	@Automapped
-	@Mandatory
-	@Valid
-	private Boolean				draftMode;
+	private Task				task;
 }

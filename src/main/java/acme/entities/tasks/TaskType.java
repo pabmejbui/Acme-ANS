@@ -1,5 +1,5 @@
 /*
- * Type.java
+ * TaskType.java
  *
  * Copyright (C) 2025 Andrés García.
  *
@@ -12,6 +12,6 @@
 
 package acme.entities.tasks;
 
-public enum Type {
+public enum TaskType {
 	MAINTENANCE, INSPECTION, REPAIR, SYSTEM, CHECK
 }
