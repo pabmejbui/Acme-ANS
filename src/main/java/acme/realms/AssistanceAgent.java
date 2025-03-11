@@ -1,5 +1,5 @@
 
-package acme.entities.assistanceAgents;
+package acme.realms;
 
 import java.util.Date;
 
@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import acme.client.components.basis.AbstractEntity;
+import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
@@ -23,7 +23,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class AssistanceAgent extends AbstractEntity {
+public class AssistanceAgent extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
@@ -40,7 +40,7 @@ public class AssistanceAgent extends AbstractEntity {
 
 	@Mandatory
 	@ValidMoment(past = true)
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Automapped
 	private Date				beginDate;
 

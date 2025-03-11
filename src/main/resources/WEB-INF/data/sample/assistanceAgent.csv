@@ -1,3 +1,3 @@
 key,key:userAccount,employeeCode,languages,beginDate,bio,salary,photoLink
-agent-01,user-account-agent-01,ABC123456,"English,Spanish",2015-06-15,"Experienced support agent with 10 years in customer service.",35000.00,https://example.com/photo1.jpg
-agent-02,user-account-agent-02,DEF789012,"French,German",2018-09-20,"Fluent in multiple languages specializing in technical support.",40000.00,https://example.com/photo2.jpg
+agent-01,user-account-agent-01,ABC123456,"English,Spanish",2017/05/03 00:00,"Experienced support agent with 10 years in customer service.",35000.00,https://example.com/photo1.jpg
+agent-02,user-account-agent-02,DEF789012,"French,German",2018/09/20 00:00,"Fluent in multiple languages specializing in technical support.",40000.00,https://example.com/photo2.jpg
