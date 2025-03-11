@@ -31,12 +31,12 @@ public class Claim extends AbstractEntity {
 	//Attributes
 	@Mandatory
 	@Column(unique = true)
+	@Automapped
 	private String				identifier;
 
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	@Automapped
 	private Date				registrationMoment;
 
 	@Mandatory
@@ -60,9 +60,8 @@ public class Claim extends AbstractEntity {
 	private Resolution			indicator;
 
 	@Mandatory
-	@Valid
 	@Automapped
-	private Boolean				draftMode;
+	private boolean				draftMode;
 
 	//Derived attributes
 	@Transient
