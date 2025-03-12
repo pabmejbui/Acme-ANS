@@ -16,6 +16,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
+import acme.client.helpers.SpringHelper;
 import acme.realms.Manager;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,7 +35,6 @@ public class Flight extends AbstractEntity {
 	@Mandatory
 	@ValidString(min = 1, max = 50)
 	@Column(unique = true)
-	@Automapped
 	private String				tag;
 
 	@Mandatory
@@ -53,32 +53,77 @@ public class Flight extends AbstractEntity {
 	private String				description;
 
 	@Mandatory
-	@Valid
 	@Automapped
-	private Boolean				draftMode;
+	private boolean				draftMode;
 
 	// Derived attributes
 
-	@Transient
-	private Date				scheduledDeparture;
 
 	@Transient
-	private Date				scheduledArrival;
+	public Date getScheduledDeparture() {
+		Date result;
+		FlightRepository repository;
+		repository = SpringHelper.getBean(FlightRepository.class);
+		result = repository.findScheduledDeparture(this.getId());
+		return result;
+	}
 
 	@Transient
-	private String				originCity;
+	public Date getScheduledArrival() {
+		Date result;
+		FlightRepository repository;
+		repository = SpringHelper.getBean(FlightRepository.class);
+		result = repository.findScheduledArrival(this.getId());
+		return result;
+	}
 
 	@Transient
-	private String				destinationCity;
+	public String getOriginCity() {
+		String result;
+		Date departure;
+		FlightRepository repository;
+		repository = SpringHelper.getBean(FlightRepository.class);
+		departure = repository.findScheduledDeparture(this.getId());
+		result = repository.findOriginCity(this.getId(), departure);
+		return result;
+	}
 
 	@Transient
-	private Integer				numberOfLayovers;
+	public String getDestinationCity() {
+		String result;
+		Date arrival;
+		FlightRepository repository;
+		repository = SpringHelper.getBean(FlightRepository.class);
+		arrival = repository.findScheduledArrival(this.getId());
+		result = repository.findDestinationCity(this.getId(), arrival);
+		return result;
+	}
+
+	@Transient
+	public int getNumberOfLayovers() {
+		int result = 0;
+		FlightRepository repository;
+		repository = SpringHelper.getBean(FlightRepository.class);
+		result = repository.countLayovers(this.getId());
+		return result;
+	}
+
+	@Transient
+	public boolean isAvailable() {
+		boolean result;
+		FlightRepository repository;
+		repository = SpringHelper.getBean(FlightRepository.class);
+		result = !this.draftMode && repository.publishedLegs(this.getId()) != null;
+
+		return result;
+	}
 
 	// Relationships
+
 
 	@Mandatory
 	@ManyToOne(optional = false)
 	@Automapped
-	private Manager				manager;
+	private Manager manager;
 
 }
