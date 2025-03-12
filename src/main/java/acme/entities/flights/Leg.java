@@ -44,13 +44,11 @@ public class Leg extends AbstractEntity {
 	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment
-	@Automapped
 	private Date				scheduledDeparture;
 
 	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment
-	@Automapped
 	private Date				scheduledArrival;
 
 	@Mandatory
