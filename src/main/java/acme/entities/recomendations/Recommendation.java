@@ -8,7 +8,6 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidString;
-import acme.client.components.validation.ValidUrl;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,15 +16,12 @@ import lombok.Setter;
 @Setter
 public class Recommendation extends AbstractEntity {
 
-	// Serialisation version ------------------------
 	private static final long	serialVersionUID	= 1L;
-
-	// Attributes ------------------------------------
 
 	@Mandatory
 	@ValidString(max = 100)
 	@Automapped
-	private String				title;
+	private String				name;
 
 	@Optional
 	@ValidString(max = 255)
@@ -35,52 +31,18 @@ public class Recommendation extends AbstractEntity {
 	@Optional
 	@ValidString(max = 255)
 	@Automapped
-	private String				location;
-
-	@Optional
-	@ValidString(max = 255)
-	@Automapped
-	private String				city;
-
-	@Optional
-	@ValidString(max = 255)
-	@Automapped
-	private String				country;
-
-	@Optional
-	@Automapped
-	private Double				latitude;
-
-	@Optional
-	@Automapped
-	private Double				longitude;
-
-	@Optional
-	@ValidString(max = 255)
-	@Automapped
 	private String				category;
 
 	@Optional
-	@ValidUrl
+	@ValidString(max = 255)
 	@Automapped
-	private String				url;
+	private String				location;
+
+	// NUEVOS CAMPOS PARA LATITUD Y LONGITUD
+	@Optional
+	private Double				latitude;
 
 	@Optional
-	@Automapped
-	private Double				rating;
+	private Double				longitude;
 
-	@Optional
-	@ValidUrl
-	@Automapped
-	private String				imageUrl;
-
-	@Optional
-	@ValidString(max = 50)
-	@Automapped
-	private String				priceRange;
-
-	@Mandatory
-	@ValidString(max = 10)
-	@Automapped
-	private String				airportCode;
 }
