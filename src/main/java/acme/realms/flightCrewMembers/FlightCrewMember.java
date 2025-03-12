@@ -29,8 +29,8 @@ public class FlightCrewMember extends AbstractRole {
 
 	// Attributes
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	@Column(unique = true)
+	@Automapped
 	private String				employeeCode;
 
 	@Mandatory
@@ -44,8 +44,9 @@ public class FlightCrewMember extends AbstractRole {
 	private String				languageSkills;
 
 	@Mandatory
-	@Valid
+	@Enumerated(EnumType.STRING)
 	@Automapped
+
 	private AvailabilityStatus	availabilityStatus;
 
 	@ManyToOne(optional = false)
