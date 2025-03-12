@@ -37,7 +37,6 @@ public class Airline extends AbstractEntity {
 
 	@ValidString(pattern = "^[A-Z]{3}$") //Es normalmente una X, mirar como hacer eso.
 	@Column(unique = true)
-	@Automapped
 	@Mandatory
 	private String				iataCode;
 
@@ -53,7 +52,6 @@ public class Airline extends AbstractEntity {
 
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	@Automapped
 	@Mandatory
 	private Date				foundationMoment;
 
@@ -68,9 +66,8 @@ public class Airline extends AbstractEntity {
 	private String				phoneNumber;
 
 	@Mandatory
-	@Valid
 	@Automapped
-	private Boolean				draftMode;
+	private boolean				draftMode;
 
 	// Derived attributes
 
