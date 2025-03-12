@@ -14,8 +14,7 @@ package acme.entities.airports;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -24,6 +23,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidPhone;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,49 +37,48 @@ public class Airport extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	@Automapped
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
+	@Automapped
 	private String				name;
 
-	@Automapped
 	@Mandatory
 	@ValidString(pattern = "^[A-Z]{3}$")
 	@Column(unique = true)
 	private String				iataCode;
 
-	@Automapped
 	@Mandatory
-	@Enumerated(EnumType.STRING)
+	@Valid
+	@Automapped
 	private OperationalScope	operationalScope;
 
-	@Automapped
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
+	@Automapped
 	private String				city;
 
-	@Automapped
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
+	@Automapped
 	private String				country;
 
-	@Automapped
 	@Optional
 	@ValidUrl
+	@Automapped
 	private String				website;
 
-	@Automapped
 	@Optional
 	@ValidEmail
+	@Automapped
 	private String				email;
 
-	@Automapped
 	@Optional
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidPhone
+	@Automapped
 	private String				phoneNumber;
 
-	@Automapped
 	@Mandatory
+	@Automapped
 	private boolean				draftMode;
 
 }
