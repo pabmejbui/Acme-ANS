@@ -11,22 +11,21 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface FlightRepository extends AbstractRepository {
 
-	@Query("SELECT MIN(l.scheduledDeparture) FROM Leg l WHERE l.flight.id = :flightId")
+	@Query("select min(l.scheduledDeparture) from Leg l where l.flight.id = :flightId")
 	Date findScheduledDeparture(int flightId);
 
-	@Query("SELECT MAX(l.scheduledArrival) FROM Leg l WHERE l.flight.id = :flightId")
+	@Query("select max(l.scheduledArrival) from Leg l where l.flight.id = :flightId")
 	Date findScheduledArrival(int flightId);
 
-	@Query("SELECT l.originAirport.city FROM Leg l WHERE l.flight.id = :flightId ORDER BY l.scheduledDeparture ASC")
-	String findOriginCity(int flightId);
+	@Query("select l.destinationAirport.city from Leg l where l.flight.id = :flightId and l.scheduledDeparture = :departure")
+	String findOriginCity(int flightId, Date departure);
 
-	@Query("SELECT l.destinationAirport.city FROM Leg l WHERE l.flight.id = :flightId ORDER BY l.scheduledArrival DESC")
-	String findDestinationCity(int flightId);
+	@Query("select l.originAirport.city from Leg l where l.flight.id = :flightId and l.scheduledArrival = :arrival")
+	String findDestinationCity(int flightId, Date arrival);
 
-	@Query("SELECT COUNT(l) - 1 FROM Leg l WHERE l.flight.id = :flightId")
-	Integer countLayovers(int flightId);
+	@Query("select count(l) from Leg l where l.flight.id = :flightId")
+	int countLayovers(int flightId);
 
-	@Query("SELECT f FROM Flight f WHERE f.id = :flightId")
-	Flight findOneFlightById(int flightId);
-
+	@Query("select l from Leg l where l.flight.id = :flightId and l.draftMode=false")
+	Leg publishedLegs(int flightId);
 }
