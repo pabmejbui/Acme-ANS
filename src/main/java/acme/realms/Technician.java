@@ -14,7 +14,6 @@ package acme.realms;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
@@ -39,9 +38,8 @@ public class Technician extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@Column(unique = true)
 	@ValidLicense
-	@Automapped
+	@Column(unique = true)
 	private String				licenseNumber;
 
 	@Mandatory
@@ -55,9 +53,8 @@ public class Technician extends AbstractRole {
 	private String				specialisation;
 
 	@Mandatory
-	@Valid
 	@Automapped
-	private Boolean				healthTestPassed;
+	private boolean				healthTestPassed;
 
 	@Mandatory
 	@ValidNumber(min = 0, max = 120)
