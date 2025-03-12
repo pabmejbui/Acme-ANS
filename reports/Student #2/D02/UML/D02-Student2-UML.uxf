@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>6</zoom_level>
+  <zoom_level>5</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>36</x>
-      <y>138</y>
-      <w>378</w>
-      <h>114</h>
+      <x>120</x>
+      <y>200</y>
+      <w>315</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>      «Role»  
       Customer
@@ -26,10 +26,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>480</x>
-      <y>138</y>
-      <w>474</w>
-      <h>102</h>
+      <x>490</x>
+      <y>200</y>
+      <w>395</w>
+      <h>85</h>
     </coordinates>
     <panel_attributes>«Entity»  
 Booking
@@ -39,7 +39,7 @@ Booking
       + travelClass: Enum {Mandatory, Valid, Automapped}
       + price: Money {Mandatory, ValidMoney, Automapped}
       + lastCardNibble: Integer {Optional, ValidNibble, Automapped}
-      + draftMode: Boolean {Mandatory, Valid, Automapped}
+      + draftMode: boolean {Mandatory, Valid, Automapped}
 --
 
 bg=green</panel_attributes>
@@ -48,10 +48,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>474</x>
-      <y>336</y>
-      <w>456</w>
-      <h>102</h>
+      <x>490</x>
+      <y>470</y>
+      <w>380</w>
+      <h>85</h>
     </coordinates>
     <panel_attributes>      «Entity»  
       Passenger
@@ -71,10 +71,10 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>492</x>
-      <y>60</y>
-      <w>126</w>
-      <h>54</h>
+      <x>500</x>
+      <y>135</y>
+      <w>105</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enum&gt;&gt;
 TravelClass
@@ -86,26 +86,12 @@ bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>708</x>
-      <y>234</y>
-      <w>96</w>
-      <h>114</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-x
-m1=1
-m2=1
-must be registered &gt;</panel_attributes>
-    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>816</x>
-      <y>30</y>
-      <w>132</w>
-      <h>48</h>
+      <x>830</x>
+      <y>355</y>
+      <w>110</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Flight
@@ -117,24 +103,24 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>876</x>
-      <y>72</y>
-      <w>54</w>
-      <h>78</h>
+      <x>720</x>
+      <y>365</y>
+      <w>120</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
 m2=0..n
-purhase a</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+purhase a &gt;</panel_attributes>
+    <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>72</x>
-      <y>276</y>
-      <w>138</w>
-      <h>30</h>
+      <x>150</x>
+      <y>315</y>
+      <w>115</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>The first two or three letters of 
 the id correspond to their initials
@@ -145,10 +131,10 @@ bg=pink</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>114</x>
-      <y>246</y>
-      <w>18</w>
-      <h>42</h>
+      <x>185</x>
+      <y>290</y>
+      <w>15</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -156,24 +142,24 @@ bg=pink</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>408</x>
-      <y>174</y>
-      <w>84</w>
-      <h>30</h>
+      <x>430</x>
+      <y>230</y>
+      <w>70</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
 m2=0..n
-make a &gt;</panel_attributes>
+make a</panel_attributes>
     <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>264</x>
-      <y>282</y>
-      <w>174</w>
-      <h>180</h>
+      <x>310</x>
+      <y>320</y>
+      <w>145</w>
+      <h>150</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 CustomerDashboard
@@ -195,5 +181,51 @@ double: maxPassengersPerBooking
 double: stdDevPassengersPerBooking
 bg=green</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>335</y>
+      <w>125</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>      «Entity»  
+      BookingRender
+--
+
+--
+
+bg=green
+    </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>655</x>
+      <y>400</y>
+      <w>50</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=0..n
+&lt; Refers to</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>280</y>
+      <w>55</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=0..n
+&lt; Belongs to </panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
   </element>
 </diagram>
