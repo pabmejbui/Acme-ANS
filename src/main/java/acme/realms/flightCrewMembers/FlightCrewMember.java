@@ -49,9 +49,9 @@ public class FlightCrewMember extends AbstractRole {
 	@Automapped
 	private AvailabilityStatus	availabilityStatus;
 
-	@ManyToOne(optional = false)
 	@Mandatory
-	@Automapped
+	@Valid
+	@ManyToOne(optional = false)
 	private Airline				airline;
 
 	@Mandatory
