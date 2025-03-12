@@ -30,7 +30,6 @@ public class Aircraft extends AbstractEntity {
 	@ValidString(max = 50)
 	private String				model;
 
-	@Automapped
 	@Mandatory
 	@Column(unique = true)
 	@ValidString(max = 50)
@@ -56,10 +55,9 @@ public class Aircraft extends AbstractEntity {
 	@ValidString
 	private String				details;
 
-	@Valid
 	@Mandatory
 	@Automapped
-	private Boolean				draftMode;
+	private boolean				draftMode;
 
 	// Derived attributes
 
