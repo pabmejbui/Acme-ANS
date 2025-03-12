@@ -1,0 +1,3 @@
+key,licenseNumber,phoneNumber,specialisation,healthTestPassed,yearsOfExperience,certifications,key:user-account
+technician-01,AB123456,+123456789,None,false,0,None,user-account-technician-01
+technician-02,XYZ987654,+987654321,Electronics,true,25,Certified Electronics Technician (CET),user-account-technician-02

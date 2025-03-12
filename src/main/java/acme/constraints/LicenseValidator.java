@@ -26,7 +26,7 @@ public class LicenseValidator extends AbstractValidator<ValidLicense, String> {
 		if (licenseNumber == null || licenseNumber.isBlank())
 			return true;
 
-		String licensePattern = "^[A-Z]{2-3}\\\\d{6}$";
+		String licensePattern = "^[A-Z]{2,3}\\d{6}$";
 
 		if (!licenseNumber.matches(licensePattern))
 			super.state(context, false, "*", "acme.validation.license.bad-format.message");
