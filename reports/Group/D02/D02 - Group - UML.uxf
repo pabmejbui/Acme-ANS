@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>54</x>
+      <y>330</y>
+      <w>306</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>«Entity»  
+Airport
+--
++ name: String {Mandatory, ValidString(max=50), Automapped}  
++ iataCode: String {Mandatory, ValidString(pattern="^[A-Z]{3}$"), Column(unique=true)}  
++ operationalScope: OperationalScope{Mandatory, Valid, Automapped}  
++ city: String {Mandatory, ValidString(max=50), Automapped}  
++ country: String {Mandatory, ValidString(max=50), Automapped}  
++ website: String {Optional, ValidUrl, Automapped}  
++ email: String {Optional, ValidEmail, Automapped}  
++ phoneNumber: String {Optional, ValidPhone, Automapped}
++ draftMode: boolean {Mandatory, Automapped}
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>534</x>
+      <y>246</y>
+      <w>456</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>«Entity»  
+Airline
+--
++ name: String {Mandatory, ValidString(max=50), Automapped}  
++ iataCode: String {Mandatory, ValidString(pattern="^[A-Z]{3}$"), Column(unique=true)}  
++ website: String {Mandatory, ValidUrl, Automapped}  
++ type: AirlineType{Mandatory, Valid, Automapped}  
++ foundationMoment: Date {Mandatory, ValidMoment(past=true), Temporal(TemporalType.TIMESTAMP)}  
++ optionalEmail: String {Optional, ValidEmail, Automapped}  
++ phoneNumber: String {Optional, ValidPhone, Automapped}
++ draftMode: boolean {Mandatory, Automapped}
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>486</y>
+      <w>384</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>«Entity»  
+Aircraft
+--
++ model: String {Mandatory, ValidString(max=50), Automapped}  
++ registrationNumber: String {Mandatory, Column(unique=true), ValidString(max=50)}  
++ capacity: Integer {Mandatory, ValidNumber, Automapped}  
++ cargoWeight: Integer {Mandatory, ValidNumber(min=2000, max=50000), Automapped}  
++ status: AircraftStatus{Mandatory, Valid, Automapped} 
++ details: String {Optional, ValidString, Automapped}
++ draftMode: boolean {Mandatory, Automapped}
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>12</x>
+      <y>144</y>
+      <w>360</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>«Entity»  
+Service
+--
++ name: String {Mandatory,ValidString(max=50),Automapped}  
++ pictureUrl: String {Mandatory, ValidUrl, Automapped}  
++ averageDwellTime: Double {Mandatory, ValidNumber, Automapped}  
++ promotionCode: String {Optional, Column(unique=true), ValidPromoCode}  
++ discountAmount: Double {Optional, ValidMoney, Automapped}
++ draftMode: boolean {Mandatory, Automapped}
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>54</y>
+      <w>372</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>«Entity»  
+Review
+--
++ authorName: String {Mandatory, ValidString(max=50), Automapped}  
++ moment: Date {Mandatory, ValidMoment(past=true), Temporal(TemporalType.TIMESTAMP)}  
++ subject: String {Mandatory, ValidString(max=50), Automapped}  
++ text: String {Mandatory, ValidString, Automapped}  
++ score: Double {Optional, ValidNumber(min=0, max=10, fraction=2), Automapped}  
++ recommended: Boolean {Optional, Valid, Automapped}
++ draftMode: Boolean {Mandatory, Valid, Automapped}
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>636</x>
+      <y>348</y>
+      <w>72</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=0..n
+
+owned by an &gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;230.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>354</x>
+      <y>150</y>
+      <w>252</w>
+      <h>258</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=0..n</panel_attributes>
+    <additional_attributes>10.0;400.0;150.0;400.0;150.0;130.0;380.0;130.0;380.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>696</x>
+      <y>150</y>
+      <w>30</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=0..n</panel_attributes>
+    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>366</x>
+      <y>114</y>
+      <w>126</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=0..n</panel_attributes>
+    <additional_attributes>10.0;120.0;70.0;120.0;70.0;10.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>888</x>
+      <y>174</y>
+      <w>102</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+AirlineType
+--
++ LUXURY
++ STANDARD
++ LOW_COST
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>324</x>
+      <y>546</y>
+      <w>114</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+AircraftStatus
+--
++ ACTIVE_SERVICE
++ UNDER_MAINTENANCE
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>78</x>
+      <y>468</y>
+      <w>114</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+AircraftStatus
+--
++ INTERNATIONAL
++ DOMESTIC
++ REGIONAL
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>306</x>
+      <y>54</y>
+      <w>66</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>«Entity»  
+Flight
+--
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>366</x>
+      <y>72</y>
+      <w>126</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=0..n</panel_attributes>
+    <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>858</x>
+      <y>462</y>
+      <w>234</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+AdministratorDashboard
+--
++ airportsByOperationalScope: Map&lt;Scope, Integer&gt;
++ airlinesByType: Map&lt;AirlineType, Integer&gt;
++ ratioAirlinesWithEmailAndPhone: Double
++ ratioActiveAircrafts: Double
++ ratioNonActiveAircrafts: Double
++ ratioReviewsAboveFive: Double
++ reviewsCountLast10Weeks: Integer
++ reviewsAverageLast10Weeks: Double
++ reviewsMinimumLast10Weeks: Integer
++ reviewsMaximumLast10Weeks: Integer
++ reviewsDeviationLast10Weeks: Double
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>774</x>
+      <y>378</y>
+      <w>318</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>«Entity»  
+SystemConfiguration
+--
++ currency: String {Mandatory, ValidCurrency, Automapped}
++ acceptedCurrencies: String {Mandatory, ValidAcceptedCurencies, Automapped}
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
