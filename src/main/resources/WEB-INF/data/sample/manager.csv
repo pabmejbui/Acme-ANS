@@ -1,3 +1,3 @@
-key,key:user-account,identifier,experience,birthDate,pictureLink,key:airline
-manager-01,user-account-manager-01,MRL987654,4,2000/01/01 00:00,http://www.lorem-ipsum.org,airline-01
-manager-02,user-account-manager-02,AF333333,2,2002/07/29 12:30,http://www.example.com,airline-02
+key,key:user-account,identifier,experience,birthDate,pictureLink
+manager-01,user-account-manager-01,MRL987654,4,2000/01/01 00:00,http://www.lorem-ipsum.org
+manager-02,user-account-manager-02,AF333333,2,2002/07/29 12:30,http://www.example.com

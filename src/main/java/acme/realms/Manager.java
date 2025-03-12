@@ -5,7 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -17,7 +16,6 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidUrl;
 import acme.constraints.manager.ValidManager;
-import acme.entities.airlines.Airline;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -45,8 +43,7 @@ public class Manager extends AbstractRole {
 
 	@Mandatory
 	@ValidMoment(past = true)
-	@Temporal(TemporalType.DATE)
-	@Automapped
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				birthDate;
 
 	@Optional
@@ -58,8 +55,4 @@ public class Manager extends AbstractRole {
 
 	// Relationships
 
-	@ManyToOne(optional = false)
-	@Mandatory
-	@Automapped
-	private Airline				airline;
 }

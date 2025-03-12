@@ -36,12 +36,12 @@ public class FlightNumberValidator extends AbstractValidator<ValidFlightNumber, 
 		}
 
 		String airlineIataCode = null;
-		if (leg.getFlight() == null || leg.getFlight().getManager() == null || leg.getFlight().getManager().getAirline() == null || leg.getFlight().getManager().getAirline().getIataCode() == null) {
+		if (leg.getFlight() == null || leg.getFlight().getManager() == null || leg.getAirline() == null || leg.getAirline().getIataCode() == null) {
 
 			super.state(context, false, "flightNumber", "flight.validation.flightNumber.missing-airline");
 			valid = false;
 		} else
-			airlineIataCode = leg.getFlight().getManager().getAirline().getIataCode();
+			airlineIataCode = leg.getAirline().getIataCode();
 
 		if (valid && airlineIataCode != null) {
 			String expectedPattern = "^" + airlineIataCode + "\\d{4}$";

@@ -35,7 +35,7 @@ public class Airline extends AbstractEntity {
 	@Automapped
 	private String				name;
 
-	@ValidString(pattern = "^[A-Z]{3}$") //Es normalmente una X, mirar como hacer eso.
+	@ValidString(pattern = "^[A-Z]{3}$")
 	@Column(unique = true)
 	@Mandatory
 	private String				iataCode;
