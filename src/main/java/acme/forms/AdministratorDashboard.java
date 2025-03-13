@@ -4,6 +4,8 @@ package acme.forms;
 import java.util.Map;
 
 import acme.client.components.basis.AbstractForm;
+import acme.entities.airlines.AirlineType;
+import ch.qos.logback.core.joran.action.ActionUtil.Scope;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,8 +18,8 @@ public class AdministratorDashboard extends AbstractForm {
 
 	// Attributes -------------------------------------------------------------
 
-	Map<String, Integer>		totalAirportsByOperationalScope;
-	Map<String, Integer>		numberOfAirlinesByType;
+	Map<Scope, Integer>			totalAirportsByOperationalScope;
+	Map<AirlineType, Integer>	numberOfAirlinesByType;
 
 	Double						ratioAirlinesWithEmailAndPhone;
 
