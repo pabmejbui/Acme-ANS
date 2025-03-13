@@ -5,7 +5,7 @@ import java.util.Map;
 
 import acme.client.components.basis.AbstractForm;
 import acme.entities.airlines.AirlineType;
-import ch.qos.logback.core.joran.action.ActionUtil.Scope;
+import acme.entities.airports.OperationalScope;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,25 +14,25 @@ import lombok.Setter;
 public class AdministratorDashboard extends AbstractForm {
 
 	// Serialisation version --------------------------------------------------
-	private static final long	serialVersionUID	= 1L;
+	private static final long		serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
-	Map<Scope, Integer>			totalAirportsByOperationalScope;
-	Map<AirlineType, Integer>	numberOfAirlinesByType;
+	Map<OperationalScope, Integer>	totalAirportsByOperationalScope;
+	Map<AirlineType, Integer>		numberOfAirlinesByType;
 
-	Double						ratioAirlinesWithEmailAndPhone;
+	Double							ratioAirlinesWithEmailAndPhone;
 
-	Double						ratioActiveAircrafts;
-	Double						ratioNonActiveAircrafts;
+	Double							ratioActiveAircrafts;
+	Double							ratioNonActiveAircrafts;
 
-	Double						ratioReviewsAboveFive;
+	Double							ratioReviewsAboveFive;
 
-	Integer						countReviewsLast10Weeks;
-	Double						averageReviewsLast10Weeks;
-	Integer						minReviewsLast10Weeks;
-	Integer						maxReviewsLast10Weeks;
-	Double						standardDeviationReviewsLast10Weeks;
+	Integer							countReviewsLast10Weeks;
+	Double							averageReviewsLast10Weeks;
+	Integer							minReviewsLast10Weeks;
+	Integer							maxReviewsLast10Weeks;
+	Double							standardDeviationReviewsLast10Weeks;
 
 	// Derived attributes -----------------------------------------------------
 
