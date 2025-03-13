@@ -268,13 +268,13 @@ m2=0..n</panel_attributes>
     <coordinates>
       <x>912</x>
       <y>516</y>
-      <w>234</w>
+      <w>276</w>
       <h>138</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 AdministratorDashboard
 --
-+ totalAirportsByOperationalScope: Map&lt;Scope, Integer&gt;
++ totalAirportsByOperationalScope: Map&lt;OperationalScope, Integer&gt;
 + numberOfAirlinesByType: Map&lt;AirlineType, Integer&gt;
 + ratioAirlinesWithEmailAndPhone: Double
 + ratioActiveAircrafts: Double
