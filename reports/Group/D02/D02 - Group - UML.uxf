@@ -4,19 +4,19 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>54</x>
-      <y>330</y>
+      <x>108</x>
+      <y>384</y>
       <w>306</w>
       <h>120</h>
     </coordinates>
     <panel_attributes>«Entity»  
 Airport
 --
-+ name: String {Mandatory, ValidString(max=50), Automapped}  
++ name: String {Mandatory, ValidString(min = 1, max=50), Automapped}  
 + iataCode: String {Mandatory, ValidString(pattern="^[A-Z]{3}$"), Column(unique=true)}  
 + operationalScope: OperationalScope{Mandatory, Valid, Automapped}  
-+ city: String {Mandatory, ValidString(max=50), Automapped}  
-+ country: String {Mandatory, ValidString(max=50), Automapped}  
++ city: String {Mandatory, ValidString(min = 1, max=50), Automapped}  
++ country: String {Mandatory, ValidString(min = 1, max=50), Automapped}  
 + website: String {Optional, ValidUrl, Automapped}  
 + email: String {Optional, ValidEmail, Automapped}  
 + phoneNumber: String {Optional, ValidPhone, Automapped}
@@ -28,8 +28,8 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>534</x>
-      <y>246</y>
+      <x>498</x>
+      <y>294</y>
       <w>456</w>
       <h>108</h>
     </coordinates>
@@ -51,8 +51,8 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
-      <y>486</y>
+      <x>504</x>
+      <y>540</y>
       <w>384</w>
       <h>114</h>
     </coordinates>
@@ -73,19 +73,19 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>12</x>
-      <y>144</y>
+      <x>66</x>
+      <y>198</y>
       <w>360</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>«Entity»  
 Service
 --
-+ name: String {Mandatory,ValidString(max=50),Automapped}  
++ name: String {Mandatory, ValidString(max=50), Automapped}  
 + pictureUrl: String {Mandatory, ValidUrl, Automapped}  
 + averageDwellTime: Double {Mandatory, ValidNumber, Automapped}  
 + promotionCode: String {Optional, Column(unique=true), ValidPromoCode}  
-+ discountAmount: Double {Optional, ValidMoney, Automapped}
++ discountAmount: Money {Optional, ValidMoney, Automapped}
 + draftMode: boolean {Mandatory, Automapped}
 
 bg=green</panel_attributes>
@@ -94,21 +94,21 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>480</x>
-      <y>54</y>
-      <w>372</w>
-      <h>102</h>
+      <x>534</x>
+      <y>102</y>
+      <w>414</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>«Entity»  
 Review
 --
-+ authorName: String {Mandatory, ValidString(max=50), Automapped}  
++ authorName: String {Mandatory, ValidString(min = 1, max=50), Automapped}  
 + moment: Date {Mandatory, ValidMoment(past=true), Temporal(TemporalType.TIMESTAMP)}  
-+ subject: String {Mandatory, ValidString(max=50), Automapped}  
-+ text: String {Mandatory, ValidString, Automapped}  
++ subject: String {Mandatory, ValidString(min = 1, max=50), Automapped}  
++ text: String {Mandatory, ValidString(min = 1, max=255), Automapped}  
 + score: Double {Optional, ValidNumber(min=0, max=10, fraction=2), Automapped}  
-+ recommended: Boolean {Optional, Valid, Automapped}
-+ draftMode: Boolean {Mandatory, Valid, Automapped}
++ recommended: boolean {Optional, Automapped}
++ draftMode: boolean {Mandatory, Automapped}
 
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -116,62 +116,77 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>636</x>
-      <y>348</y>
+      <x>690</x>
+      <y>396</y>
       <w>72</w>
-      <h>150</h>
+      <h>156</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 m2=0..n
 
 owned by an &gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;230.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;240.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>354</x>
-      <y>150</y>
-      <w>252</w>
-      <h>258</h>
+      <x>252</x>
+      <y>282</y>
+      <w>90</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=0..n
+
+are offered by an &gt;</panel_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>408</x>
+      <y>204</y>
+      <w>144</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 m2=0..n</panel_attributes>
-    <additional_attributes>10.0;400.0;150.0;400.0;150.0;130.0;380.0;130.0;380.0;10.0</additional_attributes>
+    <additional_attributes>10.0;300.0;210.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>696</x>
-      <y>150</y>
+      <x>660</x>
+      <y>204</y>
       <w>30</w>
-      <h>108</h>
+      <h>102</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 m2=0..n</panel_attributes>
-    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>366</x>
-      <y>114</y>
+      <x>420</x>
+      <y>162</y>
       <w>126</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 m2=0..n</panel_attributes>
-    <additional_attributes>10.0;120.0;70.0;120.0;70.0;10.0;190.0;10.0</additional_attributes>
+    <additional_attributes>10.0;130.0;190.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>888</x>
-      <y>174</y>
+      <x>972</x>
+      <y>312</y>
       <w>102</w>
       <h>60</h>
     </coordinates>
@@ -188,8 +203,8 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>324</x>
-      <y>546</y>
+      <x>378</x>
+      <y>600</y>
       <w>114</w>
       <h>54</h>
     </coordinates>
@@ -205,8 +220,8 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>78</x>
-      <y>468</y>
+      <x>132</x>
+      <y>522</y>
       <w>114</w>
       <h>60</h>
     </coordinates>
@@ -223,8 +238,8 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>306</x>
-      <y>54</y>
+      <x>360</x>
+      <y>108</y>
       <w>66</w>
       <h>48</h>
     </coordinates>
@@ -238,46 +253,46 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>366</x>
-      <y>72</y>
+      <x>420</x>
+      <y>120</y>
       <w>126</w>
-      <h>24</h>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 m2=0..n</panel_attributes>
-    <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
+    <additional_attributes>10.0;20.0;190.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>858</x>
-      <y>462</y>
+      <x>912</x>
+      <y>516</y>
       <w>234</w>
       <h>138</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 AdministratorDashboard
 --
-+ airportsByOperationalScope: Map&lt;Scope, Integer&gt;
-+ airlinesByType: Map&lt;AirlineType, Integer&gt;
++ totalAirportsByOperationalScope: Map&lt;Scope, Integer&gt;
++ numberOfAirlinesByType: Map&lt;AirlineType, Integer&gt;
 + ratioAirlinesWithEmailAndPhone: Double
 + ratioActiveAircrafts: Double
 + ratioNonActiveAircrafts: Double
 + ratioReviewsAboveFive: Double
-+ reviewsCountLast10Weeks: Integer
-+ reviewsAverageLast10Weeks: Double
-+ reviewsMinimumLast10Weeks: Integer
-+ reviewsMaximumLast10Weeks: Integer
-+ reviewsDeviationLast10Weeks: Double
++ countReviewsLast10Weeks: Integer
++ averageReviewsLast10Weeks: Double
++ minReviewsLast10Weeks: Integer
++ maxReviewsLast10Weeks: Integer
++ standardDeviationReviewsLast10Weeks: Double
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>774</x>
-      <y>378</y>
+      <x>828</x>
+      <y>432</y>
       <w>318</w>
       <h>60</h>
     </coordinates>
