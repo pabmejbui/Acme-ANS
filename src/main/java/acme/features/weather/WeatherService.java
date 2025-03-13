@@ -11,10 +11,10 @@ import org.springframework.web.client.RestTemplate;
 public class WeatherService {
 
 	@Value("${weather.api.key}")
-	private final String	apiKey	= System.getenv("WEATHER_API_KEY");
+	private String	apiKey;
 
 	@Value("${weather.api.url}")
-	private String			apiUrl;
+	private String	apiUrl;
 
 
 	public WeatherCondition getWeather(final String city, final String countryCode) {
