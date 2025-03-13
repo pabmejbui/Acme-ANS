@@ -15,6 +15,7 @@ package acme.entities.reviews;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -26,6 +27,10 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.entities.airlines.Airline;
+import acme.entities.airports.Airport;
+import acme.entities.flights.Flight;
+import acme.entities.services.Service;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,39 +44,73 @@ public class Review extends AbstractEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	@Automapped
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
+	@Automapped
 	private String				name;
 
-	@Automapped
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				moment;
 
-	@Automapped
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
+	@Automapped
 	private String				subject;
 
-	@Automapped
 	@Mandatory
-	@ValidString(max = 255)
+	@ValidString(min = 1, max = 255)
+	@Automapped
 	private String				text;
 
-	@Automapped
 	@Optional
 	@ValidNumber(min = 0, max = 10, fraction = 2)
+	@Automapped
 	private Double				score;
 
+	@Mandatory
 	@Automapped
+	private boolean				recommended;
+
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
+
+	// Relationships  ---------------------------------------------------------
+
 	@Optional
 	@Valid
-	private Boolean				recommended;
+	@ManyToOne
+	private Flight				flight;
 
-	@Automapped
-	@Mandatory
+	@Optional
 	@Valid
-	private Boolean				draftMode;
+	@ManyToOne
+	private Airport				airport;
+
+	@Optional
+	@Valid
+	@ManyToOne
+	private Service				service;
+
+	@Optional
+	@Valid
+	@ManyToOne
+	private Airline				airline;
+
+
+	public boolean isExactlyOneRelationDefined() {
+		int count = 0;
+		if (this.flight != null)
+			count++;
+		if (this.airport != null)
+			count++;
+		if (this.service != null)
+			count++;
+		if (this.airline != null)
+			count++;
+		return count == 1;
+	}
+
 }
