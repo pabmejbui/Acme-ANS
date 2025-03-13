@@ -1,20 +1,20 @@
-key,name,moment,subject,text,score,recommended,draftMode
-review-01,Lorem,2022/07/29 23:59,Lorem,Lorem,5.00,true,false
-review-04,L,2022/07/29 23:59,Lorem,Lorem,5.00,true,false
-review-05,Lo,2022/07/29 23:59,Lorem,Lorem,5.00,true,false
-review-06,Lorem ipsum dolor sit amete consectetur adipiscin,2022/07/29 23:59,Lorem,Lorem,5.00,true,false
-review-07,Lorem ipsum dolor sit amete consectetur adipiscing,2022/07/29 23:59,Lorem,Lorem,5.00,true,false
-review-08,Lorem,2022/07/29 23:59,L,Lorem,5.00,true,false
-review-09,Lorem,2022/07/29 23:59,Lo,Lorem,5.00,true,false
-review-10,Lorem,2022/07/29 23:59,Lorem ipsum dolor sit amete consectetur adipiscin,Lorem,5.00,true,false
-review-11,Lorem,2022/07/29 23:59,Lorem ipsum dolor sit amete consectetur adipiscing,Lorem,5.00,true,false
-review-12,Lorem,2022/07/29 23:59,Lorem,L,5.00,true,false
-review-13,Lorem,2022/07/29 23:59,Lorem,Lo,5.00,true,false
-review-14,Lorem,2022/07/29 23:59,Lorem,Lorem ipsum dolor sit amete consectetur adipiscin,5.00,true,false
-review-15,Lorem,2022/07/29 23:59,Lorem,Lorem ipsum dolor sit amete consectetur adipiscing,5.00,true,false
-review-16,Lorem,2022/07/29 23:59,Lorem,Lorem,0.00,true,false
-review-17,Lorem,2022/07/29 23:59,Lorem,Lorem,0.01,true,false
-review-18,Lorem,2022/07/29 23:59,Lorem,Lorem,9.99,true,false
-review-19,Lorem,2022/07/29 23:59,Lorem,Lorem,10.00,true,false
-review-20,Lorem,2022/07/29 23:59,Lorem,Lorem,5.00,false,false
-review-21,Lorem,2022/07/29 23:59,Lorem,Lorem,5.00,true,true
+key,name,moment,subject,text,score,recommended,draftMode,key:flight,key:airport,key:service,key:airline
+review-01,Lorem,2022/07/29 23:59,Lorem,Lorem,5.00,true,false,flight-01,null,null,null
+review-04,L,2022/07/29 23:59,Lorem,Lorem,5.00,true,false,flight-01,null,null,null
+review-05,Lo,2022/07/29 23:59,Lorem,Lorem,5.00,true,false,flight-01,null,null,null
+review-06,Lorem ipsum dolor sit amete consectetur adipiscin,2022/07/29 23:59,Lorem,Lorem,5.00,true,false,flight-01,null,null,null
+review-07,Lorem ipsum dolor sit amete consectetur adipiscing,2022/07/29 23:59,Lorem,Lorem,5.00,true,false,flight-01,null,null,null
+review-08,Lorem,2022/07/29 23:59,L,Lorem,5.00,true,false,flight-01,null,null,null
+review-09,Lorem,2022/07/29 23:59,Lo,Lorem,5.00,true,false,flight-01,null,null,null
+review-10,Lorem,2022/07/29 23:59,Lorem ipsum dolor sit amete consectetur adipiscin,Lorem,5.00,true,false,flight-01,null,null,null
+review-11,Lorem,2022/07/29 23:59,Lorem ipsum dolor sit amete consectetur adipiscing,Lorem,5.00,true,false,flight-01,null,null,null
+review-12,Lorem,2022/07/29 23:59,Lorem,L,5.00,true,false,flight-01,null,null,null
+review-13,Lorem,2022/07/29 23:59,Lorem,Lo,5.00,true,false,flight-01,null,null,null
+review-14,Lorem,2022/07/29 23:59,Lorem,Lorem ipsum dolor sit amete consectetur adipiscin,5.00,true,false,flight-01,null,null,null
+review-15,Lorem,2022/07/29 23:59,Lorem,Lorem ipsum dolor sit amete consectetur adipiscing,5.00,true,false,flight-01,null,null,null
+review-16,Lorem,2022/07/29 23:59,Lorem,Lorem,0.00,true,false,flight-01,null,null,null
+review-17,Lorem,2022/07/29 23:59,Lorem,Lorem,0.01,true,false,flight-01,null,null,null
+review-18,Lorem,2022/07/29 23:59,Lorem,Lorem,9.99,true,false,flight-01,null,null,null
+review-19,Lorem,2022/07/29 23:59,Lorem,Lorem,10.00,true,false,flight-01,null,null,null
+review-20,Lorem,2022/07/29 23:59,Lorem,Lorem,5.00,false,false,flight-01,null,null,null
+review-21,Lorem,2022/07/29 23:59,Lorem,Lorem,5.00,true,true,flight-01,null,null,null
