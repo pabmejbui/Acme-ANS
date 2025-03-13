@@ -2,3 +2,5 @@ key,key:userAccount,key:airline,employeeCode,phoneNumber,languageSkills,availabi
 flight-crew-member-01,user-account-flight-crew-member-01,airline-01,AB123456,+302101234567,"Greek, English",AVAILABLE,EUR 5000,10
 flight-crew-member-02,user-account-flight-crew-member-01,airline-03,AB654321,+971501234567,"Arabic, Spanish, Chinese",ON_LEAVE,EUR 4500,5
 flight-crew-member-03,user-account-flight-crew-member-03,airline-02,ABH820375,+819012345678,"Arabic, Spanish, Chinese",AVAILABLE,EUR 6500,8
+flight-crew-member-04,user-account-flight-crew-member-04,airline-03,AW345678,+987654321,"English, Spanish, Chinese",ON_VACATION,EUR 6500,8
+flight-crew-member-05,user-account-flight-crew-member-05,airline-02,RB000000,+1222333,"Japanese, Spanish, Chinese",AVAILABLE,EUR 6500,8
