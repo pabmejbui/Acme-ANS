@@ -1,0 +1,2 @@
+key,taskType,description,priority,estimatedDuration,draftMode,key:technician
+task-01,MAINTENANCE,Lorem,5,500,false,technician-01
