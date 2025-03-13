@@ -6,7 +6,7 @@
     <coordinates>
       <x>210</x>
       <y>28</y>
-      <w>476</w>
+      <w>427</w>
       <h>91</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Role&gt;&gt;
@@ -136,8 +136,8 @@ Leg {ValidLeg, ValidFlightNumber}
 + status: LegStatus {Mandatory, Valid, Automapped}
 + draftMode: boolean {Mandatory, Automapped}
 --
-// Derived Attributes
-+ getDuration(): Double {Transient}
+// Derived Attribt}utes
++ getDuration(): Double {Transien
 
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -334,6 +334,28 @@ m2=0..n
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Airline
 --
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>707</x>
+      <y>21</y>
+      <w>322</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Weather Conditions
+--
++ city: String
++ country: String
++ temperature: Double 
++ humidity: Double
++ windSpeed: Double
++ description: String
++ reportTime: Date {Temporal(TemporalType.TIMESTAMP)}
 
 bg=green</panel_attributes>
     <additional_attributes/>
