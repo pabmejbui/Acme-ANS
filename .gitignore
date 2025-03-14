@@ -33,3 +33,4 @@ mvnw\.cmd
 
 .env
 .env.example
+/bin/
