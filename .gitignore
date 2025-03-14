@@ -6,7 +6,7 @@ target/
 .apt_generated
 .classpath
 .factorypath
-.project
+#.project
 .settings
 .springBeans
 
@@ -33,3 +33,4 @@ mvnw\.cmd
 
 .env
 .env.example
+/bin/
