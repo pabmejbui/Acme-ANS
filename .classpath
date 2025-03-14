@@ -37,7 +37,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="**/fragments/**" kind="src" path="acme-framework-25.2.0"/>
+	<classpathentry excluding="**/fragments/**" kind="src" path="acme-framework"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Acme-Framework-25.2.0">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
