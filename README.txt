@@ -13,5 +13,3 @@ Engineering degree at the University of Seville. This project represents the mos
 part of the final grade in the third-year subject DP2, requiring the application of key 
 concepts and methodologies learned throughout the course. Our goal is to deliver a high-quality 
 solution that demonstrates our technical skills, teamwork, and problem-solving abilities.
-
-To test the Weather Condition Service, you have to create a .env file with the api key in it container.
