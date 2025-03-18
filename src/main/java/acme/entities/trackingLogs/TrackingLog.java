@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -16,6 +15,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.entities.claims.Claim;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,7 +34,7 @@ public class TrackingLog extends AbstractEntity {
 	private String				identifier;
 
 	@Mandatory
-	@ValidMoment
+	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				lastUpdateMoment;
 
@@ -62,7 +62,11 @@ public class TrackingLog extends AbstractEntity {
 	@Automapped
 	private boolean				draftMode;
 
-	// Derived attributes
-	@Transient
-	private String				getResolution;
+	// Derived attributes ------------------------------------------
+
+	// Relationships ------------------------------------------------
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Claim				claim;
 }

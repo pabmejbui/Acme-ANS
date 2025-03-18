@@ -13,15 +13,16 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidEmployeeCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@ValidEmployeeCode
 
 public class AssistanceAgent extends AbstractRole {
 
@@ -29,7 +30,7 @@ public class AssistanceAgent extends AbstractRole {
 
 	//Attributes
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
+	@ValidEmployeeCode
 	@Column(unique = true)
 	private String				employeeCode;
 
@@ -49,9 +50,9 @@ public class AssistanceAgent extends AbstractRole {
 	private String				bio;
 
 	@Optional
-	@ValidNumber
+	@ValidMoney
 	@Automapped
-	private Double				salary;
+	private Money				salary;
 
 	@Optional
 	@ValidUrl
