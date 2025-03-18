@@ -36,11 +36,11 @@
     <panel_attributes>&lt;&lt;Role&gt;&gt;
 Assitance Agents
 --
-+ employeeCode: String {Mandatory, Column(unique=true), Automapped}
++ employeeCode: String {Mandatory, ValidEmployeeCode, Column(unique=true)}
 + languages: String {Mandatory, ValidString(max=255), Automapped}
-+ beginDate: Date {Mandatory, ValidMoment(past=true), Temporal(TemporalType.Date), Automapped}
++ beginDate: Date {Mandatory, ValidMoment(past=true), Temporal(TemporalType.TIMESTAMP)}
 + bio: String {Optional, ValidString(max=255), Automapped}
-+ salary: Double {Optional, ValidNumber, Automapped}
++ salary: Money {Optional, ValidMoney, Automapped}
 + photoLink: String {Optional, ValidUrl, Automapped}
 
 bg=white</panel_attributes>
@@ -82,17 +82,12 @@ bg=pink</panel_attributes>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Claim
 --
-+ identifier: String {Mandatory, Column(unique=true), Automapped}
-+ registrationMoment: Date {Mandatory, ValidMoment(past=true), Temporal(TemporalType.Date), Automapped}
-+ passengerEmail: String {Mandatory, ValidString, Automapped}
++ registrationMoment: Date {Mandatory, ValidMoment(past=true), Temporal(TemporalType.TIMESTAMP)}
++ passengerEmail: String {Mandatory, ValidEmail, Automapped}
 + description: String {Mandatory, ValidString(max=255), Automapped}
 + type: ClaimType {Mandatory, Valid, Automapped}
 + indicator: Resolution {Mandatory, Valid, Automapped}
 + draftMode: Boolean {Mandatory, Valid, Automapped}
---
-//Derived attributes
-+ getTimeSinceRegistration(): Duration {Transient}
-+ getNumberOfTrackingLogs(): Integer {Transient}
 
 
 bg=white</panel_attributes>
@@ -102,14 +97,15 @@ bg=white</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>121</x>
-      <y>748</y>
+      <y>693</y>
       <w>187</w>
-      <h>88</h>
+      <h>110</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enum&gt;&gt;
 Resolution
 --
 + ACCEPTED
++ PENDING
 + REJECTED 
 
 bg=orange</panel_attributes>
@@ -154,16 +150,14 @@ keep track of &gt;</panel_attributes>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 TrackingLog
 --
-+ identifier: String {Mandatory, Column(unique=true), Automapped}
-+ lastUpdateMoment: Date {Mandatory, ValidMoment, Temporal(TemporalType.Date), Automapped}
++ lastUpdateMoment: Date {Mandatory, ValidMoment(past = true), Temporal(TemporalType.TIMESTAMP)}
 + step: String {Mandatory, ValidString(max=50), Automapped}
 + resolutionPercentage: Double {Mandatory, ValidNumber(min=0,max=100), Automapped}
 + indicator: Resolution {Mandatory, Valid, Automapped}
 + resolution: String {Mandatory, ValidString(max=255), Automapped}
 + draftMode: Boolean {Mandatory, Valid, Automapped}
---
-// Derived Attributes
-+ getResolution(): String {Transient}
+
+
 
 bg=white</panel_attributes>
     <additional_attributes/>

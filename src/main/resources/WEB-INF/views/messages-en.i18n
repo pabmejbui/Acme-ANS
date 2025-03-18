@@ -45,3 +45,8 @@ acme.validation.license.bad-format.message=The license format is invalid. It mus
 # Banned Passenger messages ############################################################
 banned.passenger.validation..ban.issued.date.null = Ban Issues date cannot be null
 banned.passenger.validation.lift.date.min-duration = Lift date must be after the ban issued date
+
+# Asi validation messages #########################################################
+
+customer.validation.identifier.not-null = Identifier must not be null or empty.
+customer.validation.identifier.bad-format = Identifier must contain 2 or 3 uppercase letters followed by exactly 6 digits.
