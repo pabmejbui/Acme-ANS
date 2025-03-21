@@ -320,7 +320,7 @@
         
         
         
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/acme-framework-25.2.0"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/acme-framework-25.3.0"/>
                                 
         
         
