@@ -1,8 +1,9 @@
 
-package acme.features.weather;
+package acme.entities.weather;
 
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -11,10 +12,13 @@ import org.springframework.web.client.RestTemplate;
 public class WeatherService {
 
 	@Value("${weather.api.key}")
-	private String	apiKey;
+	private String				apiKey;
 
 	@Value("${weather.api.url}")
-	private String	apiUrl;
+	private String				apiUrl;
+
+	@Autowired
+	private WeatherRepository	weatherRepository;  // Agregar repositorio para guardar en BD
 
 
 	public WeatherCondition getWeather(final String city, final String countryCode) {
@@ -33,9 +37,15 @@ public class WeatherService {
 			weatherCondition.setDescription(weatherResponse.getWeather()[0].getDescription());
 			weatherCondition.setReportTime(new Date());
 
+			// Guardar en la BD si no existe un registro similar reciente
+			WeatherCondition existing = this.weatherRepository.findRecentWeather(weatherCondition.getCity(), weatherCondition.getCountry());
+			if (existing == null) {
+				this.weatherRepository.save(weatherCondition);
+				System.out.println("✅ Weather condition saved: " + weatherCondition.getCity() + ", " + weatherCondition.getCountry());
+			} else
+				System.out.println("⚠ Weather condition already exists for: " + weatherCondition.getCity());
 			return weatherCondition;
 		}
-
 		return null;
 	}
 }

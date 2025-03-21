@@ -1,5 +1,5 @@
 
-package acme.features.weather;
+package acme.entities.weather;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

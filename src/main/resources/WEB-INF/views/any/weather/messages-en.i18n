@@ -1,0 +1,30 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+any.weather.list.city = City
+any.weather.list.country = Country
+any.weather.list.temperature = Temperature (°C)
+any.weather.list.humidity = Humidity (%)
+any.weather.list.windSpeed = Wind Speed (km/h)
+any.weather.list.description = Description
+any.weather.list.reportTime = Report Time
+any.weather.show.city = City
+any.weather.show.country = Country
+any.weather.show.temperature = Temperature (°C)
+any.weather.show.humidity = Humidity (%)
+any.weather.show.windSpeed = Wind Speed (km/h)
+any.weather.show.description = Description
+any.weather.show.reportTime = Report Time
+any.flight.list.tag = Flight Tag
+any.flight.list.scheduledDeparture = Departure
+any.flight.list.scheduledArrival = Arrival
+any.flight.list.originCity = Origin
+any.flight.list.destinationCity = Destination
+

@@ -45,3 +45,9 @@ master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.provider-profile = Provider profile
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.consumer-profile = Consumer profile
+
+# master.menu.weather ##############################
+
+master.menu.weather = Weather Conditions
+master.menu.weather.list = List Weather Conditions
+master.menu.weather.flights-bad-weather = Flights with Bad Weather

@@ -5,3 +5,4 @@ flight-03,"The fastest selftransfer flight in the whole world",SELF_TRANSFER,GBP
 flight-04,"The best of the west",NOT_SELF_TRANSFER,EUR 1500.00,"Lorem ipsum",true,manager-01
 flight-05,"The longest flight in the less time",SELF_TRANSFER,USD 5000.00,"Lorem ipsum",false,manager-02
 flight-06,"The best in the east",SELF_TRANSFER,EUR 3300.00,"Lorem lorem lorem",true,manager-01
+flight-07,"The best in the south",SELF_TRANSFER,EUR 5500.00,"Lorem loremffff lorem",true,manager-02
