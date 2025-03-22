@@ -11,14 +11,14 @@ import acme.client.controllers.GuiController;
 import acme.entities.flights.Flight;
 
 @GuiController
-public class AnyFlightWithBadWeatherController extends AbstractGuiController<Any, Flight> {
+public class AnyFlightWithBadWeatherGuiController extends AbstractGuiController<Any, Flight> {
 
 	@Autowired
-	private AnyFlightWithBadWeatherListService listService;
+	private AnyFlightWithBadWeatherListService flightWithBadWeatherListService;
 
 
 	@PostConstruct
-	public void initialise() {
-		super.addBasicCommand("list", this.listService);
+	protected void initialise() {
+		super.addBasicCommand("list", this.flightWithBadWeatherListService);
 	}
 }

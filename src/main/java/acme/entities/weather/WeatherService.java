@@ -37,14 +37,14 @@ public class WeatherService {
 			weatherCondition.setDescription(weatherResponse.getWeather()[0].getDescription());
 			weatherCondition.setReportTime(new Date());
 
-			// Guardar en la BD si no existe un registro similar reciente
-			WeatherCondition existing = this.weatherRepository.findRecentWeather(weatherCondition.getCity(), weatherCondition.getCountry());
+			WeatherCondition existing = this.weatherRepository.findWeatherByCityCountryAndTime(weatherCondition.getCity(), weatherCondition.getCountry(), weatherCondition.getReportTime());
+
 			if (existing == null) {
 				this.weatherRepository.save(weatherCondition);
-				System.out.println("✅ Weather condition saved: " + weatherCondition.getCity() + ", " + weatherCondition.getCountry());
+				System.out.println("✅ Weather condition saved: " + weatherCondition.getCity() + ", " + weatherCondition.getCountry() + " at " + weatherCondition.getReportTime());
 			} else
-				System.out.println("⚠ Weather condition already exists for: " + weatherCondition.getCity());
-			return weatherCondition;
+				System.out.println("⚠ Weather condition already exists for: " + weatherCondition.getCity() + " at " + weatherCondition.getReportTime());
+
 		}
 		return null;
 	}

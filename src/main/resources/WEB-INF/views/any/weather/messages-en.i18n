@@ -8,23 +8,22 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-any.weather.list.city = City
-any.weather.list.country = Country
-any.weather.list.temperature = Temperature (°C)
-any.weather.list.humidity = Humidity (%)
-any.weather.list.windSpeed = Wind Speed (km/h)
-any.weather.list.description = Description
-any.weather.list.reportTime = Report Time
-any.weather.show.city = City
-any.weather.show.country = Country
-any.weather.show.temperature = Temperature (°C)
-any.weather.show.humidity = Humidity (%)
-any.weather.show.windSpeed = Wind Speed (km/h)
-any.weather.show.description = Description
-any.weather.show.reportTime = Report Time
-any.flight.list.tag = Flight Tag
-any.flight.list.scheduledDeparture = Departure
-any.flight.list.scheduledArrival = Arrival
-any.flight.list.originCity = Origin
-any.flight.list.destinationCity = Destination
+any.weather.list.label.city = City
+any.weather.list.label.country = Country
+any.weather.list.label.temperature = Temperature (°C)
+any.weather.list.label.description = Description
+any.weather.list.label.reportTime = Report time
 
+any.weather.form.label.city = City
+any.weather.form.label.country = Country
+any.weather.form.label.temperature = Temperature (°C)
+any.weather.form.label.humidity = Humidity (%)
+any.weather.form.label.windSpeed = Wind speed (km/h)
+any.weather.form.label.description = Description
+any.weather.form.label.reportTime = Report time
+
+any.flight.list.label.flightNumber = Flight number
+any.flight.list.label.origin = Origin
+any.flight.list.label.destination = Destination
+any.flight.list.label.departureTime = Departure time
+any.flight.list.label.arrivalTime = Arrival time

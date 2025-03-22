@@ -14,15 +14,15 @@ import acme.entities.weather.WeatherCondition;
 public class AnyWeatherGuiController extends AbstractGuiController<Any, WeatherCondition> {
 
 	@Autowired
-	private AnyWeatherListService	listService;
+	private AnyWeatherListService	weatherListService;
 
 	@Autowired
-	private AnyWeatherShowService	showService;
+	private AnyWeatherShowService	weatherShowService;
 
 
 	@PostConstruct
-	public void initialise() {
-		super.addBasicCommand("list", this.listService);
-		super.addBasicCommand("show", this.showService);
+	protected void initialise() {
+		super.addBasicCommand("list", this.weatherListService);
+		super.addBasicCommand("show", this.weatherShowService);
 	}
 }

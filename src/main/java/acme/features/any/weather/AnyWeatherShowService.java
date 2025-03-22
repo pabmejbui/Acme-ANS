@@ -12,25 +12,13 @@ import acme.entities.weather.WeatherCondition;
 @GuiService
 public class AnyWeatherShowService extends AbstractGuiService<Any, WeatherCondition> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	private AnyWeatherRepository repository;
-
-	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int id;
-		WeatherCondition weatherCondition;
-
-		id = super.getRequest().getData("id", int.class);
-		weatherCondition = this.repository.findWeatherConditionById(id);
-		status = weatherCondition != null;
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -47,7 +35,6 @@ public class AnyWeatherShowService extends AbstractGuiService<Any, WeatherCondit
 	@Override
 	public void unbind(final WeatherCondition weatherCondition) {
 		Dataset dataset;
-
 		dataset = super.unbindObject(weatherCondition, "city", "country", "temperature", "humidity", "windSpeed", "description", "reportTime");
 		super.getResponse().addData(dataset);
 	}

@@ -49,5 +49,6 @@ master.menu.user-account.consumer-profile = Consumer profile
 # master.menu.weather ##############################
 
 master.menu.weather = Weather Conditions
-master.menu.weather.list = List Weather Conditions
-master.menu.weather.flights-bad-weather = Flights with Bad Weather
+master.menu.any.weather.list = List of Weather conditions
+master.menu.any.flight.bad.weather.list = Flights with bad weather
+

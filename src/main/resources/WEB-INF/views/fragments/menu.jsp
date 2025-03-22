@@ -45,8 +45,8 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.weather" access="isAuthenticated() or isAnonymous()">
-            <acme:menu-suboption code="master.menu.weather.list" action="/any/weather/list"/>
-            <acme:menu-suboption code="master.menu.weather.flights-bad-weather" action="/any/weather/flights-bad-weather-list"/>
+			<acme:menu-suboption code="master.menu.any.weather.list" action="/any/weather/list"/>
+			<acme:menu-suboption code="master.menu.any.flight.bad.weather.list" action="/any/flight-with-bad-weather/list"/>
         </acme:menu-option>
 	</acme:menu-left>
 

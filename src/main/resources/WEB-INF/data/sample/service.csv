@@ -1,8 +1,7 @@
 key,name,pictureUrl,averageDwellTime,promotionCode,discountAmount,draftMode
-service-01,Lounge Access,https://example.com/lounge.jpg,3.0,LOUN-25,USD 20.00,false
-service-02,Fast Track Security,https://example.com/fast-track.jpg,1.0,FAST-25,EUR 10.00,false
-service-03,VIP Parking,https://example.com/parking.jpg,5.0,,USD 15.00,false
-service-04,Priority Boarding,https://example.com/boarding.jpg,0.5,PRIO-25,GBP 5.00,false
-service-05,Meet & Greet,https://example.com/meet-greet.jpg,2.0,GRET-25,EUR 25.00,false
-service-06,Airport Shuttle,https://example.com/shuttle.jpg,1.5,null,null,true
-
+service-01,Lounge Access,https://www.chase.com/content/services/rendition/image.large.jpg/unified-assets/photography/articles/credit-card/basics/seo_what-is-vip-airport-lounge-access_20230412.jpg,3.0,LOUN-25,USD 20.00,false
+service-02,Fast Track Security,https://vip-escape.com/wp-content/uploads/2020/02/L442-1-1559270687725871.jpg,1.0,FAST-25,EUR 10.00,false
+service-03,VIP Parking,https://i.etsystatic.com/7199734/r/il/9bfe84/5643488677/il_570xN.5643488677_jqsj.jpg,5.0,,USD 15.00,false
+service-04,Priority Boarding,https://loveincstatic.blob.core.windows.net/loveexploring/Airport%20hacks%202022/priority-boarding-airport-hacks-shutterstock.jpg,0.5,PRIO-25,GBP 5.00,false
+service-05,Meet & Greet,https://www.shutterstock.com/image-photo/friendly-young-satisfied-traveler-businessman-600nw-2174562601.jpg,2.0,GRET-25,EUR 25.00,false
+service-06,Airport Shuttle,https://www.shutterstock.com/image-vector/airport-shuttle-icon-monochrome-simple-600nw-2255578129.jpg,1.5,null,null,true 

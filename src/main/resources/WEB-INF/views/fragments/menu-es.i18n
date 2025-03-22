@@ -50,6 +50,6 @@ master.menu.user-account.consumer-profile = Perfil de consumidor
 # master.menu.weather ##############################
 
 master.menu.weather = Condiciones Meteorológicas
-master.menu.weather.list = Listar Condiciones Meteorológicas
-master.menu.weather.flights-bad-weather = Vuelos con Mal Clima
+master.menu.any.weather.list = Listado Condiciones Meteorológicas
+master.menu.any.flight.bad.weather.list = Vuelos con Mal Clima
 

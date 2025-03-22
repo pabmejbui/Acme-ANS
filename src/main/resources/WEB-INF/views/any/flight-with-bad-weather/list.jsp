@@ -11,15 +11,16 @@
 --%>
 
 <%@page%>
-
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="acme" uri="http://acme-framework.org/" %>
+<%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-    <acme:list-column path="tag" code="any.flight.list.tag" />
-    <acme:list-column path="scheduledDeparture" code="any.flight.list.scheduledDeparture" />
-    <acme:list-column path="scheduledArrival" code="any.flight.list.scheduledArrival" />
-    <acme:list-column path="originCity" code="any.flight.list.originCity" />
-    <acme:list-column path="destinationCity" code="any.flight.list.destinationCity" />
+    <acme:list-column code="any.flight.list.label.flightNumber" path="flightNumber" width="20%"/>
+    <acme:list-column code="any.flight.list.label.origin" path="origin" width="20%"/>
+    <acme:list-column code="any.flight.list.label.destination" path="destination" width="20%"/>
+    <acme:list-column code="any.flight.list.label.departureTime" path="departureTime" width="20%"/>
+    <acme:list-column code="any.flight.list.label.arrivalTime" path="arrivalTime" width="20%"/>
+    <acme:list-payload path="payload"/>
 </acme:list>
+
 

@@ -13,14 +13,14 @@
 <%@page%>
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="acme" uri="http://acme-framework.org/" %>
+<%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-    <acme:list-column path="city" code="any.weather.list.city" />
-    <acme:list-column path="country" code="any.weather.list.country" />
-    <acme:list-column path="temperature" code="any.weather.list.temperature" />
-    <acme:list-column path="humidity" code="any.weather.list.humidity" />
-    <acme:list-column path="windSpeed" code="any.weather.list.windSpeed" />
-    <acme:list-column path="description" code="any.weather.list.description" />
-    <acme:list-column path="reportTime" code="any.weather.list.reportTime" />
+    <acme:list-column code="any.weather.list.label.city" path="city" width="20%"/>
+    <acme:list-column code="any.weather.list.label.country" path="country" width="20%"/>
+    <acme:list-column code="any.weather.list.label.temperature" path="temperature" width="20%"/>
+    <acme:list-column code="any.weather.list.label.description" path="description" width="20%"/>
+    <acme:list-column code="any.weather.list.label.reportTime" path="reportTime" width="20%"/>
+    <acme:list-payload path="payload"/>
 </acme:list>
+

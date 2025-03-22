@@ -8,22 +8,23 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-any.weather.list.city = Ciudad
-any.weather.list.country = País
-any.weather.list.temperature = Temperatura (°C)
-any.weather.list.humidity = Humedad (%)
-any.weather.list.windSpeed = Velocidad del Viento (km/h)
-any.weather.list.description = Descripción
-any.weather.list.reportTime = Momento del Reporte
-any.weather.show.city = Ciudad
-any.weather.show.country = País
-any.weather.show.temperature = Temperatura (°C)
-any.weather.show.humidity = Humedad (%)
-any.weather.show.windSpeed = Velocidad del Viento (km/h)
-any.weather.show.description = Descripción
-any.weather.show.reportTime = Momento del Reporte
-any.flight.list.tag = Etiqueta del Vuelo
-any.flight.list.scheduledDeparture = Salida
-any.flight.list.scheduledArrival = Llegada
-any.flight.list.originCity = Origen
-any.flight.list.destinationCity = Destino
+any.weather.list.label.city = Ciudad
+any.weather.list.label.country = País
+any.weather.list.label.temperature = Temperatura (°C)
+any.weather.list.label.description = Descripción
+any.weather.list.label.reportTime = Fecha del reporte
+
+any.weather.form.label.city = Ciudad
+any.weather.form.label.country = País
+any.weather.form.label.temperature = Temperatura (°C)
+any.weather.form.label.humidity = Humedad (%)
+any.weather.form.label.windSpeed = Velocidad del viento (km/h)
+any.weather.form.label.description = Descripción
+any.weather.form.label.reportTime = Fecha del reporte
+
+any.flight.list.label.flightNumber = Número de vuelo
+any.flight.list.label.origin = Origen
+any.flight.list.label.destination = Destino
+any.flight.list.label.departureTime = Hora de salida
+any.flight.list.label.arrivalTime = Hora de llegada
+
