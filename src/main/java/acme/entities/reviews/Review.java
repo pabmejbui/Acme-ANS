@@ -81,22 +81,22 @@ public class Review extends AbstractEntity {
 
 	@Optional
 	@Valid
-	@ManyToOne
+	@ManyToOne(optional = true)
 	private Flight				flight;
 
 	@Optional
 	@Valid
-	@ManyToOne
+	@ManyToOne(optional = true)
 	private Airport				airport;
 
 	@Optional
 	@Valid
-	@ManyToOne
+	@ManyToOne(optional = true)
 	private Service				service;
 
 	@Optional
 	@Valid
-	@ManyToOne
+	@ManyToOne(optional = true)
 	private Airline				airline;
 
 
