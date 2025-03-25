@@ -8,23 +8,32 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-manager.flight.list.title = Flights list
-manager.flight.list.label.tag=Tag
-manager.flight.list.label.origin=Origin city
-manager.flight.list.label.destination=Destination city
-manager.flight.list.label.departure=Departure time
-manager.flight.list.label.arrival=Arrival time
-manager.flight.list.label.draftMode=Draft mode
-manager.flight.list.button.create=Create flight
+# messages-en.i18n
 
-manager.flight.form.title = Flight form
-manager.flight.form.label.tag=Tag
-manager.flight.form.label.indication=Indication
-manager.flight.form.label.cost=Cost
-manager.flight.form.label.description=Description
-manager.flight.form.button.save=Save Flight
-manager.flight.form.button.update=Update Flight
-manager.flight.form.button.delete=Delete Flight
-manager.flight.form.button.publish=Publish Flight
+manager.flight.form.title = Flight form 
+manager.flight.list.title = Listing of flights
 
+manager.flight.form.label.tag = Tag:
+manager.flight.form.label.selfTransfer = Self-Transfer:
+manager.flight.form.label.cost = Cost:
+manager.flight.form.label.description = Description:
+manager.flight.form.label.draftMode = DraftMode:
+manager.flight.form.label.scheduledDeparture = Scheduled departure:
+manager.flight.form.label.scheduledArrival = Scheduled arrival:
+manager.flight.form.label.originCity = Origin city:
+manager.flight.form.label.destinationCity = Destination city:
+manager.flight.form.label.numberOfLayovers = Number of Layovers:
+
+manager.flight.form.button.update = Update flight
+manager.flight.form.button.delete = Delete flight
+manager.flight.form.button.publish = Publish flight
+manager.flight.form.button.create = Create flight
+
+manager.flight.list.label.tag = Tag:
+manager.flight.list.label.selfTransfer = Self-Transfer:
+manager.flight.list.label.cost = Cost:
+manager.flight.list.label.description = Description:
+manager.flight.list.label.draftMode = DraftMode:
+
+manager.flight.list.button.create = Create flight
 

@@ -16,13 +16,14 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-    <acme:list-column code="manager.flight.list.label.tag" path="tag" width="15%"/>
-    <acme:list-column code="manager.flight.list.label.origin" path="originCity" width="20%"/>
-    <acme:list-column code="manager.flight.list.label.destination" path="destinationCity" width="20%"/>
-    <acme:list-column code="manager.flight.list.label.departure" path="scheduledDeparture" width="15%"/>
-    <acme:list-column code="manager.flight.list.label.arrival" path="scheduledArrival" width="15%"/>
-    <acme:list-column code="manager.flight.list.label.draftMode" path="draftMode" width="10%"/>
-    <acme:list-payload path="payload"/>
+	<acme:list-column code="manager.flight.list.label.tag" path="tag" width="20%"/>
+	<acme:list-column code="manager.flight.list.label.selfTransfer" path="selfTransfer" width="10%"/>
+	<acme:list-column code="manager.flight.list.label.cost" path="cost" width="10%"/>
+	<acme:list-column code="manager.flight.list.label.description" path="description" width="50%"/>
+	<acme:list-column code="manager.flight.list.label.draftMode" path="draftMode" width="10%"/>
 </acme:list>
 
-<acme:button code="manager.flight.list.button.create" action="/manager/flight/create"/>
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="manager.flight.list.button.create" action="/manager/flight/create"/>
+</jstl:if>		
+	

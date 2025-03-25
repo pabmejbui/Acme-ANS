@@ -1,5 +1,5 @@
 
-package acme.features.manager.flights;
+package acme.features.manager.flight;
 
 import javax.annotation.PostConstruct;
 
@@ -11,20 +11,29 @@ import acme.entities.flights.Flight;
 import acme.realms.Manager;
 
 @GuiController
-public class ManagerFlightGuiController extends AbstractGuiController<Manager, Flight> {
+public class ManagerFlightController extends AbstractGuiController<Manager, Flight> {
+
+	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private ManagerFlightListService	listService;
+
 	@Autowired
 	private ManagerFlightShowService	showService;
+
 	@Autowired
 	private ManagerFlightCreateService	createService;
+
 	@Autowired
 	private ManagerFlightUpdateService	updateService;
+
 	@Autowired
 	private ManagerFlightDeleteService	deleteService;
+
 	@Autowired
 	private ManagerFlightPublishService	publishService;
+
+	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
@@ -34,6 +43,8 @@ public class ManagerFlightGuiController extends AbstractGuiController<Manager, F
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
+
 		super.addCustomCommand("publish", "update", this.publishService);
 	}
+
 }

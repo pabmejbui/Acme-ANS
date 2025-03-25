@@ -48,5 +48,5 @@ master.menu.user-account.consumer-profile = Perfil de consumidor
 
 # master.menu.manager ###########################################################
 master.menu.manager = Manager
-manager.menu.manager.list = Mis Vuelos
+manager.menu.manager.list-flights = Mis Vuelos
 
