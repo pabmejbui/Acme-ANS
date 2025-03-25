@@ -1,0 +1,21 @@
+
+# form ####################################################
+
+customer.booking.form.title = Lista de reservas
+customer.booking.form.label.locatorCode = Código localizador
+customer.booking.form.label.travelClass = Clase
+customer.booking.form.label.price = Precio
+customer.booking.form.label.lastCardNibble = Últimos cuatro dígitos de la tarjeta de credito
+
+customer.booking.form.label.confirmation = Confirmación
+
+
+customer.booking.form.button.create = Crear
+customer.booking.form.button.update = Actualizar
+
+# list ####################################################
+
+customer.booking.list.title = Lista de reservas
+customer.booking.list.label.locatorCode = Código localizador
+customer.booking.list.label.purchaseMoment = Fecha de adquisición
+customer.booking.list.button.create = Crear
