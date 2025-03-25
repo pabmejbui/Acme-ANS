@@ -1,11 +1,15 @@
 
 package acme.features.manager.flight;
 
+import java.util.List;
+import java.util.stream.Stream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.configuration.SystemConfiguration;
 import acme.entities.flights.Flight;
 import acme.realms.Manager;
 
@@ -46,7 +50,15 @@ public class ManagerFlightCreateService extends AbstractGuiService<Manager, Flig
 
 	@Override
 	public void validate(final Flight flight) {
-		;
+
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
+			super.state(flight.getCost().getAmount() > 0, "cost", "manager.flight.form.error.cost-must-be-positive");
+			List<SystemConfiguration> conf = this.repository.findSystemConfiguration();
+			final boolean foundCurrency = Stream.of(conf.get(0).getAcceptedCurrencies().split(",")).anyMatch(c -> c.equals(flight.getCost().getCurrency()));
+
+			super.state(foundCurrency, "cost", "manager.flight.form.error.currency-not-supported");
+		}
+
 	}
 
 	@Override

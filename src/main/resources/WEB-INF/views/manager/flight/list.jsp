@@ -19,8 +19,10 @@
 	<acme:list-column code="manager.flight.list.label.tag" path="tag" width="20%"/>
 	<acme:list-column code="manager.flight.list.label.selfTransfer" path="selfTransfer" width="10%"/>
 	<acme:list-column code="manager.flight.list.label.cost" path="cost" width="10%"/>
-	<acme:list-column code="manager.flight.list.label.description" path="description" width="50%"/>
+	<acme:list-column code="manager.flight.list.label.description" path="description" width="40%"/>
 	<acme:list-column code="manager.flight.list.label.draftMode" path="draftMode" width="10%"/>
+	<acme:list-column code="manager.flight.list.label.number-of-legs" path="numberOfLayovers" width="10%"/>
+	
 </acme:list>
 
 <jstl:if test="${_command == 'list'}">

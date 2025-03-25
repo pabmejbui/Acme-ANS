@@ -34,6 +34,7 @@ manager.flight.list.label.selfTransfer = Auto Transfer:
 manager.flight.list.label.cost = Coste:
 manager.flight.list.label.description = Descripción:
 manager.flight.list.label.draftMode = Borrador:
+manager.flight.list.label.number-of-legs = Número de escalas:
 
 manager.flight.list.button.create = Crear vuelo
 
