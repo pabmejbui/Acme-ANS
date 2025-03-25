@@ -2,11 +2,13 @@
 package acme.features.manager.flight;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.configuration.SystemConfiguration;
 import acme.entities.flights.Flight;
 import acme.entities.flights.Leg;
 
@@ -30,4 +32,7 @@ public interface ManagerFlightRepository extends AbstractRepository {
 
 	@Query("select l from Leg l where l.flight.id = :flightId")
 	Collection<Leg> findLegsByFlightId(int flightId);
+
+	@Query("SELECT sc FROM SystemConfiguration sc")
+	List<SystemConfiguration> findSystemConfiguration();
 }
