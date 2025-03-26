@@ -51,14 +51,14 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void validate(final Booking booking) {
-		//		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
-		//			boolean isDraft = booking.isDraftMode();
-		//			boolean hasLastCardNibble = booking.getLastCardNibble() != null;
-		//
-		//			// Una reserva solo puede ser publicada si tiene el último nibble de la tarjeta
-		//			if (!isDraft && !hasLastCardNibble)
-		//				super.state(false, "lastCardNibble", "acme.validation.lastCardNibble.message");
-		//		}
+		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
+			boolean isDraft = booking.isDraftMode();
+			boolean hasLastCardNibble = booking.getLastCardNibble() != null;
+
+			// Una reserva solo puede ser publicada si tiene el último nibble de la tarjeta
+			if (!isDraft && !hasLastCardNibble)
+				super.state(false, "lastCardNibble", "acme.validation.lastCardNibble.message");
+		}
 	}
 
 	@Override

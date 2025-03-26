@@ -54,13 +54,13 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void validate(final Booking booking) {
-		//		boolean confirmation;
-		//
-		//		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		//		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
-		//
-		//		if (!booking.isDraftMode())
-		//			super.state(booking.getLastCardNibble() != null, "lastCardNibble", "acme.validation.lastCardNibble.message");
+		boolean confirmation;
+
+		confirmation = super.getRequest().getData("confirmation", boolean.class);
+		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+
+		if (!booking.isDraftMode())
+			super.state(booking.getLastCardNibble() != null, "lastCardNibble", "acme.validation.lastCardNibble.message");
 	}
 
 	@Override
