@@ -1,0 +1,35 @@
+# menu-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+# messages-en.i18n
+
+manager.leg.form.title = Leg form 
+manager.leg.list.title = List of legs
+
+manager.leg.list.label.flight-number = Flight Number
+manager.leg.list.label.scheduledDeparture = Scheduled departure
+manager.leg.list.label.scheduledArrival = Scheduled arrival
+manager.leg.list.label.status = Status
+manager.leg.list.label.draftMode = DraftMode
+manager.leg.list.label.duration = Duration(H)
+manager.leg.list.label.originAirport = Origin airport
+manager.leg.list.label.destinationAirport = Destination airport
+
+manager.leg.form.label.flightNumber = Flight Number:
+manager.leg.form.label.scheduledDeparture = Scheduled departure:
+manager.leg.form.label.scheduledArrival = Scheduled arrival:
+manager.leg.form.label.status = Leg status:
+manager.leg.form.label.duration = Duration(H):
+manager.leg.form.label.draftMode = DraftMode:
+manager.leg.form.label.originAirport = Origin airport:
+manager.leg.form.label.destinationAirport = Destination airport:
+manager.leg.form.label.aircraft = Aircraft:
+manager.leg.form.label.airline = Airline:
+manager.leg.form.label.flight = Flight:

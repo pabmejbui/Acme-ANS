@@ -37,4 +37,5 @@ manager.flight.list.label.draftMode = DraftMode:
 manager.flight.list.label.number-of-legs = Number of Legs asociated:
 
 manager.flight.list.button.create = Create flight
+manager.flight.list.button.leg = My legs
 

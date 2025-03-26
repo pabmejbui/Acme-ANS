@@ -27,5 +27,6 @@
 
 <jstl:if test="${_command == 'list'}">
 	<acme:button code="manager.flight.list.button.create" action="/manager/flight/create"/>
+	<acme:button code="manager.flight.list.button.leg" action="/manager/leg/list"/>
 </jstl:if>		
 	
