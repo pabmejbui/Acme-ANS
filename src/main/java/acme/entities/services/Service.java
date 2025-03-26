@@ -60,8 +60,7 @@ public class Service extends AbstractEntity {
 
 
 	public void setPromotionCode(final String promotionCode) {
-		// AL ser unico el atributo PromotionCode se setea a NULL
-		this.promotionCode = promotionCode == null || promotionCode.isBlank() ? null : promotionCode;
+		this.promotionCode = promotionCode == null || promotionCode.isBlank() ? null : promotionCode.trim();
 	}
 
 	// Relationships ----------------------------------------------------------

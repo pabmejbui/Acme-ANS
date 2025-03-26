@@ -13,10 +13,8 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = PromoCodeValidator.class)
 public @interface ValidPromoCode {
-	// Standard validation properties
 
 	String message() default "{acme.validation.promoCode.message}";
-
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
 }

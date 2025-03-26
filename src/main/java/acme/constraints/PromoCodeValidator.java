@@ -3,45 +3,49 @@ package acme.constraints;
 
 import java.time.Year;
 
+import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import acme.client.components.validation.AbstractValidator;
-import acme.client.components.validation.Validator;
+public class PromoCodeValidator implements ConstraintValidator<ValidPromoCode, String> {
 
-@Validator
-public class PromoCodeValidator extends AbstractValidator<ValidPromoCode, String> {
-
+	// Patrón para validar el código promocional (4 letras mayúsculas + "-" + 2 dígitos)
 	private static final String PROMO_CODE_PATTERN = "^[A-Z]{4}-[0-9]{2}$";
 
 
 	@Override
-	protected void initialise(final ValidPromoCode annotation) {
-		assert annotation != null;
+	public void initialize(final ValidPromoCode constraintAnnotation) {
+		// No es necesario inicializar nada
 	}
 
 	@Override
 	public boolean isValid(final String promoCode, final ConstraintValidatorContext context) {
+		if (promoCode == null || promoCode.isBlank())
+			return true; // Permitimos valores nulos o vacíos porque es @Optional
 
-		assert context != null;
+		boolean isValidFormat = promoCode.matches(PromoCodeValidator.PROMO_CODE_PATTERN);
+		boolean isValidYear = false;
 
-		boolean result;
-		boolean isNull;
+		String currentYearSuffix = String.valueOf(Year.now().getValue()).substring(2);
 
-		isNull = promoCode == null || promoCode.isBlank();
-
-		if (!isNull) {
-			boolean isValidFormat = promoCode.matches(PromoCodeValidator.PROMO_CODE_PATTERN);
-			super.state(context, isValidFormat, "invalidFormat", "acme.validation.promoCode.bad-format-code.message");
-
-			// Validar el sufijo del año
-			String currentYearSuffix = String.valueOf(Year.now().getValue()).substring(2);
+		if (promoCode.length() > 3) { // Evitar errores de substring
 			String codeYearSuffix = promoCode.substring(promoCode.length() - 2);
-			boolean isValidYear = codeYearSuffix.equals(currentYearSuffix);
-			super.state(context, isValidYear, "invalidYear", "acme.validation.promoCode.invalid-year.message");
+			isValidYear = codeYearSuffix.equals(currentYearSuffix);
 		}
 
-		result = !super.hasErrors(context);
+		// Si el formato es incorrecto
+		if (!isValidFormat) {
+			context.disableDefaultConstraintViolation();
+			context.buildConstraintViolationWithTemplate("acme.validation.promoCode.bad-format-code.message").addConstraintViolation();
+			return false;
+		}
 
-		return result;
+		// Si el año es incorrecto
+		if (!isValidYear) {
+			context.disableDefaultConstraintViolation();
+			context.buildConstraintViolationWithTemplate("acme.validation.promoCode.invalid-year.message").addConstraintViolation();
+			return false;
+		}
+
+		return true; // Si pasa ambas validaciones, es válido
 	}
 }
