@@ -50,3 +50,8 @@ master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.provider-profile = Provider profile
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.consumer-profile = Consumer profile
+
+# master.menu.manager ###########################################################
+master.menu.manager = Manager
+manager.menu.manager.list-flights = My Flights
+

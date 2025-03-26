@@ -43,5 +43,9 @@ acme.validation.acceptedCurrencies.invalid = Las monedas aceptadas deben ser una
 acme.validation.license.bad-format.message=El formato de la licencia no es válido. Debe cumplir con el patrón requerido.
 
 # Mensajes de validacion de Banned Passenger ############################################################
-banned.passenger.validation..ban.issued.date.null = La fecha de baneo no puede ser nula.
+banned.passenger.validation.ban.issued.date.null = La fecha de baneo no puede ser nula.
 banned.passenger.validation.lift.date.min-duration = La fecha de desbaneo tiene que ser posterior a la fecha de baneo.
+
+# Mensajes de validación de los vuelos de un manager ##########################################################
+manager.flight.form.error.cost-must-be-positive = El coste del vuelo debe ser positivo.
+manager.flight.form.error.currency-not-supported = La divisa no esta soportada por el sistema. Las divisas soportadas son EUR, GBP o USD.

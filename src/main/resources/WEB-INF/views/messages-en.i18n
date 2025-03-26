@@ -50,3 +50,7 @@ banned.passenger.validation.lift.date.min-duration = Lift date must be after the
 
 customer.validation.identifier.not-null = Identifier must not be null or empty.
 customer.validation.identifier.bad-format = Identifier must contain 2 or 3 uppercase letters followed by exactly 6 digits.
+
+# Manager flight messages #########################################################
+manager.flight.form.error.cost-must-be-positive = The cost of the flight must be positive
+manager.flight.form.error.currency-not-supported = The currency is not supported. The supported currencies are EUR, GBP or USD.
