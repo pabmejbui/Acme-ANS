@@ -1,0 +1,9 @@
+key,duty,moment,currentStatus,remarks,key:flightCrewMember,key:leg,draftMode
+assignment-01,LEAD_ATTENDANT,2000/07/15 00:00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member1,leg-01,true
+assignment-02,CO_PILOT,2000/12/31 23:58,CONFIRMED,"",member2,leg-02,true
+assignment-03,CO_PILOT,2000/07/15 00:00,PENDING,"Lo",member3,leg-03,false
+assignment-04,CABIN_ATTENDANT,2021/09/05 05:35,CONFIRMED,"L",member4,leg-04,true
+assignment-05,PILOT,2010/12/31 23:59,PENDING,"' or 'A' = 'A ",member2,leg-05,true
+assignment-06,LEAD_ATTENDANT,2012/07/02 00:00,CANCELLED,"لوريم إيبسوم",member1,leg-06,false
+assignment-07,CO_PILOT,2013/05/03 17:00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",member2,leg-07,true
+assignment-08,PILOT,2021/01/05 08:45,CANCELLED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",member3,leg-08,true
