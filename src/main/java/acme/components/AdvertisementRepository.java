@@ -1,5 +1,5 @@
 
-package acme.features.any.service;
+package acme.components;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.services.Service;
 
 @Repository
-public interface AnyServiceRepository extends AbstractRepository {
+public interface AdvertisementRepository extends AbstractRepository {
 
 	@Query("select count(s) from Service s")
 	int countServices();
