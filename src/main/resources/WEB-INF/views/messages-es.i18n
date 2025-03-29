@@ -19,10 +19,9 @@ manager.validation.age.less-than-18 = El manager debe tener al menos 18 años.
 
 # Mensajes de validación de customer ####################################################
 
-customer.validation.identifier.not-null = El identificador es obligatorio.
-customer.validation.identifier.bad-format = El identificador debe tener 2 o 3 letras mayúsculas seguidas de 6 dígitos.
-customer.validation.fullname.missing = El nombre completo del usuario es obligatorio para validar el identificador.
-customer.validation.identifier.initials-mismatch = Las iniciales del identificador no coinciden con el nombre del usuario.
+customer.validation.identifier.not-null = El identificador no debe ser nulo ni estar vacío.
+customer.validation.identifier.bad-format = El identificador debe contener 2 o 3 letras mayúsculas seguidas de exactamente 6 dígitos o las iniciales no coinciden con el nombre del usuario.
+acme.validation.customer.duplicated-identifier.message = Este ID ya existe.
 
 # Mensajes de validación de flight number #########################################################
 
@@ -49,3 +48,7 @@ banned.passenger.validation.lift.date.min-duration = La fecha de desbaneo tiene 
 # Mensajes de validación de los vuelos de un manager ##########################################################
 manager.flight.form.error.cost-must-be-positive = El coste del vuelo debe ser positivo.
 manager.flight.form.error.currency-not-supported = La divisa no esta soportada por el sistema. Las divisas soportadas son EUR, GBP o USD.
+
+# Booking validation messages #########################################################
+acme.validation.locatorCode.message = locatorCode tiene un formato incorrecto.
+acme.validation.booking.duplicate-locator.message = Código localizador ya existente.
