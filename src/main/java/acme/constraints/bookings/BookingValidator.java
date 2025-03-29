@@ -1,14 +1,13 @@
 
 package acme.constraints.bookings;
 
-import java.util.List;
-
 import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.client.helpers.MomentHelper;
 import acme.entities.bookings.Booking;
 import acme.entities.bookings.BookingRepository;
 
@@ -30,23 +29,26 @@ public class BookingValidator extends AbstractValidator<ValidBooking, Booking> {
 
 		boolean result = true;
 
-		if (booking.isDraftMode() == false) {
+		if (booking == null)
+			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
+		else {
+			boolean uniqueLocator;
+			Booking existingBooking;
 
-			// Validar si el locatorCode ya existe
-			List<String> existingLocatorCodes = this.bookingRepository.findAllLocatorCodes();
-			boolean isDuplicate = existingLocatorCodes.contains(booking.getLocatorCode());
+			existingBooking = this.bookingRepository.findBookingByLocatorCode(booking.getLocatorCode());
+			uniqueLocator = existingBooking == null || existingBooking.equals(booking);
 
-			if (isDuplicate)
-				super.state(context, false, "locatorCode", "acme.validation.booking.duplicate-locator.message");
+			super.state(context, uniqueLocator, "locatorCode", "acme.validation.booking.duplicate-locator.message");
 
-			int passengerCount = this.bookingRepository.countPassengersByLocatorCode(booking.getLocatorCode());
-			boolean hasPassengers = passengerCount > 0;
-			super.state(context, hasPassengers, "*", "acme.validation.booking.passenger-required.message");
+			if (booking.getPurchaseMoment() != null) {
+				boolean isBeforeNow = MomentHelper.isPresentOrPast(booking.getPurchaseMoment());
+				super.state(context, isBeforeNow, "purchaseMoment", "acme.validation.booking.purchase-moment-past.message");
+			}
 
 		}
 
 		result = !super.hasErrors(context);
+
 		return result;
 	}
-
 }

@@ -9,7 +9,7 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface CustomerRepository extends AbstractRepository {
 
-	@Query("Select c from Customer c where c.identifier = :identifier")
-	Customer findCustomerIdentifier(String identifier);
+	@Query("Select c from Customer c where c.idCustomer = :idCustomer")
+	Customer findCustomerIdentifier(String idCustomer);
 
 }
