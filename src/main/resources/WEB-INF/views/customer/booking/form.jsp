@@ -11,6 +11,9 @@
 	<acme:input-money code="customer.booking.form.label.price" path="price" />
 	<acme:input-textbox code="customer.booking.form.label.lastCardNibble"
 		path="lastCardNibble" />
+	<acme:input-textbox code="customer.booking.form.label.purchaseMoment" path="purchaseMoment" readonly="true" />
+	<!-- Mostrar los pasajeros asociados -->
+    <acme:input-textbox code="customer.booking.form.label.passengers" path="passengers" readonly="true" />
 
 	<jstl:choose>
 		<jstl:when test="${_command == 'create'}">
