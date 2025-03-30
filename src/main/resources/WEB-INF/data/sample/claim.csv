@@ -1,4 +1,3 @@
-key,registrationMoment,passengerEmail,description,type,indicator,draftMode,key:assistanceAgent
-claim-01,2000/01/01 00:00,john.doe@example.com,"Lost luggage during flight.",LUGGAGE_ISSUES,ACCEPTED,false,agent-01
-claim-02,2000/01/02 00:00,jane.smith@example.com,"Flight delay compensation request.",FLIGHT_ISSUES,ACCEPTED,true,agent-02
-
+key,registrationMoment,passengerEmail,description,type,draftMode,key:assistanceAgent,key:leg
+claim-01,2000/01/01 00:00,john.doe@example.com,Lost luggage during flight.,LUGGAGE_ISSUES,false,agent-01,leg-01
+claim-02,2000/01/02 00:00,jane.smith@example.com,Flight delay compensation request.,FLIGHT_ISSUES,true,agent-02,leg-01

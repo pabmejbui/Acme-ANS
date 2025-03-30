@@ -1,0 +1,9 @@
+assistance-agent.claim.list.title = Claims
+master.menu.assistance-agent.claims = Claims
+master.menu.assistance-agent.claims.claims-list = Claims list
+assistance-agent.claim.list.button.create = Create
+
+
+assistance-agent.claim.list.label.registrationMoment = Registration moment
+assistance-agent.claim.list.label.passengerEmail =  Passenger email
+assistance-agent.claim.list.label.type = Type

@@ -1,0 +1,8 @@
+assistance-agent.claim.list.title = Reclamaciones
+master.menu.assistance-agent.claims = Reclamaciones
+master.menu.assistance-agent.claims.claims-list = Listado de reclamaciones
+assistance-agent.claim.list.button.create = Crear
+
+assistance-agent.claim.list.label.registrationMoment = Momento de registro
+assistance-agent.claim.list.label.passengerEmail =  Correo del pasagero
+assistance-agent.claim.list.label.type = Tipo

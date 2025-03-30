@@ -1,3 +1,3 @@
 key,lastUpdateMoment,step,resolutionPercentage,indicator,resolution,draftMode,key:claim
 trackingLog-01,2000/01/01 00:00,"Initial assessment",10.0,REJECTED,"Claim received and under review.",true,claim-01
-trackingLog-02,2000/01/01 00:00,"Investigation ongoing",50.0,ACCEPTED,"Gathering additional details.",true,claim-02
+trackingLog-02,2000/01/01 00:00,"Investigation ongoing",50.0,ACCEPTED,"Gathering additional details.",true,claim-01

@@ -16,6 +16,7 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.entities.claims.Claim;
+import acme.entities.claims.ClaimResolution;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -46,7 +47,7 @@ public class TrackingLog extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@Automapped
-	private Resolution			indicator;
+	private ClaimResolution		indicator;
 
 	@Mandatory
 	@ValidString(max = 255)
@@ -57,11 +58,16 @@ public class TrackingLog extends AbstractEntity {
 	@Automapped
 	private boolean				draftMode;
 
+
 	// Derived attributes ------------------------------------------
+	public TrackingLogStatus getStatus() {
+		return null;
+	}
+
 
 	// Relationships ------------------------------------------------
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
-	private Claim				claim;
+	private Claim claim;
 }
