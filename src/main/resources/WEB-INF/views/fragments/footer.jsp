@@ -50,7 +50,7 @@
 	</acme:footer-logo>
 </acme:footer-panel>
 
-<jstl:if test="${service != null}">
+<jstl:if test="${not empty service}">
 	<div class="panel-body" style="margin: 1em 0em 1em 0em; text-align: center;">	
 		<img src="${service.pictureUrl}" alt="${service.name}" class="img-fluid rounded" 
 			style="border-style: solid; width: 20%; height: auto; transform: scaleX(1.5);"/>

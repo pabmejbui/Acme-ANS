@@ -46,9 +46,13 @@ banned.passenger.validation..ban.issued.date.null = Ban Issues date cannot be nu
 banned.passenger.validation.lift.date.min-duration = Lift date must be after the ban issued date
 
 # Customer validation messages #########################################################
-
 customer.validation.identifier.not-null = Identifier must not be null or empty.
 customer.validation.identifier.bad-format = Identifier must contain 2 or 3 uppercase letters followed by exactly 6 digits.
+
+# Promotion Code messages ######################################################
+acme.validation.promoCode.message = The promo code is invalid
+acme.validation.promoCode.bad-format-code.message = The promo code format is invalid. Please enter a valid promo code.
+acme.validation.promoCode.invalid-year.message = The last two digits of the promo code must match the current year (e.g., -{0}).
 
 # Manager flight messages #########################################################
 manager.flight.form.error.cost-must-be-positive = The cost of the flight must be positive
@@ -57,4 +61,3 @@ manager.flight.form.error.currency-not-supported = The currency is not supported
 # Booking validation messages #########################################################
 acme.validation.locatorCode.message = locatorCode has an incorrect format.
 acme.validation.booking.duplicate-locator.message = Locator code already exists.
-
