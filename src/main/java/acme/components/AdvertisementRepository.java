@@ -1,5 +1,5 @@
 
-package acme.features.any.service;
+package acme.components;
 
 import java.util.List;
 
@@ -7,12 +7,14 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import acme.client.helpers.RandomHelper;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.services.Service;
 
-public interface AnyServiceRepository extends AbstractRepository {
+@Repository
+public interface AdvertisementRepository extends AbstractRepository {
 
 	@Query("select count(s) from Service s")
 	int countServices();

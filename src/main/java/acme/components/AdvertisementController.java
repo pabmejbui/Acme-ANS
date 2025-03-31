@@ -1,5 +1,5 @@
 
-package acme.features.any.service;
+package acme.components;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import acme.entities.services.Service;
 
 @ControllerAdvice
-public class AnyServiceController {
+public class AdvertisementController {
 
 	// Internal state ---------------------------------------------------------
 	@Autowired
-	private AnyServiceRepository repository;
+	private AdvertisementRepository repository;
 
 
 	// Beans ------------------------------------------------------------------

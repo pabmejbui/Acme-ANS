@@ -43,7 +43,7 @@ public class Service extends AbstractEntity {
 	private Double				averageDwellTime;
 
 	@Optional
-	@Column(unique = true)
+	@Column(unique = true, nullable = true)
 	@ValidPromoCode
 	private String				promotionCode;
 
@@ -57,6 +57,11 @@ public class Service extends AbstractEntity {
 	private boolean				draftMode;
 
 	// Derived attributes -----------------------------------------------------
+
+
+	public void setPromotionCode(final String promotionCode) {
+		this.promotionCode = promotionCode == null || promotionCode.isBlank() ? null : promotionCode.trim();
+	}
 
 	// Relationships ----------------------------------------------------------
 }

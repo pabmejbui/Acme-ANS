@@ -50,17 +50,18 @@ public class FlightCrewMember extends AbstractRole {
 	private AvailabilityStatus	availabilityStatus;
 
 	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	private Airline				airline;
-
-	@Mandatory
 	@ValidMoney
 	@Automapped
 	private Money				salary;
 
 	@Optional
-	@ValidNumber
+	@ValidNumber(min = 0, max = 120)
 	@Automapped
 	private Integer				yearsOfExperience;
+
+	//Relationship
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Airline				airline;
 }

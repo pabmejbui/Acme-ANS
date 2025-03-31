@@ -65,16 +65,9 @@ public class Leg extends AbstractEntity {
 
 	@Transient
 	public Double getDuration() {
-		if (this.scheduledDeparture == null || this.scheduledArrival == null)
-			return null;
-
-		long milliseconds = this.scheduledArrival.getTime() - this.scheduledDeparture.getTime();
-
-		return this.millisecondsToHours(milliseconds);
-	}
-
-	private double millisecondsToHours(final long milliseconds) {
-		return milliseconds / (1000.0 * 60 * 60);
+		Double durationHours;
+		durationHours = (this.getScheduledArrival().getTime() - this.getScheduledDeparture().getTime()) / (1000.0 * 60 * 60);
+		return durationHours;
 	}
 
 	// Relationships
@@ -96,8 +89,6 @@ public class Leg extends AbstractEntity {
 
 	@Mandatory
 	@ManyToOne(optional = false)
-	@Automapped
-	@Valid
 	private Aircraft	aircraft;
 
 	@Mandatory
