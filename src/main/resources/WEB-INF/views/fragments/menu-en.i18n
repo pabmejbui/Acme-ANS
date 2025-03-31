@@ -38,6 +38,16 @@ master.menu.provider.favourite-link = Favourite link
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
+# master.menu.customer ##########################################################
+
+master.menu.customer = Customer
+master.menu.customer.list-bookings = List Bookings
+
+# master.menu.flightCrewMember ##########################################################
+ 
+ master.menu.flightCrewMember = Flight Crew Member
+ master.menu.flightCrewMember.flightAssignment = Flight Assignments 
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
@@ -46,3 +56,8 @@ master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.provider-profile = Provider profile
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.consumer-profile = Consumer profile
+
+# master.menu.manager ###########################################################
+master.menu.manager = Manager
+manager.menu.manager.list-flights = My Flights
+

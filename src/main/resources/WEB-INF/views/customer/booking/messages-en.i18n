@@ -1,0 +1,24 @@
+
+# form ####################################################
+
+customer.booking.form.title = Booking form
+customer.booking.form.label.locatorCode = Locator code
+customer.booking.form.label.travelClass = Travel Class
+customer.booking.form.label.price = Price
+customer.booking.form.label.lastCardNibble = Last Card Nibble
+customer.booking.form.label.passengers = Associated passengers
+customer.booking.form.label.purchaseMoment = Purchase moment
+
+customer.booking.form.label.confirmation = Confirmation
+
+
+customer.booking.form.button.create = Create 
+customer.booking.form.button.update = Update
+
+
+# list ####################################################
+
+customer.booking.list.title = Booking form
+customer.booking.list.label.locatorCode = Locator code
+customer.booking.list.label.purchaseMoment = Purchase moment
+customer.booking.list.button.create = Create
