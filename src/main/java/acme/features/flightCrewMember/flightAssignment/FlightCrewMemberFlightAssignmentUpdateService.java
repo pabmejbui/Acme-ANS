@@ -17,7 +17,7 @@ import acme.entities.flights.Leg;
 import acme.realms.flightCrewMembers.FlightCrewMember;
 
 @GuiService
-public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
+public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
 
 	@Autowired
 	private FlightCrewMemberFlightAssignmentRepository repository;
@@ -25,20 +25,24 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int id;
+		FlightAssignment assignment;
+
+		id = super.getRequest().getData("id", int.class);
+		assignment = this.repository.findFlightAssignmentById(id);
+
+		status = assignment.isDraftMode();
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		FlightAssignment flightAssignment;
-		FlightCrewMember flightCrewMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
-
-		flightAssignment = new FlightAssignment();
-		flightAssignment.setFlightCrewMember(flightCrewMember);
-		flightAssignment.setLastUpdate(MomentHelper.getCurrentMoment());
-		flightAssignment.setDraftMode(false);
-		super.getBuffer().addData(flightAssignment);
-
+		FlightAssignment assignment;
+		int id;
+		id = super.getRequest().getData("id", int.class);
+		assignment = this.repository.findFlightAssignmentById(id);
+		super.getBuffer().addData(assignment);
 	}
 
 	@Override
@@ -48,15 +52,15 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		int memberId;
 		FlightCrewMember member;
 
-		legId = super.getRequest().getData("leg", int.class);
+		legId = super.getRequest().getData("flightLeg", int.class);
 		leg = this.repository.findLegById(legId);
 		memberId = super.getRequest().getData("member", int.class);
 		member = this.repository.findFlightCrewMemberById(memberId);
 
 		super.bindObject(assignment, "duty", "status", "remarks");
+		assignment.setLastUpdate(MomentHelper.getCurrentMoment());
 		assignment.setLeg(leg);
 		assignment.setFlightCrewMember(member);
-		assignment.setLastUpdate(MomentHelper.getCurrentMoment());
 	}
 
 	@Override

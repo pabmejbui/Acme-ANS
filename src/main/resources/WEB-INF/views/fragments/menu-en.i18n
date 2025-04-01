@@ -45,7 +45,10 @@ master.menu.customer.list-bookings = List Bookings
 # master.menu.flightCrewMember ##########################################################
  
  master.menu.flightCrewMember = Flight Crew Member
- master.menu.flightCrewMember.flightAssignment = Flight Assignments 
+ master.menu.flightCrewMember.flightAssignmentCompleted = Flight Assignments Completed
+ master.menu.flightCrewMember.flightAssignmentPlanned = Flight Assignments Planned 
+ master.menu.flightCrewMember.activityLogs = activityLogs List
+ 
 
 # master.menu.user-account ####################################################
 

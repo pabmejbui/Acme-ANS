@@ -1,21 +1,24 @@
 flight-crew-member.flight-assignment.form.title = flightAssignment details
 flight-crew-member.flight-assignment.list.title = Listing of flightAssignments
 
-flightCrewMember.flightAssignment.form.label.duty = Duty:
-flightCrewMember.flightAssignment.form.label.moment = Last update moment:
-flightCrewMember.flightAssignment.form.label.currentStatus = Status:
-flightCrewMember.flightAssignment.form.label.remarks = Remarks (Optional):
-flightCrewMember.flightAssignment.form.label.leg = Leg:
-flightCrewMember.flightAssignment.form.label.flightCrewMember= FlightCrewMember:
+flight-crew-member.flight-assignment.form.label.duty = Duty:
+flight-crew-member.flight-assignment.form.label.lastUpdate = Last update moment:
+flight-crew-member.flight-assignment.form.label.status = Status:
+flight-crew-member.flight-assignment.form.label.remarks = Remarks (Optional):
+flight-crew-member.flight-assignment.form.label.leg = Leg:
+flight-crew-member.flight-assignment.form.label.flightCrewMember= FlightCrewMember:
 
-flightCrewMember.flightAssignment.form.button.create = Create
-flightCrewMember.flightAssignment.form.button.update = Update
-flightCrewMember.flightAssignment.form.button.delete = Delete
-flightCrewMember.flightAssignment.form.button.publish = Publish
-flightCrewMember.flightAssignment.form.label.confirmation = Confirm that the flightAssignment is correct.
+flight-crew-member.flight-assignment.form.button.create = Create
+flight-crew-member.flight-assignment.form.button.update = Update
+flight-crew-member.flight-assignment.form.button.delete = Delete
+flight-crew-member.flight-assignment.form.button.publish = Publish
+flight-crew-member.flight-assignment.form.label.confirmation = Confirm that the flightAssignment is correct.
+flight-crew-member.flight-assignment.form.button.leg = Leg  
+flight-crew-member.flight-assignment.form.button.member = Member
 
-flightCrewMember.flightAssignment.list.label.duty = Duty:
-flightCrewMember.flightAssignment.list.label.moment = Last update moment:
-flightCrewMember.flightAssignment.list.label.currentStatus = Status:
 
-flightCrewMember.flightAssignment.list.button.create = Create
+flight-crew-member.flight-assignment.list.label.duty = Duty:
+flight-crew-member.flight-assignment.list.label.lastUpdate = Last update moment:
+flight-crew-member.flight-assignment.list.label.status = Status:
+
+flight-crew-member.flight-assignment.list.button.create = Create
