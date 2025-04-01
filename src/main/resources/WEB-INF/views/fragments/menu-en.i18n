@@ -47,6 +47,11 @@ master.menu.customer.list-bookings = List Bookings
  
  master.menu.flightCrewMember = Flight Crew Member
  master.menu.flightCrewMember.flightAssignment = Flight Assignments 
+ 
+# master.menu.assistance-agent ##########################################################
+ 
+ master.menu.assistance-agent = Assistance Agent
+ master.menu.assistance-agent.claims  = Claims
 
 # master.menu.user-account ####################################################
 

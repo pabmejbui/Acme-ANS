@@ -1,3 +1,11 @@
 key,registrationMoment,passengerEmail,description,type,draftMode,key:assistanceAgent,key:leg
-claim-01,2000/01/01 00:00,john.doe@example.com,Lost luggage during flight.,LUGGAGE_ISSUES,false,agent-01,leg-01
-claim-02,2000/01/02 00:00,jane.smith@example.com,Flight delay compensation request.,FLIGHT_ISSUES,true,agent-02,leg-01
+claim-01,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight".,LUGGAGE_ISSUES,false,agent-01,leg-01
+claim-02,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-02,leg-01
+claim-03,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-01,leg-01
+claim-04,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,true,agent-02,leg-01
+claim-05,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-01,leg-01
+claim-06,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,true,agent-02,leg-01
+claim-07,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-01,leg-01
+claim-08,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,true,agent-02,leg-01
+claim-09,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-01,leg-01
+claim-10,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,true,agent-02,leg-01
