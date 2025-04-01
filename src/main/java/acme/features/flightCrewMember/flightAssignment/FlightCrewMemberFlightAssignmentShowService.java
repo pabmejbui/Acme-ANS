@@ -24,16 +24,26 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int assignmentId;
+		FlightCrewMember member;
+		FlightAssignment assignment;
+
+		assignmentId = super.getRequest().getData("id", int.class);
+		assignment = this.repository.findFlightAssignmentById(assignmentId);
+		member = assignment == null ? null : assignment.getFlightCrewMember();
+		status = member != null && super.getRequest().getPrincipal().hasRealm(member);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		FlightAssignment assignment;
-		int id;
+		int assignmentId;
 
-		id = super.getRequest().getData("id", int.class);
-		assignment = this.repository.findFlightAssignmentById(id);
+		assignmentId = super.getRequest().getData("id", int.class);
+		assignment = this.repository.findFlightAssignmentById(assignmentId);
 
 		super.getBuffer().addData(assignment);
 	}
@@ -43,28 +53,28 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		Dataset dataset;
 		SelectChoices statuses;
 		SelectChoices duties;
-		SelectChoices selectedLegs;
 		Collection<Leg> legs;
-		SelectChoices selectedMembers;
+		SelectChoices selectedLegs;
 		Collection<FlightCrewMember> members;
+		SelectChoices selectedMembers;
 
-		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getCurrentStatus());
-		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
 		legs = this.repository.findAllLegs();
-		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
 		members = this.repository.findAllFlightCrewMembers();
+
+		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
+		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
+		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
 		selectedMembers = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
 
-		dataset = super.unbindObject(assignment, "lastUpdateMoment", "remarks");
-		dataset.put("confirmation", false);
-		dataset.put("readonly", false);
+		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
 		dataset.put("statuses", statuses);
 		dataset.put("duties", duties);
-		dataset.put("legs", selectedLegs);
 		dataset.put("leg", selectedLegs.getSelected().getKey());
-		dataset.put("members", members);
+		dataset.put("legs", selectedLegs);
 		dataset.put("member", selectedMembers.getSelected().getKey());
+		dataset.put("members", selectedMembers);
 
 		super.getResponse().addData(dataset);
 	}
+
 }
