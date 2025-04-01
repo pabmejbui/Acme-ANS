@@ -42,8 +42,13 @@ acme.validation.acceptedCurrencies.invalid = Las monedas aceptadas deben ser una
 acme.validation.license.bad-format.message=El formato de la licencia no es válido. Debe cumplir con el patrón requerido.
 
 # Mensajes de validacion de Banned Passenger ############################################################
-banned.passenger.validation.ban.issued.date.null = La fecha de baneo no puede ser nula.
+banned.passenger.validation..ban.issued.date.null = La fecha de baneo no puede ser nula.
 banned.passenger.validation.lift.date.min-duration = La fecha de desbaneo tiene que ser posterior a la fecha de baneo.
+
+# Mensajes para el Código de promoción ###########################################################
+acme.validation.promoCode.message = Código promocional no valido
+acme.validation.promoCode.bad-format-code.message = El formato del código promocional no es válido. Por favor, ingrese un código promocional válido.
+acme.validation.promoCode.invalid-year.message = Los dos últimos dígitos del código promocional deben coincidir con el año actual (por ejemplo, -{0}).
 
 # Mensajes de validación de los vuelos de un manager ##########################################################
 manager.flight.form.error.cost-must-be-positive = El coste del vuelo debe ser positivo.
