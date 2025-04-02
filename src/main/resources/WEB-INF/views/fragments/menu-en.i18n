@@ -65,7 +65,9 @@ master.menu.user-account.manager-profile = Manager profile
 # master.menu.manager ###########################################################
 
 master.menu.manager = Manager
-manager.menu.manager.list-flights = My Flights
+master.menu.manager.list-flights = My Flights
+master.menu.manager.dashboard = Manager dashboard
+
 
 # master.menu.any ###############################################################
 
