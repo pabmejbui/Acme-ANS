@@ -16,25 +16,25 @@ public class AssistanceAgentClaimController extends AbstractGuiController<Assist
 	//Internal state --------------------------------------------------------------
 
 	@Autowired
-	private AssistanceAgentClaimListService		listService;
-
-	//@Autowired
-	//private AssistanceAgentClaimListPendingService	listPendingService;
+	private AssistanceAgentClaimListService				listService;
 
 	@Autowired
-	private AssistanceAgentClaimShowService		showService;
+	private AssistanceAgentClaimListUndergoingService	listPendingService;
 
 	@Autowired
-	private AssistanceAgentClaimCreateService	createService;
+	private AssistanceAgentClaimShowService				showService;
 
-	//@Autowired
-	//private AssistanceAgentClaimUpdateService		updateService;
+	@Autowired
+	private AssistanceAgentClaimCreateService			createService;
 
-	//@Autowired
-	//private AssistanceAgentClaimDeleteService		deleteService;
+	@Autowired
+	private AssistanceAgentClaimUpdateService			updateService;
 
-	//@Autowired
-	//private AssistanceAgentClaimPublishService		publishService;
+	@Autowired
+	private AssistanceAgentClaimDeleteService			deleteService;
+
+	@Autowired
+	private AssistanceAgentClaimPublishService			publishService;
 
 	//Constructors ----------------------------------------------------------------
 
@@ -44,11 +44,11 @@ public class AssistanceAgentClaimController extends AbstractGuiController<Assist
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
-		//super.addBasicCommand("update", this.updateService);
-		//super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("update", this.updateService);
+		super.addBasicCommand("delete", this.deleteService);
 
-		//super.addCustomCommand("pending", "list", this.listPendingService);
-		//super.addCustomCommand("publish", "update", this.publishService);
+		super.addCustomCommand("pending", "list", this.listPendingService);
+		super.addCustomCommand("publish", "update", this.publishService);
 	}
 
 }

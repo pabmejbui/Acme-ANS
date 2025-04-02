@@ -1,6 +1,7 @@
 
 package acme.features.assistanceAgent.claim;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,29 +26,35 @@ public class AssistanceAgentClaimListService extends AbstractGuiService<Assistan
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		Collection<Claim> claims;
+		Collection<Claim> claimsCompleted = new ArrayList<>();
 		int assistanceAgentId;
 
 		assistanceAgentId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		claims = this.repository.findAllClaimsByAssistanceAgentId(assistanceAgentId);
 
-		super.getBuffer().addData(claims);
+		for (Claim cl : claims)
+			if (cl.getIndicator() == ClaimIndicator.ACCEPTED || cl.getIndicator() == ClaimIndicator.REJECTED)
+				claimsCompleted.add(cl);
+
+		super.getBuffer().addData(claimsCompleted);
 	}
 
 	@Override
 	public void unbind(final Claim claim) {
 		Dataset dataset;
-		ClaimIndicator indicator;
-		indicator = claim.getIndicator();
+		ClaimIndicator indicator = claim.getIndicator();
 
-		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "DraftMode");
+		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "draftMode");
 		dataset.put("indicator", indicator);
-		super.addPayload(dataset, claim, "registrationMoment", "description");//Necesario ? 
 
 		super.getResponse().addData(dataset);
 	}

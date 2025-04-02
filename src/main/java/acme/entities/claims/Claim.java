@@ -1,6 +1,7 @@
 
 package acme.entities.claims;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -65,24 +66,21 @@ public class Claim extends AbstractEntity {
 
 	@Transient
 	public ClaimIndicator getIndicator() {
-		ClaimIndicator result;
+		ClaimIndicator status;
 		ClaimRepository repository;
-		TrackingLog trackingLog;
+		Collection<TrackingLog> tls;
 
+		status = ClaimIndicator.PENDING;
 		repository = SpringHelper.getBean(ClaimRepository.class);
-		trackingLog = repository.findLastTrackingLogByClaimId(this.getId()).stream().findFirst().orElse(null);
-		if (trackingLog == null)
-			result = null;
-		else {
-			TrackingLogStatus status = trackingLog.getStatus();
-			if (status.equals(TrackingLogStatus.ACCEPTED))
-				result = ClaimIndicator.ACCEPTED;
-			else if (status.equals(TrackingLogStatus.REJECTED))
-				result = ClaimIndicator.REJECTED;
-			else
-				result = ClaimIndicator.PENDING;
+		tls = repository.findTrackingLogsByClaimId(this.getId());
+		for (TrackingLog tl : tls) {
+			if (tl.getStatus() == TrackingLogStatus.ACCEPTED)
+				status = ClaimIndicator.ACCEPTED;
+			else if (tl.getStatus() == TrackingLogStatus.REJECTED)
+				status = ClaimIndicator.REJECTED;
+
 		}
-		return result;
+		return status;
 
 	}
 

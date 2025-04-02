@@ -60,19 +60,19 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 	@Override
 	public void unbind(final Claim claim) {
 		Dataset dataset;
-		ClaimIndicator indicator;
+
 		SelectChoices typesChoices;
 		SelectChoices legsChoices;
 
 		Collection<Leg> legs;
 
-		indicator = claim.getIndicator();
+		ClaimIndicator indicator = claim.getIndicator();
 
 		typesChoices = SelectChoices.from(ClaimType.class, claim.getType());
 		legs = this.repository.findAllLeg();
 		legsChoices = SelectChoices.from(legs, "flightNumber", claim.getLeg());
 
-		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "publish");
+		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "draftMode");
 		dataset.put("types", typesChoices);
 		dataset.put("indicator", indicator);
 		dataset.put("legs", legsChoices);

@@ -10,6 +10,7 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.claims.Claim;
 import acme.entities.flights.Leg;
 import acme.entities.trackingLogs.TrackingLog;
+import acme.realms.assistanceAgent.AssistanceAgent;
 
 @Repository
 public interface AssistanceAgentClaimRepository extends AbstractRepository {
@@ -29,9 +30,6 @@ public interface AssistanceAgentClaimRepository extends AbstractRepository {
 	@Query("SELECT l FROM Leg l")
 	Collection<Leg> findAllLeg();
 
-	//@Query("SELECT l FROM Leg l WHERE l.draftMode = true AND l.arrival < :maxArrivalDate")
-	//Collection<Leg> findAllPublishedLegsBefore(Date maxArrivalDate);
-
 	@Query("SELECT l FROM Leg l WHERE l.draftMode = true")
 	Collection<Leg> findAllPublishedLegs();
 
@@ -40,5 +38,8 @@ public interface AssistanceAgentClaimRepository extends AbstractRepository {
 
 	@Query("SELECT tl FROM TrackingLog tl WHERE tl.claim.id = :claimId")
 	Collection<TrackingLog> findTrackingLogsByClaimId(int claimId);
+
+	@Query("select a from AssistanceAgent a where a.id = :assistanceAgentId")
+	AssistanceAgent findAssistanceAgentById(int assistanceAgentId);
 
 }
