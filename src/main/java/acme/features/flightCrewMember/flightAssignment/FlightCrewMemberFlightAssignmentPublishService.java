@@ -69,7 +69,8 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		Date scheduledArrival = leg.getScheduledArrival();
 		Date now = MomentHelper.getCurrentMoment();
 		boolean hasOccurred = now.after(scheduledArrival);
-		if (hasOccurred)
+		if (!hasOccurred)
+			////////////////////////////////
 			super.state(false, "*", "acme.validation.flight-assignment.leg-has-occurred.message");
 
 	}
@@ -78,7 +79,9 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		AvailabilityStatus status = member.getAvailabilityStatus();
 		AvailabilityStatus requiredStatus = AvailabilityStatus.AVAILABLE;
 		boolean available = status.equals(requiredStatus);
-		if (!available)
+		if (available)
+
+			////////////////////
 			super.state(false, "*", "acme.validation.flight-assignment.member-not-available.message");
 	}
 
@@ -88,6 +91,8 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		boolean hasIncompatibleLeg = existingLegs.stream().anyMatch(existingLeg -> this.legIsNotOverlapping(assignment.getLeg(), existingLeg));
 
 		if (hasIncompatibleLeg)
+
+			//////////////////
 			super.state(false, "*", "acme.validation.flight-assignment.member-with-overlapping-legs.message");
 	}
 
@@ -97,8 +102,9 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		boolean legWithCopilot = assignedDuties.stream().anyMatch(assignment -> assignment.getDuty().equals(DutyType.CO_PILOT));
 		boolean legWithPilot = assignedDuties.stream().anyMatch(assignment -> assignment.getDuty().equals(DutyType.PILOT));
 
-		super.state(!(flightAssignment.getDuty().equals(DutyType.PILOT) && legWithPilot), "*", "acme.validation.flight-assignment.leg-has-pilot.message");
-		super.state(!(flightAssignment.getDuty().equals(DutyType.CO_PILOT) && legWithCopilot), "*", "acme.validation.flight-assignment.leg-has-copilot.message");
+		//////////////////////////////
+		super.state(flightAssignment.getDuty().equals(DutyType.PILOT) && legWithPilot, "*", "acme.validation.flight-assignment.leg-has-pilot.message");
+		super.state(flightAssignment.getDuty().equals(DutyType.CO_PILOT) && legWithCopilot, "*", "acme.validation.flight-assignment.leg-has-copilot.message");
 	}
 
 	private boolean legIsNotOverlapping(final Leg newLeg, final Leg existingLeg) {
