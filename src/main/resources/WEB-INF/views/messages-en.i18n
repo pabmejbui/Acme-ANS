@@ -81,3 +81,9 @@ acme.validation.manager.leg.flight-number.duplicate.message = Another leg with t
 # Booking validation messages #########################################################
 acme.validation.locatorCode.message = locatorCode has an incorrect format.
 acme.validation.booking.duplicate-locator.message = Locator code already exists.
+
+# Administrator Airline validation messages ##########################################
+acme.validation.confirmation.message = You must confirm this operation before proceeding.
+
+# Phone Number validation messages ###################################################
+acme.validation.phone.bad-format-phone.message = The phone number format is invalid. It must be a number between 6 and 15 digits, optionally starting with "+".

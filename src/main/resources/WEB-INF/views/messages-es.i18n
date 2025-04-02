@@ -80,3 +80,10 @@ acme.validation.leg.flight-number.duplicate.message = Ya existe otra etapa con e
 # Booking validation messages #########################################################
 acme.validation.locatorCode.message = locatorCode tiene un formato incorrecto.
 acme.validation.booking.duplicate-locator.message = Código localizador ya existente.
+
+# Mensajes de validación de las aerolíneas operadas por admins ##########################################
+acme.validation.confirmation.message = Debe confirmar la operación antes de continuar.
+
+# Mensaje de validacion de numero de telefono #########################################################
+acme.validation.phone.bad-format-phone.message = El número de teléfono tiene un formato inválido. Debe tener entre 6 y 15 dígitos y puede empezar con "+".
+
