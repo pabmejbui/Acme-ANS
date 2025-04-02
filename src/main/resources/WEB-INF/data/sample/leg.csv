@@ -1,6 +1,6 @@
 key,flightNumber,scheduledDeparture,scheduledArrival,status,draftMode,key:flight,key:originAirport,key:destinationAirport,key:aircraft,key:airline
-leg-01,AMX1001,2000/01/01 00:00,2024/06/10 12:00,ON_TIME,false,flight-01,airport-01,airport-02,aircraft-01,airline-01
-leg-02,AMX1002,2000/01/01 08:00,2024/06/10 17:00,DELAYED,true,flight-01,airport-02,airport-03,aircraft-02,airline-01
+leg-01,AMX1001,2000/01/01 00:00,2000/01/01 12:00,ON_TIME,false,flight-01,airport-01,airport-02,aircraft-01,airline-01
+leg-02,AMX1002,2000/01/01 08:00,2000/01/01 17:00,DELAYED,true,flight-01,airport-02,airport-03,aircraft-02,airline-01
 leg-03,AMX2001,2024/06/15 06:30,2024/06/15 09:30,CANCELLED,false,flight-02,airport-03,airport-01,aircraft-03,airline-01
 leg-04,AMX2002,2024/06/15 10:00,2024/06/15 13:45,LANDED,true,flight-02,airport-01,airport-04,aircraft-04,airline-01
 leg-05,VYX3001,2024/06/20 15:20,2024/06/20 18:20,ON_TIME,false,flight-03,airport-04,airport-02,aircraft-05,airline-02

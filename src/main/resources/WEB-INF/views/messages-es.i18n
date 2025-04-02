@@ -42,7 +42,7 @@ acme.validation.acceptedCurrencies.invalid = Las monedas aceptadas deben ser una
 acme.validation.license.bad-format.message=El formato de la licencia no es válido. Debe cumplir con el patrón requerido.
 
 # Mensajes de validacion de Banned Passenger ############################################################
-banned.passenger.validation..ban.issued.date.null = La fecha de baneo no puede ser nula.
+banned.passenger.validation.ban.issued.date.null = La fecha de baneo no puede ser nula.
 banned.passenger.validation.lift.date.min-duration = La fecha de desbaneo tiene que ser posterior a la fecha de baneo.
 
 # Mensajes para el Código de promoción ###########################################################
@@ -51,8 +51,31 @@ acme.validation.promoCode.bad-format-code.message = El formato del código promo
 acme.validation.promoCode.invalid-year.message = Los dos últimos dígitos del código promocional deben coincidir con el año actual (por ejemplo, -{0}).
 
 # Mensajes de validación de los vuelos de un manager ##########################################################
+
 manager.flight.form.error.cost-must-be-positive = El coste del vuelo debe ser positivo.
 manager.flight.form.error.currency-not-supported = La divisa no esta soportada por el sistema. Las divisas soportadas son EUR, GBP o USD.
+manager.flight.not-found = Este vuelo no existe.
+manager.flight.not-owner = No tienes permiso para modificar este vuelo.
+manager.flight.not-in-draft = Solo puedes modificar, eliminar o publicar vuelos que estén en modo borrador.
+acme.validation.manager.flight.publish.requires-legs = Un vuelo debe tener al menos una escala antes de poder publicarse.
+acme.validation.manager.flight.publish.all-legs-must-be-published = Todas las escalas deben estar publicadas para poder publicar el vuelo.
+
+
+# Mensajes de validación de las etapas de un vuelo de un manager ###############################################
+
+acme.validation.manager.leg.departure-equals-arrival = El aeropuerto de origen y el de destino no pueden ser el mismo.
+acme.validation.manager.leg.not-connected-to-previous = El aeropuerto de origen no coincide con el de destino de la etapa anterior.
+acme.validation.manager.leg.invalid-request = Esta etapa no existe o no se puede acceder a ella.
+acme.validation.manager.leg.invalid-flight = Este vuelo no existe o no se puede acceder a él.
+acme.validation.manager.leg.form.error.no-self-transfer = No se pueden añadir etapas a un vuelo que no permite auto-transferencia.
+acme.validation.manager.leg.not-owner = No tienes permiso para mostrar, crear, actualizar, eliminar o publicar etapas de vuelos que no te pertenecen.
+acme.validation.manager.leg.flight-not-in-draft = No es posible añadir, actualizar, eliminar ni republicar etapas de un vuelo publicado.
+acme.validation.manager.leg.leg-not-in-draft = No puedes actualizar, eliminar ni republicar una etapa que ya ha sido publicada.
+acme.validation.manager.leg.valid-leg.overlap = Esta etapa se solapa con otra del mismo vuelo.
+acme.validation.manager.leg.valid-leg.time-conflict = La llegada debe ser al menos 1 minuto después de la salida.
+acme.validation.manager.leg.valid-leg.sequence-order = Las etapas del vuelo deben estar en orden cronológico: cada llegada debe ser anterior a la siguiente salida.
+acme.validation.manager.leg.flight-number.format.message = El número de vuelo debe comenzar con el código IATA de la aerolínea seguido de 4 dígitos.
+acme.validation.leg.flight-number.duplicate.message = Ya existe otra etapa con el mismo número de vuelo.
 
 # Booking validation messages #########################################################
 acme.validation.locatorCode.message = locatorCode tiene un formato incorrecto.

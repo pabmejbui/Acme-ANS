@@ -1,0 +1,42 @@
+# menu-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+# messages-es.i18n
+
+manager.leg.form.title = Formulario de etapas 
+manager.leg.list.title = Lista de etapas
+
+manager.leg.list.label.flightNumber = Número del vuelo
+manager.leg.list.label.scheduledDeparture = Salida programada
+manager.leg.list.label.scheduledArrival = Llegada programada
+manager.leg.list.label.status = Estado de la etapa
+manager.leg.list.label.draftMode = Modo Borrador
+manager.leg.list.label.duration = Duración(H)
+manager.leg.list.label.originAirport = Origen
+manager.leg.list.label.destinationAirport = Destino
+
+manager.leg.form.label.flightNumber = Número del vuelo:
+manager.leg.form.label.scheduledDeparture = Salida programada:
+manager.leg.form.label.scheduledArrival = Llegada programada:
+manager.leg.form.label.status = Estado de la etapa:
+manager.leg.form.label.duration = Duración (H):
+manager.leg.form.label.draftMode = Modo borrador:
+manager.leg.form.label.originAirport = Aeropuerto de origen:
+manager.leg.form.label.destinationAirport = Aeropuerto destino:
+manager.leg.form.label.aircraft = Modelo del avión:
+manager.leg.form.label.airline = Aerolínea:
+manager.leg.form.label.flightTag = Etiqueta del vuelo:
+
+manager.leg.list.button.create = Crear etapa
+
+manager.leg.form.button.create = Crear etapa
+manager.leg.form.button.update = Actualizar etapa
+manager.leg.form.button.delete = Borrar etapa
+manager.leg.form.button.publish = Publicar etapa
