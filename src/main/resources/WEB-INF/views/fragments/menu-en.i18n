@@ -51,7 +51,6 @@ master.menu.customer.list-bookings = List Bookings
  master.menu.flightCrewMember.flightAssignmentPlanned = Flight Assignments Planned 
  master.menu.flightCrewMember.activityLogs = activityLogs List
  
-
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
@@ -64,6 +63,12 @@ master.menu.user-account.become-manager = Become a Manager
 master.menu.user-account.manager-profile = Manager profile
 
 # master.menu.manager ###########################################################
+
 master.menu.manager = Manager
 manager.menu.manager.list-flights = My Flights
+
+# master.menu.any ###############################################################
+
+master.menu.any = Any
+master.menu.any.flight.list = List of flights
 
