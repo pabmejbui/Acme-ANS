@@ -74,3 +74,8 @@ master.menu.manager.dashboard = Panel del manager
 
 master.menu.any = Any
 master.menu.any.flight.list = Listado de vuelos
+master.menu.any.weather.list = Predicciones
+master.menu.any.flight-under-bad-weather.list = Vuelos con mal clima
+
+
+

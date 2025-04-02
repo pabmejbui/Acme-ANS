@@ -74,4 +74,7 @@ master.menu.manager.dashboard = Manager dashboard
 
 master.menu.any = Any
 master.menu.any.flight.list = List of flights
+master.menu.any.weather.list = Forecasts
+master.menu.any.flight-under-bad-weather.list = Flights under bad weather
+
 

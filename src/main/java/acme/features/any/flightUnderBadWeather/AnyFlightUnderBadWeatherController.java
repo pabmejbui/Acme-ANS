@@ -1,5 +1,5 @@
 
-package acme.features.any.flight;
+package acme.features.any.flightUnderBadWeather;
 
 import javax.annotation.PostConstruct;
 
@@ -11,19 +11,14 @@ import acme.client.controllers.GuiController;
 import acme.entities.flights.Flight;
 
 @GuiController
-public class AnyFlightController extends AbstractGuiController<Any, Flight> {
+public class AnyFlightUnderBadWeatherController extends AbstractGuiController<Any, Flight> {
 
 	@Autowired
-	private AnyFlightListService	listService;
-
-	@Autowired
-	private AnyFlightShowService	showService;
+	protected AnyFlightUnderBadWeatherListService listService;
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("list", this.listService);
-		super.addBasicCommand("show", this.showService);
+		super.addCustomCommand("list-under-bad-weather", "list", this.listService);
 	}
-
 }
