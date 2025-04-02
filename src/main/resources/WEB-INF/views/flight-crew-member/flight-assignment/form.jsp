@@ -21,7 +21,6 @@
 			<acme:button code="flight-crew-member.flight-assignment.form.button.leg" action="/flight-crew-member/flight-assignment/show?masterId=${id}"/>	
 			<acme:button code="flight-crew-member.flight-assignment.form.button.member" action="/flight-crew-member/flight-assignment/show?masterId=${id}"/>	
 			<acme:submit code="flight-crew-member.flight-assignment.form.button.update" action="/flight-crew-member/flight-assignment/update"/>
-			<acme:submit code="flight-crew-member.flight-assignment.form.button.delete" action="/flight-crew-member/flight-assignment/delete"/>
 			<acme:submit code="flight-crew-member.flight-assignment.form.button.publish" action="/flight-crew-member/flight-assignment/publish"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
