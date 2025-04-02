@@ -8,12 +8,11 @@ customer.booking.form.label.price = Price
 customer.booking.form.label.lastCardNibble = Last Card Nibble
 customer.booking.form.label.passengers = Associated passengers
 customer.booking.form.label.purchaseMoment = Purchase moment
-
-customer.booking.form.label.confirmation = Confirmation
-
-
+customer.booking.form.button.passengers = See passengers
 customer.booking.form.button.create = Create 
 customer.booking.form.button.update = Update
+customer.booking.form.button.publish = Publish
+customer.booking.form.button.delete = Delete
 
 
 # list ####################################################
@@ -22,3 +21,10 @@ customer.booking.list.title = Booking form
 customer.booking.list.label.locatorCode = Locator code
 customer.booking.list.label.purchaseMoment = Purchase moment
 customer.booking.list.button.create = Create
+customer.booking.list.label.draftMode = Draft Mode
+
+
+# features ################################################
+
+customer.booking.delete.published-passengers = Can't delete bookings with published passengers
+customer.booking.publish.not-published-passengers = Can't publish bookings unless there are unpublished passengers or none

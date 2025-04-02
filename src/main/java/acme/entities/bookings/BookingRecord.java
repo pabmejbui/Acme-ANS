@@ -7,7 +7,6 @@ import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.validation.Mandatory;
-import acme.entities.flights.Flight;
 import acme.entities.passenger.Passenger;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,8 +32,4 @@ public class BookingRecord extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private Passenger			passenger;
 
-	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	private Flight				flight;
 }

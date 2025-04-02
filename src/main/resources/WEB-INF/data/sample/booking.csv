@@ -1,12 +1,12 @@
-key,locatorCode,purchaseMoment,travelClass,price,lastCardNibble,key:customer,draftMode
-booking-01,ABC1234,2000/01/01 00:00,ECONOMY,USD 3500,9936,customer-01,false
-booking-02,XYZ5678,2000/03/01 01:00,BUSINESS,EUR 1500,1234,customer-02,true
-booking-03,LMN7890,2001/06/15 12:30,ECONOMY,USD 1200,5678,customer-03,false
-booking-04,PQR1234,2002/11/22 16:45,BUSINESS,USD 4500,2345,customer-04,true
-booking-05,DEF6789,2003/02/10 18:00,ECONOMY,EUR 800,4321,customer-05,false
-booking-06,GHI2345,2004/07/25 20:00,BUSINESS,USD 2200,8765,customer-06,true
-booking-07,JKL9876,2005/09/05 09:15,ECONOMY,USD 1100,1122,customer-07,false
-booking-08,MNO5432,2006/05/30 14:30,BUSINESS,EUR 1500,3344,customer-08,true
-booking-09,STU6781,2007/04/11 10:45,ECONOMY,USD 3100,5567,customer-09,false
-booking-10,VWX1234,2008/01/14 22:00,BUSINESS,EUR 950,7788,customer-01,true
-booking-11,YZA7890,2009/12/08 08:30,ECONOMY,USD 5000,3345,customer-02,false
+key,locatorCode,purchaseMoment,travelClass,lastCardNibble,key:customer,draftMode,key:flight
+booking-01,ABC1234,2000/01/01 00:00,ECONOMY,9936,customer-01,false,flight-01
+booking-02,XYZ5678,2000/03/01 01:00,BUSINESS,1234,customer-02,true,flight-02
+booking-03,LMN7890,2001/06/15 12:30,ECONOMY,5678,customer-02,false,flight-01
+booking-04,PQR1234,2002/11/22 16:45,BUSINESS,2345,customer-04,true,flight-02
+booking-05,DEF6789,2003/02/10 18:00,ECONOMY,4321,customer-05,false,flight-01
+booking-06,GHI2345,2004/07/25 20:00,BUSINESS,8765,customer-06,true,flight-01
+booking-07,JKL9876,2005/09/05 09:15,ECONOMY,1122,customer-07,false,flight-02
+booking-08,MNO5432,2006/05/30 14:30,BUSINESS,3344,customer-08,true,flight-01
+booking-09,STU6781,2007/04/11 10:45,ECONOMY,5567,customer-09,false,flight-02
+booking-10,VWX1234,2008/01/14 22:00,BUSINESS,7788,customer-01,true,flight-01
+booking-11,YZA7890,2009/12/08 08:30,ECONOMY,3345,customer-02,false,flight-02

@@ -33,7 +33,7 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		bookingId = super.getRequest().getData("id", int.class);
 		booking = this.repository.findBookingById(bookingId);
 		customer = booking == null ? null : booking.getCustomer();
-		status = super.getRequest().getPrincipal().hasRealm(customer) || booking != null;
+		status = super.getRequest().getPrincipal().hasRealm(customer) && booking != null;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -58,9 +58,9 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		Collection<Passenger> passengers;
 
 		// Obtener pasajeros de la reserva
-		passengers = this.repository.findPassengersByBooking(booking.getId());
+		passengers = this.repository.findPassengersByBookingId(booking.getId());
 
-		// Convertir la lista de pasajeros a una representación adecuada para la vista
+		// Convertir la lista de pasajeros 
 		List<String> passengerNames = passengers.stream().map(Passenger::getFullName)  // Obtener nombres de los pasajeros
 			.collect(Collectors.toList());
 
@@ -68,9 +68,10 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
 		// Asignar datos al dataset
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "price", "lastCardNibble", "draftMode");
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "lastCardNibble", "draftMode");
+		dataset.put("bookingCost", booking.getCost());
 		dataset.put("travelClasses", travelClasses);
-		dataset.put("passengers", String.join(", ", passengerNames)); // Convertir lista a string
+		dataset.put("passengers", String.join(", ", passengerNames));
 
 		// Enviar datos al frontend
 		super.getResponse().addData(dataset);

@@ -87,3 +87,6 @@ acme.validation.confirmation.message = You must confirm this operation before pr
 
 # Phone Number validation messages ###################################################
 acme.validation.phone.bad-format-phone.message = The phone number format is invalid. It must be a number between 6 and 15 digits, optionally starting with "+".
+
+# Passenger ##########################################################################
+acme.validation.passportNumber = Bad format Passport
