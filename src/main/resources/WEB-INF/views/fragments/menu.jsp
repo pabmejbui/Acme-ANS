@@ -79,6 +79,9 @@
 			<acme:menu-suboption code="manager.menu.manager.list-flights" action="/manager/flight/list"/>
 		</acme:menu-option>
 		
+		<acme:menu-option code="master.menu.any" access="isAuthenticated() or isAnonymous()">
+    		<acme:menu-suboption code="master.menu.any.flight.list" action="/any/flight/list"/>
+		</acme:menu-option>	
 	</acme:menu-left>
 
 	<acme:menu-right>

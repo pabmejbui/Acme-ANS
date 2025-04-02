@@ -46,13 +46,12 @@ master.menu.customer.list-bookings = Ver Reservas
 
 # master.menu.flightCrewMember ##########################################################
  
- master.menu.flightCrewMember = Miembro de la tripulación de vuelo
- master.menu.flightCrewMember.flightAssignment = Asignación de vuelo
+master.menu.flightCrewMember = Miembro de la tripulación de vuelo
+master.menu.flightCrewMember.flightAssignment = Asignación de vuelo
  
-  master.menu.flightCrewMember.flightAssignmentCompleted = Asignaciones de vuelo completadas
- master.menu.flightCrewMember.flightAssignmentPlanned = Asignaciones de vuelo planeadas
-  master.menu.flightCrewMember.activityLogs = Listado de activitylogs
-
+master.menu.flightCrewMember.flightAssignmentCompleted = Asignaciones de vuelo completadas
+master.menu.flightCrewMember.flightAssignmentPlanned = Asignaciones de vuelo planeadas
+master.menu.flightCrewMember.activityLogs = Listado de activitylogs
 
 # master.menu.user-account ####################################################
 
@@ -65,8 +64,11 @@ master.menu.user-account.consumer-profile = Perfil de consumidor
 master.menu.user-account.become-manager = Convertirse en Manager
 master.menu.user-account.manager-profile = Perfil de Manager
 
-
 # master.menu.manager ###########################################################
 master.menu.manager = Manager
 manager.menu.manager.list-flights = Mis Vuelos
 
+# master.menu.any ###############################################################
+
+master.menu.any = Any
+master.menu.any.flight.list = Listado de vuelos
