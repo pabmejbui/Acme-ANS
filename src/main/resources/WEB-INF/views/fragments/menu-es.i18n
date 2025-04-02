@@ -23,6 +23,8 @@ master.menu.anonymous.jesus-oria = 29567226J: Oria Arenas, Jesús
 
 master.menu.administrator = Administrador
 master.menu.administrator.list-user-accounts = Ver cuentas de usuario
+master.menu.administrator.list-services = Ver servicios
+master.menu.administrator.list-airlines = Ver aerolíneas
 master.menu.administrator.populate-db-initial = Poblar BD (inicial)
 master.menu.administrator.populate-db-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-system-down = Parar el sistema
@@ -42,6 +44,18 @@ master.menu.consumer.favourite-link = Enlace favorito
 master.menu.customer = Cliente
 master.menu.customer.list-bookings = Lista de Reservas
 master.menu.customer.list-passengers = Lista de Pasajeros
+
+# master.menu.flightCrewMember ##########################################################
+ 
+ master.menu.flightCrewMember = Miembro de la tripulación de vuelo
+ master.menu.flightCrewMember.flightAssignment = Asignación de vuelo
+ 
+  master.menu.flightCrewMember.flightAssignmentCompleted = Asignaciones de vuelo completadas
+ master.menu.flightCrewMember.flightAssignmentPlanned = Asignaciones de vuelo planeadas
+  master.menu.flightCrewMember.activityLogs = Listado de activitylogs
+ 
+ 
+ 
 
 # master.menu.user-account ####################################################
 

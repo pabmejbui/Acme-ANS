@@ -33,22 +33,17 @@
 				action="https://www.philadelphiaeagles.com/" />
 		</acme:menu-option>
 
-		<acme:menu-option code="master.menu.administrator"
-			access="hasRealm('Administrator')">
-			<acme:menu-suboption
-				code="master.menu.administrator.list-user-accounts"
-				action="/administrator/user-account/list" />
-			<acme:menu-separator />
-			<acme:menu-suboption
-				code="master.menu.administrator.populate-db-initial"
-				action="/administrator/system/populate-initial" />
-			<acme:menu-suboption
-				code="master.menu.administrator.populate-db-sample"
-				action="/administrator/system/populate-sample" />
-			<acme:menu-separator />
-			<acme:menu-suboption
-				code="master.menu.administrator.shut-system-down"
-				action="/administrator/system/shut-down" />
+		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
+			<acme:menu-suboption code="master.menu.administrator.list-user-accounts" action="/administrator/user-account/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.list-services" action="/administrator/service/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.list-airlines" action="/administrator/airline/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.populate-db-initial" action="/administrator/system/populate-initial"/>
+			<acme:menu-suboption code="master.menu.administrator.populate-db-sample" action="/administrator/system/populate-sample"/>			
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.shut-system-down" action="/administrator/system/shut-down"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider"
@@ -71,13 +66,21 @@
 				action="/customer/passenger/list" />	
 			
 		</acme:menu-option>
-
-		<acme:menu-option code="master.menu.manager"
-			access="hasRealm('Manager')">
-			<acme:menu-suboption code="manager.menu.manager.list-flights"
-				action="/manager/flight/list" />
+		
+	<%-- 	<acme:menu-option code="master.menu.flightCrewMember" access="hasRealm('FlightCrewMember')">
+ 			<acme:menu-suboption code="master.menu.flightCrewMember.flightAssignment" action="/flight-crew-member/flight-assignment/list"/>
+ 		</acme:menu-option> --%>
+ 		
+ 		<acme:menu-option code="master.menu.flightCrewMember" access="hasRealm('FlightCrewMember')">
+			<acme:menu-suboption code="master.menu.flightCrewMember.flightAssignmentCompleted" action="/flight-crew-member/flight-assignment/list-completed"/>
+			<acme:menu-suboption code="master.menu.flightCrewMember.flightAssignmentPlanned" action="/flight-crew-member/flight-assignment/list-planned"/>
+			<acme:menu-suboption code="master.menu.flightCrewMember.activityLogs" action="/flight-crew-member/activity-log/list"/>
 		</acme:menu-option>
-
+	
+		<acme:menu-option code="master.menu.manager" access="hasRealm('Manager')">
+			<acme:menu-suboption code="manager.menu.manager.list-flights" action="/manager/flight/list"/>
+		</acme:menu-option>
+		
 	</acme:menu-left>
 
 	<acme:menu-right>
