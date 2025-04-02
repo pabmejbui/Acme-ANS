@@ -13,7 +13,7 @@
 manager.leg.form.title = Leg form 
 manager.leg.list.title = List of legs
 
-manager.leg.list.label.flight-number = Flight Number
+manager.leg.list.label.flightNumber = Flight Number
 manager.leg.list.label.scheduledDeparture = Scheduled departure
 manager.leg.list.label.scheduledArrival = Scheduled arrival
 manager.leg.list.label.status = Status
@@ -32,4 +32,11 @@ manager.leg.form.label.originAirport = Origin airport:
 manager.leg.form.label.destinationAirport = Destination airport:
 manager.leg.form.label.aircraft = Aircraft:
 manager.leg.form.label.airline = Airline:
-manager.leg.form.label.flight = Flight:
+manager.leg.form.label.flightTag = Flight tag:
+
+manager.leg.list.button.create = Create a leg
+
+manager.leg.form.button.create = Create  leg
+manager.leg.form.button.update = Update the leg
+manager.leg.form.button.delete = Delete leg
+manager.leg.form.button.publish = Publish leg

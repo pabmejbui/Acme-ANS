@@ -37,4 +37,4 @@ manager.flight.list.label.draftMode = Borrador:
 manager.flight.list.label.number-of-legs = Número de escalas:
 
 manager.flight.list.button.create = Crear vuelo
-manager.flight.list.button.leg = Mis etapas
+manager.leg.list.button.my-legs = Mis etapas

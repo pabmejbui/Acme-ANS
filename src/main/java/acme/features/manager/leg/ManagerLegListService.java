@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.flights.Flight;
 import acme.entities.flights.Leg;
+import acme.features.manager.flight.ManagerFlightRepository;
 import acme.realms.Manager;
 
 @GuiService
@@ -17,23 +19,35 @@ public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerLegRepository repository;
+	private ManagerLegRepository	lr;
+
+	@Autowired
+	private ManagerFlightRepository	fr;
 
 	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int flightId;
+		Flight flight;
+
+		flightId = super.getRequest().getData("flightId", int.class);
+		flight = this.fr.findFlightById(flightId);
+
+		status = flight != null && super.getRequest().getPrincipal().hasRealm(flight.getManager());
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		Collection<Leg> legs;
-		int managerId;
+		int flightId;
 
-		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		legs = this.repository.findLegsByManagerId(managerId);
+		flightId = super.getRequest().getData("flightId", int.class);
+		legs = this.fr.findLegsByFlightId(flightId);
 
 		super.getBuffer().addData(legs);
 	}
@@ -42,13 +56,22 @@ public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 	public void unbind(final Leg leg) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status", "draftMode");
-		dataset.put("duration", leg.getDuration());
-		dataset.put("originAirport", leg.getOriginAirport().getCity());
-		dataset.put("destinationAirport", leg.getDestinationAirport().getCity());
-		dataset.put("aircraft", leg.getAircraft().getModel());
-
+		dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status");
 		super.getResponse().addData(dataset);
 	}
 
+	@Override
+	public void unbind(final Collection<Leg> legs) {
+		int flightId;
+		Flight flight;
+		boolean showCreate;
+
+		flightId = super.getRequest().getData("flightId", int.class);
+		flight = this.fr.findFlightById(flightId);
+
+		showCreate = flight != null && flight.isDraftMode() && super.getRequest().getPrincipal().hasRealm(flight.getManager());
+
+		super.getResponse().addGlobal("flightId", flightId);
+		super.getResponse().addGlobal("showCreate", showCreate);
+	}
 }
