@@ -87,3 +87,5 @@ acme.validation.confirmation.message = Debe confirmar la operación antes de con
 # Mensaje de validacion de numero de telefono #########################################################
 acme.validation.phone.bad-format-phone.message = El número de teléfono tiene un formato inválido. Debe tener entre 6 y 15 dígitos y puede empezar con "+".
 
+# Passenger ##########################################################################
+acme.validation.passportNumber = Formato de pasaporte incorrecto

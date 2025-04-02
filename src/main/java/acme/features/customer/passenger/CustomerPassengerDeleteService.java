@@ -10,7 +10,7 @@ import acme.entities.passenger.Passenger;
 import acme.realms.customer.Customer;
 
 @GuiService
-public class CustomerPassengerPublishService extends AbstractGuiService<Customer, Passenger> {
+public class CustomerPassengerDeleteService extends AbstractGuiService<Customer, Passenger> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -54,13 +54,12 @@ public class CustomerPassengerPublishService extends AbstractGuiService<Customer
 
 	@Override
 	public void validate(final Passenger passenger) {
-		;
+		//Intencionalmente en blanco
 	}
 
 	@Override
 	public void perform(final Passenger passenger) {
-		passenger.setDraftMode(false);
-		this.repository.save(passenger);
+		this.repository.delete(passenger);
 	}
 
 	@Override
@@ -70,4 +69,5 @@ public class CustomerPassengerPublishService extends AbstractGuiService<Customer
 		dataset = super.unbindObject(passenger, "fullName", "email", "passportNumber", "dateOfBirth", "specialNeeds", "draftMode");
 		super.getResponse().addData(dataset);
 	}
+
 }
