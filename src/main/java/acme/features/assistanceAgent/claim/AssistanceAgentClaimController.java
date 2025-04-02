@@ -13,10 +13,13 @@ import acme.realms.assistanceAgent.AssistanceAgent;
 @GuiController
 public class AssistanceAgentClaimController extends AbstractGuiController<AssistanceAgent, Claim> {
 
-	// Internal state ---------------------------------------------------------
+	//Internal state --------------------------------------------------------------
 
 	@Autowired
 	private AssistanceAgentClaimListService		listService;
+
+	//@Autowired
+	//private AssistanceAgentClaimListPendingService	listPendingService;
 
 	@Autowired
 	private AssistanceAgentClaimShowService		showService;
@@ -24,18 +27,16 @@ public class AssistanceAgentClaimController extends AbstractGuiController<Assist
 	@Autowired
 	private AssistanceAgentClaimCreateService	createService;
 
-	/*
-	 * @Autowired
-	 * private AssistanceAgentClaimUpdateService updateService;
-	 * 
-	 * @Autowired
-	 * private AssistanceAgentClaimPublishService publishService;
-	 * 
-	 * @Autowired
-	 * private AssistanceAgentClaimDeleteService deleteService;
-	 */
+	//@Autowired
+	//private AssistanceAgentClaimUpdateService		updateService;
 
-	// Constructors -----------------------------------------------------------
+	//@Autowired
+	//private AssistanceAgentClaimDeleteService		deleteService;
+
+	//@Autowired
+	//private AssistanceAgentClaimPublishService		publishService;
+
+	//Constructors ----------------------------------------------------------------
 
 
 	@PostConstruct
@@ -43,6 +44,11 @@ public class AssistanceAgentClaimController extends AbstractGuiController<Assist
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
+		//super.addBasicCommand("update", this.updateService);
+		//super.addBasicCommand("delete", this.deleteService);
 
+		//super.addCustomCommand("pending", "list", this.listPendingService);
+		//super.addCustomCommand("publish", "update", this.publishService);
 	}
+
 }

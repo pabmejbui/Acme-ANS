@@ -1,7 +1,7 @@
 
 package acme.entities.claims;
 
-public enum ClaimResolution {
+public enum ClaimIndicator {
 
 	ACCEPTED, PENDING, REJECTED
 

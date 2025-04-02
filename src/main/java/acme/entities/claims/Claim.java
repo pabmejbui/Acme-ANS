@@ -30,9 +30,12 @@ import lombok.Setter;
 
 public class Claim extends AbstractEntity {
 
+	// Serialisation version --------------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
 
-	//Attributes
+	// Attributes -------------------------------------------------------------
+
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -61,23 +64,23 @@ public class Claim extends AbstractEntity {
 
 
 	@Transient
-	public ClaimResolution getIndicator() {
-		ClaimResolution result;
+	public ClaimIndicator getIndicator() {
+		ClaimIndicator result;
 		ClaimRepository repository;
 		TrackingLog trackingLog;
 
 		repository = SpringHelper.getBean(ClaimRepository.class);
-		trackingLog = repository.findLastTrackingLogByClaimId(this.getId()).orElse(null);
+		trackingLog = repository.findLastTrackingLogByClaimId(this.getId()).stream().findFirst().orElse(null);
 		if (trackingLog == null)
 			result = null;
 		else {
-			TrackingLogStatus indicator = trackingLog.getStatus();
-			if (indicator.equals(TrackingLogStatus.ACCEPTED))
-				result = ClaimResolution.ACCEPTED;
-			else if (indicator.equals(TrackingLogStatus.REJECTED))
-				result = ClaimResolution.REJECTED;
+			TrackingLogStatus status = trackingLog.getStatus();
+			if (status.equals(TrackingLogStatus.ACCEPTED))
+				result = ClaimIndicator.ACCEPTED;
+			else if (status.equals(TrackingLogStatus.REJECTED))
+				result = ClaimIndicator.REJECTED;
 			else
-				result = ClaimResolution.PENDING;
+				result = ClaimIndicator.PENDING;
 		}
 		return result;
 
@@ -92,6 +95,6 @@ public class Claim extends AbstractEntity {
 
 	@Mandatory
 	@Valid
-	@ManyToOne(optional = true)
+	@ManyToOne(optional = false)
 	private Leg				leg;
 }
