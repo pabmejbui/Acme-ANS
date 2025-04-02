@@ -1,18 +1,19 @@
 
 package acme.features.customer.booking;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
-import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.bookings.Booking;
-import acme.entities.bookings.TravelClass;
+import acme.entities.passenger.Passenger;
 import acme.realms.customer.Customer;
 
 @GuiService
-public class CustomerBookingUpdateService extends AbstractGuiService<Customer, Booking> {
+public class CustomerBookingPublishService extends AbstractGuiService<Customer, Booking> {
 
 	@Autowired
 	private CustomerBookingRepository repository;
@@ -22,8 +23,8 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 	public void authorise() {
 		boolean status;
 		int bookingId;
-		Customer customer;
 		Booking booking;
+		Customer customer;
 
 		bookingId = super.getRequest().getData("id", int.class);
 		booking = this.repository.findBookingById(bookingId);
@@ -35,11 +36,11 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void load() {
-		int bookingId;
 		Booking booking;
+		int id;
 
-		bookingId = super.getRequest().getData("id", int.class);
-		booking = this.repository.findBookingById(bookingId);
+		id = super.getRequest().getData("id", int.class);
+		booking = this.repository.findBookingById(id);
 
 		super.getBuffer().addData(booking);
 	}
@@ -51,24 +52,34 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void validate(final Booking booking) {
-		//intencionalmente en blanco
+		boolean status = true;
+		int id;
+		id = super.getRequest().getData("id", int.class);
+		Collection<Passenger> passengers = this.repository.findPassengersByBookingId(id);
+		if (passengers.isEmpty())
+			status = false;
+		else
+			for (Passenger passenger : passengers)
+				if (passenger.isDraftMode()) {
+					status = false;
+					break;
+				}
+		super.state(status, "*", "customer.booking.publish.not-published-passengers");
 	}
 
 	@Override
 	public void perform(final Booking booking) {
+		booking.setDraftMode(false);
 		this.repository.save(booking);
 	}
 
 	@Override
 	public void unbind(final Booking booking) {
 		Dataset dataset;
-		SelectChoices travelClasses;
-
-		travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
 		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble", "draftMode");
 		dataset.put("bookingCost", booking.getCost());
-		dataset.put("travelClasses", travelClasses);
 		super.getResponse().addData(dataset);
 	}
+
 }

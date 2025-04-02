@@ -1,19 +1,19 @@
-
 # form ####################################################
 
 customer.booking.form.title = Lista de reservas
 customer.booking.form.label.locatorCode = Código localizador
 customer.booking.form.label.travelClass = Clase
 customer.booking.form.label.price = Precio
-customer.booking.form.label.lastCardNibble = Últimos cuatro dígitos de la tarjeta de credito
+customer.booking.form.label.lastCardNibble = Últimos cuatro dígitos de la tarjeta de crédito
 customer.booking.form.label.passengers = Pasajeros asociados
 customer.booking.form.label.purchaseMoment = Fecha de adquisición
-
 customer.booking.form.label.confirmation = Confirmación
 
-
+customer.booking.form.button.passengers = Ver pasajeros
 customer.booking.form.button.create = Crear
 customer.booking.form.button.update = Actualizar
+customer.booking.form.button.publish = Publicar
+customer.booking.form.button.delete = Eliminar
 
 # list ####################################################
 
@@ -21,3 +21,9 @@ customer.booking.list.title = Lista de reservas
 customer.booking.list.label.locatorCode = Código localizador
 customer.booking.list.label.purchaseMoment = Fecha de adquisición
 customer.booking.list.button.create = Crear
+customer.booking.list.label.draftMode = Modo borrador
+
+# features ################################################
+
+customer.booking.delete.published-passengers = No se pueden eliminar reservas con pasajeros publicados
+customer.booking.publish.not-published-passengers = No se pueden publicar reservas a menos que haya pasajeros no publicados o ninguno

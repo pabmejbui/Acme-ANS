@@ -1,0 +1,23 @@
+
+# form ####################################################
+
+customer.passenger.form.label.fullName = Full name
+customer.passenger.form.label.email = Email
+customer.passenger.form.label.passportNumber = Passport number
+customer.passenger.form.label.dateOfBirth = Date of birth
+customer.passenger.form.label.specialNeeds = Special needs
+
+customer.passenger.form.button.save = Save
+customer.passenger.form.button.create = Create
+
+
+
+
+# list ####################################################
+
+customer.passenger.list.label.fullName = Full name
+customer.passenger.list.label.email = Email
+ 
+customer.passenger.list.button.publish = Publish
+customer.passenger.list.button.create = Create
+

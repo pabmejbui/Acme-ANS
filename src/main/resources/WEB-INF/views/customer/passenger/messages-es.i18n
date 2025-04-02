@@ -1,0 +1,18 @@
+# form ####################################################
+
+customer.passenger.form.label.fullName = Nombre completo
+customer.passenger.form.label.email = Correo electrónico
+customer.passenger.form.label.passportNumber = Número de pasaporte
+customer.passenger.form.label.dateOfBirth = Fecha de nacimiento
+customer.passenger.form.label.specialNeeds = Necesidades especiales
+
+customer.passenger.form.button.save = Guardar
+customer.passenger.form.button.create = Crear
+
+# list ####################################################
+
+customer.passenger.list.label.fullName = Nombre completo
+customer.passenger.list.label.email = Correo electrónico
+
+customer.passenger.list.button.publish = Publicar
+customer.passenger.list.button.create = Crear
