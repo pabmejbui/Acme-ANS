@@ -61,3 +61,6 @@ master.menu.user-account.consumer-profile = Consumer profile
 master.menu.manager = Manager
 manager.menu.manager.list-flights = My Flights
 
+# master.menu.technician ########################################################
+master.menu.technician = Technician
+master.menu.technician.maintenanceRecords.maintenanceRecords-list = List maintenance records

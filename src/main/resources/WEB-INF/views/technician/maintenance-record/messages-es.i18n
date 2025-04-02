@@ -1,24 +1,30 @@
-technician.maintenance-record.form.title = Maintenance record form 
-technician.maintenance-record.list.title = Listing of maintenance records
 
-technician.maintenance-record.form.label.moment = Maintenance moment:
-technician.maintenance-record.form.label.status = Status:
-technician.maintenance-record.form.label.insepctionDueDate = Inspection Due Date:
-technician.maintenance-record.form.label.estimatedCost = Estimated cost:
-technician.maintenance-record.form.label.notes = Notes:
-technician.maintenance-record.form.label.aircraft = asociated Aircraft:
-technician.maintenance-record.form.label.technician = asociated Technician: 
 
-technician.maintenance-record.form.placeholder.score = 0.00 - 100.00
-		
-technician.maintenance-record.form.button.tasks = Tasks
-technician.maintenance-record.form.button.update = Update
-technician.maintenance-record.form.button.delete = Delete
-technician.maintenance-record.form.button.publish = Publish
-technician.maintenance-record.form.button.create = Create
 
-technician.maintenance-record.list.label.moment = Maintenance moment
-technician.maintenance-record.list.label.status = Status
-technician.maintenance-record.list.label.inspectionDueDate = Inspection due date
 
-technician.maintenance-record.list.button.create = Create
+technician.maintenance-record.list.title =  Lista de documentos de mantenimiento
+technician.maintenance-record.form.title = Detalles del documento de mantenimiento
+
+technician.maintenance-record.list.label.maintenanceDate = Momento
+technician.maintenance-record.list.label.maintenanceStatus = Estado
+technician.maintenance-record.list.label.nextInspectionDate = Fecha de la próxima inspección
+
+technician.maintenance-record.list.button.create = Crear
+
+technician.maintenance-record.form.button.create = Crear
+technician.maintenance-record.form.button.update = Actualizar
+technician.maintenance-record.form.button.delete = Borrar
+
+
+technician.maintenance-record.form.label.maintenanceDate = Momento
+technician.maintenance-record.form.label.maintenanceStatus = Estado
+technician.maintenance-record.form.label.nextInspectionDate = Fecha de la próxima inspección
+technician.maintenance-record.form.label.estimatedCost = Coste Estimado
+technician.maintenance-record.form.label.notes = Notas
+technician.maintenance-record.form.label.aircraft = Avión
+
+technician.maintenance-record.form.error.noStatus = No se ha seleccionado ningún estado.
+technician.maintenance-record.form.error.nextInspectionDate = La fecha y hora de la próxima inspección debe ser posterior al momento actual.
+technician.maintenance-record.form.error.estimatedCost = El coste estimado debe ser mayor o igual a 0.00, y menor o igual a 1000000.00 .
+technician.maintenance-record.form.error.notes = La longitud máxima de las anotaciones es de 255 caractéres.
+technician.maintenance-record.form.error.aircraft = El avión seleccionado no existe.

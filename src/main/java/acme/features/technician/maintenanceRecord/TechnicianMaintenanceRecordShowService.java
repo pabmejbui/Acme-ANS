@@ -1,12 +1,15 @@
 
 package acme.features.technician.maintenanceRecord;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.aircrafts.Aircraft;
 import acme.entities.maintenanceRecords.MaintenanceRecord;
 import acme.entities.maintenanceRecords.MaintenanceStatus;
 import acme.realms.Technician;
@@ -24,7 +27,15 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		MaintenanceRecord maintenanceRecord;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		maintenanceRecord = this.repository.findMaintenanceRecordById(id);
+		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
+
+		if (technician.equals(maintenanceRecord.getTechnician()))
+			super.getResponse().setAuthorised(true);
 
 	}
 
@@ -44,14 +55,18 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 	public void unbind(final MaintenanceRecord maintenanceRecord) {
 
 		SelectChoices choices;
+		SelectChoices aircraft;
+		Collection<Aircraft> aircrafts;
+
 		Dataset dataset;
 
-		choices = SelectChoices.from(MaintenanceStatus.class, maintenanceRecord.getMaintenanceStatus());
+		aircrafts = this.repository.findAllAircrafts();
+		choices = SelectChoices.from(MaintenanceStatus.class, maintenanceRecord.getStatus());
+		aircraft = SelectChoices.from(aircrafts, "id", maintenanceRecord.getAircraft());
 
-		dataset = super.unbindObject(maintenanceRecord, "maintenanceDate", "maintenanceStatus", "nextInspectionDate", "estimatedCost", "notes");
-		dataset.put("confirmation", false);
-		dataset.put("readonly", true);
-		dataset.put("statuses", choices);
+		dataset = super.unbindObject(maintenanceRecord, "moment", "status", "nextInspectionDate", "estimatedCost", "notes", "aircraft");
+		dataset.put("status", choices);
+		dataset.put("aircraft", aircraft);
 
 		super.getResponse().addData(dataset);
 
