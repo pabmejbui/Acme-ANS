@@ -67,7 +67,8 @@ master.menu.user-account.manager-profile = Perfil de Manager
 
 # master.menu.manager ###########################################################
 master.menu.manager = Manager
-manager.menu.manager.list-flights = Mis Vuelos
+master.menu.manager.list-flights = Mis Vuelos
+master.menu.manager.dashboard = Panel del manager
 
 # master.menu.any ###############################################################
 
