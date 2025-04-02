@@ -6,6 +6,8 @@ customer.booking.form.label.locatorCode = Locator code
 customer.booking.form.label.travelClass = Travel Class
 customer.booking.form.label.price = Price
 customer.booking.form.label.lastCardNibble = Last Card Nibble
+customer.booking.form.label.passengers = Associated passengers
+customer.booking.form.label.purchaseMoment = Purchase moment
 
 customer.booking.form.label.confirmation = Confirmation
 

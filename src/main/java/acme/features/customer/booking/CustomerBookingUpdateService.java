@@ -9,7 +9,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.bookings.Booking;
 import acme.entities.bookings.TravelClass;
-import acme.realms.Customer;
+import acme.realms.customer.Customer;
 
 @GuiService
 public class CustomerBookingUpdateService extends AbstractGuiService<Customer, Booking> {
@@ -55,9 +55,9 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 			boolean isDraft = booking.isDraftMode();
 			boolean hasLastCardNibble = booking.getLastCardNibble() != null;
 
-			// Una reserva solo puede ser publicada si tiene el último nibble de la tarjeta
+			// Una reserva solo puede ser actualizada si tiene el último nibble de la tarjeta
 			if (!isDraft && !hasLastCardNibble)
-				super.state(false, "lastCardNibble", "acme.validation.lastCardNibble.message");
+				super.state(false, "*", "acme.validation.lastCardNibble.message");
 		}
 	}
 

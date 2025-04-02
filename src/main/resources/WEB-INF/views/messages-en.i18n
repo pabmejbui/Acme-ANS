@@ -20,9 +20,8 @@ manager.validation.age.less-than-18 = The manager must be at least 18 years old.
 # Customer validation messages #########################################################
 
 customer.validation.identifier.not-null = Identifier must not be null or empty.
-customer.validation.identifier.bad-format = Identifier must contain 2 or 3 uppercase letters followed by exactly 6 digits.
-customer.validation.fullname.missing = User's full name is required to validate the identifier.
-customer.validation.identifier.initials-mismatch = Identifier initials do not match user's name.
+customer.validation.identifier.bad-format = Identifier must contain 2 or 3 uppercase letters followed by exactly 6 digits or initials do not match user's name.
+acme.validation.customer.duplicated-identifier.message = This id already exists.
 
 # Flight number validation messages #########################################################
 
@@ -46,10 +45,14 @@ acme.validation.license.bad-format.message=The license format is invalid. It mus
 banned.passenger.validation..ban.issued.date.null = Ban Issues date cannot be null
 banned.passenger.validation.lift.date.min-duration = Lift date must be after the ban issued date
 
-# Asi validation messages #########################################################
-
+# Customer validation messages #########################################################
 customer.validation.identifier.not-null = Identifier must not be null or empty.
 customer.validation.identifier.bad-format = Identifier must contain 2 or 3 uppercase letters followed by exactly 6 digits.
+
+# Promotion Code messages ######################################################
+acme.validation.promoCode.message = The promo code is invalid
+acme.validation.promoCode.bad-format-code.message = The promo code format is invalid. Please enter a valid promo code.
+acme.validation.promoCode.invalid-year.message = The last two digits of the promo code must match the current year (e.g., -{0}).
 
 # Manager flight messages #########################################################
 manager.flight.form.error.cost-must-be-positive = The cost of the flight must be positive
@@ -59,8 +62,6 @@ manager.flight.not-owner = You do not have permission to modify this flight.
 manager.flight.not-in-draft = You can only modify, delete or publish flights that are in draft mode.
 acme.validation.manager.flight.publish.requires-legs = A flight must have at least one leg before it can be published.
 acme.validation.manager.flight.publish.all-legs-must-be-published = All legs must be published before the flight can be published.
-
-
 
 # Manager Leg messages ##############################################################
 acme.validation.manager.leg.departure-equals-arrival = The origin and destination airports cannot be the same.
@@ -76,3 +77,7 @@ acme.validation.manager.leg.valid-leg.time-conflict = The arrival must be at lea
 acme.validation.manager.leg.valid-leg.sequence-order = The flight legs must be in chronological order: each arrival must be before the next departure.
 acme.validation.manager.leg.flight-number.format.message = The flight number must start with the airline's IATA code followed by 4 digits.
 acme.validation.manager.leg.flight-number.duplicate.message = Another leg with the same flight number already exists.
+
+# Booking validation messages #########################################################
+acme.validation.locatorCode.message = locatorCode has an incorrect format.
+acme.validation.booking.duplicate-locator.message = Locator code already exists.

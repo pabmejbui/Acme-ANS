@@ -1,0 +1,22 @@
+# messages-en.i18n
+
+administrator.service.form.title = Service form
+administrator.service.list.title = Listing of services
+
+administrator.service.form.label.name = Name:
+administrator.service.form.label.pictureUrl = Image
+administrator.service.form.label.averageDwellTime = Average Time 
+administrator.service.form.label.promotionCode = Promotion code
+administrator.service.form.label.discountAmount = Discount
+
+administrator.service.form.button.create = Create
+administrator.service.form.button.update = Update
+administrator.service.form.button.delete = Delete
+ 
+administrator.service.list.label.name = Name:
+administrator.service.list.label.pictureUrl = Image
+administrator.service.list.label.averageDwellTime = Average Time 
+administrator.service.list.label.promotionCode = Promotion code
+administrator.service.list.label.discountAmount = Discount
+
+administrator.service.list.button.create = Create

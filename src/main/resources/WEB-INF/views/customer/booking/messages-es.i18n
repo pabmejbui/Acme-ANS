@@ -6,6 +6,8 @@ customer.booking.form.label.locatorCode = Código localizador
 customer.booking.form.label.travelClass = Clase
 customer.booking.form.label.price = Precio
 customer.booking.form.label.lastCardNibble = Últimos cuatro dígitos de la tarjeta de credito
+customer.booking.form.label.passengers = Pasajeros asociados
+customer.booking.form.label.purchaseMoment = Fecha de adquisición
 
 customer.booking.form.label.confirmation = Confirmación
 
