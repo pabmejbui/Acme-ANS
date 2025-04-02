@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.principals.Administrator;
+import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
@@ -50,8 +51,14 @@ public class AdministratorAirlineCreateService extends AbstractGuiService<Admini
 	@Override
 	public void unbind(final Airline airline) {
 		Dataset dataset = super.unbindObject(airline, "name", "iataCode", "website", "type", "foundationMoment", "optionalEmail", "phoneNumber", "draftMode");
+
 		dataset.put("confirmation", false);
-		dataset.put("types", AirlineType.values());
+
+		SelectChoices types = SelectChoices.from(AirlineType.class, airline.getType());
+
+		dataset.put("types", types);
+		dataset.put("type", types.getSelected().getKey());
+
 		super.getResponse().addData(dataset);
 	}
 }

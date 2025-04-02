@@ -10,6 +10,10 @@
 
 # messages-es.i18n
 
+administrator.airline.list.title = Listado de aerolíneas
+administrator.airline.form.title = Formulario de aerolínea
+
+
 administrator.airline.form.label.name = Nombre
 administrator.airline.form.label.iataCode = Código IATA
 administrator.airline.form.label.website = Sitio web
