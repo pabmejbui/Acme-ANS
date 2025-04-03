@@ -10,13 +10,10 @@ public class AssistanceAgentDashboards extends AbstractForm {
 
 	// Attributes -------------------------------------------------------------
 
-	//The ratio of claims that have been resolved successfully.
 	double						ratioClaimsResolved;
 
-	//The ratio of claims that have been rejected.
 	double						ratioClaimsRejected;
 
-	//The top three months with the highest number of claims.
 	String						topMonth1;
 	String						topMonth2;
 	String						topMonth3;

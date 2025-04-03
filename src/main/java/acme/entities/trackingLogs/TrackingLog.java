@@ -46,7 +46,7 @@ public class TrackingLog extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@Automapped
-	private Resolution			indicator;
+	private TrackingLogStatus	status;
 
 	@Mandatory
 	@ValidString(max = 255)

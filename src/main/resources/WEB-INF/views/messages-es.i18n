@@ -16,12 +16,14 @@ manager.validation.fullname.missing = El nombre completo del usuario es obligato
 manager.validation.identifier.initials-mismatch = Las iniciales del identificador no coinciden con el nombre del usuario.
 manager.validation.birthDate.null = La fecha de nacimiento es obligatoria.
 manager.validation.age.less-than-18 = El manager debe tener al menos 18 años.
+manager.validation.identifier.duplicated = El identificador ya está en uso. Prueba otro.
 
 # Mensajes de validación de customer ####################################################
 
-customer.validation.identifier.not-null = El identificador no debe ser nulo ni estar vacío.
-customer.validation.identifier.bad-format = El identificador debe contener 2 o 3 letras mayúsculas seguidas de exactamente 6 dígitos o las iniciales no coinciden con el nombre del usuario.
-acme.validation.customer.duplicated-identifier.message = Este ID ya existe.
+customer.validation.identifier.bad-format = El identificador debe contener 2 o 3 letras mayúsculas seguidas de exactamente 6 dígitos.
+customer.validation.fullname.missing = Se requiere el nombre completo del usuario para validar el identificador.
+customer.validation.identifier.initials-mismatch = Las iniciales del identificador no coinciden con el nombre del usuario.
+acme.validation.customer.duplicated-identifier.message = Este identificador ya existe.
 
 # Mensajes de validación de flight number #########################################################
 
@@ -29,6 +31,12 @@ flight.validation.flightNumber.not-null = El número de vuelo no puede estar vac
 flight.validation.flightNumber.bad-format = El número de vuelo debe tener tres letras mayúsculas seguidas de cuatro dígitos (ejemplo: AMX1234).
 flight.validation.flightNumber.missing-airline = No se puede determinar el código IATA de la aerolínea para este vuelo.
 flight.validation.flightNumber.mismatch = El número de vuelo debe comenzar con el código IATA de la aerolínea.
+
+# Mensajes de validación de la etiqueta de vuelo #########################################################
+
+flight.validation.tag.not-blank = La etiqueta del vuelo no puede estar vacío o ser nula.
+flight.validation.tag.length = La longitud de la etiqueta tiene que ser entre 1 y 50 caracteres.
+flight.validation.tag.duplicated = La etiqueta está ya en uso. Prueba otra.
 
 # Mensajes de validación de leg #########################################################
 
@@ -87,3 +95,14 @@ acme.validation.confirmation.message = Debe confirmar la operación antes de con
 # Mensaje de validacion de numero de telefono #########################################################
 acme.validation.phone.bad-format-phone.message = El número de teléfono tiene un formato inválido. Debe tener entre 6 y 15 dígitos y puede empezar con "+".
 
+# Passenger ##########################################################################
+acme.validation.passportNumber = Formato de pasaporte incorrecto
+
+# Mensajes de validación de aerolíneas #####################################################
+acme.validation.iataCode.message = Formato de código iata incorrecto
+airline.validation.iataCode.not-blank = El código iata no puede estar vacío
+airline.validation.iataCode.duplicated = El código iata ya está en uso. Prueba otro
+airline.validation.foundation.future = El momento de la fundación no puede ser en el futuro.
+
+# Mensajes de validación de aeronaves ########################################################
+aircraft.validation.registration.duplicate = El número de registro ya está en uso. Prueba con otro.

@@ -8,16 +8,21 @@ import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
+import javax.validation.ReportAsSingleViolation;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
-@Target({
-	ElementType.FIELD, ElementType.PARAMETER, ElementType.ANNOTATION_TYPE, ElementType.METHOD
-})
+@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = PassportValidator.class)
+@Constraint(validatedBy = {})
+@ReportAsSingleViolation
+
+@NotBlank
+@Pattern(regexp = "^[A-Z0-9]{6,9}$")
 
 public @interface ValidPassport {
 
-	String message() default "";
+	String message() default "{acme.validation.phone.bad-format-passport.message}";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};

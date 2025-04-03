@@ -16,11 +16,13 @@ manager.validation.fullname.missing = User's full name is required to validate t
 manager.validation.identifier.initials-mismatch = Identifier initials do not match user's name.
 manager.validation.birthDate.null = Birth date is required.
 manager.validation.age.less-than-18 = The manager must be at least 18 years old.
+manager.validation.identifier.duplicated = Identifier is already in use. Try another.
 
 # Customer validation messages #########################################################
-
 customer.validation.identifier.not-null = Identifier must not be null or empty.
-customer.validation.identifier.bad-format = Identifier must contain 2 or 3 uppercase letters followed by exactly 6 digits or initials do not match user's name.
+customer.validation.identifier.bad-format = Identifier must contain 2 or 3 uppercase letters followed by exactly 6 digits.
+customer.validation.fullname.missing = User's full name is required to validate the identifier.
+customer.validation.identifier.initials-mismatch = Identifier initials do not match user's name.
 acme.validation.customer.duplicated-identifier.message = This id already exists.
 
 # Flight number validation messages #########################################################
@@ -29,6 +31,12 @@ flight.validation.flightNumber.not-null = Flight number cannot be null or empty.
 flight.validation.flightNumber.bad-format = Flight number must have three uppercase letters followed by four digits (e.g., AMX1234).
 flight.validation.flightNumber.missing-airline = Cannot determine airline IATA code for this flight.
 flight.validation.flightNumber.mismatch = Flight number must start with the airline’s IATA code.
+
+# Flight tag validation messages #########################################################
+
+flight.validation.tag.not-blank = The tag cannot be empty or null
+flight.validation.tag.length = The tag length must be from 1 to 50 characters
+flight.validation.tag.duplicated = The tag is already in use. Try another.
 
 # Leg validation messages #########################################################
 
@@ -45,9 +53,6 @@ acme.validation.license.bad-format.message=The license format is invalid. It mus
 banned.passenger.validation..ban.issued.date.null = Ban Issues date cannot be null
 banned.passenger.validation.lift.date.min-duration = Lift date must be after the ban issued date
 
-# Customer validation messages #########################################################
-customer.validation.identifier.not-null = Identifier must not be null or empty.
-customer.validation.identifier.bad-format = Identifier must contain 2 or 3 uppercase letters followed by exactly 6 digits.
 
 # Promotion Code messages ######################################################
 acme.validation.promoCode.message = The promo code is invalid
@@ -87,3 +92,15 @@ acme.validation.confirmation.message = You must confirm this operation before pr
 
 # Phone Number validation messages ###################################################
 acme.validation.phone.bad-format-phone.message = The phone number format is invalid. It must be a number between 6 and 15 digits, optionally starting with "+".
+
+# Passenger ##########################################################################
+acme.validation.passportNumber = Bad format Passport
+
+# Airline validation messages #####################################################33
+acme.validation.iataCode.message = Bad Iata Code format
+airline.validation.iataCode.not-blank = Iata Code cannot be blank
+airline.validation.iataCode.duplicated = Iata code is already in use. Try another
+airline.validation.foundation.future = Fundation moment cannot be in the future.
+
+# Aircraft validation messages ########################################################
+aircraft.validation.registration.duplicate = The registration number is already in use. Try another

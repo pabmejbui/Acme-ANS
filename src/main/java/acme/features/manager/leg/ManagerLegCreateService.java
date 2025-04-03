@@ -16,7 +16,7 @@ import acme.entities.flights.Flight;
 import acme.entities.flights.Leg;
 import acme.entities.flights.LegStatus;
 import acme.features.manager.flight.ManagerFlightRepository;
-import acme.realms.Manager;
+import acme.realms.manager.Manager;
 
 @GuiService
 public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {

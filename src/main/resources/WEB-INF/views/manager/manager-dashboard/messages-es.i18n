@@ -1,0 +1,20 @@
+# menu-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+# messages-es.i18n
+
+manager.dashboard.form.title.general-indicators = Indicadores generales
+manager.dashboard.form.label.ranking = Ranking (basado en experiencia)
+manager.dashboard.form.label.yearsToRetire = Años hasta la jubilación
+manager.dashboard.form.label.avgCost = Coste medio
+manager.dashboard.form.label.minCost = Coste mínimo
+manager.dashboard.form.label.maxCost = Coste máximo
+manager.dashboard.form.label.stdCost = Desviación estándar del coste
+manager.dashboard.form.title.leg-ratios = Ratio de tramos (puntuales vs. retrasados)

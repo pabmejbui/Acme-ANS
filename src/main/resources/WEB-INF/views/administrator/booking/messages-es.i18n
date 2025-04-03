@@ -1,0 +1,17 @@
+# form ####################################################
+
+administrator.booking.form.title = Reserva
+administrator.booking.form.label.locatorCode = Código localizador
+administrator.booking.form.label.travelClass = Clase
+administrator.booking.form.label.price = Precio
+administrator.booking.form.label.lastCardNibble = Últimos cuatro dígitos de la tarjeta de crédito
+administrator.booking.form.label.passengers = Pasajeros asociados
+administrator.booking.form.label.purchaseMoment = Fecha de adquisición
+
+
+# list ####################################################
+
+administrator.booking.list.title = Lista de reservas
+administrator.booking.list.label.locatorCode = Código localizador
+administrator.booking.list.label.purchaseMoment = Fecha de adquisición
+administrator.booking.list.label.price = Pecio

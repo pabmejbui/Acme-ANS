@@ -3,22 +3,15 @@ package acme.constraints.customer;
 
 import javax.validation.ConstraintValidatorContext;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
+import acme.client.components.principals.DefaultUserIdentity;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.realms.customer.Customer;
-import acme.realms.customer.CustomerRepository;
 
 @Validator
 public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer> {
 
-	// Internal state ---------------------------------------------------------
-
-	@Autowired
-	private CustomerRepository repository;
-
-	// ConstraintValidator interface ------------------------------------------
+	private static final String IDENTIFIER_PATTERN = "^[A-Z]{2,3}\\d{6}$";
 
 
 	@Override
@@ -28,34 +21,65 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 
 	@Override
 	public boolean isValid(final Customer customer, final ConstraintValidatorContext context) {
-		assert context != null;
+		assert customer != null && context != null;
 
-		boolean result;
+		boolean isValid = true;
+		String identifier = customer.getIdCustomer();
 
-		if (customer == null)
-			super.state(context, false, "*", "manager.validation.identifier.not-null");
-		else {
-			{
-				boolean uniqueCustomer;
-				Customer existingCustomer;
-
-				existingCustomer = this.repository.findCustomerIdentifier(customer.getIdCustomer());
-				uniqueCustomer = existingCustomer == null || existingCustomer.equals(customer);
-
-				super.state(context, uniqueCustomer, "idCustomer", "acme.validation.customer.duplicated-identifier.message");
-			}
-			{
-				boolean correctIdentifier;
-
-				correctIdentifier = customer.getIdCustomer().charAt(0) == customer.getUserAccount().getIdentity().getName().charAt(0) && customer.getIdCustomer().charAt(1) == customer.getUserAccount().getIdentity().getSurname().charAt(0);
-
-				super.state(context, correctIdentifier, "*", "customer.validation.identifier.bad-format");
-			}
+		// Validación de formato del identificador
+		if (identifier == null || identifier.isBlank()) {
+			super.state(context, false, "idCustomer", "customer.validation.identifier.not-null");
+			return false;
 		}
 
-		result = !super.hasErrors(context);
+		if (!identifier.matches(CustomerValidator.IDENTIFIER_PATTERN)) {
+			super.state(context, false, "idCustomer", "customer.validation.identifier.bad-format");
+			return false;
+		}
 
-		return result;
+		// Validación de iniciales usando DefaultUserIdentity
+		if (customer.getUserAccount() == null || customer.getUserAccount().getIdentity() == null) {
+			super.state(context, false, "idCustomer", "customer.validation.fullname.missing");
+			return false;
+		}
+
+		DefaultUserIdentity identity = customer.getUserAccount().getIdentity();
+
+		if (identity.getFullName() == null || identity.getFullName().isBlank()) {
+			super.state(context, false, "idCustomer", "customer.validation.fullname.missing");
+			return false;
+		}
+
+		String initials = this.extractInitials(identity.getFullName());
+		String identifierInitials = identifier.replaceAll("\\d", "");
+
+		if (!identifierInitials.equals(initials)) {
+			super.state(context, false, "idCustomer", "customer.validation.identifier.initials-mismatch");
+			return false;
+		}
+
+		return isValid && !super.hasErrors(context);
 	}
 
+	private String extractInitials(final String fullName) {
+		if (fullName == null || fullName.isBlank())
+			return "";
+
+		String[] parts = fullName.split(",\\s*");
+
+		if (parts.length < 2)
+			return "";
+
+		String surname = parts[0];
+		String names = parts[1];
+
+		StringBuilder initials = new StringBuilder();
+		initials.append(Character.toUpperCase(surname.charAt(0)));
+
+		String[] nameParts = names.split("\\s+");
+		for (int i = 0; i < Math.min(nameParts.length, 2); i++)
+			initials.append(Character.toUpperCase(nameParts[i].charAt(0)));
+
+		return initials.toString();
+	}
 }

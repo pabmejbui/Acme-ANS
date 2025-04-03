@@ -52,7 +52,7 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		int memberId;
 		FlightCrewMember member;
 
-		legId = super.getRequest().getData("flightLeg", int.class);
+		legId = super.getRequest().getData("leg", int.class);
 		leg = this.repository.findLegById(legId);
 		memberId = super.getRequest().getData("member", int.class);
 		member = this.repository.findFlightCrewMemberById(memberId);
