@@ -1,0 +1,40 @@
+# menu-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+# messages-es.i18n
+
+administrator.airport.list.title = Listado de aeropuertos
+administrator.airport.form.title = Formulario de aeropuerto
+
+
+administrator.airport.form.label.name = Nombre
+administrator.airport.form.label.iataCode = Código IATA
+administrator.airport.form.label.operationalScope = Alcance operativo
+administrator.airport.form.label.city = Ciudad
+administrator.airport.form.label.country = País
+administrator.airport.form.label.website = Sitio web
+administrator.airport.form.label.email = Email
+administrator.airport.form.label.phoneNumber = Teléfono
+administrator.airport.form.label.draftMode = Borrador
+administrator.airport.form.label.confirmation = Confirmo esta operación
+
+
+administrator.airport.form.button.create = Crear aeropuerto
+administrator.airport.form.button.update = Modificar aeropuerto
+
+
+administrator.airport.list.label.name = Nombre
+administrator.airport.list.label.iataCode = Código IATA
+administrator.airport.list.label.city = Ciudad
+administrator.airport.list.label.country = País
+administrator.airport.list.label.operationalScope = Alcance operativo
+administrator.airport.list.label.draftMode = Borrador
+
+administrator.airport.list.button.create = Crear aeropuerto

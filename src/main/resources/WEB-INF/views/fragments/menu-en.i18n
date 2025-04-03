@@ -23,6 +23,9 @@ master.menu.anonymous.jesus-oria = 29567226J: Oria Arenas, Jesús
 
 master.menu.administrator = Administrator
 master.menu.administrator.list-user-accounts = List user accounts
+master.menu.administrator.list-services = List services
+master.menu.administrator.list-airlines = List airlines
+master.menu.administrator.list-airports = List airports
 master.menu.administrator.list-aircrafts = List aircrafts
 master.menu.administrator.populate-db-initial = Populate DB (initial)
 master.menu.administrator.populate-db-sample = Populate DB (samples)
