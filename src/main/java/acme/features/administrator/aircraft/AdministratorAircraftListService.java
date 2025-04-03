@@ -24,7 +24,6 @@ public class AdministratorAircraftListService extends AbstractGuiService<Adminis
 
 	@Override
 	public void authorise() {
-<<<<<<< HEAD
 		boolean status;
 		status = super.getRequest().getPrincipal().hasRealmOfType(Administrator.class);
 		super.getResponse().setAuthorised(status);
@@ -44,7 +43,6 @@ public class AdministratorAircraftListService extends AbstractGuiService<Adminis
 		Dataset dataset;
 
 		dataset = super.unbindObject(aircraft, "model", "registrationNumber", "capacity", "cargoWeight");
-=======
 		super.getResponse().setAuthorised(true);
 	}
 
@@ -62,10 +60,8 @@ public class AdministratorAircraftListService extends AbstractGuiService<Adminis
 		Dataset dataset;
 
 		dataset = super.unbindObject(aircraft, "model", "registrationNumber", "status");
-		super.addPayload(dataset, aircraft, //
+		super.addPayload(dataset, aircraft, 
 			"capacity", "cargoWeight", "details");
->>>>>>> refs/heads/master
-
 		super.getResponse().addData(dataset);
 	}
 
