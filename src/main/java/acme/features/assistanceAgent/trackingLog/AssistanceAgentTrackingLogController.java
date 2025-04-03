@@ -1,5 +1,5 @@
 
-package acme.features.assistanceAgent.tracking;
+package acme.features.assistanceAgent.trackingLog;
 
 import javax.annotation.PostConstruct;
 
@@ -13,38 +13,33 @@ import acme.realms.AssistanceAgent;
 @GuiController
 public class AssistanceAgentTrackingLogController extends AbstractGuiController<AssistanceAgent, TrackingLog> {
 
-	// Internal state ---------------------------------------------------------
+	@Autowired
+	private AssistanceAgentTrackingLogListService		listService;
 
 	@Autowired
-	private AssistanceAgentTrackingLogList		listService;
+	private AssistanceAgentTrackingLogShowService		showService;
 
 	@Autowired
-	private AssistanceAgentTrackingLogShow		showService;
+	private AssistanceAgentTrackingLogCreateService		createService;
 
 	@Autowired
-	private AssistanceAgentTrackingLogCreate	createService;
+	private AssistanceAgentTrackingLogUpdateService		updateService;
 
 	@Autowired
-	private AssistanceAgentTrackingLogUpdate	updateService;
+	private AssistanceAgentTrackingLogDeleteService		deleteService;
 
 	@Autowired
-	private AssistanceAgentTrackingLogDelete	deleteService;
-
-	@Autowired
-	private AssistanceAgentTrackingLogPublish	publishService;
-
-	// Constructors -----------------------------------------------------------
+	private AssistanceAgentTrackingLogPublishService	publishService;
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("list", this.listService);
 
 		super.addCustomCommand("publish", "update", this.publishService);
 	}
-
 }

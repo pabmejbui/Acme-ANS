@@ -1,5 +1,5 @@
 
-package acme.features.assistanceAgent.tracking;
+package acme.features.assistanceAgent.trackingLog;
 
 import java.util.Collection;
 
@@ -12,7 +12,7 @@ import acme.entities.trackingLogs.TrackingLog;
 import acme.realms.AssistanceAgent;
 
 @GuiService
-public class AssistanceAgentTrackingLogList extends AbstractGuiService<AssistanceAgent, TrackingLog> {
+public class AssistanceAgentTrackingLogListService extends AbstractGuiService<AssistanceAgent, TrackingLog> {
 
 	// Internal State --------------------------------------------------------------------
 

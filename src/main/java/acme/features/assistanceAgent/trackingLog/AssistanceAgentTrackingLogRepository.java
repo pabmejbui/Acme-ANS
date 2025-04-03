@@ -1,5 +1,5 @@
 
-package acme.features.assistanceAgent.tracking;
+package acme.features.assistanceAgent.trackingLog;
 
 import java.util.Collection;
 
@@ -21,5 +21,7 @@ public interface AssistanceAgentTrackingLogRepository extends AbstractRepository
 
 	@Query("SELECT t FROM TrackingLog t WHERE t.id = :id")
 	TrackingLog findTrackingLogById(int id);
+
+	Collection<TrackingLog> findLatestTrackingLogsByClaimId(int claimId);
 
 }

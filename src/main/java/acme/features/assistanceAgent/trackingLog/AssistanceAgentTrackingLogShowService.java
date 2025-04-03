@@ -1,23 +1,20 @@
 
-package acme.features.assistanceAgent.tracking;
-
-import java.util.Date;
+package acme.features.assistanceAgent.trackingLog;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.principals.Principal;
 import acme.client.components.views.SelectChoices;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.claims.Claim;
 import acme.entities.trackingLogs.Resolution;
 import acme.entities.trackingLogs.TrackingLog;
 import acme.realms.AssistanceAgent;
 
 @GuiService
-public class AssistanceAgentTrackingLogPublish extends AbstractGuiService<AssistanceAgent, TrackingLog> {
+public class AssistanceAgentTrackingLogShowService extends AbstractGuiService<AssistanceAgent, TrackingLog> {
+
 	// Internal State --------------------------------------------------------------------
 
 	@Autowired
@@ -31,8 +28,8 @@ public class AssistanceAgentTrackingLogPublish extends AbstractGuiService<Assist
 		boolean status;
 		int trackingLogId;
 		int currentAssistanceAgentId;
-		Principal principal;
 		TrackingLog trackingLog;
+		Principal principal;
 
 		principal = super.getRequest().getPrincipal();
 
@@ -43,7 +40,6 @@ public class AssistanceAgentTrackingLogPublish extends AbstractGuiService<Assist
 		status = principal.hasRealmOfType(AssistanceAgent.class) && trackingLog.getClaim().getAssistanceAgent().getId() == currentAssistanceAgentId;
 
 		super.getResponse().setAuthorised(status);
-
 	}
 
 	@Override
@@ -55,36 +51,6 @@ public class AssistanceAgentTrackingLogPublish extends AbstractGuiService<Assist
 		trackingLog = this.repository.findTrackingLogById(trackingLogId);
 
 		super.getBuffer().addData(trackingLog);
-
-	}
-
-	@Override
-	public void bind(final TrackingLog trackingLog) {
-		super.bindObject(trackingLog, "stepUndergoing", "resolutionPercentage", "accepted", "resolutionDetails");
-	}
-
-	@Override
-	public void validate(final TrackingLog trackingLog) {
-		Claim claim;
-		claim = trackingLog.getClaim();
-
-		if (claim.isDraftMode())
-			super.state(!claim.isDraftMode(), "*", "assistance-agent.tracking-log.form.error.claimDraftMode");
-
-		if (!trackingLog.isDraftMode())
-			super.state(trackingLog.isDraftMode(), "*", "assistance-agent.tracking-log.form.error.draftMode");
-
-	}
-
-	@Override
-	public void perform(final TrackingLog trackingLog) {
-		Date currentMoment;
-
-		currentMoment = MomentHelper.getCurrentMoment();
-
-		trackingLog.setLastUpdateMoment(currentMoment);
-		trackingLog.setDraftMode(false);
-		this.repository.save(trackingLog);
 	}
 
 	@Override
@@ -92,10 +58,11 @@ public class AssistanceAgentTrackingLogPublish extends AbstractGuiService<Assist
 		Dataset dataset;
 		SelectChoices accepteds;
 
-		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "stepUndergoing", "resolutionPercentage", "accepted", "resolutionDetails");
+		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "indicator", "resolution", "draftMode");
 		accepteds = SelectChoices.from(Resolution.class, trackingLog.getIndicator());
 		dataset.put("accepteds", accepteds);
 
 		super.getResponse().addData(dataset);
+
 	}
 }
