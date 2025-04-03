@@ -16,7 +16,7 @@
 
 <acme:form>
     <acme:input-textbox code="authenticated.manager.form.label.identifier" path="identifier"/>
-    <acme:input-integer code="authenticated.manager.form.label.experience" path="experience"/>
+    <acme:input-textbox code="authenticated.manager.form.label.experience" path="experience"/>
     <acme:input-moment code="authenticated.manager.form.label.birthDate" path="birthDate"/>
     <acme:input-url code="authenticated.manager.form.label.pictureLink" path="pictureLink"/>
 

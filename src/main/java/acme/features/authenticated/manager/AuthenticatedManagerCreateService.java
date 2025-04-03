@@ -9,7 +9,7 @@ import acme.client.components.principals.UserAccount;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.realms.Manager;
+import acme.realms.manager.Manager;
 
 @GuiService
 public class AuthenticatedManagerCreateService extends AbstractGuiService<Authenticated, Manager> {

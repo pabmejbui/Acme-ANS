@@ -35,4 +35,8 @@ public interface FlightRepository extends AbstractRepository {
 
 	@Query("SELECT l FROM Leg l WHERE l.flight.id = :flightId")
 	List<Leg> findLegsByFlight(int flightId);
+
+	@Query("select f from Flight f where f.tag = :tag")
+	Flight findOneByTag(String tag);
+
 }

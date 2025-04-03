@@ -11,7 +11,7 @@ import acme.client.services.GuiService;
 import acme.entities.flights.Flight;
 import acme.entities.flights.Leg;
 import acme.features.manager.flight.ManagerFlightRepository;
-import acme.realms.Manager;
+import acme.realms.manager.Manager;
 
 @GuiService
 public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {

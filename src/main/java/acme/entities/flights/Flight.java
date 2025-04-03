@@ -16,13 +16,15 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
-import acme.realms.Manager;
+import acme.constraints.flights.ValidFlight;
+import acme.realms.manager.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@ValidFlight
 public class Flight extends AbstractEntity {
 
 	// Serialisation version
@@ -32,8 +34,8 @@ public class Flight extends AbstractEntity {
 	// Attributes
 
 	@Mandatory
-	@ValidString(min = 1, max = 50)
 	@Column(unique = true)
+	@Automapped
 	private String				tag;
 
 	@Mandatory
