@@ -1,7 +1,7 @@
 
 # form ##############################################################
 
-authenticated.customer.form.title = Become Customer
+authenticated.customer.form.title = Customer
 
 authenticated.customer.form.label.idCustomer = Id Customer
 authenticated.customer.form.label.phoneNumber = Phone number
