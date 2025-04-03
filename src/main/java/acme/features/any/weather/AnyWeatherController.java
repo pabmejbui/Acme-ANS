@@ -1,5 +1,5 @@
 
-package acme.features.any.flight;
+package acme.features.any.weather;
 
 import javax.annotation.PostConstruct;
 
@@ -8,16 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.principals.Any;
 import acme.client.controllers.AbstractGuiController;
 import acme.client.controllers.GuiController;
-import acme.entities.flights.Flight;
+import acme.entities.weather.WeatherCondition;
 
 @GuiController
-public class AnyFlightController extends AbstractGuiController<Any, Flight> {
+public class AnyWeatherController extends AbstractGuiController<Any, WeatherCondition> {
 
 	@Autowired
-	private AnyFlightListService	listService;
-
+	private AnyWeatherListService	listService;
 	@Autowired
-	private AnyFlightShowService	showService;
+	private AnyWeatherShowService	showService;
 
 
 	@PostConstruct
@@ -25,5 +24,4 @@ public class AnyFlightController extends AbstractGuiController<Any, Flight> {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 	}
-
 }

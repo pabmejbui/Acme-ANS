@@ -1,5 +1,7 @@
 
-package acme.features.weather;
+package acme.entities.weather;
+
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +16,12 @@ public class WeatherController {
 
 
 	@GetMapping("/weather")
-	public WeatherCondition getWeather(@RequestParam final String city, @RequestParam final String country) {
-		return this.weatherService.getWeather(city, country);
+	public Object getWeather(@RequestParam final String city) {
+		try {
+			return this.weatherService.getWeather(city);
+		} catch (RuntimeException ex) {
+			return Map.of("message", ex.getMessage());
+		}
 	}
+
 }

@@ -1,5 +1,5 @@
 
-package acme.features.weather;
+package acme.entities.weather;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

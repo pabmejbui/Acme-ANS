@@ -1,8 +1,9 @@
 
-package acme.features.weather;
+package acme.entities.weather;
 
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -11,15 +12,18 @@ import org.springframework.web.client.RestTemplate;
 public class WeatherService {
 
 	@Value("${weather.api.key}")
-	private String	apiKey;
+	private String						apiKey;
 
 	@Value("${weather.api.url}")
-	private String	apiUrl;
+	private String						apiUrl;
+
+	@Autowired
+	private WeatherConditionRepository	repository;
 
 
-	public WeatherCondition getWeather(final String city, final String countryCode) {
+	public WeatherCondition getWeather(final String city) {
 		RestTemplate restTemplate = new RestTemplate();
-		String url = String.format("%s?q=%s,%s&units=metric&appid=%s", this.apiUrl, city, countryCode, this.apiKey);
+		String url = String.format("%s?q=%s&units=metric&appid=%s", this.apiUrl, city, this.apiKey);
 
 		WeatherResponse weatherResponse = restTemplate.getForObject(url, WeatherResponse.class);
 
@@ -33,9 +37,24 @@ public class WeatherService {
 			weatherCondition.setDescription(weatherResponse.getWeather()[0].getDescription());
 			weatherCondition.setReportTime(new Date());
 
-			return weatherCondition;
+			Date reportTimeTruncated = this.truncateToMinute(weatherCondition.getReportTime());
+
+			boolean exists = this.repository.existsDuplicateCondition(weatherCondition.getCity(), weatherCondition.getCountry(), reportTimeTruncated);
+
+			if (!exists) {
+				this.repository.save(weatherCondition);
+				return weatherCondition;
+			} else
+				throw new RuntimeException("⛔ Registro duplicado. Ya existe una condición meteorológica reciente para esta ciudad.");
 		}
 
-		return null;
+		throw new RuntimeException("⛔ No se pudo obtener datos del clima.");
 	}
+
+	private Date truncateToMinute(final Date date) {
+		long millisPerMinute = 60 * 1000;
+		long truncated = date.getTime() / millisPerMinute * millisPerMinute;
+		return new Date(truncated);
+	}
+
 }

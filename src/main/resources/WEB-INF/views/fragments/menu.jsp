@@ -91,18 +91,21 @@
 			<acme:menu-suboption code="master.menu.flightCrewMember.activityLogs"
 				action="/flight-crew-member/activity-log/list" />
 		</acme:menu-option>
-
-		<acme:menu-option code="master.menu.manager"
-			access="hasRealm('Manager')">
-			<acme:menu-suboption code="manager.menu.manager.list-flights"
-				action="/manager/flight/list" />
+	
+		<acme:menu-option code="master.menu.manager" access="hasRealm('Manager')">
+			<acme:menu-suboption code="master.menu.manager.list-flights" action="/manager/flight/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.manager.dashboard" action="/manager/manager-dashboard/show"/>
 		</acme:menu-option>
 
-		<acme:menu-option code="master.menu.any"
-			access="isAuthenticated() or isAnonymous()">
-			<acme:menu-suboption code="master.menu.any.flight.list"
-				action="/any/flight/list" />
-		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.any" access="isAuthenticated() or isAnonymous()">
+    		<acme:menu-suboption code="master.menu.any.flight.list" action="/any/flight/list"/>
+    		<acme:menu-separator/>
+    		<acme:menu-suboption code="master.menu.any.weather.list" action="/any/weather-condition/list"/>
+			<acme:menu-suboption code="master.menu.any.flight-under-bad-weather.list" action="/any/flight-under-bad-weather/list-under-bad-weather"/>
+		</acme:menu-option>	
+
 	</acme:menu-left>
 
 	<acme:menu-right>
