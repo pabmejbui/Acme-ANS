@@ -1,100 +1,93 @@
 
 package acme.features.assistanceAgent.trackingLog;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
-import acme.client.components.principals.Principal;
 import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.claims.Claim;
 import acme.entities.trackingLogs.Resolution;
 import acme.entities.trackingLogs.TrackingLog;
 import acme.realms.AssistanceAgent;
 
 @GuiService
 public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService<AssistanceAgent, TrackingLog> {
-	// Internal State --------------------------------------------------------------------
 
 	@Autowired
 	private AssistanceAgentTrackingLogRepository repository;
 
-	// AbstractGuiService ----------------------------------------------------------------
-
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int trackingLogId;
-		int currentAssistanceAgentId;
-		Principal principal;
+		boolean exist;
 		TrackingLog trackingLog;
+		AssistanceAgent assistanceAgent;
+		int id;
 
-		principal = super.getRequest().getPrincipal();
+		id = super.getRequest().getData("id", int.class);
+		trackingLog = this.repository.findTrackingLogById(id);
 
-		currentAssistanceAgentId = principal.getActiveRealm().getId();
-		trackingLogId = super.getRequest().getData("id", int.class);
-		trackingLog = this.repository.findTrackingLogById(trackingLogId);
+		exist = trackingLog != null;
+		if (exist) {
+			assistanceAgent = (AssistanceAgent) super.getRequest().getPrincipal().getActiveRealm();
+			boolean isOwner = assistanceAgent.equals(trackingLog.getClaim().getAssistanceAgent());
+			boolean claimPublished = !trackingLog.getClaim().isDraftMode(); // Verifica que el claim esté publicado
 
-		status = principal.hasRealmOfType(AssistanceAgent.class) && trackingLog.getClaim().getAssistanceAgent().getId() == currentAssistanceAgentId;
-
-		super.getResponse().setAuthorised(status);
-
+			super.getResponse().setAuthorised(isOwner && claimPublished);
+		}
 	}
 
 	@Override
 	public void load() {
-		int trackingLogId;
 		TrackingLog trackingLog;
+		int id;
 
-		trackingLogId = super.getRequest().getData("id", int.class);
-		trackingLog = this.repository.findTrackingLogById(trackingLogId);
+		id = super.getRequest().getData("id", int.class);
+		trackingLog = this.repository.findTrackingLogById(id);
 
 		super.getBuffer().addData(trackingLog);
-
 	}
 
 	@Override
 	public void bind(final TrackingLog trackingLog) {
-		super.bindObject(trackingLog, "stepUndergoing", "resolutionPercentage", "accepted", "resolutionDetails");
+		trackingLog.setLastUpdateMoment(MomentHelper.getCurrentMoment());
+		super.bindObject(trackingLog, "step", "resolutionPercentage", "indicator", "resolution");
 	}
 
 	@Override
 	public void validate(final TrackingLog trackingLog) {
-		Claim claim;
-		claim = trackingLog.getClaim();
+		if (!super.getBuffer().getErrors().hasErrors("resolutionPercentage"))
+			super.state(trackingLog.getResolutionPercentage() >= 0 && trackingLog.getResolutionPercentage() <= 100, "resolutionPercentage", "trackingLog.form.error.invalidPercentage", trackingLog);
 
-		if (claim.isDraftMode())
-			super.state(!claim.isDraftMode(), "*", "assistance-agent.tracking-log.form.error.claimDraftMode");
+		if (!super.getBuffer().getErrors().hasErrors("indicator"))
+			if ((trackingLog.getIndicator() == Resolution.ACCEPTED || trackingLog.getIndicator() == Resolution.REJECTED) && (trackingLog.getResolution() == null || trackingLog.getResolution().isEmpty()))
+				super.state(false, "resolution", "trackingLog.form.error.resolutionReasonRequired", trackingLog);
 
-		if (!trackingLog.isDraftMode())
-			super.state(trackingLog.isDraftMode(), "*", "assistance-agent.tracking-log.form.error.draftMode");
-
+		// Validar que el Claim asociado esté publicado antes de permitir publicar el TrackingLog
+		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
+			boolean claimPublished = !trackingLog.getClaim().isDraftMode();
+			super.state(claimPublished, "draftMode", "trackingLog.form.error.claimNotPublished", trackingLog);
+		}
 	}
 
 	@Override
 	public void perform(final TrackingLog trackingLog) {
-		Date currentMoment;
-
-		currentMoment = MomentHelper.getCurrentMoment();
-
-		trackingLog.setLastUpdateMoment(currentMoment);
+		assert trackingLog != null;
 		trackingLog.setDraftMode(false);
 		this.repository.save(trackingLog);
 	}
 
 	@Override
 	public void unbind(final TrackingLog trackingLog) {
+		SelectChoices indicators;
 		Dataset dataset;
-		SelectChoices accepteds;
 
-		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "stepUndergoing", "resolutionPercentage", "accepted", "resolutionDetails");
-		accepteds = SelectChoices.from(Resolution.class, trackingLog.getIndicator());
-		dataset.put("accepteds", accepteds);
+		indicators = SelectChoices.from(Resolution.class, trackingLog.getIndicator());
+		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "indicator", "resolution");
+
+		dataset.put("indicators", indicators);
 
 		super.getResponse().addData(dataset);
 	}

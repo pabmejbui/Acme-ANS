@@ -1,0 +1,24 @@
+# messages-en.i18n
+
+assistance-agent.tracking-log.list.title = Tracking Logs
+
+assistance-agent.tracking-log.list.label.updateMoment = Update moment
+assistance-agent.tracking-log.list.label.resolutionReason = Resolution reason
+assistance-agent.tracking-log.list.label.step = Step
+assistance-agent.tracking-log.list.label.resolutionPercentage = Resolution percentage
+assistance-agent.tracking-log.list.label.indicator = Status 
+assistance-agent.tracking-log.list.label.draftMode = Draft mode
+assistance-agent.tracking-log.list.button.create = Create
+
+assistance-agent.tracking-log.form.title = Tracking Log form
+assistance-agent.tracking-log.form.label.updateMoment = Update moment
+assistance-agent.tracking-log.form.label.resolutionReason = Resolution reason
+assistance-agent.tracking-log.form.label.step = Step
+assistance-agent.tracking-log.form.label.resolutionPercentage = Resolution percentage
+assistance-agent.tracking-log.form.label.indicator = Status
+
+assistance-agent.tracking-log.form.button.create = Create
+assistance-agent.tracking-log.form.button.update = Update
+assistance-agent.tracking-log.form.button.delete = Delete
+assistance-agent.tracking-log.form.button.publish = Publish
+assistance-agent.tracking-log.form.button.tracking-logs = Tracking Logs

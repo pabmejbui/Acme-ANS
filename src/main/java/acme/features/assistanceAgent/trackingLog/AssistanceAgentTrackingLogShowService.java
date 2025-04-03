@@ -26,43 +26,53 @@ public class AssistanceAgentTrackingLogShowService extends AbstractGuiService<As
 	@Override
 	public void authorise() {
 		boolean status;
-		int trackingLogId;
 		int currentAssistanceAgentId;
-		TrackingLog trackingLog;
+		int trackingLogId;
+		TrackingLog selectedTrackingLog;
 		Principal principal;
 
+		// Obtener el principal (usuario autenticado)
 		principal = super.getRequest().getPrincipal();
 
+		// Obtener el ID del agente de asistencia actual y el ID del tracking log
 		currentAssistanceAgentId = principal.getActiveRealm().getId();
 		trackingLogId = super.getRequest().getData("id", int.class);
-		trackingLog = this.repository.findTrackingLogById(trackingLogId);
+		selectedTrackingLog = this.repository.findTrackingLogById(trackingLogId);
 
-		status = principal.hasRealmOfType(AssistanceAgent.class) && trackingLog.getClaim().getAssistanceAgent().getId() == currentAssistanceAgentId;
+		// Autorizar solo si el agente de asistencia tiene permisos sobre el tracking log
+		status = principal.hasRealmOfType(AssistanceAgent.class) && selectedTrackingLog.getClaim().getAssistanceAgent().getId() == currentAssistanceAgentId;
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		int trackingLogId;
 		TrackingLog trackingLog;
+		int trackingLogId;
 
+		// Obtener el ID del tracking log y cargarlo
 		trackingLogId = super.getRequest().getData("id", int.class);
 		trackingLog = this.repository.findTrackingLogById(trackingLogId);
 
+		// Agregar el tracking log al buffer para la vista
 		super.getBuffer().addData(trackingLog);
 	}
 
 	@Override
 	public void unbind(final TrackingLog trackingLog) {
 		Dataset dataset;
-		SelectChoices accepteds;
+		SelectChoices indicators;
 
+		// Obtener los tipos de indicadores disponibles
+		indicators = SelectChoices.from(Resolution.class, trackingLog.getIndicator());
+
+		// Crear el dataset con la información del tracking log
 		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "indicator", "resolution", "draftMode");
-		accepteds = SelectChoices.from(Resolution.class, trackingLog.getIndicator());
-		dataset.put("accepteds", accepteds);
 
+		// Agregar los SelectChoices de indicadores al dataset
+		dataset.put("indicators", indicators);
+
+		// Añadir el dataset a la respuesta
 		super.getResponse().addData(dataset);
-
 	}
 }

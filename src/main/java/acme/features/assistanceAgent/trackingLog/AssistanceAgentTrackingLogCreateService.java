@@ -25,20 +25,7 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 
 	@Override
 	public void authorise() {
-		boolean exist;
-		TrackingLog trackingLog;
-		AssistanceAgent assistanceAgent;
-		int id;
-
-		id = super.getRequest().getData("id", int.class);
-		trackingLog = this.repository.findTrackingLogById(id);
-
-		exist = trackingLog != null;
-		if (exist) {
-			assistanceAgent = (AssistanceAgent) super.getRequest().getPrincipal().getActiveRealm();
-			if (assistanceAgent.equals(trackingLog.getClaim().getAssistanceAgent()))
-				super.getResponse().setAuthorised(true);
-		}
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -67,7 +54,7 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 	@Override
 	public void bind(final TrackingLog trackingLog) {
 		trackingLog.setLastUpdateMoment(MomentHelper.getCurrentMoment());
-		super.bindObject(trackingLog, "step", "resolutionPercentage", "indicator", "resolutionReason");
+		super.bindObject(trackingLog, "step", "resolutionPercentage", "indicator", "resolution");
 	}
 
 	@Override
@@ -100,7 +87,7 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		Dataset dataset;
 
 		indicators = SelectChoices.from(Resolution.class, trackingLog.getIndicator());
-		dataset = super.unbindObject(trackingLog, "updateMoment", "step", "resolutionPercentage", "indicator", "resolutionReason");
+		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "indicator", "resolution", "draftMode");
 
 		dataset.put("indicators", indicators);
 

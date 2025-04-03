@@ -26,32 +26,30 @@ public class AssistanceAgentTrackingLogDeleteService extends AbstractGuiService<
 	@Override
 	public void authorise() {
 		boolean status;
-		int trackingLogId;
 		int currentAssistanceAgentId;
-		TrackingLog trackingLog;
+		int trackingLogId;
+		TrackingLog selectedTrackingLog;
 		Principal principal;
 
 		principal = super.getRequest().getPrincipal();
 		currentAssistanceAgentId = principal.getActiveRealm().getId();
-
 		trackingLogId = super.getRequest().getData("id", int.class);
-		trackingLog = this.repository.findTrackingLogById(trackingLogId);
+		selectedTrackingLog = this.repository.findTrackingLogById(trackingLogId);
 
-		status = principal.hasRealmOfType(AssistanceAgent.class) && trackingLog.getClaim().getAssistanceAgent().getId() == currentAssistanceAgentId;
+		status = principal.hasRealmOfType(AssistanceAgent.class) && selectedTrackingLog.getClaim().getAssistanceAgent().getId() == currentAssistanceAgentId;
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		int trackingLogId;
 		TrackingLog trackingLog;
+		int trackingLogId;
 
 		trackingLogId = super.getRequest().getData("id", int.class);
 		trackingLog = this.repository.findTrackingLogById(trackingLogId);
 
 		super.getBuffer().addData(trackingLog);
-
 	}
 
 	@Override
@@ -61,7 +59,7 @@ public class AssistanceAgentTrackingLogDeleteService extends AbstractGuiService<
 
 	@Override
 	public void validate(final TrackingLog trackingLog) {
-		if (!trackingLog.isDraftMode())
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
 			super.state(trackingLog.isDraftMode(), "*", "assistance-agent.tracking-log.form.error.draftMode");
 	}
 
@@ -69,15 +67,16 @@ public class AssistanceAgentTrackingLogDeleteService extends AbstractGuiService<
 	public void perform(final TrackingLog trackingLog) {
 		this.repository.delete(trackingLog);
 	}
+
 	@Override
 	public void unbind(final TrackingLog trackingLog) {
 		Dataset dataset;
-		SelectChoices accepteds;
+		SelectChoices indicators;
 
+		indicators = SelectChoices.from(Resolution.class, trackingLog.getIndicator());
 		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "indicator", "resolution");
-		accepteds = SelectChoices.from(Resolution.class, trackingLog.getIndicator());
-		dataset.put("accepteds", accepteds);
-		dataset.put("claimId", trackingLog.getClaim().getId());
+
+		dataset.put("indicators", indicators);
 
 		super.getResponse().addData(dataset);
 	}

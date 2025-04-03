@@ -67,7 +67,7 @@
  		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.assistance-agent" access="hasRealm('AssistanceAgent')">
-			<acme:menu-suboption code="master.menu.assistance-agent.my-tracking-logs" action="/assistance-agent/tracking/list"/>
+			<acme:menu-suboption code="master.menu.assistance-agent.my-tracking-logs" action="/assistance-agent/tracking-log/list"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.manager" access="hasRealm('Manager')">
