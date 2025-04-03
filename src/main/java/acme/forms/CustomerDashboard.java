@@ -4,6 +4,7 @@ package acme.forms;
 import java.util.List;
 
 import acme.client.components.basis.AbstractForm;
+import acme.client.components.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,7 +22,7 @@ public class CustomerDashboard extends AbstractForm {
 	private List<String>		lastFiveDestinations;
 
 	//The money spent in bookings during the last year.
-	double						totalMoneySpentBookingLastYear;
+	Money						totalMoneySpentBookingLastYear;
 
 	//Their number of bookings grouped by travel class. 
 	int							economyBookings;
@@ -29,10 +30,10 @@ public class CustomerDashboard extends AbstractForm {
 
 	//Count, average, minimum, maximum, and standard deviation of the cost of their bookings in the last five years.
 	int							totalBookings;
-	double						avgBookingCost;
-	double						minBookingCost;
-	double						maxBookingCost;
-	double						stdDevBookingCost;
+	Money						avgBookingCost;
+	Money						minBookingCost;
+	Money						maxBookingCost;
+	Money						stdDevBookingCost;
 
 	//Count, average, minimum, maximum, and standard deviation of the number of passengers in their bookings. 
 	int							totalPassengers;
