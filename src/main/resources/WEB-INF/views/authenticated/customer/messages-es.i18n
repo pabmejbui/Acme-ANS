@@ -1,0 +1,13 @@
+# form ##############################################################
+
+authenticated.customer.form.title = Hazte cliente
+
+authenticated.customer.form.label.idCustomer = ID del Cliente
+authenticated.customer.form.label.phoneNumber = Número de Teléfono
+authenticated.customer.form.label.physicalAddress = Dirección Física
+authenticated.customer.form.label.city = Ciudad
+authenticated.customer.form.label.country = País
+authenticated.customer.form.label.earnedPoints = Puntos Ganados
+
+authenticated.customer.form.button.create = Crear
+authenticated.customer.form.button.update = Actualizar

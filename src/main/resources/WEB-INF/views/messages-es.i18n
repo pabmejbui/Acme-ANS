@@ -19,9 +19,10 @@ manager.validation.age.less-than-18 = El manager debe tener al menos 18 años.
 
 # Mensajes de validación de customer ####################################################
 
-customer.validation.identifier.not-null = El identificador no debe ser nulo ni estar vacío.
-customer.validation.identifier.bad-format = El identificador debe contener 2 o 3 letras mayúsculas seguidas de exactamente 6 dígitos o las iniciales no coinciden con el nombre del usuario.
-acme.validation.customer.duplicated-identifier.message = Este ID ya existe.
+customer.validation.identifier.bad-format = El identificador debe contener 2 o 3 letras mayúsculas seguidas de exactamente 6 dígitos.
+customer.validation.fullname.missing = Se requiere el nombre completo del usuario para validar el identificador.
+customer.validation.identifier.initials-mismatch = Las iniciales del identificador no coinciden con el nombre del usuario.
+acme.validation.customer.duplicated-identifier.message = Este identificador ya existe.
 
 # Mensajes de validación de flight number #########################################################
 
