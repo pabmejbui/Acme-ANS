@@ -23,6 +23,7 @@ master.menu.anonymous.jesus-oria = 29567226J: Oria Arenas, Jesús
 
 master.menu.administrator = Administrator
 master.menu.administrator.list-user-accounts = List user accounts
+master.menu.administrator.list-aircrafts = List aircrafts
 master.menu.administrator.list-services = List services
 master.menu.administrator.list-airlines = List airlines
 master.menu.administrator.list-bookings = List bookings
@@ -49,6 +50,13 @@ master.menu.customer.list-passengers = List Passengers
 # master.menu.flightCrewMember ##########################################################
  
  master.menu.flightCrewMember = Flight Crew Member
+ master.menu.flightCrewMember.flightAssignment = Flight Assignments 
+ 
+# master.menu.assistance-agent ##########################################################
+master.menu.assistance-agent.claims = Claims
+master.menu.assistance-agent.claims.claims-list = Completed claims list
+master.menu.assistance-agent.claims.list-claims-pending = Pending claims list
+
  master.menu.flightCrewMember.flightAssignmentCompleted = Flight Assignments Completed
  master.menu.flightCrewMember.flightAssignmentPlanned = Flight Assignments Planned 
  master.menu.flightCrewMember.activityLogs = activityLogs List

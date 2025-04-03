@@ -39,6 +39,10 @@
 				code="master.menu.administrator.list-user-accounts"
 				action="/administrator/user-account/list" />
 			<acme:menu-separator />
+			<acme:menu-suboption 
+				code="master.menu.administrator.list-aircrafts"
+				action="/administrator/aircraft/list"/>
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.list-services"
 				action="/administrator/service/list" />
 			<acme:menu-separator />
@@ -101,6 +105,10 @@
 			<acme:menu-suboption code="master.menu.manager.dashboard" action="/manager/manager-dashboard/show"/>
 		</acme:menu-option>
 
+		<acme:menu-option code="master.menu.assistance-agent.claims" access="hasRealm('AssistanceAgent')">
+			<acme:menu-suboption code="master.menu.assistance-agent.claims.claims-list" action="/assistance-agent/claim/list"/>
+			<acme:menu-suboption code="master.menu.assistance-agent.claims.list-claims-pending" action="/assistance-agent/claim/pending"/>	
+		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.any" access="isAuthenticated() or isAnonymous()">
     		<acme:menu-suboption code="master.menu.any.flight.list" action="/any/flight/list"/>
