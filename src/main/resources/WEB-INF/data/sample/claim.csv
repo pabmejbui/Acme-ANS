@@ -31,7 +31,7 @@ claim-26,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation re
 claim-27,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-01,leg-01
 claim-28,2000/01/02 00:00,"margaret.nosek@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-01,leg-02
 claim-29,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-01,leg-03
-claim-30,2000/01/02 00:00,"margaret.nosek","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-01,leg-04
+claim-30,2000/01/02 00:00,"margaret.nosek@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-01,leg-04
 
 
 claim-31,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight".,LUGGAGE_ISSUES,false,agent-02,leg-01
