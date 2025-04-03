@@ -1,6 +1,6 @@
 # form ##############################################################
 
-authenticated.customer.form.title = Hazte cliente
+authenticated.customer.form.title = Cliente
 
 authenticated.customer.form.label.idCustomer = ID del Cliente
 authenticated.customer.form.label.phoneNumber = Número de Teléfono
