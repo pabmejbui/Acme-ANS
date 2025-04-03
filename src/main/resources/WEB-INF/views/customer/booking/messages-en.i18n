@@ -17,7 +17,7 @@ customer.booking.form.button.delete = Delete
 
 # list ####################################################
 
-customer.booking.list.title = Booking form
+customer.booking.list.title = Booking List
 customer.booking.list.label.locatorCode = Locator code
 customer.booking.list.label.purchaseMoment = Purchase moment
 customer.booking.list.button.create = Create
