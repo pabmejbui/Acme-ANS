@@ -1,0 +1,23 @@
+# Títulos
+assistance-agent.tracking.form.title = Información del Registro de Seguimiento
+assistance-agent.tracking.list.title = Lista de Registros de Seguimiento
+
+# Etiquetas
+assistance-agent.tracking.form.label.lastlastUpdateMoment = Fecha de Última Actualización:
+assistance-agent.tracking.form.label.step = Paso en Progreso:
+assistance-agent.tracking.form.label.resolutionPercentage = Porcentaje de Resolución:
+assistance-agent.tracking.form.label.indicator = Estado:
+assistance-agent.tracking.form.label.resolution = Detalles de Resolución:
+
+# Etiquetas de Lista
+assistance-agent.tracking.list.label.lastlastUpdateMoment = Fecha de Última Actualización
+assistance-agent.tracking.list.label.step = Paso en Progreso
+assistance-agent.tracking.list.label.resolutionPercentage = Porcentaje de Resolución
+assistance-agent.tracking.list.label.indicator = Estado
+assistance-agent.tracking.list.label.resolution = Detalles de Resolución
+
+# Botones
+assistance-agent.tracking.form.button.create = Crear
+assistance-agent.tracking.form.button.update = Actualizar
+assistance-agent.tracking.form.button.delete = Eliminar
+assistance-agent.tracking.form.button.publish = Publicar

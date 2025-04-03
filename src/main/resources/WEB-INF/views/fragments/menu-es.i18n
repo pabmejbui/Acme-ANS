@@ -48,6 +48,9 @@ master.menu.customer.list-bookings = Ver Reservas
  master.menu.flightCrewMember = Miembro de la tripulación de vuelo
  master.menu.flightCrewMember.flightAssignment = Asignación de vuelo
  
+# master.menu.assistanceagent ##########################################################
+master.menu.assistanceagent = Agente de asistencia
+master.menu.assistanceagent.my-trackingLogs = Mis registros de seguimiento
 
 # master.menu.user-account ####################################################
 
