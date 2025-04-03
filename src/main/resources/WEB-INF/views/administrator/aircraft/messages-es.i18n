@@ -18,6 +18,7 @@ administrator.aircraft.form.button.update = Actualizar
 administrator.aircraft.form.button.delete = Borrar
 administrator.aircraft.form.button.disable = Deshabilitar
 administrator.aircraft.form.button.create = Crear
+administrator.aircraft.form.button.enable
 
 administrator.aircraft.list.label.registrationNumber = Número de registro
 administrator.aircraft.list.label.status = Estado
