@@ -1,0 +1,16 @@
+
+# form ##############################################################
+
+authenticated.customer.form.title = Customer
+
+authenticated.customer.form.label.idCustomer = Id Customer
+authenticated.customer.form.label.phoneNumber = Phone number
+authenticated.customer.form.label.physicalAddress = Physical address
+authenticated.customer.form.label.city = City
+authenticated.customer.form.label.country = Country
+authenticated.customer.form.label.earnedPoints = Earned points
+
+authenticated.customer.form.button.create = Create
+authenticated.customer.form.button.update = Update
+
+

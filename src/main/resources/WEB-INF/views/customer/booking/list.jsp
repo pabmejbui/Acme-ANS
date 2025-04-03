@@ -6,7 +6,10 @@
 <acme:list>
     <acme:list-column code="customer.booking.list.label.locatorCode" path="locatorCode" width="30%"/>
     <acme:list-column code="customer.booking.list.label.purchaseMoment" path="purchaseMoment" width="30%"/>
+    <acme:list-column code="customer.booking.list.label.price" path="bookingCost" width="30%"/>
+    <acme:list-column code="customer.booking.list.label.draftMode" path="draftMode" width="10%"/>
     <acme:list-payload path="payload"/>
 </acme:list>
+
 
 <acme:button code="customer.booking.list.button.create" action="/customer/booking/create"/>

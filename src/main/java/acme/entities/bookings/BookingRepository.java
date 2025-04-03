@@ -9,6 +9,9 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface BookingRepository extends AbstractRepository {
 
+	@Query("select count(br.passenger) from BookingRecord br where br.booking.locatorCode = :locatorCode")
+	Integer countPassengersByLocatorCode(String locatorCode);
+
 	@Query("select b from Booking b where b.locatorCode = :locatorCode")
 	Booking findBookingByLocatorCode(String locatorCode);
 

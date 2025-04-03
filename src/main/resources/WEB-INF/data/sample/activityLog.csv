@@ -1,9 +1,9 @@
-key,registrationMoment,incidentType,description,severityLevel,key:flightAssignment,draftMode
-log-01,2013/05/03 17:00,洛伦·伊普森,Lo,5,assignment-01,true
-log-02,2013/05/03 17:00,โลเร็ม อิปซัม,"<script>alert('Hacked!');</script>",7,assignment-02,true
-log-03,2000/12/31 23:58,<marquee>Hacked</marquee>,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",9,assignment-03,false
-log-04,2021/09/05 05:35,لوريم إيبسوم,L,2,assignment-04,true
-log-05,2010/12/31 23:59,L,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",0,assignment-05,true
-log-06,2012/07/02 00:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut",4,assignment-06,false
-log-07,2013/05/03 17:00,L,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua!",3,assignment-07,true
-log-08,2021/01/05 08:45,"Lorem ipsum dolor sit amet, consectetur adipiscin","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",6,assignment-08,true
+key,registrationMoment,incidentType,description,severity,key:flightAssignment,draftMode
+log-01,2024/06/15 12:00,洛伦·伊普森,Lo,5,assignment-01,true
+log-02,2024/06/12 17:00,โลเร็ม อิปซัม,<script>alert('Hacked!');</script>,7,assignment-02,true
+log-03,2024/06/29 09:30,<marquee>Hacked</marquee>,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",9,assignment-03,true
+log-04,2024/06/17 13:45,لوريم إيبسوم,L,2,assignment-04,true
+log-05,2024/06/27 18:20,L,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",0,assignment-05,true
+log-06,2024/06/27 21:50,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut",4,assignment-06,false
+log-07,2024/06/27 08:45,L,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua!",3,assignment-07,true
+log-08,2024/06/27 12:15,"Lorem ipsum dolor sit amet, consectetur adipiscin","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",6,assignment-08,true

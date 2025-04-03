@@ -24,6 +24,9 @@ master.menu.anonymous.jesus-oria = 29567226J: Oria Arenas, Jesús
 master.menu.administrator = Administrator
 master.menu.administrator.list-user-accounts = List user accounts
 master.menu.administrator.list-aircrafts = List aircrafts
+master.menu.administrator.list-services = List services
+master.menu.administrator.list-airlines = List airlines
+master.menu.administrator.list-bookings = List bookings
 master.menu.administrator.populate-db-initial = Populate DB (initial)
 master.menu.administrator.populate-db-sample = Populate DB (samples)
 master.menu.administrator.shut-system-down = Shut system down
@@ -42,6 +45,7 @@ master.menu.consumer.favourite-link = Favourite link
 
 master.menu.customer = Customer
 master.menu.customer.list-bookings = List Bookings
+master.menu.customer.list-passengers = List Passengers
 
 # master.menu.flightCrewMember ##########################################################
  
@@ -53,6 +57,10 @@ master.menu.assistance-agent.claims = Claims
 master.menu.assistance-agent.claims.claims-list = Completed claims list
 master.menu.assistance-agent.claims.list-claims-pending = Pending claims list
 
+ master.menu.flightCrewMember.flightAssignmentCompleted = Flight Assignments Completed
+ master.menu.flightCrewMember.flightAssignmentPlanned = Flight Assignments Planned 
+ master.menu.flightCrewMember.activityLogs = activityLogs List
+ 
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
@@ -61,8 +69,23 @@ master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.provider-profile = Provider profile
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.consumer-profile = Consumer profile
+master.menu.user-account.become-customer = Become a Customer
+master.menu.user-account.customer-profile = Customer profile
+master.menu.user-account.become-manager = Become a Manager
+master.menu.user-account.manager-profile = Manager profile
 
 # master.menu.manager ###########################################################
+
 master.menu.manager = Manager
-manager.menu.manager.list-flights = My Flights
+master.menu.manager.list-flights = My Flights
+master.menu.manager.dashboard = Manager dashboard
+
+
+# master.menu.any ###############################################################
+
+master.menu.any = Any
+master.menu.any.flight.list = List of flights
+master.menu.any.weather.list = Forecasts
+master.menu.any.flight-under-bad-weather.list = Flights under bad weather
+
 

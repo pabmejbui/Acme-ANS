@@ -1,0 +1,18 @@
+
+# form ####################################################
+
+administrator.booking.form.title = Booking
+administrator.booking.form.label.locatorCode = Locator code
+administrator.booking.form.label.travelClass = Travel Class
+administrator.booking.form.label.price = Price
+administrator.booking.form.label.lastCardNibble = Last Card Nibble
+administrator.booking.form.label.passengers = Associated passengers
+administrator.booking.form.label.purchaseMoment = Purchase moment
+
+# list ####################################################
+
+administrator.booking.list.title = Booking form
+administrator.booking.list.label.locatorCode = Locator code
+administrator.booking.list.label.purchaseMoment = Purchase moment
+administrator.booking.list.label.price = Price
+

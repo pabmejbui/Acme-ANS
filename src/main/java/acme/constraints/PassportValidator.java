@@ -26,13 +26,13 @@ public class PassportValidator extends AbstractValidator<ValidPassport, String> 
 		boolean result;
 
 		if (passportNumber == null)
-			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
+			super.state(context, false, "passportNumber", "javax.validation.constraints.NotNull.message");
 		else {
 
 			String passportPattern = "^[A-Z0-9]{6,9}$";
 
 			if (!passportNumber.matches(passportPattern))
-				super.state(context, false, "*", "acme.validation.phone.bad-format-passport.message");
+				super.state(context, false, "passportNumber", "acme.validation.phone.bad-format-passport.message");
 
 		}
 

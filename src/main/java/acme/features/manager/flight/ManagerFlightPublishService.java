@@ -1,12 +1,15 @@
 
 package acme.features.manager.flight;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flights.Flight;
+import acme.entities.flights.Leg;
 import acme.realms.Manager;
 
 @GuiService
@@ -23,26 +26,20 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 	@Override
 	public void authorise() {
 		boolean status;
-		int flightId;
+		int id;
 		Flight flight;
-		Manager manager;
 
-		flightId = super.getRequest().getData("id", int.class);
-		flight = this.repository.findFlightById(flightId);
-		manager = flight == null ? null : flight.getManager();
-		status = flight != null && flight.isDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
+		id = super.getRequest().getData("id", int.class);
+		flight = this.repository.findFlightById(id);
+		status = flight != null && super.getRequest().getPrincipal().hasRealm(flight.getManager());
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Flight flight;
-		int id;
-
-		id = super.getRequest().getData("id", int.class);
-		flight = this.repository.findFlightById(id);
-
+		int id = super.getRequest().getData("id", int.class);
+		Flight flight = this.repository.findFlightById(id);
 		super.getBuffer().addData(flight);
 	}
 
@@ -53,7 +50,17 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 
 	@Override
 	public void validate(final Flight flight) {
-		// No validation needed
+		// Solo permitir publicar si está en modo borrador
+		super.state(flight.isDraftMode(), "*", "acme.validation.manager.flight.not-in-draft");
+
+		// Validar que tenga al menos una escala
+		int numberOfLegs = flight.getNumberOfLayovers();
+		super.state(numberOfLegs > 0, "*", "acme.validation.manager.flight.publish.requires-legs");
+
+		// Validar que todas las escalas estén publicadas
+		Collection<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
+		boolean allPublished = legs.stream().allMatch(l -> !l.isDraftMode());
+		super.state(allPublished, "*", "acme.validation.manager.flight.publish.all-legs-must-be-published");
 	}
 
 	@Override
@@ -64,14 +71,7 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 
 	@Override
 	public void unbind(final Flight flight) {
-		Dataset dataset;
-
-		dataset = super.unbindObject(flight, "tag", "selfTransfer", "cost", "description", "draftMode");
-		dataset.put("scheduledDeparture", flight.getScheduledDeparture());
-		dataset.put("scheduledArrival", flight.getScheduledArrival());
-		dataset.put("originCity", flight.getOriginCity());
-		dataset.put("destinationCity", flight.getDestinationCity());
-		dataset.put("numberOfLayovers", flight.getNumberOfLayovers());
+		Dataset dataset = super.unbindObject(flight, "tag", "selfTransfer", "cost", "description", "draftMode");
 		super.getResponse().addData(dataset);
 	}
 }

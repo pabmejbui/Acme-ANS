@@ -1,13 +1,10 @@
 
 package acme.features.customer.booking;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.bookings.Booking;
@@ -28,19 +25,12 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void load() {
-		Date moment;
-		Customer customer;
 		Booking booking;
+		Customer customer;
 
-		moment = MomentHelper.getCurrentMoment();
 		customer = (Customer) super.getRequest().getPrincipal().getActiveRealm();
 
 		booking = new Booking();
-		booking.setPurchaseMoment(moment);
-		booking.setLocatorCode("");
-		booking.setTravelClass(null);
-		booking.setPrice(null);
-		booking.setLastCardNibble(null);
 		booking.setDraftMode(true);
 		booking.setCustomer(customer);
 
@@ -49,18 +39,12 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void bind(final Booking booking) {
-		super.bindObject(booking, "locatorCode", "travelClass", "price", "lastCardNibble");
+		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble");
 	}
 
 	@Override
 	public void validate(final Booking booking) {
-		boolean confirmation;
 
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
-
-		if (!booking.isDraftMode())
-			super.state(booking.getLastCardNibble() != null, "lastCardNibble", "acme.validation.lastCardNibble.message");
 	}
 
 	@Override
@@ -75,8 +59,10 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 		travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "price", "lastCardNibble", "draftMode");
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble", "draftMode");
+		dataset.put("bookingCost", booking.getCost());
 		dataset.put("travelClasses", travelClasses);
+
 		super.getResponse().addData(dataset);
 	}
 }

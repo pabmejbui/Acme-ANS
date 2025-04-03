@@ -24,6 +24,9 @@ master.menu.anonymous.jesus-oria = 29567226J: Oria Arenas, Jesús
 master.menu.administrator = Administrador
 master.menu.administrator.list-user-accounts = Ver cuentas de usuario
 master.menu.administrator.list-aircrafts = Ver aeronaves
+master.menu.administrator.list-services = Ver servicios
+master.menu.administrator.list-airlines = Ver aerolíneas
+master.menu.administrator.list-bookings = Ver reservas
 master.menu.administrator.populate-db-initial = Poblar BD (inicial)
 master.menu.administrator.populate-db-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-system-down = Parar el sistema
@@ -41,18 +44,21 @@ master.menu.consumer.favourite-link = Enlace favorito
 # master.menu.customer ##########################################################
 
 master.menu.customer = Cliente
-master.menu.customer.list-bookings = Ver Reservas
+master.menu.customer.list-bookings = Lista de Reservas
+master.menu.customer.list-passengers = Lista de Pasajeros
 
 # master.menu.flightCrewMember ##########################################################
  
- master.menu.flightCrewMember = Miembro de la tripulación de vuelo
- master.menu.flightCrewMember.flightAssignment = Asignación de vuelo
+master.menu.flightCrewMember = Miembro de la tripulación de vuelo
+master.menu.flightCrewMember.flightAssignment = Asignación de vuelo
+master.menu.flightCrewMember.flightAssignmentCompleted = Asignaciones de vuelo completadas
+master.menu.flightCrewMember.flightAssignmentPlanned = Asignaciones de vuelo planeadas
+master.menu.flightCrewMember.activityLogs = Listado de activitylogs
  
 # master.menu.menu.assistance-agent ##########################################################
 master.menu.assistance-agent.claims = Reclamaciones
 master.menu.assistance-agent.claims.claims-list = Lista de reclamaciones completadas
 master.menu.assistance-agent.claims.list-claims-pending = Lista de reclamaciones pendientes
- 
 
 # master.menu.user-account ####################################################
 
@@ -62,8 +68,22 @@ master.menu.user-account.become-provider = Hacerse proveedor
 master.menu.user-account.provider-profile = Perfil de proveedor
 master.menu.user-account.become-consumer = Hazte consumidor
 master.menu.user-account.consumer-profile = Perfil de consumidor
+master.menu.user-account.become-customer = Hazte cliente
+master.menu.user-account.customer-profile = Perfil de Cliente
+master.menu.user-account.become-manager = Convertirse en Manager
+master.menu.user-account.manager-profile = Perfil de Manager
 
 # master.menu.manager ###########################################################
 master.menu.manager = Manager
-manager.menu.manager.list-flights = Mis Vuelos
+master.menu.manager.list-flights = Mis Vuelos
+master.menu.manager.dashboard = Panel del manager
+
+# master.menu.any ###############################################################
+
+master.menu.any = Any
+master.menu.any.flight.list = Listado de vuelos
+master.menu.any.weather.list = Predicciones
+master.menu.any.flight-under-bad-weather.list = Vuelos con mal clima
+
+
 
