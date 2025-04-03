@@ -25,4 +25,5 @@ public interface AdministratorAircraftRepository extends AbstractRepository {
 
 	@Query("SELECT a FROM Airline a WHERE a.id = :id")
 	Airline findAirlineById(@Param("id") int id);
+
 }

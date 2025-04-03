@@ -2,7 +2,6 @@
 package acme.features.administrator.aircraft;
 
 import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -28,7 +27,12 @@ public class AdministratorAircraftShowService extends AbstractGuiService<Adminis
 	@Override
 	public void authorise() {
 		boolean status;
-		status = super.getRequest().getPrincipal().hasRealmOfType(Administrator.class);
+		int masterId;
+		Aircraft aircraft;
+
+		masterId = super.getRequest().getData("id", int.class);
+		aircraft = this.repository.findAircraftById(masterId);
+		status = super.getRequest().getPrincipal().hasRealmOfType(Administrator.class) && aircraft != null;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -61,7 +65,6 @@ public class AdministratorAircraftShowService extends AbstractGuiService<Adminis
 		dataset.put("airline", airlineChoices.getSelected().getKey());
 
 		super.getResponse().addData(dataset);
-
 	}
 
 }

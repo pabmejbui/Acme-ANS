@@ -1,6 +1,7 @@
 
 package acme.features.administrator.aircraft;
 
+
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircrafts.Aircraft;
 import acme.entities.aircrafts.AircraftStatus;
+
 import acme.entities.airlines.Airline;
 
 @GuiService
@@ -69,6 +71,7 @@ public class AdministratorAircraftUpdateService extends AbstractGuiService<Admin
 		a.setDetails(aircraft.getDetails());
 		a.setAirline(aircraft.getAirline());
 		this.repository.save(a);
+
 	}
 
 	@Override

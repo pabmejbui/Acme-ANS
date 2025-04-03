@@ -16,6 +16,7 @@ manager.validation.fullname.missing = El nombre completo del usuario es obligato
 manager.validation.identifier.initials-mismatch = Las iniciales del identificador no coinciden con el nombre del usuario.
 manager.validation.birthDate.null = La fecha de nacimiento es obligatoria.
 manager.validation.age.less-than-18 = El manager debe tener al menos 18 años.
+manager.validation.identifier.duplicated = El identificador ya está en uso. Prueba otro.
 
 # Mensajes de validación de customer ####################################################
 
@@ -30,6 +31,12 @@ flight.validation.flightNumber.not-null = El número de vuelo no puede estar vac
 flight.validation.flightNumber.bad-format = El número de vuelo debe tener tres letras mayúsculas seguidas de cuatro dígitos (ejemplo: AMX1234).
 flight.validation.flightNumber.missing-airline = No se puede determinar el código IATA de la aerolínea para este vuelo.
 flight.validation.flightNumber.mismatch = El número de vuelo debe comenzar con el código IATA de la aerolínea.
+
+# Mensajes de validación de la etiqueta de vuelo #########################################################
+
+flight.validation.tag.not-blank = La etiqueta del vuelo no puede estar vacío o ser nula.
+flight.validation.tag.length = La longitud de la etiqueta tiene que ser entre 1 y 50 caracteres.
+flight.validation.tag.duplicated = La etiqueta está ya en uso. Prueba otra.
 
 # Mensajes de validación de leg #########################################################
 
@@ -90,3 +97,12 @@ acme.validation.phone.bad-format-phone.message = El número de teléfono tiene u
 
 # Passenger ##########################################################################
 acme.validation.passportNumber = Formato de pasaporte incorrecto
+
+# Mensajes de validación de aerolíneas #####################################################
+acme.validation.iataCode.message = Formato de código iata incorrecto
+airline.validation.iataCode.not-blank = El código iata no puede estar vacío
+airline.validation.iataCode.duplicated = El código iata ya está en uso. Prueba otro
+airline.validation.foundation.future = El momento de la fundación no puede ser en el futuro.
+
+# Mensajes de validación de aeronaves ########################################################
+aircraft.validation.registration.duplicate = El número de registro ya está en uso. Prueba con otro.
