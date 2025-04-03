@@ -42,26 +42,8 @@ public class AdministratorAircraftListService extends AbstractGuiService<Adminis
 	public void unbind(final Aircraft aircraft) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(aircraft, "model", "registrationNumber", "capacity", "cargoWeight");
-		super.getResponse().setAuthorised(true);
-	}
-
-	@Override
-	public void load() {
-		Collection<Aircraft> aircrafts;
-
-		aircrafts = this.repository.findAllAircrafts();
-
-		super.getBuffer().addData(aircrafts);
-	}
-
-	@Override
-	public void unbind(final Aircraft aircraft) {
-		Dataset dataset;
-
 		dataset = super.unbindObject(aircraft, "model", "registrationNumber", "status");
-		super.addPayload(dataset, aircraft, 
-			"capacity", "cargoWeight", "details");
+		super.addPayload(dataset, aircraft, "capacity", "cargoWeight", "details");
 		super.getResponse().addData(dataset);
 	}
 

@@ -27,7 +27,6 @@ public class AdministratorAircraftController extends AbstractGuiController<Admin
 	@Autowired
 	private AdministratorAircraftUpdateService	updateService;
 
-
 	@Autowired
 	private AdministratorAircraftDisableService	disableService;
 

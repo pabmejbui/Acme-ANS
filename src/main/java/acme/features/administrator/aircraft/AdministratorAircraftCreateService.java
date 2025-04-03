@@ -1,7 +1,6 @@
 
 package acme.features.administrator.aircraft;
 
-<<<<<<< HEAD
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
