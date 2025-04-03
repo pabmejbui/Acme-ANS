@@ -43,6 +43,8 @@
 				code="master.menu.administrator.list-aircrafts"
 				action="/administrator/aircraft/list"/>
 			<acme:menu-separator/>
+<<<<<<< HEAD
+=======
 			<acme:menu-suboption code="master.menu.administrator.list-services"
 				action="/administrator/service/list" />
 			<acme:menu-separator />
@@ -52,6 +54,7 @@
 			<acme:menu-suboption code="master.menu.administrator.list-bookings"
 				action="/administrator/booking/list" />
 			<acme:menu-separator />
+>>>>>>> refs/heads/master
 			<acme:menu-suboption
 				code="master.menu.administrator.populate-db-initial"
 				action="/administrator/system/populate-initial" />
@@ -80,6 +83,10 @@
 			access="hasRealm('Customer')">
 			<acme:menu-suboption code="master.menu.customer.list-bookings"
 				action="/customer/booking/list" />
+<<<<<<< HEAD
+		</acme:menu-option>
+=======
+>>>>>>> refs/heads/master
 
 		</acme:menu-option>
 

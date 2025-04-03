@@ -7,6 +7,28 @@
 	<acme:input-textbox code="administrator.aircraft.form.label.registrationNumber" path="registrationNumber"/>
 	<acme:input-textbox code="administrator.aircraft.form.label.model" path="model"/>
 	<acme:input-select code="administrator.aircraft.form.label.status" path="status" choices="${statuses}"/>
+<<<<<<< HEAD
+	<acme:input-integer code="administrator.aircraft.form.label.capacity" path="capacity" />
+	<acme:input-integer code="administrator.aircraft.form.label.cargoWeight" path="cargoWeight"/>
+	<acme:input-textarea code="administrator.aircraft.form.label.details" path="details"/>
+	
+	
+	<jstl:choose>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|disable|enable')}">
+		
+			<acme:input-checkbox code="administrator.aircraft.form.label.confirmation" path="confirmation"/>	
+			<acme:submit code="administrator.aircraft.form.button.update" action="/administrator/aircraft/update"/>
+			<jstl:if test="${status == 'ACTIVE_SERVICE'}">
+					<acme:submit code="administrator.aircraft.form.button.disable" action="/administrator/aircraft/disable"/>
+				</jstl:if>
+				<jstl:if test="${status == 'UNDER_MAINTENANCE'}">
+					<acme:submit code="administrator.aircraft.form.button.enable" action="/administrator/aircraft/enable"/>
+				</jstl:if>
+			
+		</jstl:when>
+		<jstl:when test="${_command == 'create'}">
+			<acme:input-checkbox code="administrator.aircraft.form.label.confirmation-create" path="confirmation"/>	
+=======
 	<acme:input-integer code="administrator.aircraft.form.label.capacity" path="capacity"/>
 	<acme:input-integer code="administrator.aircraft.form.label.cargoWeight" path="cargoWeight"/>
 	<acme:input-textarea code="administrator.aircraft.form.label.details" path="details"/>
@@ -21,6 +43,7 @@
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:input-checkbox code="administrator.aircraft.form.label.confirmation-create" path="confirmationCreate"/>	
+>>>>>>> refs/heads/master
 			<acme:submit code="administrator.aircraft.form.button.create" action="/administrator/aircraft/create"/>
 		</jstl:when>		
 	</jstl:choose>	
