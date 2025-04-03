@@ -62,6 +62,8 @@ master.menu.user-account.become-provider = Hacerse proveedor
 master.menu.user-account.provider-profile = Perfil de proveedor
 master.menu.user-account.become-consumer = Hazte consumidor
 master.menu.user-account.consumer-profile = Perfil de consumidor
+master.menu.user-account.become-customer = Hazte cliente
+master.menu.user-account.customer-profile = Perfil de Cliente
 master.menu.user-account.become-manager = Convertirse en Manager
 master.menu.user-account.manager-profile = Perfil de Manager
 

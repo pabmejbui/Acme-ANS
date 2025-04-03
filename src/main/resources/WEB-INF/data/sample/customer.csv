@@ -1,10 +1,10 @@
 key,key:userAccount,idCustomer,phoneNumber,physicalAddress,city,country,earnedPoints
-customer-01,user-account-customer-01,AB987654,+19987654321,"Calle del Prado 5","Madrid","España",45210
-customer-02,user-account-customer-02,DC763412,+12345678901,"Avenida de los Pinos","Sevilla","España",2310
-customer-03,user-account-customer-03,GH123987,+56712398765,"Calle de la Luna 24","Guadalajara","México",null
-customer-04,user-account-customer-04,MB129875,+34961234567,"Calle de Alcalá 35","Madrid","España",14500
-customer-05,user-account-customer-05,TL567392,+447788998877,"Oxford Street 14","Londres","Reino Unido",32000
-customer-06,user-account-customer-06,QP463829,+15559876543,"Park Avenue 56","Nueva York","EE.UU.",12345
-customer-07,user-account-customer-07,AB984653,+818034567890,"Shinjuku 45","Tokio","Japón",7321
-customer-08,user-account-customer-08,CT745129,+614123456789,"George Street 77","Sídney","Australia",null
-customer-09,user-account-customer-09,ZX354826,+492345678912,"Kurfürstendamm 82","Berlín","Alemania",28765
+customer-01,user-account-customer-01,BA987654,+19987654321,"Calle del Prado 5","Madrid","España",45210
+customer-02,user-account-customer-02,CD763412,+12345678901,"Avenida de los Pinos","Sevilla","España",2310
+customer-03,user-account-customer-03,HG123987,+56712398765,"Calle de la Luna 24","Guadalajara","México",null
+customer-04,user-account-customer-04,BM129875,+34961234567,"Calle de Alcalá 35","Madrid","España",14500
+customer-05,user-account-customer-05,LT567392,+447788998877,"Oxford Street 14","Londres","Reino Unido",32000
+customer-06,user-account-customer-06,PQ463829,+15559876543,"Park Avenue 56","Nueva York","EE.UU.",12345
+customer-07,user-account-customer-07,BA984653,+818034567890,"Shinjuku 45","Tokio","Japón",7321
+customer-08,user-account-customer-08,TC745129,+614123456789,"George Street 77","Sídney","Australia",null
+customer-09,user-account-customer-09,XZ354826,+492345678912,"Kurfürstendamm 82","Berlín","Alemania",28765
