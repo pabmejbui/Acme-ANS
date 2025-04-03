@@ -43,7 +43,6 @@
 				code="master.menu.administrator.list-aircrafts"
 				action="/administrator/aircraft/list"/>
 			<acme:menu-separator/>
-
 			<acme:menu-suboption code="master.menu.administrator.list-services"
 				action="/administrator/service/list" />
 			<acme:menu-separator />
@@ -84,7 +83,7 @@
 		</acme:menu-option>
 
 
-		<%-- 	<acme:menu-option code="master.menu.flightCrewMember" access="hasRealm('FlightCrewMember')">
+		<%--<acme:menu-option code="master.menu.flightCrewMember" access="hasRealm('FlightCrewMember')">
  			<acme:menu-suboption code="master.menu.flightCrewMember.flightAssignment" action="/flight-crew-member/flight-assignment/list"/>
  		</acme:menu-option> --%>
 

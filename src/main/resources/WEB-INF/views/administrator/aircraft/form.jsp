@@ -27,7 +27,6 @@
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:input-checkbox code="administrator.aircraft.form.label.confirmation-create" path="confirmation"/>	
-			
 			<acme:submit code="administrator.aircraft.form.button.create" action="/administrator/aircraft/create"/>
 		</jstl:when>		
 	</jstl:choose>	

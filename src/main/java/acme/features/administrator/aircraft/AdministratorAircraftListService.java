@@ -21,11 +21,11 @@ public class AdministratorAircraftListService extends AbstractGuiService<Adminis
 
 	// AbstractGuiService interface -------------------------------------------
 
-
 	@Override
 	public void authorise() {
-
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		status = super.getRequest().getPrincipal().hasRealmOfType(Administrator.class);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -40,12 +40,8 @@ public class AdministratorAircraftListService extends AbstractGuiService<Adminis
 	@Override
 	public void unbind(final Aircraft aircraft) {
 		Dataset dataset;
-
-		dataset = super.unbindObject(aircraft, "model", "registrationNumber", "status");
-		super.addPayload(dataset, aircraft, //
-			"capacity", "cargoWeight", "details");
-
-		super.getResponse().addData(dataset);
-	}
+		
+		dataset = super.unbindObject(aircraft, "model", "registrationNumber", "capacity", "status", "cargoWeight");
+    super.addPayload(dataset, aircraft, "capacity", "cargoWeight", "details");
 
 }
