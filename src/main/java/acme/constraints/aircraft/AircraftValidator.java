@@ -25,7 +25,6 @@ public class AircraftValidator extends AbstractValidator<ValidAircraft, Aircraft
 	@Override
 	public boolean isValid(final Aircraft aircraft, final ConstraintValidatorContext context) {
 		assert context != null;
-		boolean result = true;
 
 		if (aircraft == null || aircraft.getRegistrationNumber() == null) {
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
