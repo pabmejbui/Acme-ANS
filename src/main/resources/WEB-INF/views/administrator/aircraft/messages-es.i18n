@@ -18,7 +18,10 @@ administrator.aircraft.form.button.update = Actualizar
 administrator.aircraft.form.button.delete = Borrar
 administrator.aircraft.form.button.disable = Deshabilitar
 administrator.aircraft.form.button.create = Crear
+<<<<<<< HEAD
 administrator.aircraft.form.button.enable
+=======
+>>>>>>> refs/heads/master
 
 administrator.aircraft.list.label.registrationNumber = Número de registro
 administrator.aircraft.list.label.status = Estado

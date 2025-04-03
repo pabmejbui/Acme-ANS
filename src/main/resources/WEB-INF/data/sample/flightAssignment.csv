@@ -1,4 +1,4 @@
-key,duty,moment,currentStatus,remarks,key:flightCrewMember,key:leg,draftMode
+key,duty,lastUpdate,status,remarks,key:flightCrewMember,key:leg,draftMode
 assignment-01,LEAD_ATTENDANT,2000/07/15 00:00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member1,leg-01,true
 assignment-02,CO_PILOT,2000/12/31 23:58,CONFIRMED,"",member2,leg-02,true
 assignment-03,CO_PILOT,2000/07/15 00:00,PENDING,"Lo",member3,leg-03,false

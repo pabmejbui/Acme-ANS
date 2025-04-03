@@ -24,7 +24,7 @@ public @interface ValidLocatorCode {
 
 	// Standard validation properties -----------------------------------------
 
-	String message() default "{acme.validation.locatorCode.message}";
+	String message() default "";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};

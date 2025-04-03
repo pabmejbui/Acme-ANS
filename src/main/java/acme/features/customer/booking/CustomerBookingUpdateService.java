@@ -46,19 +46,12 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void bind(final Booking booking) {
-		super.bindObject(booking, "locatorCode", "travelClass", "price", "lastCardNibble");
+		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble");
 	}
 
 	@Override
 	public void validate(final Booking booking) {
-		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
-			boolean isDraft = booking.isDraftMode();
-			boolean hasLastCardNibble = booking.getLastCardNibble() != null;
-
-			// Una reserva solo puede ser actualizada si tiene el último nibble de la tarjeta
-			if (!isDraft && !hasLastCardNibble)
-				super.state(false, "*", "acme.validation.lastCardNibble.message");
-		}
+		//intencionalmente en blanco
 	}
 
 	@Override
@@ -73,7 +66,8 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 		travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "price", "lastCardNibble", "draftMode");
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble", "draftMode");
+		dataset.put("bookingCost", booking.getCost());
 		dataset.put("travelClasses", travelClasses);
 		super.getResponse().addData(dataset);
 	}

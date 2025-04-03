@@ -22,7 +22,7 @@ manager.flight.form.label.scheduledDeparture = Salida Programada:
 manager.flight.form.label.scheduledArrival = Llegada Programada:
 manager.flight.form.label.originCity = Ciudad de origen:
 manager.flight.form.label.destinationCity = Ciudad de destino:
-manager.flight.form.label.numberOfLayovers = Número de escalas:
+manager.flight.form.label.numberOfLayovers = Número de etapas:
 
 manager.flight.form.button.update = Modificar vuelo
 manager.flight.form.button.delete = Borrar vuelo
@@ -37,4 +37,4 @@ manager.flight.list.label.draftMode = Borrador:
 manager.flight.list.label.number-of-legs = Número de escalas:
 
 manager.flight.list.button.create = Crear vuelo
-
+manager.leg.list.button.my-legs = Mis etapas

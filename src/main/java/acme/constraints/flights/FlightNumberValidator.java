@@ -3,14 +3,18 @@ package acme.constraints.flights;
 
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.entities.flights.FlightRepository;
 import acme.entities.flights.Leg;
 
 @Validator
 public class FlightNumberValidator extends AbstractValidator<ValidFlightNumber, Leg> {
 
-	private static final String FLIGHT_NUMBER_PATTERN = "^[A-Z]{3}\\d{4}$";
+	@Autowired
+	private FlightRepository repository;
 
 
 	@Override
@@ -20,37 +24,32 @@ public class FlightNumberValidator extends AbstractValidator<ValidFlightNumber, 
 
 	@Override
 	public boolean isValid(final Leg leg, final ConstraintValidatorContext context) {
-		assert leg != null && context != null;
+		assert context != null;
 
-		boolean valid = true;
-		String flightNumber = leg.getFlightNumber();
+		boolean result = true;
 
-		if (flightNumber == null || flightNumber.isBlank()) {
-			super.state(context, false, "flightNumber", "flight.validation.flightNumber.not-null");
-			return false;
+		if (leg == null) {
+			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
+			result = false;
+		} else {
+			String flightNumber = leg.getFlightNumber();
+			String airlineIataCode = leg.getAirline().getIataCode();
+
+			// Validación del formato del número de vuelo
+			String pattern = "^" + airlineIataCode + "\\d{4}$";
+			boolean validFormat = flightNumber.matches(pattern);
+
+			super.state(context, validFormat, "flightNumber", "acme.validation.manager.leg.flight-number.format.message");
+			result = result && validFormat;
+
+			// Validación de unicidad del número de vuelo
+			Leg existingLeg = this.repository.findLegByFlightNumber(flightNumber);
+			boolean uniqueFlightNumber = existingLeg == null || existingLeg.equals(leg);
+
+			super.state(context, uniqueFlightNumber, "flightNumber", "acme.validation.manager.leg.flight-number.duplicate.message");
+			result = result && uniqueFlightNumber;
 		}
 
-		if (!flightNumber.matches(FlightNumberValidator.FLIGHT_NUMBER_PATTERN)) {
-			super.state(context, false, "flightNumber", "flight.validation.flightNumber.bad-format");
-			valid = false;
-		}
-
-		String airlineIataCode = null;
-		if (leg.getFlight() == null || leg.getFlight().getManager() == null || leg.getAirline() == null || leg.getAirline().getIataCode() == null) {
-
-			super.state(context, false, "flightNumber", "flight.validation.flightNumber.missing-airline");
-			valid = false;
-		} else
-			airlineIataCode = leg.getAirline().getIataCode();
-
-		if (valid && airlineIataCode != null) {
-			String expectedPattern = "^" + airlineIataCode + "\\d{4}$";
-			if (!flightNumber.matches(expectedPattern)) {
-				super.state(context, false, "flightNumber", "flight.validation.flightNumber.mismatch");
-				valid = false;
-			}
-		}
-
-		return valid && !super.hasErrors(context);
+		return result;
 	}
 }
