@@ -9,22 +9,18 @@
 
 <table class="table table-sm">
 	<tr>
-		<th scope="row"><acme:print code="customer.dashboard.form.label.totalMoneySpentLastYear"/></th>
-		<td><acme:print value="${totalMoneySpentBookingLastYear}"/></td>
+		<th scope="row"><acme:print code="customer.dashboard.form.label.spentMoneyLastYear"/></th>
+		<td><acme:print value="${spentMoneyLastYear}"/></td>
 	</tr>
 	<tr>
 		<th scope="row"><acme:print code="customer.dashboard.form.label.lastFiveDestinations"/></th>
 		<td>
 			<ul>
 				<jstl:forEach var="destination" items="${lastFiveDestinations}">
-					<li><acme:print value="${destination}"/></li>
+					<li><jstl:out value="${destination}"/></li>
 				</jstl:forEach>
 			</ul>
 		</td>
-	</tr>
-	<tr>
-		<th scope="row"><acme:print code="customer.dashboard.form.label.totalBookings"/></th>
-		<td><acme:print value="${totalBookings}"/></td>
 	</tr>
 	<tr>
 		<th scope="row"><acme:print code="customer.dashboard.form.label.economyBookings"/></th>
@@ -35,20 +31,20 @@
 		<td><acme:print value="${businessBookings}"/></td>
 	</tr>
 	<tr>
-		<th scope="row"><acme:print code="customer.dashboard.form.label.avgBookingCost"/></th>
-		<td><acme:print value="${avgBookingCost}"/></td>
+		<th scope="row"><acme:print code="customer.dashboard.form.label.bookingAverageCost"/></th>
+		<td><acme:print value="${bookingAverageCost}"/></td>
 	</tr>
 	<tr>
-		<th scope="row"><acme:print code="customer.dashboard.form.label.minBookingCost"/></th>
-		<td><acme:print value="${minBookingCost}"/></td>
+		<th scope="row"><acme:print code="customer.dashboard.form.label.bookingMinimumCost"/></th>
+		<td><acme:print value="${bookingMinimumCost}"/></td>
 	</tr>
 	<tr>
-		<th scope="row"><acme:print code="customer.dashboard.form.label.maxBookingCost"/></th>
-		<td><acme:print value="${maxBookingCost}"/></td>
+		<th scope="row"><acme:print code="customer.dashboard.form.label.bookingMaximumCost"/></th>
+		<td><acme:print value="${bookingMaximumCost}"/></td>
 	</tr>
 	<tr>
-		<th scope="row"><acme:print code="customer.dashboard.form.label.stdBookingCost"/></th>
-		<td><acme:print value="${stdDevBookingCost}"/></td>
+		<th scope="row"><acme:print code="customer.dashboard.form.label.bookingDeviationCost"/></th>
+		<td><acme:print value="${bookingDeviationCost}"/></td>
 	</tr>
 </table>
 
@@ -56,24 +52,24 @@
 
 <table class="table table-sm">
 	<tr>
-		<th scope="row"><acme:print code="customer.dashboard.form.label.totalPassengers"/></th>
-		<td><acme:print value="${totalPassengers}"/></td>
+		<th scope="row"><acme:print code="customer.dashboard.form.label.bookingCountPassengers"/></th>
+		<td><acme:print value="${bookingCountPassengers}"/></td>
 	</tr>
 	<tr>
-		<th scope="row"><acme:print code="customer.dashboard.form.label.avgPassengersPerBooking"/></th>
-		<td><acme:print value="${avgPassengersPerBooking}"/></td>
+		<th scope="row"><acme:print code="customer.dashboard.form.label.bookingAveragePassengers"/></th>
+		<td><acme:print value="${bookingAveragePassengers}"/></td>
 	</tr>
 	<tr>
-		<th scope="row"><acme:print code="customer.dashboard.form.label.minPassengersPerBooking"/></th>
-		<td><acme:print value="${minPassengersPerBooking}"/></td>
+		<th scope="row"><acme:print code="customer.dashboard.form.label.bookingMinimumPassengers"/></th>
+		<td><acme:print value="${bookingMinimumPassengers}"/></td>
 	</tr>
 	<tr>
-		<th scope="row"><acme:print code="customer.dashboard.form.label.maxPassengersPerBooking"/></th>
-		<td><acme:print value="${maxPassengersPerBooking}"/></td>
+		<th scope="row"><acme:print code="customer.dashboard.form.label.bookingMaximumPassengers"/></th>
+		<td><acme:print value="${bookingMaximumPassengers}"/></td>
 	</tr>
 	<tr>
-		<th scope="row"><acme:print code="customer.dashboard.form.label.stdPassengersPerBooking"/></th>
-		<td><acme:print value="${stdDevPassengersPerBooking}"/></td>
+		<th scope="row"><acme:print code="customer.dashboard.form.label.bookingDeviationPassengers"/></th>
+		<td><acme:print value="${bookingDeviationPassengers}"/></td>
 	</tr>
 </table>
 
@@ -85,34 +81,33 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		var data = {
-			labels : [ "ECONOMY", "BUSINESS" ],
-			datasets : [{
-				data : [
-					<jstl:out value="${economyBookings}" />,
-					<jstl:out value="${businessBookings}" />
-				]
+		const economy = ${economyBookings};
+		const business = ${businessBookings};
+
+		const data = {
+			labels: ["ECONOMY", "BUSINESS"],
+			datasets: [{
+				data: [economy, business],
+				backgroundColor: ["#4e73df", "#1cc88a"]
 			}]
 		};
-		var options = {
-			scales : {
-				yAxes : [{
-					ticks : {
-						suggestedMin : 0,
-						suggestedMax : Math.max(<jstl:out value="${economyBookings}" />, <jstl:out value="${businessBookings}" />)
-					}
-				}]
+
+		const options = {
+			scales: {
+				y: {
+					beginAtZero: true,
+					suggestedMax: Math.max(economy, business) + 1
+				}
 			},
-			legend : {
-				display : false
+			plugins: {
+				legend: { display: false }
 			}
 		};
-		var canvas = document.getElementById("bookingClassChart");
-		var context = canvas.getContext("2d");
-		new Chart(context, {
-			type : "bar",
-			data : data,
-			options : options
+
+		new Chart(document.getElementById("bookingClassChart").getContext("2d"), {
+			type: "bar",
+			data: data,
+			options: options
 		});
 	});
 </script>

@@ -1,20 +1,19 @@
-
 # messages ############################################################
 customer.dashboard.form.title.general-indicators = General indicators
-customer.dashboard.form.label.totalMoneySpentLastYear = Total money spent in last year
+customer.dashboard.form.label.spentMoneyLastYear = Total money spent in last year
 customer.dashboard.form.label.lastFiveDestinations = Last five destinations
-customer.dashboard.form.label.totalBookings = Total bookings
 customer.dashboard.form.label.economyBookings = Economy class bookings
 customer.dashboard.form.label.businessBookings = Business class bookings
-customer.dashboard.form.label.avgBookingCost = Average booking cost
-customer.dashboard.form.label.minBookingCost = Minimum booking cost
-customer.dashboard.form.label.maxBookingCost = Maximum booking cost
-customer.dashboard.form.label.stdBookingCost = Standard deviation of booking cost
+customer.dashboard.form.label.bookingAverageCost = Average booking cost
+customer.dashboard.form.label.bookingMinimumCost = Minimum booking cost
+customer.dashboard.form.label.bookingMaximumCost = Maximum booking cost
+customer.dashboard.form.label.bookingDeviationCost = Standard deviation of booking cost
 
 customer.dashboard.form.title.passenger-statistics = Passenger statistics
-customer.dashboard.form.label.totalPassengers = Total passengers
-customer.dashboard.form.label.avgPassengersPerBooking = Average passengers per booking
-customer.dashboard.form.label.minPassengersPerBooking = Minimum passengers per booking
-customer.dashboard.form.label.maxPassengersPerBooking = Maximum passengers per booking
-customer.dashboard.form.label.stdPassengersPerBooking = Standard deviation of passengers per booking
+customer.dashboard.form.label.bookingCountPassengers = Total passengers
+customer.dashboard.form.label.bookingAveragePassengers = Average passengers per booking
+customer.dashboard.form.label.bookingMinimumPassengers = Minimum passengers per booking
+customer.dashboard.form.label.bookingMaximumPassengers = Maximum passengers per booking
+customer.dashboard.form.label.bookingDeviationPassengers = Standard deviation of passengers per booking
+
 customer.dashboard.form.title.booking-class-ratio = Booking class ratio

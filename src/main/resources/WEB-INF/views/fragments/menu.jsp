@@ -83,6 +83,9 @@
 			access="hasRealm('Customer')">
 			<acme:menu-suboption code="master.menu.customer.list-bookings"
 				action="/customer/booking/list" />
+				
+			<acme:menu-suboption code="master.menu.customer.dashboard"
+				action="/customer/customer-dashboard/show" />
 		</acme:menu-option>
 
 
