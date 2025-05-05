@@ -17,8 +17,8 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
-import acme.constraints.ValidLocatorCode;
 import acme.constraints.ValidNibble;
 import acme.constraints.bookings.ValidBooking;
 import acme.entities.flights.Flight;
@@ -37,7 +37,7 @@ public class Booking extends AbstractEntity {
 	// Attributes----------------------------------------
 
 	@Mandatory
-	@ValidLocatorCode
+	@ValidString(pattern = "^[A-Z0-9]{6,8}$", message = "{acme.validation.locatorCode.message}")
 	@Column(unique = true)
 	private String				locatorCode;
 
