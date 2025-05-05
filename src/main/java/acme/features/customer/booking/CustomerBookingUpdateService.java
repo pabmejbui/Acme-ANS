@@ -1,6 +1,8 @@
 
 package acme.features.customer.booking;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -9,6 +11,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.bookings.Booking;
 import acme.entities.bookings.TravelClass;
+import acme.entities.flights.Flight;
 import acme.realms.customer.Customer;
 
 @GuiService
@@ -46,7 +49,7 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void bind(final Booking booking) {
-		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble");
+		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble", "flight");
 	}
 
 	@Override
@@ -63,11 +66,17 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 	public void unbind(final Booking booking) {
 		Dataset dataset;
 		SelectChoices travelClasses;
+		SelectChoices flightChoices;
+		Collection<Flight> flights;
 
 		travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble", "draftMode");
+		flights = this.repository.findAllFlightsDraftModeFalse();
+		flightChoices = SelectChoices.from(flights, "id", booking.getFlight());
+
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble", "flight", "draftMode");
 		dataset.put("bookingCost", booking.getCost());
+		dataset.put("flightChoices", flightChoices);
 		dataset.put("travelClasses", travelClasses);
 		super.getResponse().addData(dataset);
 	}

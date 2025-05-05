@@ -13,6 +13,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.bookings.Booking;
 import acme.entities.bookings.TravelClass;
+import acme.entities.flights.Flight;
 import acme.entities.passenger.Passenger;
 import acme.realms.customer.Customer;
 
@@ -55,6 +56,8 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 	public void unbind(final Booking booking) {
 		Dataset dataset;
 		SelectChoices travelClasses;
+		SelectChoices flightChoices;
+		Collection<Flight> flights;
 		Collection<Passenger> passengers;
 
 		// Obtener pasajeros de la reserva
@@ -67,10 +70,15 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		// Opciones de TravelClass
 		travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
+		//Vuelos disponibles publicados
+		flights = this.repository.findAllFlightsDraftModeFalse();
+		flightChoices = SelectChoices.from(flights, "id", booking.getFlight());
+
 		// Asignar datos al dataset
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "lastCardNibble", "draftMode");
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "lastCardNibble", "flight", "draftMode");
 		dataset.put("bookingCost", booking.getCost());
 		dataset.put("travelClasses", travelClasses);
+		dataset.put("flightChoices", flightChoices);
 		dataset.put("passengers", String.join(", ", passengerNames));
 
 		// Enviar datos al frontend

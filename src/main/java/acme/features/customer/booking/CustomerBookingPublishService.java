@@ -47,24 +47,29 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void bind(final Booking booking) {
-		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble");
+		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble", "flight");
 	}
 
 	@Override
 	public void validate(final Booking booking) {
-		boolean status = true;
-		int id;
-		id = super.getRequest().getData("id", int.class);
+		boolean hasPublishedPassengers = true;
+		boolean hasCardNibble = booking.getLastCardNibble() != null;
+
+		int id = super.getRequest().getData("id", int.class);
 		Collection<Passenger> passengers = this.repository.findPassengersByBookingId(id);
+
 		if (passengers.isEmpty())
-			status = false;
+			hasPublishedPassengers = false;
 		else
 			for (Passenger passenger : passengers)
 				if (passenger.isDraftMode()) {
-					status = false;
+					hasPublishedPassengers = false;
 					break;
 				}
-		super.state(status, "*", "customer.booking.publish.not-published-passengers");
+
+		super.state(hasPublishedPassengers, "*", "customer.booking.publish.not-published-passengers");
+		super.state(hasCardNibble, "lastCardNibble", "customer.booking.publish.missing-card-nibble");
+
 	}
 
 	@Override
@@ -77,7 +82,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 	public void unbind(final Booking booking) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble", "draftMode");
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble", "flight", "draftMode");
 		dataset.put("bookingCost", booking.getCost());
 		super.getResponse().addData(dataset);
 	}
