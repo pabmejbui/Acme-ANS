@@ -1,4 +1,5 @@
 # messages ############################################################
+customer.customer-dashboard.form.title = Customer Dashboard
 customer.dashboard.form.title.general-indicators = General indicators
 customer.dashboard.form.label.spentMoneyLastYear = Total money spent in last year
 customer.dashboard.form.label.lastFiveDestinations = Last five destinations

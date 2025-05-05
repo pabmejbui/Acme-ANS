@@ -1,4 +1,5 @@
 # messages ############################################################
+customer.customer-dashboard.form.title = Panel de cliente
 customer.dashboard.form.title.general-indicators = Indicadores generales
 customer.dashboard.form.label.spentMoneyLastYear = Dinero total gastado en el último año
 customer.dashboard.form.label.lastFiveDestinations = Últimos cinco destinos
