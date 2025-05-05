@@ -9,7 +9,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.configuration.SystemConfiguration;
 import acme.forms.ManagerDashboard;
-import acme.realms.Manager;
+import acme.realms.manager.Manager;
 
 @GuiService
 public class ManagerDashboardShowService extends AbstractGuiService<Manager, ManagerDashboard> {
@@ -40,7 +40,6 @@ public class ManagerDashboardShowService extends AbstractGuiService<Manager, Man
 		double ratioOnTime = total > 0 ? (double) onTime / total : 0.0;
 		double ratioDelayed = total > 0 ? (double) delayed / total : 0.0;
 
-		// 🔥 Aquí corregimos el casteo
 		Object[] costStatsRaw = this.repository.statsCost(managerId).get(0);
 		Double avgAmount = (Double) costStatsRaw[0];
 		Double minAmount = (Double) costStatsRaw[1];

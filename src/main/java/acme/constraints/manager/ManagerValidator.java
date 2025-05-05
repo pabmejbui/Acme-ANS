@@ -6,16 +6,22 @@ import java.util.Date;
 
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import acme.client.components.principals.DefaultUserIdentity;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.client.helpers.MomentHelper;
-import acme.realms.Manager;
+import acme.realms.manager.Manager;
+import acme.realms.manager.ManagerRepository;
 
 @Validator
 public class ManagerValidator extends AbstractValidator<ValidManager, Manager> {
 
-	private static final String IDENTIFIER_PATTERN = "^[A-Z]{2,3}\\d{6}$";
+	private static final String	IDENTIFIER_PATTERN	= "^[A-Z]{2,3}\\d{6}$";
+
+	@Autowired
+	private ManagerRepository	repository;
 
 
 	@Override
@@ -28,8 +34,6 @@ public class ManagerValidator extends AbstractValidator<ValidManager, Manager> {
 		assert manager != null && context != null;
 
 		boolean isValid = true;
-
-		// Validación del identifier no nulo y del patrón correcto
 		String identifier = manager.getIdentifier();
 
 		if (identifier == null || identifier.isBlank()) {
@@ -41,13 +45,11 @@ public class ManagerValidator extends AbstractValidator<ValidManager, Manager> {
 			isValid = false;
 
 		} else {
-			// Validación de las iniciales según el nombre completo
 			DefaultUserIdentity identity = manager.getUserAccount().getIdentity();
 
 			if (identity == null || identity.getFullName() == null) {
 				super.state(context, false, "identifier", "manager.validation.fullname.missing");
 				isValid = false;
-
 			} else {
 				String initials = this.extractInitials(identity.getFullName());
 				String identifierInitials = identifier.replaceAll("\\d", "");
@@ -57,15 +59,18 @@ public class ManagerValidator extends AbstractValidator<ValidManager, Manager> {
 					isValid = false;
 				}
 			}
+
+			Manager existing = this.repository.findOneByIdentifier(identifier);
+			boolean isDuplicate = existing != null && existing.getId() != manager.getId();
+
+			super.state(context, !isDuplicate, "identifier", "manager.validation.identifier.duplicated");
+			isValid = isValid && !isDuplicate;
 		}
 
-		// Ponemos edad mínima (18 años)
 		Date birthDate = manager.getBirthDate();
-
 		if (birthDate == null) {
 			super.state(context, false, "birthDate", "manager.validation.birthDate.null");
 			isValid = false;
-
 		} else {
 			Date minimumAdultDate = MomentHelper.deltaFromCurrentMoment(-18, ChronoUnit.YEARS);
 			if (!MomentHelper.isBeforeOrEqual(birthDate, minimumAdultDate)) {

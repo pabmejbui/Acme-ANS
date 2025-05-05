@@ -25,7 +25,8 @@ master.menu.administrator = Administrator
 master.menu.administrator.list-user-accounts = List user accounts
 master.menu.administrator.list-services = List services
 master.menu.administrator.list-airlines = List airlines
-master.menu.administrator.list-bookings = List bookings
+master.menu.administrator.list-airports = List airports
+master.menu.administrator.list-aircrafts = List aircrafts
 master.menu.administrator.populate-db-initial = Populate DB (initial)
 master.menu.administrator.populate-db-sample = Populate DB (samples)
 master.menu.administrator.shut-system-down = Shut system down
@@ -48,14 +49,19 @@ master.menu.customer.list-passengers = List Passengers
 master.menu.customer.dashboard = Customer dashboard
 
 # master.menu.flightCrewMember ##########################################################
- 
+
  master.menu.flightCrewMember = Flight Crew Member
+ master.menu.flightCrewMember.flightAssignment = Flight Assignments
  master.menu.flightCrewMember.flightAssignmentCompleted = Flight Assignments Completed
  master.menu.flightCrewMember.flightAssignmentPlanned = Flight Assignments Planned 
- master.menu.flightCrewMember.activityLogs = activityLogs List
+ master.menu.flightCrewMember.activityLogs = activityLogs List 
  
-# master.menu.user-account ####################################################
+# master.menu.assistance-agent ##########################################################
+master.menu.assistance-agent.claims = Claims
+master.menu.assistance-agent.claims.claims-list = Completed claims list
+master.menu.assistance-agent.claims.list-claims-pending = Pending claims list
 
+# master.menu.user-account ####################################################
 master.menu.user-account = Account
 master.menu.user-account.general-profile = General profile
 master.menu.user-account.become-provider = Become a provider

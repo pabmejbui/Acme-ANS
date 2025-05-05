@@ -16,7 +16,7 @@ manager.validation.fullname.missing = User's full name is required to validate t
 manager.validation.identifier.initials-mismatch = Identifier initials do not match user's name.
 manager.validation.birthDate.null = Birth date is required.
 manager.validation.age.less-than-18 = The manager must be at least 18 years old.
-
+manager.validation.identifier.duplicated = Identifier is already in use. Try another.
 
 # Customer validation messages #########################################################
 customer.validation.identifier.not-null = Identifier must not be null or empty.
@@ -31,6 +31,12 @@ flight.validation.flightNumber.not-null = Flight number cannot be null or empty.
 flight.validation.flightNumber.bad-format = Flight number must have three uppercase letters followed by four digits (e.g., AMX1234).
 flight.validation.flightNumber.missing-airline = Cannot determine airline IATA code for this flight.
 flight.validation.flightNumber.mismatch = Flight number must start with the airline’s IATA code.
+
+# Flight tag validation messages #########################################################
+
+flight.validation.tag.not-blank = The tag cannot be empty or null
+flight.validation.tag.length = The tag length must be from 1 to 50 characters
+flight.validation.tag.duplicated = The tag is already in use. Try another.
 
 # Leg validation messages #########################################################
 
@@ -89,3 +95,12 @@ acme.validation.phone.bad-format-phone.message = The phone number format is inva
 
 # Passenger ##########################################################################
 acme.validation.passportNumber = Bad format Passport
+
+# Airline validation messages #####################################################33
+acme.validation.iataCode.message = Bad Iata Code format
+airline.validation.iataCode.not-blank = Iata Code cannot be blank
+airline.validation.iataCode.duplicated = Iata code is already in use. Try another
+airline.validation.foundation.future = Fundation moment cannot be in the future.
+
+# Aircraft validation messages ########################################################
+aircraft.validation.registration.duplicate = The registration number is already in use. Try another

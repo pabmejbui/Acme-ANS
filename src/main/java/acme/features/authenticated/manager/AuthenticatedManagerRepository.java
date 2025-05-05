@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.components.principals.UserAccount;
 import acme.client.repositories.AbstractRepository;
-import acme.realms.Manager;
+import acme.realms.manager.Manager;
 
 @Repository
 public interface AuthenticatedManagerRepository extends AbstractRepository {

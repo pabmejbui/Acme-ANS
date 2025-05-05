@@ -1,3 +1,73 @@
-key,lastUpdateMoment,step,resolutionPercentage,indicator,resolution,draftMode,key:claim
-trackingLog-01,2000/01/01 00:00,"Initial assessment",10.0,REJECTED,"Claim received and under review.",true,claim-01
-trackingLog-02,2000/01/01 00:00,"Investigation ongoing",50.0,ACCEPTED,"Gathering additional details.",true,claim-02
+key,lastUpdateMoment,step,resolutionPercentage,status,resolution,draftMode,key:claim
+trackingLog-01,2000/01/01 00:00,"Initial assessment",10.0,REJECTED,"Claim received and under review.",false,claim-01
+trackingLog-02,2000/01/01 00:00,"Investigation ongoing",50.0,ACCEPTED,"Gathering additional details.",false,claim-02
+
+# last_update_moment
+trackingLog-03,2000/01/01 00:00,"Va bien la reclamacion",25.00,ACCEPTED,"Por decidir",false,claim-03
+trackingLog-04,2000/01/01 00:01,"Va bien la reclamacion",25.00,ACCEPTED,"Por decidir",false,claim-04
+trackingLog-05,2024/12/31 23:59,"Va bien la reclamacion",25.00,ACCEPTED,"Por decidir",false,claim-05
+trackingLog-06,2025/01/01 00:00,"Va bien la reclamacion",25.00,PENDING,"Por decidir",false,claim-06
+
+# step
+trackingLog-07,2012/07/02 00:00,"Lorem ipsum dolor sit ame",25.00,ACCEPTED,"Por decidir",false,claim-07
+trackingLog-08,2012/05/02 00:00,"L",25.00,ACCEPTED,"Por decidir",false,claim-08
+trackingLog-09,2012/06/02 00:00,"Lo",25.00,PENDING,"Por decidir",false,claim-09
+trackingLog-10,2012/04/02 00:00,"Lorem ipsum dolor sit amet, consectetur adipiscin",25.00,PENDING,"Por decidir",false,claim-10
+trackingLog-11,2012/03/02 00:00,"Lorem ipsum dolor sit amet, consectetur adipiscing",25.00,ACCEPTED,"Por decidir",false,claim-01
+
+# resolution_percentage
+trackingLog-12,2012/02/02 00:00,"Va bien la reclamacion",50.00,ACCEPTED,"Por decidir",false,claim-02
+trackingLog-13,2012/01/02 00:00,"Va bien la reclamacion",00.00,PENDING,"Por decidir",false,claim-02
+trackingLog-14,2012/07/03 00:00,"Va bien la reclamacion",00.01,ACCEPTED,"Por decidir",false,claim-04
+trackingLog-15,2012/07/04 00:00,"Va bien la reclamacion",99.99,PENDING,"Por decidir",false,claim-03
+trackingLog-16,2012/07/05 00:00,"Va bien la reclamacion",100.00,ACCEPTED,"Por decidir",false,claim-06
+
+# status
+trackingLog-17,2012/07/03 00:00,"Va bien la reclamacion",25.00,PENDING,"Por decidir",false,claim-01
+trackingLog-18,2012/08/02 00:00,"Va bien la reclamacion",25.00,ACCEPTED,"Por decidir",false,claim-08
+trackingLog-19,2012/09/02 00:00,"Va bien la reclamacion",25.00,REJECTED,"Por decidir",false,claim-09
+
+# resolution
+trackingLog-20,2012/10/02 00:00,"Va bien la reclamacion",25.00,PENDING,"Lorem ipsum dolor sit amet, consectet Ut*",false,claim-01
+trackingLog-21,2012/12/02 00:00,"Va bien la reclamacion",25.00,ACCEPTED,"L",false,claim-02
+trackingLog-22,2012/07/02 00:00,"Va bien la reclamacion",25.00,ACCEPTED,"Lo",false,claim-03
+trackingLog-23,2012/07/02 00:00,"Va bien la reclamacion",25.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipi",false,claim-01
+trackingLog-24,2012/05/03 00:00,"Va bien la reclamacion",25.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur aisi equat. Duisolor*",false,claim-05
+
+# draftMode
+trackingLog-25,2012/04/02 00:00,"Va bien la reclamacion",25.00,PENDING,"Por decidir",false,claim-01
+trackingLog-26,2012/10/02 00:00,"Va bien la reclamacion",25.00,ACCEPTED,"Por decidir",true,claim-02
+
+trackingLog-27,2000/01/01 00:00,"Va bien la reclamacion",25.00,ACCEPTED,"Por decidir",false,claim-03
+trackingLog-28,2000/01/01 00:01,"Va bien la reclamacion",25.00,ACCEPTED,"Por decidir",false,claim-04
+trackingLog-29,2024/12/31 23:59,"Va bien la reclamacion",25.00,ACCEPTED,"Por decidir",false,claim-05
+trackingLog-30,2025/01/01 00:00,"Va bien la reclamacion",25.00,PENDING,"Por decidir",false,claim-06
+
+
+trackingLog-31,2012/07/02 00:00,"Lorem ipsum dolor sit ame",25.00,ACCEPTED,"Por decidir",false,claim-07
+trackingLog-32,2012/05/02 00:00,"L",25.00,ACCEPTED,"Por decidir",false,claim-08
+trackingLog-33,2012/06/02 00:00,"Lo",25.00,PENDING,"Por decidir",false,claim-09
+trackingLog-34,2012/04/02 00:00,"Lorem ipsum dolor sit amet, consectetur adipiscin",25.00,PENDING,"Por decidir",false,claim-10
+trackingLog-35,2012/03/02 00:00,"Lorem ipsum dolor sit amet, consectetur adipiscing",25.00,ACCEPTED,"Por decidir",false,claim-01
+
+
+trackingLog-36,2012/01/02 00:00,"Va bien la reclamacion",00.00,PENDING,"Por decidir",false,claim-02
+trackingLog-37,2012/07/03 00:00,"Va bien la reclamacion",00.01,ACCEPTED,"Por decidir",false,claim-04
+trackingLog-38,2012/07/04 00:00,"Va bien la reclamacion",99.99,PENDING,"Por decidir",false,claim-03
+trackingLog-39,2012/07/05 00:00,"Va bien la reclamacion",100.00,ACCEPTED,"Por decidir",false,claim-06
+
+
+trackingLog-40,2012/07/03 00:00,"Va bien la reclamacion",25.00,PENDING,"Por decidir",false,claim-01
+trackingLog-41,2012/08/02 00:00,"Va bien la reclamacion",25.00,ACCEPTED,"Por decidir",false,claim-08
+trackingLog-42,2012/09/02 00:00,"Va bien la reclamacion",25.00,REJECTED,"Por decidir",false,claim-09
+
+
+trackingLog-43,2012/10/02 00:00,"Va bien la reclamacion",25.00,PENDING,"Lorem ipsum dolor sit amet, consectet Ut*",false,claim-01
+trackingLog-44,2012/12/02 00:00,"Va bien la reclamacion",25.00,ACCEPTED,"L",false,claim-02
+trackingLog-45,2012/07/02 00:00,"Va bien la reclamacion",25.00,ACCEPTED,"Lo",false,claim-03
+trackingLog-46,2012/07/02 00:00,"Va bien la reclamacion",25.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipi",false,claim-01
+trackingLog-47,2012/05/03 00:00,"Va bien la reclamacion",25.00,ACCEPTED,"Lorem ipsum dolor sit amet, consectetur aisi equat. Duisolor*",false,claim-05
+
+
+trackingLog-48,2012/04/02 00:00,"Va bien la reclamacion",25.00,PENDING,"Por decidir",false,claim-01
+trackingLog-49,2012/10/02 00:00,"Va bien la reclamacion",25.00,ACCEPTED,"Por decidir",true,claim-02

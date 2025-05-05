@@ -39,12 +39,19 @@
 				code="master.menu.administrator.list-user-accounts"
 				action="/administrator/user-account/list" />
 			<acme:menu-separator />
+			<acme:menu-suboption 
+				code="master.menu.administrator.list-aircrafts"
+				action="/administrator/aircraft/list"/>
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.list-services"
 				action="/administrator/service/list" />
 			<acme:menu-separator />
 			<acme:menu-suboption code="master.menu.administrator.list-airlines"
 				action="/administrator/airline/list" />
 			<acme:menu-separator />
+			<acme:menu-suboption code="master.menu.administrator.list-airports"
+				action="/administrator/airport/list"/>
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.list-bookings"
 				action="/administrator/booking/list" />
 			<acme:menu-separator />
@@ -76,11 +83,10 @@
 			access="hasRealm('Customer')">
 			<acme:menu-suboption code="master.menu.customer.list-bookings"
 				action="/customer/booking/list" />
-			<acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.customer.dashboard" action="/customer/customer-dashboard/show"/>
 		</acme:menu-option>
 
-		<%-- 	<acme:menu-option code="master.menu.flightCrewMember" access="hasRealm('FlightCrewMember')">
+
+		<%-- <acme:menu-option code="master.menu.flightCrewMember" access="hasRealm('FlightCrewMember')">
  			<acme:menu-suboption code="master.menu.flightCrewMember.flightAssignment" action="/flight-crew-member/flight-assignment/list"/>
  		</acme:menu-option> --%>
 
@@ -102,6 +108,10 @@
 			<acme:menu-suboption code="master.menu.manager.dashboard" action="/manager/manager-dashboard/show"/>
 		</acme:menu-option>
 
+		<acme:menu-option code="master.menu.assistance-agent.claims" access="hasRealm('AssistanceAgent')">
+			<acme:menu-suboption code="master.menu.assistance-agent.claims.claims-list" action="/assistance-agent/claim/list"/>
+			<acme:menu-suboption code="master.menu.assistance-agent.claims.list-claims-pending" action="/assistance-agent/claim/pending"/>	
+		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.any" access="isAuthenticated() or isAnonymous()">
     		<acme:menu-suboption code="master.menu.any.flight.list" action="/any/flight/list"/>
@@ -143,4 +153,3 @@
 		</acme:menu-option>
 	</acme:menu-right>
 </acme:menu-bar>
-

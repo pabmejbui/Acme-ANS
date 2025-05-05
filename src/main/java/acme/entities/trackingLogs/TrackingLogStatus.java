@@ -1,8 +1,7 @@
 
 package acme.entities.trackingLogs;
 
-public enum Resolution {
-
+public enum TrackingLogStatus {
 	ACCEPTED, PENDING, REJECTED
 
 }

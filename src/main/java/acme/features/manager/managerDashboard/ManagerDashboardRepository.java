@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.configuration.SystemConfiguration;
-import acme.realms.Manager;
+import acme.realms.manager.Manager;
 
 @Repository
 public interface ManagerDashboardRepository extends AbstractRepository {
