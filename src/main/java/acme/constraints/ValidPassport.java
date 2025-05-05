@@ -22,7 +22,9 @@ import javax.validation.constraints.Pattern;
 
 public @interface ValidPassport {
 
-	String message() default "{acme.validation.phone.bad-format-passport.message}";
+	// Standard validation properties -----------------------------------------
+
+	String message() default "";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};

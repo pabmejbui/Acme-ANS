@@ -1,14 +1,18 @@
 
 package acme.features.customer.booking;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.bookings.Booking;
 import acme.entities.bookings.TravelClass;
+import acme.entities.flights.Flight;
 import acme.realms.customer.Customer;
 
 @GuiService
@@ -33,18 +37,19 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		booking = new Booking();
 		booking.setDraftMode(true);
 		booking.setCustomer(customer);
+		booking.setPurchaseMoment(MomentHelper.getCurrentMoment());
 
 		super.getBuffer().addData(booking);
 	}
 
 	@Override
 	public void bind(final Booking booking) {
-		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble");
+		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble", "flight");
 	}
 
 	@Override
 	public void validate(final Booking booking) {
-
+		;
 	}
 
 	@Override
@@ -57,10 +62,17 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		Dataset dataset;
 		SelectChoices travelClasses;
 
+		SelectChoices flightChoices;
+		Collection<Flight> flights;
+
 		travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble", "draftMode");
+		flights = this.repository.findAllFlightsDraftModeFalse();
+		flightChoices = SelectChoices.from(flights, "id", booking.getFlight());
+
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble", "flight", "draftMode");
 		dataset.put("bookingCost", booking.getCost());
+		dataset.put("flightChoices", flightChoices);
 		dataset.put("travelClasses", travelClasses);
 
 		super.getResponse().addData(dataset);

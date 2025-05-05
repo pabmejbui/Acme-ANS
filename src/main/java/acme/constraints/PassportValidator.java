@@ -32,7 +32,7 @@ public class PassportValidator extends AbstractValidator<ValidPassport, String> 
 			String passportPattern = "^[A-Z0-9]{6,9}$";
 
 			if (!passportNumber.matches(passportPattern))
-				super.state(context, false, "passportNumber", "acme.validation.phone.bad-format-passport.message");
+				super.state(context, false, "passportNumber", "acme.validation.passport.bad-format-passport.message");
 
 		}
 

@@ -94,7 +94,7 @@ acme.validation.confirmation.message = You must confirm this operation before pr
 acme.validation.phone.bad-format-phone.message = The phone number format is invalid. It must be a number between 6 and 15 digits, optionally starting with "+".
 
 # Passenger ##########################################################################
-acme.validation.passportNumber = Bad format Passport
+acme.validation.passportNumber.notPattern.message = Bad format Passport
 
 # Airline validation messages #####################################################33
 acme.validation.iataCode.message = Bad Iata Code format
