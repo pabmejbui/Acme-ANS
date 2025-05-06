@@ -1,0 +1,20 @@
+# messages ############################################################
+customer.customer-dashboard.form.title = Panel de cliente
+customer.dashboard.form.title.general-indicators = Indicadores generales
+customer.dashboard.form.label.spentMoneyLastYear = Dinero total gastado en el último año
+customer.dashboard.form.label.lastFiveDestinations = Últimos cinco destinos
+customer.dashboard.form.label.economyBookings = Reservas en clase económica
+customer.dashboard.form.label.businessBookings = Reservas en clase ejecutiva
+customer.dashboard.form.label.bookingAverageCost = Costo promedio de las reservas
+customer.dashboard.form.label.bookingMinimumCost = Costo mínimo de las reservas
+customer.dashboard.form.label.bookingMaximumCost = Costo máximo de las reservas
+customer.dashboard.form.label.bookingDeviationCost = Desviación estándar del costo de las reservas
+
+customer.dashboard.form.title.passenger-statistics = Estadísticas de pasajeros
+customer.dashboard.form.label.bookingCountPassengers = Total de pasajeros
+customer.dashboard.form.label.bookingAveragePassengers = Promedio de pasajeros por reserva
+customer.dashboard.form.label.bookingMinimumPassengers = Mínimo de pasajeros por reserva
+customer.dashboard.form.label.bookingMaximumPassengers = Máximo de pasajeros por reserva
+customer.dashboard.form.label.bookingDeviationPassengers = Desviación estándar de pasajeros por reserva
+
+customer.dashboard.form.title.booking-class-ratio = Relación de clases de reserva
