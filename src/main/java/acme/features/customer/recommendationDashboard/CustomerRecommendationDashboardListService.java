@@ -35,8 +35,6 @@ public class CustomerRecommendationDashboardListService extends AbstractGuiServi
 		List<RecommendationDashboard> recommendationDashboards = new LinkedList<>();
 		String city = super.getRequest().getData("city", String.class);
 
-		System.out.println("CIUDAD" + city);
-
 		Collection<Recommendation> recommendations = this.repository.getRecommendationsOf(city);
 
 		if (recommendations == null || recommendations.isEmpty()) {
@@ -51,6 +49,7 @@ public class CustomerRecommendationDashboardListService extends AbstractGuiServi
 			dashboard.setCity(recommendation.getCity());
 			dashboard.setName(recommendation.getName());
 			dashboard.setRating(recommendation.getRating());
+			dashboard.setType(recommendation.getType());
 			recommendationDashboards.add(dashboard);
 		}
 
