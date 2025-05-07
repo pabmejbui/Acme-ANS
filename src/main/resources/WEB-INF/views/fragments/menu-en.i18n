@@ -27,9 +27,12 @@ master.menu.administrator.list-services = List services
 master.menu.administrator.list-airlines = List airlines
 master.menu.administrator.list-airports = List airports
 master.menu.administrator.list-aircrafts = List aircrafts
+master.menu.administrator.list-bookings = List bookings
 master.menu.administrator.populate-db-initial = Populate DB (initial)
 master.menu.administrator.populate-db-sample = Populate DB (samples)
+master.menu.administrator.populate-db-recommendations = Populate DB (recommendations)
 master.menu.administrator.shut-system-down = Shut system down
+
 
 # master.menu.provider ########################################################
 
@@ -47,6 +50,7 @@ master.menu.customer = Customer
 master.menu.customer.list-bookings = List Bookings
 master.menu.customer.list-passengers = List Passengers
 master.menu.customer.dashboard = Customer dashboard
+master.menu.customer.recommendation.dashboard = Recommendation dashboard
 
 # master.menu.flightCrewMember ##########################################################
 

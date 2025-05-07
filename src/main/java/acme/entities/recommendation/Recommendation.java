@@ -1,16 +1,13 @@
 
-package acme.features.recommendation;
+package acme.entities.recommendation;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.entities.airports.Airport;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,7 +22,7 @@ public class Recommendation extends AbstractEntity {
 	@Mandatory
 	@ValidString
 	@Automapped
-	private String				xid;
+	private String				city;
 
 	@Mandatory
 	@ValidString
@@ -33,35 +30,15 @@ public class Recommendation extends AbstractEntity {
 	private String				name;
 
 	@Mandatory
-	@ValidNumber(min = 0)
+	@ValidNumber
 	@Automapped
-	private double				dist;
-
-	@Mandatory
-	@ValidNumber(min = 0)
-	@Automapped
-	private int					rate;
+	private Double				rating;
 
 	@Mandatory
 	@ValidString
 	@Automapped
-	private String				wikidata;
-
-	@Mandatory
-	@ValidString
-	@Automapped
-	private String				osm;
-
-	@Mandatory
-	@ValidString
-	@Automapped
-	private String				kinds;
+	private String				type;
 
 	//Relationship ---------------------------------------------------------
-
-	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	private Airport				airport;
 
 }

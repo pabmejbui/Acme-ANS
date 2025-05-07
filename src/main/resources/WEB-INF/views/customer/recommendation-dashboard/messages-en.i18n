@@ -1,0 +1,7 @@
+# List ###############################################################
+customer.recommendation-dashboard.list.label.city = City
+customer.recommendation-dashboard.list.label.name = Name
+customer.recommendation-dashboard.list.label.recommendationType = Recommendation Type
+customer.recommendation-dashboard.list.label.rating = Rating
+
+

@@ -61,6 +61,8 @@
 			<acme:menu-suboption
 				code="master.menu.administrator.populate-db-sample"
 				action="/administrator/system/populate-sample" />
+			<acme:menu-suboption code="master.menu.administrator.populate-db-recommendations" 
+				action="/administrator/recommendation/populate"/>
 			<acme:menu-separator />
 			<acme:menu-suboption
 				code="master.menu.administrator.shut-system-down"
@@ -86,6 +88,8 @@
 				
 			<acme:menu-suboption code="master.menu.customer.dashboard"
 				action="/customer/customer-dashboard/show" />
+			<acme:menu-suboption code="master.menu.customer.recommendation.dashboard"
+				action="/customer/recommendation-dashboard/list" />
 		</acme:menu-option>
 
 
