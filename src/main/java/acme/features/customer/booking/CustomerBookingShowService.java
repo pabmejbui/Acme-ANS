@@ -60,28 +60,22 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		Collection<Flight> flights;
 		Collection<Passenger> passengers;
 
-		// Obtener pasajeros de la reserva
 		passengers = this.repository.findPassengersByBookingId(booking.getId());
 
-		// Convertir la lista de pasajeros 
 		List<String> passengerNames = passengers.stream().map(Passenger::getFullName)  // Obtener nombres de los pasajeros
 			.collect(Collectors.toList());
 
-		// Opciones de TravelClass
 		travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
-		//Vuelos disponibles publicados
 		flights = this.repository.findAllFlightsDraftModeFalse();
 		flightChoices = SelectChoices.from(flights, "id", booking.getFlight());
 
-		// Asignar datos al dataset
 		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "lastCardNibble", "flight", "draftMode");
 		dataset.put("bookingCost", booking.getCost());
 		dataset.put("travelClasses", travelClasses);
 		dataset.put("flightChoices", flightChoices);
 		dataset.put("passengers", String.join(", ", passengerNames));
 
-		// Enviar datos al frontend
 		super.getResponse().addData(dataset);
 	}
 }

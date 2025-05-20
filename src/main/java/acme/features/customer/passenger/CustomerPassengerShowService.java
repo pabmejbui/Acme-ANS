@@ -21,17 +21,20 @@ public class CustomerPassengerShowService extends AbstractGuiService<Customer, P
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int masterId;
-		Passenger passenger;
-		Customer customer;
+		boolean status = true;
 
-		masterId = super.getRequest().getData("id", int.class);
-		passenger = this.repository.findPassengerById(masterId);
+		try {
 
-		customer = passenger == null ? null : this.repository.findCustomerByPassengerId(passenger.getId());
+			Integer passengerId = super.getRequest().getData("id", Integer.class);
+			Passenger passenger = this.repository.findPassengerById(passengerId);
 
-		status = passenger != null && super.getRequest().getPrincipal().hasRealm(customer);
+			Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+
+			status = passenger.getCustomer().getId() == customerId;
+
+		} catch (Throwable E) {
+			status = false;
+		}
 
 		super.getResponse().setAuthorised(status);
 	}

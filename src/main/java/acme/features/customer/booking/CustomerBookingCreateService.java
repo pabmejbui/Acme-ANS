@@ -61,7 +61,6 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 	public void unbind(final Booking booking) {
 		Dataset dataset;
 		SelectChoices travelClasses;
-
 		SelectChoices flightChoices;
 		Collection<Flight> flights;
 

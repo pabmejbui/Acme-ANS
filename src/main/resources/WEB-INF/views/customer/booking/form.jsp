@@ -3,31 +3,39 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-<acme:form>
-	<acme:input-textbox code="customer.booking.form.label.locatorCode"
-		path="locatorCode" />
-	<acme:input-select code="customer.booking.form.label.travelClass" path="travelClass" choices="${travelClasses }" />
-	<acme:input-textbox code="customer.booking.form.label.lastCardNibble" path="lastCardNibble" />
-	<acme:input-textbox code="customer.booking.form.label.purchaseMoment" path="purchaseMoment" readonly="true" />
-    <acme:input-textbox code="customer.booking.form.label.passengers" path="passengers" readonly="true" />
+<acme:form readonly="${!draftMode}"> 
+	<acme:input-select code="customer.booking.form.label.flight" path="flight" choices="${flightChoices}" readonly="${!draftMode}"/>
+	<acme:input-textbox code="customer.booking.form.label.locatorCode" path="locatorCode"/>
+	<acme:input-textbox code="customer.booking.form.label.purchaseMoment" path="purchaseMoment" readonly="true"/>
+	<acme:input-select code="customer.booking.form.label.travelClass" path="travelClass" choices="${travelClasses}"/>	
+	<jstl:if test="${_command != 'create'}">
 	<acme:input-money code="customer.booking.form.label.price" path="bookingCost" readonly="true"/>
-	<acme:input-select code="customer.booking.form.label.flight" path="flight" choices="${flightChoices }" />
+	</jstl:if>
+	<acme:input-integer code="customer.booking.form.label.lastCardNibble" path="lastCardNibble"/>
 
-	<jstl:choose>
-		<jstl:when test="${_command == 'show' && draftMode == false}">
-			<acme:button code="customer.booking.form.button.passengers" action="/customer/passenger/list?bookingId=${id}"/>
-		</jstl:when>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
-			<acme:button code="customer.booking.form.button.passengers" action="/customer/passenger/list?bookingId=${id}"/>
+	<jstl:choose>	 
+		<jstl:when test="${acme:anyOf(_command, 'show|update|publish|delete') && draftMode}">
+		<jstl:if test="${draftMode}">
 			<acme:submit code="customer.booking.form.button.update" action="/customer/booking/update"/>
-			<acme:submit code="customer.booking.form.button.delete" action="/customer/booking/delete"/>
 			<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish"/>
+			<acme:submit code="customer.booking.form.button.delete" action="/customer/booking/delete?bookingId=${id}"/>
+			<jstl:if test="${_command != 'create'}">
+				<acme:button code="customer.booking.form.button.addPassenger" action="/customer/booking-record/create?bookingId=${id}"/>
+				<acme:button code="customer.booking.form.button.deletePassenger" action="/customer/booking-record/delete?bookingId=${id}"/>
+			</jstl:if>
+		</jstl:if>
 		</jstl:when>
+		
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="customer.booking.form.button.create" action="/customer/booking/create"/>
 		</jstl:when>		
 	</jstl:choose>
+	
+	<jstl:if test="${_command != 'create'}">
+		<acme:button code="customer.booking.form.button.listPassenger" action="/customer/passenger/list?bookingId=${id}"/>
+	</jstl:if>
 </acme:form>
+
 
 
 

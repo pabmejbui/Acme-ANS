@@ -5,9 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Index;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -21,7 +19,6 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
-import acme.constraints.ValidNibble;
 import acme.constraints.bookings.ValidBooking;
 import acme.entities.flights.Flight;
 import acme.realms.customer.Customer;
@@ -32,9 +29,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidBooking
-@Table(indexes = {
-	@Index(columnList = "draftMode, purchaseMoment"), @Index(columnList = "customer_id, id"), @Index(columnList = "flight_id, id")
-})
 public class Booking extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -57,9 +51,9 @@ public class Booking extends AbstractEntity {
 	private TravelClass			travelClass;
 
 	@Optional
-	@ValidNibble
+	@ValidString(min = 4, max = 4, pattern = "[0-9]{4}", message = "{acme.validation.lastNibble.notPattern.message}")
 	@Automapped
-	private Integer				lastCardNibble;
+	private String				lastCardNibble;
 
 	@Mandatory
 	@Automapped

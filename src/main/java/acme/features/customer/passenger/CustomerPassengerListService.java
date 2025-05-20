@@ -38,11 +38,14 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 	@Override
 	public void load() {
 		Collection<Passenger> passengers;
-		int id;
+		Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		id = super.getRequest().getData("bookingId", int.class);
-		passengers = this.repository.findPassengersByBookingId(id);
-
+		if (!super.getRequest().getData().containsKey("bookingId"))
+			passengers = this.repository.findPassengersByCustomer(customerId);
+		else {
+			Integer bookingId = super.getRequest().getData("bookingId", int.class);
+			passengers = this.repository.findPassengersByBookingId(bookingId);
+		}
 		super.getBuffer().addData(passengers);
 	}
 
@@ -53,19 +56,7 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 		dataset = super.unbindObject(passenger, "fullName", "email", "passportNumber", "dateOfBirth", "specialNeeds", "draftMode");
 
 		super.getResponse().addData(dataset);
+		super.addPayload(dataset, passenger, "specialNeeds");
 	}
 
-	@Override
-	public void unbind(final Collection<Passenger> passengers) {
-		int bookingId;
-		Booking booking;
-		final boolean showCreate;
-
-		bookingId = super.getRequest().getData("bookingId", int.class);
-		booking = this.repository.findBookingById(bookingId);
-		showCreate = super.getRequest().getPrincipal().hasRealm(booking.getCustomer()) && booking.isDraftMode();
-
-		super.getResponse().addGlobal("bookingId", bookingId);
-		super.getResponse().addGlobal("showCreate", showCreate);
-	}
 }

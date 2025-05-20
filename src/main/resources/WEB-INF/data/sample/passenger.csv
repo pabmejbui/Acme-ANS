@@ -1,41 +1,49 @@
-key,fullName,email,passportNumber,dateOfBirth,specialNeeds,draftMode
-passenger-01,John Doe,johndoe@example.com,A12345678,2000/01/01 00:00,Wheelchair assistance,false
-passenger-02,Jane Smith,janesmith@example.com,B98765432,2000/01/01 12:00,Vegetarian meal,true
-passenger-03,Alex Johnson,alexjohnson3@example.com,C23456789,2001/05/15 09:30,None,false
-passenger-04,Taylor Brown,taylorbrown4@example.com,D34567890,2002/03/20 18:45,Extra legroom,true
-passenger-05,Jordan Davis,jordandavis5@example.com,E45678901,2003/07/25 11:20,Hearing assistance,false
-passenger-06,Morgan Miller,morganmiller6@example.com,F56789012,2004/11/10 14:00,None,true
-passenger-07,Charlie Garcia,charliegarcia7@example.com,G67890123,2005/12/05 08:15,Vegetarian meal,false
-passenger-08,Riley Martinez,rileymartinez8@example.com,H78901234,2002/06/22 16:30,Wheelchair assistance,true
-passenger-09,Cameron Smith,cameronsmith9@example.com,I89012345,2003/09/14 13:00,None,false
-passenger-10,Casey Hernandez,caseyhernandez10@example.com,J90123456,2001/01/28 20:40,Extra legroom,true
-passenger-11,Skyler Williams,skylerwilliams11@example.com,K01234567,2000/04/11 10:10,Hearing assistance,false
-passenger-12,Drew Jones,drewjones12@example.com,L12345678,2002/08/19 07:50,None,true
-passenger-13,Jamie Brown,jamiebrown13@example.com,M23456789,2001/03/30 22:00,Wheelchair assistance,false
-passenger-14,Kelly Davis,kellydavis14@example.com,N34567890,2003/05/16 15:25,Vegetarian meal,true
-passenger-15,Blake Garcia,blakegarcia15@example.com,O45678901,2004/10/09 19:05,None,false
-passenger-16,Peyton Johnson,peytonjohnson16@example.com,P56789012,2000/12/21 06:45,Extra legroom,true
-passenger-17,Reese Martinez,reesemartinez17@example.com,Q67890123,2001/11/13 17:10,Hearing assistance,false
-passenger-18,Quinn Smith,quinnsmith18@example.com,R78901234,2002/07/06 12:30,None,true
-passenger-19,Harper Hernandez,harperhernandez19@example.com,S89012345,2005/02/18 09:55,Vegetarian meal,false
-passenger-20,Finley Williams,finleywilliams20@example.com,T90123456,2003/06/04 23:15,None,true
-passenger-21,Kai Jones,kaijones21@example.com,U01234567,2001/09/27 18:35,Wheelchair assistance,false
-passenger-22,Rowan Brown,rowanbrown22@example.com,V12345678,2002/10/12 14:50,None,true
-passenger-23,Avery Davis,averydavis23@example.com,W23456789,2000/02/17 07:20,Extra legroom,false
-passenger-24,Sawyer Garcia,sawyergarcia24@example.com,X34567890,2004/01/30 21:10,Hearing assistance,true
-passenger-25,Elliot Johnson,elliotjohnson25@example.com,Y45678901,2005/03/09 13:45,None,false
-passenger-26,Emerson Martinez,emersonmartinez26@example.com,Z56789012,2003/08/01 15:30,Vegetarian meal,true
-passenger-27,Spencer Smith,spencersmith27@example.com,A67890123,2002/04/07 08:40,None,false
-passenger-28,Ellis Hernandez,ellishernandez28@example.com,B78901234,2000/06/20 20:10,Wheelchair assistance,true
-passenger-29,Parker Williams,parkerwilliams29@example.com,C89012345,2001/10/25 12:25,None,false
-passenger-30,Remy Jones,remyjones30@example.com,D90123456,2004/05/03 16:00,Extra legroom,true
-passenger-31,Lennon Brown,lennonbrown31@example.com,E01234567,2005/11/29 11:35,Hearing assistance,false
-passenger-32,Frankie Davis,frankiedavis32@example.com,F12345678,2002/12/17 19:50,None,true
-passenger-33,Andy Garcia,andygarcia33@example.com,G23456789,2001/08/23 09:10,Vegetarian meal,false
-passenger-34,Dakota Johnson,dakotajohnson34@example.com,H34567890,2003/02/11 22:30,None,true
-passenger-35,Charlie Martinez,charliemartinez35@example.com,I45678901,2000/09/02 06:20,Wheelchair assistance,false
-passenger-36,Rowan Smith,rowansmith36@example.com,J56789012,2001/06/15 17:55,None,true
-passenger-37,Logan Hernandez,loganhernandez37@example.com,K67890123,2004/03/12 14:40,Extra legroom,false
-passenger-38,Kendall Williams,kendallwilliams38@example.com,L78901234,2005/01/06 08:05,Hearing assistance,true
-passenger-39,Justice Jones,justicejones39@example.com,M89012345,2002/05/28 13:15,None,false
-passenger-40,Jesse Brown,jessebrown40@example.com,N90123456,2003/07/17 18:20,Vegetarian meal,true
+key,key:customer,fullName,email,passportNumber,dateOfBirth,specialNeeds,draftMode
+
+# base entity
+passenger-00,customer-01,Lorem Ipsum,passenger00@example.com,ABC12345,2023/07/19 19:30,None,true
+
+# fullName - variations
+passenger-01,customer-01,L,passenger01@example.com,ABC12345,2025/01/01 00:00,None,true
+passenger-02,customer-01,Lo,passenger02@example.com,ABC12345,2025/01/01 00:00,None,true
+passenger-03,customer-01,Lorem ipsum dolor sit amet consectetur adipiscing elit,passenger03@example.com,ABC12345,2025/01/01 00:00,None,true
+passenger-04,customer-01,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,passenger04@example.com,ABC12345,2025/01/01 00:00,None,true
+passenger-05,customer-01,โลเร็ม อิปซัม,passenger05@example.com,ABC12345,2025/01/01 00:00,None,true
+passenger-06,customer-01,لوريم إيبسوم,passenger06@example.com,ABC12345,2025/01/01 00:00,None,true
+passenger-07,customer-02,洛伦·伊普森,passenger07@example.com,ABC12345,2025/01/01 00:00,None,true
+passenger-08,customer-02,<marquee>Hacked</marquee>,passenger08@example.com,ABC12345,2025/01/01 00:00,None,true
+passenger-09,customer-02,<script>alert(‘Hacked!’);</script>,passenger09@example.com,ABC12345,2025/01/01 00:00,None,true
+passenger-10,customer-02,' or 'A' = 'A,passenger10@example.com,ABC12345,2025/01/01 00:00,None,true
+
+# email - variations
+passenger-11,customer-02,Lorem Ipsum,a@b.es,ABC12345,2025/01/01 00:00,None,true
+passenger-12,customer-02,Lorem Ipsum,acme@lorem-ipsum.org,ABC12345,2025/01/01 00:00,None,true
+passenger-13,customer-02,Lorem Ipsum,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,ABC12345,2025/01/01 00:00,None,true
+
+# passportNumber - variations
+passenger-14,customer-01,Lorem Ipsum,passenger14@example.com,A1B2C3,2025/01/01 00:00,None,true
+passenger-15,customer-01,Lorem Ipsum,passenger15@example.com,X7Y8Z9WQ,2025/01/01 00:00,None,true
+passenger-16,customer-01,Lorem Ipsum,passenger16@example.com,123456789,2025/01/01 00:00,None,true
+passenger-17,customer-01,Lorem Ipsum,passenger17@example.com,QWER5678,2025/01/01 00:00,None,true
+
+# birthDate - variations
+passenger-18,customer-01,Lorem Ipsum,passenger18@example.com,ABC12345,2000/01/01 00:00,None,true
+passenger-19,customer-01,Lorem Ipsum,passenger18@example.com,ABC12345,2000/01/01 00:01,None,true
+passenger-20,customer-01,Lorem Ipsum,passenger20@example.com,ABC12345,2024/12/31 23:59,None,true
+passenger-21,customer-01,Lorem Ipsum,passenger19@example.com,ABC12345,2025/01/01 00:00,None,true
+
+# specialNeeds - variations
+passenger-22,customer-02,Lorem Ipsum,passenger21@example.com,ABC12345,2025/01/01 00:00,,true
+passenger-23,customer-02,Lorem Ipsum,passenger22@example.com,ABC12345,2025/01/01 00:00,L,true
+passenger-24,customer-02,Lorem Ipsum,passenger23@example.com,ABC12345,2025/01/01 00:00,Lo,true
+passenger-25,customer-02,Lorem Ipsum,passenger24@example.com,ABC12345,2025/01/01 00:00,Lorem ipsum dolor sit amet consectetur adipiscing,true
+passenger-26,customer-02,Lorem Ipsum,passenger25@example.com,ABC12345,2025/01/01 00:00,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,true
+passenger-27,customer-02,Lorem Ipsum,passenger26@example.com,ABC12345,2025/01/01 00:00,โลเร็ม อิปซัม,true
+passenger-28,customer-02,Lorem Ipsum,passenger27@example.com,ABC12345,2025/01/01 00:00,لوريم إيبسوم,true
+passenger-29,customer-02,Lorem Ipsum,passenger28@example.com,ABC12345,2025/01/01 00:00,洛伦伊普森,true
+passenger-30,customer-02,Lorem Ipsum,passenger29@example.com,ABC12345,2025/01/01 00:00,<marquee>Hacked</marquee>,true
+passenger-31,customer-02,Lorem Ipsum,passenger30@example.com,ABC12345,2025/01/01 00:00,<script>alert(‘Hacked!’);</script>,true
+passenger-32,customer-02,Lorem Ipsum,passenger31@example.com,ABC12345,2025/01/01 00:00,' or 'A' = 'A,true
+
+# draftMode - variations
+passenger-33,customer-02,Lorem Ipsum,passenger00@example.com,ABC66666,2023/07/19 19:30,None,false
