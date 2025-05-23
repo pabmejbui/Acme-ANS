@@ -88,6 +88,8 @@ acme.validation.booking.locator-code.message = Locator Code has an incorrect for
 acme.validation.booking.duplicate-locator.message = Locator code already exists
 acme.validation.booking.lastNibble.notPattern.message = Last nibble must be composed of four numbers
 
+
+
 # Administrator Airline validation messages ##########################################
 acme.validation.confirmation.message = You must confirm this operation before proceeding.
 

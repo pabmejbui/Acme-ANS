@@ -17,7 +17,8 @@ import javax.validation.Payload;
 @Constraint(validatedBy = CustomerValidator.class)
 @Documented
 public @interface ValidCustomer {
-	String message() default "Customer validation failed.";
+
+	String message() default "";
 
 	Class<?>[] groups() default {};
 

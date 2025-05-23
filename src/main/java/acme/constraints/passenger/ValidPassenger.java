@@ -1,5 +1,5 @@
 
-package acme.constraints;
+package acme.constraints.passenger;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -9,18 +9,12 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-@Target({
-	ElementType.FIELD, ElementType.PARAMETER, ElementType.ANNOTATION_TYPE, ElementType.METHOD
-})
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = PassportValidator.class)
-
-public @interface ValidPassport {
-
-	// Standard validation properties -----------------------------------------
+@Constraint(validatedBy = PassengerValidator.class)
+public @interface ValidPassenger {
 
 	String message() default "";
-
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
 }
