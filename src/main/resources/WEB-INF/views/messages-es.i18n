@@ -20,10 +20,10 @@ manager.validation.identifier.duplicated = El identificador ya está en uso. Pru
 
 # Mensajes de validación de customer ####################################################
 
-customer.validation.identifier.bad-format = El identificador debe contener 2 o 3 letras mayúsculas seguidas de exactamente 6 dígitos.
-customer.validation.fullname.missing = Se requiere el nombre completo del usuario para validar el identificador.
-customer.validation.identifier.initials-mismatch = Las iniciales del identificador no coinciden con el nombre del usuario.
-acme.validation.customer.duplicated-identifier.message = Este identificador ya existe.
+customer.validation.identifier.bad-format = El identificador debe contener 2 o 3 letras mayúsculas seguidas de exactamente 6 dígitos
+customer.validation.fullname.missing = Se requiere el nombre completo del usuario para validar el identificador
+customer.validation.identifier.initials-mismatch = Las iniciales del identificador no coinciden con el nombre del usuario
+acme.validation.customer.duplicated-identifier.message = Este identificador ya existe
 
 # Mensajes de validación de flight number #########################################################
 
@@ -94,7 +94,7 @@ acme.validation.booking.lastNibble.notPattern.message = El último grupo de la t
 acme.validation.confirmation.message = Debe confirmar la operación antes de continuar.
 
 # Mensaje de validacion de numero de telefono #########################################################
-acme.validation.phone.bad-format-phone.message = El número de teléfono tiene un formato inválido. Debe tener entre 6 y 15 dígitos y puede empezar con "+".
+acme.validation.phone.bad-format-phone.message = El número de teléfono tiene un formato inválido. Debe tener entre 6 y 15 dígitos y puede empezar con "+"
 
 # Passenger ##########################################################################
 acme.validation.passportNumber.notPattern.message = Formato de pasaporte incorrecto

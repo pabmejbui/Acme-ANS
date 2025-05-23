@@ -3,15 +3,22 @@ package acme.constraints.customer;
 
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import acme.client.components.principals.DefaultUserIdentity;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.realms.customer.Customer;
+import acme.realms.customer.CustomerRepository;
 
 @Validator
 public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer> {
 
-	private static final String IDENTIFIER_PATTERN = "^[A-Z]{2,3}\\d{6}$";
+	@Autowired
+	private CustomerRepository	repository;
+
+	private static final String	IDENTIFIER_PATTERN	= "^[A-Z]{2,3}\\d{6}$";
+	private static final String	PHONE_PATTERN		= "^\\+?\\d{6,15}$";
 
 
 	@Override
@@ -21,45 +28,52 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 
 	@Override
 	public boolean isValid(final Customer customer, final ConstraintValidatorContext context) {
-		if (customer == null) {
+		if (customer == null || context == null) {
 			super.state(context, false, "customer", "customer.validation.customer.null");
 			return false;
 		}
-		if (context == null)
-			return false;
 
 		boolean isValid = true;
-		String identifier = customer.getIdCustomer();
 
-		// Validación de formato del identificador
+		// Validación del identificador
+		String identifier = customer.getIdCustomer();
+		DefaultUserIdentity identity = customer.getUserAccount() != null ? customer.getUserAccount().getIdentity() : null;
+		String fullName = identity != null ? identity.getFullName() : null;
+
 		if (identifier == null || identifier.isBlank()) {
 			super.state(context, false, "idCustomer", "customer.validation.identifier.not-null");
 			isValid = false;
 		} else if (!identifier.matches(CustomerValidator.IDENTIFIER_PATTERN)) {
 			super.state(context, false, "idCustomer", "customer.validation.identifier.bad-format");
 			isValid = false;
-		}
-
-		// Validación de iniciales usando DefaultUserIdentity
-		if (customer.getUserAccount() == null || customer.getUserAccount().getIdentity() == null) {
-			super.state(context, false, "idCustomer", "customer.validation.fullname.missing");
-			isValid = false;
 		} else {
-			DefaultUserIdentity identity = customer.getUserAccount().getIdentity();
-
-			if (identity.getFullName() == null || identity.getFullName().isBlank()) {
+			// Validación de iniciales
+			if (fullName == null || fullName.isBlank()) {
 				super.state(context, false, "idCustomer", "customer.validation.fullname.missing");
 				isValid = false;
 			} else {
-				String initials = this.extractInitials(identity.getFullName());
-				String identifierInitials = identifier != null ? identifier.replaceAll("\\d", "") : "";
-
+				String initials = this.extractInitials(fullName);
+				String identifierInitials = identifier.replaceAll("\\d", "");
 				if (!identifierInitials.equals(initials)) {
 					super.state(context, false, "idCustomer", "customer.validation.identifier.initials-mismatch");
 					isValid = false;
 				}
 			}
+
+			// Validación de unicidad del identificador
+			Customer existingCustomer = this.repository.findCustomerIdentifier(identifier);
+			boolean isUnique = existingCustomer == null || existingCustomer.equals(customer);
+			super.state(context, isUnique, "idCustomer", "acme.validation.customer.duplicated-identifier.message");
+			isValid &= isUnique;
 		}
+
+		// ✅ Validación del teléfono (siempre se evalúa)
+		String phoneNumber = customer.getPhoneNumber();
+		if (phoneNumber != null && !phoneNumber.isBlank())
+			if (!phoneNumber.matches(CustomerValidator.PHONE_PATTERN)) {
+				super.state(context, false, "phoneNumber", "acme.validation.phone.bad-format-phone.message");
+				isValid = false;
+			}
 
 		return isValid && !super.hasErrors(context);
 	}
@@ -85,5 +99,4 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 
 		return initials.toString();
 	}
-
 }

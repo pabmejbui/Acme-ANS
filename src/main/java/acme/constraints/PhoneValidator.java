@@ -29,7 +29,7 @@ public class PhoneValidator extends AbstractValidator<ValidPhone, String> {
 		String phonePattern = "^\\+?\\d{6,15}$";
 
 		if (!phoneNumber.matches(phonePattern))
-			super.state(context, false, "*", "acme.validation.phone.bad-format-phone.message");
+			super.state(context, false, "phoneNumber", "acme.validation.phone.bad-format-phone.message");
 
 		return !super.hasErrors(context);
 
