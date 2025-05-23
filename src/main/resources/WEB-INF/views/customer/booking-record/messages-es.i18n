@@ -1,0 +1,10 @@
+# messages ##########################################################
+
+customer.booking-record.form.title = Añadir / Eliminar pasajero del booking
+
+customer.bookingRecord.form.button.create = Añadir al booking
+customer.bookingRecord.form.button.delete = Eliminar del booking
+customer.passenger.form.link.create = Crear nuevo pasajero
+
+customer.bookingRecord.list.label.passenger = Pasajero
+customer.bookingRecord.list.label.booking = Reserva

@@ -3,8 +3,6 @@ package acme.realms.customer;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Index;
-import javax.persistence.Table;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
@@ -22,9 +20,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidCustomer
-@Table(indexes = {
-	@Index(columnList = "earnedPoints")
-})
 public class Customer extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;

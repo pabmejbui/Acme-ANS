@@ -8,11 +8,13 @@ customer.booking.form.label.lastCardNibble = Últimos cuatro dígitos de la tarj
 customer.booking.form.label.passengers = Pasajeros asociados
 customer.booking.form.label.purchaseMoment = Fecha de adquisición
 customer.booking.form.label.flight = Vuelo
-customer.booking.form.button.passengers = Ver pasajeros
 customer.booking.form.button.create = Crear
 customer.booking.form.button.update = Actualizar
 customer.booking.form.button.publish = Publicar
 customer.booking.form.button.delete = Eliminar
+customer.booking.form.button.addPassenger = Añadir pasajero
+customer.booking.form.button.deletePassenger = Elminar pasajero
+customer.booking.form.button.listPassenger = Lista de pasajeros
 
 # list ####################################################
 
@@ -27,5 +29,5 @@ customer.booking.list.label.price = Precio
 # features ################################################
 
 customer.booking.delete.published-passengers = No se pueden eliminar reservas con pasajeros publicados
-customer.booking.publish.not-published-passengers = No se pueden publicar reservas a menos que haya pasajeros no publicados o ninguno
-customer.booking.publish.missing-card-nibble = Can't publish bookings = Para publicar la reserva, debe haber almacenado los últimos 4 dígitos de la tarjeta
+customer.validation.booking.form.error.noPassengers = No se pueden publicar reservas si no hay pasajeros sin publicar o si no hay ninguno
+customer.booking.publish.missing-card-nibble = Para publicar la reserva, deben haberse guardado los últimos 4 dígitos de la tarjeta de crédito

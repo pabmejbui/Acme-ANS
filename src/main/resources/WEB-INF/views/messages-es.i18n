@@ -86,8 +86,9 @@ acme.validation.manager.leg.flight-number.format.message = El número de vuelo d
 acme.validation.leg.flight-number.duplicate.message = Ya existe otra etapa con el mismo número de vuelo.
 
 # Booking validation messages #########################################################
-acme.validation.locatorCode.message = locatorCode tiene un formato incorrecto.
+acme.validation.booking.locator-code.message = Código localizador tiene un formato incorrecto.
 acme.validation.booking.duplicate-locator.message = Código localizador ya existente.
+acme.validation.booking.lastNibble.notPattern.message = El último grupo de la tarjeta debe estar compuesto por cuatro números.
 
 # Mensajes de validación de las aerolíneas operadas por admins ##########################################
 acme.validation.confirmation.message = Debe confirmar la operación antes de continuar.

@@ -68,7 +68,6 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 		SelectChoices travelClasses;
 		SelectChoices flightChoices;
 		Collection<Flight> flights;
-
 		travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
 		flights = this.repository.findAllFlightsDraftModeFalse();

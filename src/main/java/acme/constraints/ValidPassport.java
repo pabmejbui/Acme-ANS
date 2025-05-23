@@ -8,17 +8,12 @@ import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import javax.validation.ReportAsSingleViolation;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 
-@Target(ElementType.FIELD)
+@Target({
+	ElementType.FIELD, ElementType.PARAMETER, ElementType.ANNOTATION_TYPE, ElementType.METHOD
+})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = {})
-@ReportAsSingleViolation
-
-@NotBlank
-@Pattern(regexp = "^[A-Z0-9]{6,9}$")
+@Constraint(validatedBy = PassportValidator.class)
 
 public @interface ValidPassport {
 

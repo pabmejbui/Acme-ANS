@@ -9,8 +9,19 @@
 	<acme:list-column code="customer.passenger.list.label.dateOfBirth" path="dateOfBirth" width="20%"/>
 	<acme:list-column code="customer.passenger.list.label.specialNeeds" path="specialNeeds" width="20%"/>
 	<acme:list-column code="customer.passenger.list.label.draftMode" path="draftMode" width="20%"/>
+	<acme:list-payload path="payload"/>	
 </acme:list>
 
-<jstl:if test="${showCreate}">
-	<acme:button code="customer.passenger.list.button.create" action="/customer/passenger/create?bookingId=${bookingId}"/>
-</jstl:if>
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="customer.passenger.list.button.create" action="/customer/passenger/create"/>
+</jstl:if>	
+
+
+<style>
+    td {
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>

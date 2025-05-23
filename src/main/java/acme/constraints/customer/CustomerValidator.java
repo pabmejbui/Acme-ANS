@@ -21,7 +21,12 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 
 	@Override
 	public boolean isValid(final Customer customer, final ConstraintValidatorContext context) {
-		assert customer != null && context != null;
+		if (customer == null) {
+			super.state(context, false, "customer", "customer.validation.customer.null");
+			return false;
+		}
+		if (context == null)
+			return false;
 
 		boolean isValid = true;
 		String identifier = customer.getIdCustomer();
@@ -29,33 +34,31 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 		// Validación de formato del identificador
 		if (identifier == null || identifier.isBlank()) {
 			super.state(context, false, "idCustomer", "customer.validation.identifier.not-null");
-			return false;
-		}
-
-		if (!identifier.matches(CustomerValidator.IDENTIFIER_PATTERN)) {
+			isValid = false;
+		} else if (!identifier.matches(CustomerValidator.IDENTIFIER_PATTERN)) {
 			super.state(context, false, "idCustomer", "customer.validation.identifier.bad-format");
-			return false;
+			isValid = false;
 		}
 
 		// Validación de iniciales usando DefaultUserIdentity
 		if (customer.getUserAccount() == null || customer.getUserAccount().getIdentity() == null) {
 			super.state(context, false, "idCustomer", "customer.validation.fullname.missing");
-			return false;
-		}
+			isValid = false;
+		} else {
+			DefaultUserIdentity identity = customer.getUserAccount().getIdentity();
 
-		DefaultUserIdentity identity = customer.getUserAccount().getIdentity();
+			if (identity.getFullName() == null || identity.getFullName().isBlank()) {
+				super.state(context, false, "idCustomer", "customer.validation.fullname.missing");
+				isValid = false;
+			} else {
+				String initials = this.extractInitials(identity.getFullName());
+				String identifierInitials = identifier != null ? identifier.replaceAll("\\d", "") : "";
 
-		if (identity.getFullName() == null || identity.getFullName().isBlank()) {
-			super.state(context, false, "idCustomer", "customer.validation.fullname.missing");
-			return false;
-		}
-
-		String initials = this.extractInitials(identity.getFullName());
-		String identifierInitials = identifier.replaceAll("\\d", "");
-
-		if (!identifierInitials.equals(initials)) {
-			super.state(context, false, "idCustomer", "customer.validation.identifier.initials-mismatch");
-			return false;
+				if (!identifierInitials.equals(initials)) {
+					super.state(context, false, "idCustomer", "customer.validation.identifier.initials-mismatch");
+					isValid = false;
+				}
+			}
 		}
 
 		return isValid && !super.hasErrors(context);
@@ -82,4 +85,5 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 
 		return initials.toString();
 	}
+
 }
