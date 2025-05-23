@@ -9,6 +9,7 @@
     <acme:input-textbox code="customer.passenger.list.label.passportNumber" path="passportNumber"/>
     <acme:input-moment code="customer.passenger.list.label.dateOfBirth" path="dateOfBirth"/>
     <acme:input-textarea code="customer.passenger.list.label.specialNeeds" path="specialNeeds"/>
+    
 
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|publish|delete')}">

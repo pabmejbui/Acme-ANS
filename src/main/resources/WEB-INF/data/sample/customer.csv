@@ -1,4 +1,5 @@
 key,key:userAccount,idCustomer,phoneNumber,physicalAddress,city,country,earnedPoints
 customer-01,user-account-customer-01,BA987654,+19987654321,"Calle del Prado 5","Madrid","España",45210
 customer-02,user-account-customer-02,CD763412,345678901,"Avenida de los Pinos","Sevilla","España",2310
+customer-03,user-account-customer-03,HG763412,123456789,"Avenida Guadaira","Sevilla","España",
 

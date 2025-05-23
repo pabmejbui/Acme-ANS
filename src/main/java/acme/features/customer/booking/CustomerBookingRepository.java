@@ -3,6 +3,7 @@ package acme.features.customer.booking;
 
 import java.util.Collection;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -39,4 +40,8 @@ public interface CustomerBookingRepository extends AbstractRepository {
 
 	@Query("SELECT f FROM Flight f WHERE f.draftMode = false")
 	Collection<Flight> findAllFlightsDraftModeFalse();
+
+	@Modifying
+	@Query("DELETE FROM BookingRecord br WHERE br.passenger.id = :passengerId")
+	void deleteBookingRecordsByPassengerId(int passengerId);
 }

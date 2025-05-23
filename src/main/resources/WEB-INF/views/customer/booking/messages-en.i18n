@@ -1,4 +1,3 @@
-
 # form ####################################################
 
 customer.booking.form.title = Booking form
@@ -30,5 +29,6 @@ customer.booking.list.label.price = Price
 
 # features ################################################
 customer.booking.delete.published-passengers = Can't delete bookings with published passengers
-customer.booking.publish.not-published-passengers = Can't publish bookings unless there are unpublished passengers or none
+customer.validation.booking.form.error.noPassengers = Can't publish bookings unless there are unpublished passengers or none
 customer.booking.publish.missing-card-nibble = To publish the booking, the last 4 digits of the credit card must have been stored
+

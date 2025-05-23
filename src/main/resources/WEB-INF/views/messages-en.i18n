@@ -84,9 +84,9 @@ acme.validation.manager.leg.flight-number.format.message = The flight number mus
 acme.validation.manager.leg.flight-number.duplicate.message = Another leg with the same flight number already exists.
 
 # Booking validation messages #########################################################
-acme.validation.locatorCode.message = locatorCode has an incorrect format.
-acme.validation.booking.duplicate-locator.message = Locator code already exists.
-acme.validation.lastNibble.notPattern.message = Last nibble must be composed of four numbers
+acme.validation.booking.locatorCode.message = locatorCode has an incorrect format
+acme.validation.booking.duplicate-locator.message = Locator code already exists
+acme.validation.booking.lastNibble.notPattern.message = Last nibble must be composed of four numbers
 
 # Administrator Airline validation messages ##########################################
 acme.validation.confirmation.message = You must confirm this operation before proceeding.

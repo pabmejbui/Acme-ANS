@@ -55,16 +55,16 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void validate(final Booking booking) {
-		Booking bookingWithSameLocatorCode = this.repository.findBookingByLocatorCode(booking.getLocatorCode());
-		boolean status = bookingWithSameLocatorCode == null || bookingWithSameLocatorCode.getId() == booking.getId();
-		super.state(status, "locatorCode", "acme.validation.identifier.repeated.message");
 
 		Collection<BookingRecord> bookingRecords = this.repository.findAllBookingRecordsByBookingId(booking.getId());
-		status = !bookingRecords.isEmpty();
+		boolean status = !bookingRecords.isEmpty();
 		super.state(status, "*", "customer.validation.booking.form.error.noPassengers");
 
 		status = bookingRecords.stream().filter(br -> br.getPassenger().isDraftMode()).findFirst().isEmpty();
-		super.state(status, "*", "customer.booking.form.error.publishPassengers");
+		super.state(status, "*", "customer.booking.delete.published-passengers");
+
+		status = !booking.getLastCardNibble().isBlank();
+		super.state(status, "lastCardNibble", "customer.booking.publish.missing-card-nibble");
 
 	}
 

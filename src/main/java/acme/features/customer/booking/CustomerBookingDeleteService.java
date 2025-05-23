@@ -57,26 +57,36 @@ public class CustomerBookingDeleteService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void validate(final Booking booking) {
-		boolean status = true;
-		int id;
-		id = super.getRequest().getData("id", int.class);
+		//		boolean status = true;
+		//		int id;
+		//		id = super.getRequest().getData("id", int.class);
+		//		Collection<Passenger> passengers = this.repository.findPassengersByBookingId(id);
+		//		if (!passengers.isEmpty())
+		//			for (Passenger passenger : passengers)
+		//				if (!passenger.isDraftMode()) {
+		//					status = false;
+		//					break;
+		//				}
+		//		super.state(status, "*", "customer.booking.delete.published-passengers");
+
+		int id = super.getRequest().getData("id", int.class);
 		Collection<Passenger> passengers = this.repository.findPassengersByBookingId(id);
-		if (!passengers.isEmpty())
-			for (Passenger passenger : passengers)
-				if (!passenger.isDraftMode()) {
-					status = false;
-					break;
-				}
-		super.state(status, "*", "customer.booking.delete.published-passengers");
+
+		boolean hasPublishedPassengers = passengers.stream().anyMatch(p -> !p.isDraftMode());
+
+		// Si hay al menos un pasajero publicado, no permitir la eliminación
+		super.state(!hasPublishedPassengers, "*", "customer.booking.delete.published-passengers");
 	}
 
 	@Override
 	public void perform(final Booking booking) {
-		Collection<Passenger> passengers;
+		Collection<Passenger> passengers = this.repository.findPassengersByBookingId(booking.getId());
 
-		passengers = this.repository.findPassengersByBookingId(booking.getId());
-		this.repository.deleteAll(passengers);
-		this.repository.delete(booking);
+		for (Passenger passenger : passengers)
+			this.repository.deleteBookingRecordsByPassengerId(passenger.getId()); // Eliminar dependencias primero
+
+		this.repository.deleteAll(passengers); // Luego los pasajeros
+		this.repository.delete(booking);       // Finalmente la reserva
 	}
 
 	@Override

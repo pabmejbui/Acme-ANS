@@ -1,6 +1,6 @@
 key,key:flight,key:customer,locatorCode,purchaseMoment,travelClass,lastCardNibble,draftMode
 # base entity
-booking-00,flight-02,customer-01,ABC123,2023/07/19 19:30,ECONOMY,,false
+booking-00,flight-02,customer-01,ABC123,2023/07/19 19:30,ECONOMY,,true
 # locatorCode - variations
 booking-01,flight-02,customer-01,A1B2C3,2024/12/31 23:59,ECONOMY,1234,true
 booking-02,flight-02,customer-01,XYZ789,2024/12/31 23:59,ECONOMY,1234,true
@@ -12,11 +12,11 @@ booking-06,flight-02,customer-01,DEF456,2000/01/01 00:00,ECONOMY,1234,true
 booking-07,flight-02,customer-02,GHI789,2000/01/01 00:01,ECONOMY,1234,true
 booking-08,flight-02,customer-02,JKL012,2023/12/31 23:59,ECONOMY,1234,true
 # travelClass - variations
-booking-09,flight-03,customer-02,MNO345,2024/12/31 23:59,ECONOMY,1234,true
+booking-09,flight-03,customer-02,MNO345,2024/12/31 23:59,ECONOMY,1234,false
 booking-10,flight-03,customer-02,PQR678,2024/12/31 23:59,BUSINESS,1234,true
 # lastNibble - variations
 booking-11,flight-03,customer-02,EFG123,2024/12/31 23:59,ECONOMY,0000,true
 booking-12,flight-03,customer-02,HIJ456,2024/12/31 23:59,ECONOMY,5555,true
 booking-13,flight-03,customer-02,KLM789,2024/12/31 23:59,ECONOMY,9999,true
 # isPublished - variations
-booking-14,flight-03,customer-02,ABC666,2023/07/19 19:30,ECONOMY,1234,false
+booking-14,flight-03,customer-02,ABC666,2023/07/19 19:30,ECONOMY,1234,true
