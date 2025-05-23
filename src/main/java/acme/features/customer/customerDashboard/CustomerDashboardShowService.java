@@ -61,10 +61,10 @@ public class CustomerDashboardShowService extends AbstractGuiService<Customer, C
 		dashboard.setBookingMaximumCost(new LinkedList<>());
 		dashboard.setBookingDeviationCost(new LinkedList<>());
 		dashboard.setBookingCountPassengers(0);
-		dashboard.setBookingAveragePassengers(Double.NaN);
+		dashboard.setBookingAveragePassengers(0.0);
 		dashboard.setBookingMinimumPassengers(0);
 		dashboard.setBookingMaximumPassengers(0);
-		dashboard.setBookingDeviationPassengers(Double.NaN);
+		dashboard.setBookingDeviationPassengers(0.0);
 
 		if (!bookings.isEmpty() && !bookingPassengers.isEmpty()) {
 
@@ -114,7 +114,7 @@ public class CustomerDashboardShowService extends AbstractGuiService<Customer, C
 				Money bookingTotalCost = dashboard.getBookingCountCost().stream().filter(b -> b.getCurrency().equals(currency)).findFirst().get();
 				Long total5YearsBookingCurrency = lastFiveYearsBookings.stream().filter(b -> b.getCost().getCurrency().equals(currency)).count();
 
-				bookingAverageCost.setAmount(Double.NaN);
+				bookingAverageCost.setAmount(0.0);
 				if (total5YearsBookingCurrency > 0)
 					bookingAverageCost.setAmount(bookingTotalCost.getAmount() / total5YearsBookingCurrency);
 
@@ -153,7 +153,7 @@ public class CustomerDashboardShowService extends AbstractGuiService<Customer, C
 				Money bookingAverageCost = dashboard.getBookingAverageCost().stream().filter(p -> p.getCurrency().equals(currency)).findFirst().get();
 				Long total5YearsBookingCurrency = lastFiveYearsBookings.stream().filter(b -> b.getCost().getCurrency().equals(currency)).count();
 
-				bookingDeviationCost.setAmount(Double.NaN);
+				bookingDeviationCost.setAmount(0.0);
 				if (total5YearsBookingCurrency > 0) {
 					Double varianza = lastFiveYearsBookings.stream().map(Booking::getCost).filter(p -> p.getCurrency().equals(currency)).map(Money::getAmount).map(price -> Math.pow(price - bookingAverageCost.getAmount(), 2)).reduce(0.0, Double::sum)
 						/ total5YearsBookingCurrency;
