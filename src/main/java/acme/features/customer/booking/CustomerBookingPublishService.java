@@ -27,12 +27,11 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		boolean status;
 		int bookingId;
 		Booking booking;
-		Customer customer;
 
 		bookingId = super.getRequest().getData("id", int.class);
 		booking = this.repository.findBookingById(bookingId);
-		customer = booking == null ? null : booking.getCustomer();
-		status = super.getRequest().getPrincipal().hasRealm(customer) && booking != null && booking.isDraftMode();
+
+		status = booking != null && super.getRequest().getPrincipal().hasRealm(booking.getCustomer()) && booking.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -61,7 +60,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		super.state(status, "*", "customer.validation.booking.form.error.noPassengers");
 
 		status = bookingRecords.stream().filter(br -> br.getPassenger().isDraftMode()).findFirst().isEmpty();
-		super.state(status, "*", "customer.booking.delete.published-passengers");
+		super.state(status, "*", "customer.booking.publish.published-passengers");
 
 		status = !booking.getLastCardNibble().isBlank();
 		super.state(status, "lastCardNibble", "customer.booking.publish.missing-card-nibble");

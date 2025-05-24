@@ -29,12 +29,10 @@ public class CustomerBookingDeleteService extends AbstractGuiService<Customer, B
 		boolean status;
 		int masterId;
 		Booking booking;
-		Customer customer;
 
 		masterId = super.getRequest().getData("id", int.class);
 		booking = this.repository.findBookingById(masterId);
-		customer = booking == null ? null : booking.getCustomer();
-		status = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+		status = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(booking.getCustomer());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -57,17 +55,6 @@ public class CustomerBookingDeleteService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void validate(final Booking booking) {
-		//		boolean status = true;
-		//		int id;
-		//		id = super.getRequest().getData("id", int.class);
-		//		Collection<Passenger> passengers = this.repository.findPassengersByBookingId(id);
-		//		if (!passengers.isEmpty())
-		//			for (Passenger passenger : passengers)
-		//				if (!passenger.isDraftMode()) {
-		//					status = false;
-		//					break;
-		//				}
-		//		super.state(status, "*", "customer.booking.delete.published-passengers");
 
 		int id = super.getRequest().getData("id", int.class);
 		Collection<Passenger> passengers = this.repository.findPassengersByBookingId(id);
@@ -85,8 +72,8 @@ public class CustomerBookingDeleteService extends AbstractGuiService<Customer, B
 		for (Passenger passenger : passengers)
 			this.repository.deleteBookingRecordsByPassengerId(passenger.getId()); // Eliminar dependencias primero
 
-		this.repository.deleteAll(passengers); // Luego los pasajeros
-		this.repository.delete(booking);       // Finalmente la reserva
+		this.repository.deleteAll(passengers);
+		this.repository.delete(booking);
 	}
 
 	@Override
