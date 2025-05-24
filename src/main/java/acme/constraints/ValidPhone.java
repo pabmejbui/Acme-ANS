@@ -19,7 +19,7 @@ public @interface ValidPhone {
 
 	// Standard validation properties
 
-	String message() default "Phone number bad format";
+	String message() default "";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};

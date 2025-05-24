@@ -19,11 +19,11 @@ manager.validation.age.less-than-18 = The manager must be at least 18 years old.
 manager.validation.identifier.duplicated = Identifier is already in use. Try another.
 
 # Customer validation messages #########################################################
-customer.validation.identifier.not-null = Identifier must not be null or empty.
-customer.validation.identifier.bad-format = Identifier must contain 2 or 3 uppercase letters followed by exactly 6 digits.
-customer.validation.fullname.missing = User's full name is required to validate the identifier.
-customer.validation.identifier.initials-mismatch = Identifier initials do not match user's name.
-acme.validation.customer.duplicated-identifier.message = This id already exists.
+customer.validation.identifier.not-null = Identifier must not be null or empty
+customer.validation.identifier.bad-format = Identifier must contain 2 or 3 uppercase letters followed by exactly 6 digits
+customer.validation.fullname.missing = User's full name is required to validate the identifier
+customer.validation.identifier.initials-mismatch = Identifier initials do not match user's name
+acme.validation.customer.duplicated-identifier.message = This id already exists
 
 # Flight number validation messages #########################################################
 
@@ -94,7 +94,7 @@ acme.validation.booking.lastNibble.notPattern.message = Last nibble must be comp
 acme.validation.confirmation.message = You must confirm this operation before proceeding.
 
 # Phone Number validation messages ###################################################
-acme.validation.phone.bad-format-phone.message = The phone number format is invalid. It must be a number between 6 and 15 digits, optionally starting with "+".
+acme.validation.phone.bad-format-phone.message = The phone number format is invalid. It must be a number between 6 and 15 digits, optionally starting with "+"
 
 # Passenger ##########################################################################
 acme.validation.passportNumber.notPattern.message = Bad format Passport
