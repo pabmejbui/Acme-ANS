@@ -50,7 +50,7 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		int flightAssignmentId = super.getRequest().getData("id", int.class);
 		FlightAssignment flightAssignment = this.repository.findFlightAssignmentById(flightAssignmentId);
 
-		flightAssignment.setLastUpdate(MomentHelper.getCurrentlastUpdate());
+		flightAssignment.setLastUpdate(MomentHelper.getCurrentMoment());
 
 		super.getBuffer().addData(flightAssignment);
 	}

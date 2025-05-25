@@ -55,7 +55,6 @@ master.menu.customer.dashboard = Customer dashboard
  master.menu.flightCrewMember.flightAssignment = Flight Assignments
  master.menu.flightCrewMember.flightAssignmentCompleted = Flight Assignments Completed
  master.menu.flightCrewMember.flightAssignmentPlanned = Flight Assignments Planned 
- master.menu.flightCrewMember.activityLogs = activityLogs List 
  
 # master.menu.assistance-agent ##########################################################
 master.menu.assistance-agent.claims = Claims

@@ -53,10 +53,10 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 	public void unbind(final ActivityLog activityLog) {
 		assert activityLog != null;
 
-		Dataset dataset = super.unbindObject(activityLog, "registrationlastUpdate", "incidentType", "description", "severity", "draftMode");
+		Dataset dataset = super.unbindObject(activityLog, "registrationMoment", "incidentType", "description", "severity", "draftMode");
 
 		// Show create if the assignment is completed
-		if (activityLog.getFlightAssignment().getLeg().getScheduledArrival().before(MomentHelper.getCurrentlastUpdate()))
+		if (activityLog.getFlightAssignment().getLeg().getScheduledArrival().before(MomentHelper.getCurrentMoment()))
 			super.getResponse().addGlobal("showAction", true);
 
 		boolean draftModeFlightAssignment = this.repository.findFlightAssignmentById(activityLog.getFlightAssignment().getId()).isDraftMode();

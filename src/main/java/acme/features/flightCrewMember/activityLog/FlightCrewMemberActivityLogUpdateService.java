@@ -76,7 +76,7 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 		Dataset dataset = super.unbindObject(activityLog, "registrationlastUpdate", "incidentType", "description", "severity", "draftMode");
 
 		// Show create if the assignment is completed
-		if (activityLog.getFlightAssignment().getLeg().getScheduledArrival().before(MomentHelper.getCurrentlastUpdate()))
+		if (activityLog.getFlightAssignment().getLeg().getScheduledArrival().before(MomentHelper.getCurrentMoment()))
 			super.getResponse().addGlobal("showAction", true);
 
 		super.getResponse().addData(dataset);

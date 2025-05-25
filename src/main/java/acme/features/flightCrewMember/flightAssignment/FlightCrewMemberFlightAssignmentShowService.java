@@ -7,7 +7,6 @@ import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.flightAssignment.AssignmentStatus;
 import acme.entities.flightAssignment.DutyType;
 import acme.entities.flightAssignment.FlightAssignment;
 import acme.realms.flightCrewMembers.FlightCrewMember;
@@ -15,12 +14,8 @@ import acme.realms.flightCrewMembers.FlightCrewMember;
 @GuiService
 public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	private FlightCrewMemberFlightAssignmentRepository repository;
-
-	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
@@ -65,14 +60,14 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		dataset.put("duty", dutyChoices.getSelected().getKey());
 
 		// Status choices
-		SelectChoices statusChoices = SelectChoices.from(AssignmentStatus.class, flightAssignment.getStatus());
+		SelectChoices statusChoices = SelectChoices.from(acme.entities.flightAssignment.AssignmentStatus.class, flightAssignment.getStatus());
 		dataset.put("statusChoices", statusChoices);
 		dataset.put("status", statusChoices.getSelected().getKey());
 
 		// Leg choices
 		SelectChoices legChoices = SelectChoices.from(this.repository.findAllLegsByAirlineId(flightAssignment.getFlightCrewMember().getAirline().getId()), "flightNumber", flightAssignment.getLeg());
 		dataset.put("legChoices", legChoices);
-		dataset.put("leg", legChoices.getSelected().getKey());
+		dataset.put("flightLeg", legChoices.getSelected().getKey());
 
 		super.getResponse().addData(dataset);
 	}

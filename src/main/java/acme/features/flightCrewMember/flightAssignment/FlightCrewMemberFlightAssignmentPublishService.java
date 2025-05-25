@@ -71,7 +71,7 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 			super.state(isAvailable, "flightCrewMember", "acme.validation.flightAssignment.flightCrewMember.available");
 
 			// Cannot be assigned to multiple legs simultaneously
-			boolean isAlreadyAssigned = this.repository.hasFlightCrewMemberLegAssociated(flightAssignment.getFlightCrewMember().getId(), MomentHelper.getCurrentlastUpdate());
+			boolean isAlreadyAssigned = this.repository.hasFlightCrewMemberLegAssociated(flightAssignment.getFlightCrewMember().getId(), MomentHelper.getCurrentMoment());
 			super.state(!isAlreadyAssigned, "flightCrewMember", "acme.validation.flightAssignment.flightCrewMember.multipleLegs");
 		}
 
@@ -83,7 +83,7 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 			boolean isWrongAirlineLeg = flightAssignment.getLeg().getAircraft().getAirline().equals(flightAssignment.getFlightCrewMember().getAirline());
 			super.state(isWrongAirlineLeg, "leg", "acme.validation.flightAssignment.leg.airline");
 
-			boolean isLinkedToPastLeg = flightAssignment.getLeg().getScheduledDeparture().before(MomentHelper.getCurrentlastUpdate());
+			boolean isLinkedToPastLeg = flightAssignment.getLeg().getScheduledDeparture().before(MomentHelper.getCurrentMoment());
 			super.state(!isLinkedToPastLeg, "leg", "acme.validation.flightAssignment.leg.lastUpdate");
 		}
 

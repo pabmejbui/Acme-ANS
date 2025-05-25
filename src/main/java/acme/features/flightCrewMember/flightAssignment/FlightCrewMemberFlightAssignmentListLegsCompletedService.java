@@ -32,7 +32,7 @@ public class FlightCrewMemberFlightAssignmentListLegsCompletedService extends Ab
 	@Override
 	public void load() {
 		FlightCrewMember flightCrewMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
-		Collection<FlightAssignment> completedFlightAssignments = this.repository.findAllCompletedFlightAssignments(MomentHelper.getCurrentlastUpdate(), flightCrewMember.getId());
+		Collection<FlightAssignment> completedFlightAssignments = this.repository.findAllCompletedFlightAssignments(MomentHelper.getCurrentMoment(), flightCrewMember.getId());
 
 		super.getBuffer().addData(completedFlightAssignments);
 	}
