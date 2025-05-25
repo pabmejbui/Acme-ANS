@@ -11,6 +11,6 @@
 	
 </acme:list>
 
-<jstl:if test="${acme:anyOf(_command, 'list-planned|list-completed')}">
+<jstl:if test="${acme:anyOf(_command, 'list-mine-planned|list-mine-completed')}">
 	<acme:button code="flight-crew-member.flight-assignment.list.button.create" action="/flight-crew-member/flight-assignment/create"/>
-</jstl:if>
+</jstl:if>	

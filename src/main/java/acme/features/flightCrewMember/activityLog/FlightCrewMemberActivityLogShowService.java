@@ -23,14 +23,16 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 	@Override
 	public void authorise() {
 		boolean status;
-		int logId;
-		FlightCrewMember member;
+		int masterId;
 		ActivityLog log;
+		FlightCrewMember member;
 
-		logId = super.getRequest().getData("id", int.class);
-		log = this.repository.findActivityLogById(logId);
+		masterId = super.getRequest().getData("id", int.class);
+		log = this.repository.findActivityLogById(masterId);
 		member = log == null ? null : log.getFlightAssignment().getFlightCrewMember();
-		status = member != null && super.getRequest().getPrincipal().hasRealm(member);
+		status = log != null;
+
+		status = status && (!log.isDraftMode() || super.getRequest().getPrincipal().hasRealm(member));
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -51,11 +53,14 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 		Dataset dataset;
 		SelectChoices selectedAssignments;
 		Collection<FlightAssignment> assignments;
+		FlightCrewMember member;
 
-		assignments = this.repository.findAllAssignments();
-		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
+		member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+		assignments = this.repository.findFlightAssignmentsByMemberIdOrPublished(member.getId());
+		selectedAssignments = SelectChoices.from(assignments, "leg.flightNumber", log.getFlightAssignment());
 
 		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
+		dataset.put("masterId", log.getFlightAssignment().getId());
 		dataset.put("assignments", selectedAssignments);
 		dataset.put("assignment", selectedAssignments.getSelected().getKey());
 
