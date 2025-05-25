@@ -1,90 +1,81 @@
 
 package acme.features.flightCrewMember.activityLog;
 
-import java.util.Collection;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
-import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
-import acme.entities.flightAssignment.FlightAssignment;
 import acme.realms.flightCrewMembers.FlightCrewMember;
 
 @GuiService
 public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService<FlightCrewMember, ActivityLog> {
 
+	// Internal state ---------------------------------------------------------
+
 	@Autowired
 	private FlightCrewMemberActivityLogRepository repository;
+
+	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int logId;
-		FlightCrewMember member;
-		ActivityLog log;
 
-		logId = super.getRequest().getData("id", int.class);
-		log = this.repository.findActivityLogById(logId);
-		member = log == null ? null : log.getFlightAssignment().getFlightCrewMember();
-		status = member != null && super.getRequest().getPrincipal().hasRealm(member) && log.isDraftMode();
+		boolean isAuthorised = false;
 
-		super.getResponse().setAuthorised(status);
+		try {
+			// Only is allowed to delete an activity log if the creator is the flight crew member associated to the flight assignment.
+			// An activity log cannot be deleted if the activity log is published, only in draft mode are allowed.
+			Integer activityLogId = super.getRequest().getData("id", Integer.class);
+			if (activityLogId != null) {
+				ActivityLog activityLog = this.repository.findActivityLogById(activityLogId);
+				isAuthorised = activityLog != null && activityLog.isDraftMode() && super.getRequest().getPrincipal().hasRealm(activityLog.getFlightAssignment().getFlightCrewMember());
+			}
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+			e.printStackTrace();
+		}
+
+		super.getResponse().setAuthorised(isAuthorised);
 	}
 
 	@Override
 	public void load() {
-		ActivityLog log;
-		int logId;
+		int id = super.getRequest().getData("id", int.class);
+		ActivityLog activityLog = this.repository.findActivityLogById(id);
 
-		logId = super.getRequest().getData("id", int.class);
-		log = this.repository.findActivityLogById(logId);
-
-		super.getBuffer().addData(log);
+		super.getBuffer().addData(activityLog);
 	}
 
 	@Override
-	public void bind(final ActivityLog log) {
-		Date now;
-		int assignmentId;
-		FlightAssignment assignment;
-
-		assignmentId = super.getRequest().getData("assignment", int.class);
-		assignment = this.repository.findFlightAssignmentById(assignmentId);
-		now = MomentHelper.getCurrentMoment();
-
-		super.bindObject(log, "incidentType", "description", "severity");
-		log.setRegistrationMoment(now);
-		log.setFlightAssignment(assignment);
+	public void bind(final ActivityLog activityLog) {
+		assert activityLog != null;
 	}
 
 	@Override
-	public void validate(final ActivityLog log) {
-		;
+	public void validate(final ActivityLog activityLog) {
+		assert activityLog != null;
 	}
 
 	@Override
 	public void perform(final ActivityLog activityLog) {
+		assert activityLog != null;
+
 		this.repository.delete(activityLog);
 	}
 
 	@Override
-	public void unbind(final ActivityLog log) {
-		Dataset dataset;
-		SelectChoices selectedAssignments;
-		Collection<FlightAssignment> assignments;
+	public void unbind(final ActivityLog activityLog) {
+		assert activityLog != null;
 
-		assignments = this.repository.findAllAssignments();
-		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
+		Dataset dataset = super.unbindObject(activityLog, "registrationlastUpdate", "incidentType", "description", "severity", "draftMode");
 
-		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
-		dataset.put("assignments", selectedAssignments);
-		dataset.put("assignment", selectedAssignments.getSelected().getKey());
+		// Show create if the assignment is completed
+		if (activityLog.getFlightAssignment().getLeg().getScheduledArrival().before(MomentHelper.getCurrentlastUpdate()))
+			super.getResponse().addGlobal("showAction", true);
 
 		super.getResponse().addData(dataset);
 	}

@@ -2,7 +2,6 @@
 package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,37 +15,38 @@ import acme.realms.flightCrewMembers.FlightCrewMember;
 @GuiService
 public class FlightCrewMemberFlightAssignmentListLegsPlannedService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
 
+	// Internal state ---------------------------------------------------------
+
 	@Autowired
 	private FlightCrewMemberFlightAssignmentRepository repository;
+
+	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status = super.getRequest().getPrincipal().hasRealmOfType(FlightCrewMember.class);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Collection<FlightAssignment> assignments;
-		int id;
-		Date now;
+		FlightCrewMember flightCrewMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+		Collection<FlightAssignment> plannedFlightAssignments = this.repository.findAllPlannedFlightAssignments(MomentHelper.getCurrentlastUpdate(), flightCrewMember.getId());
 
-		id = super.getRequest().getPrincipal().getActiveRealm().getId();
-		now = MomentHelper.getCurrentMoment();
-
-		assignments = this.repository.findPlannedFlightAssignmentsByMemberId(now, id);
-
-		super.getBuffer().addData(assignments);
-
+		super.getBuffer().addData(plannedFlightAssignments);
 	}
 
 	@Override
-	public void unbind(final FlightAssignment assignment) {
-		Dataset dataset;
+	public void unbind(final FlightAssignment plannedFlightAssignments) {
+		assert plannedFlightAssignments != null;
 
-		dataset = super.unbindObject(assignment, "lastUpdate", "status", "duty");
-		super.addPayload(dataset, assignment, "remarks");
+		Dataset dataset = super.unbindObject(plannedFlightAssignments, "duty", "lastUpdate", "status", "remarks", "draftMode", "leg");
 
+		dataset.put("leg", plannedFlightAssignments.getLeg().getFlightNumber());
+
+		super.addPayload(dataset, plannedFlightAssignments, "duty", "lastUpdate", "status", "remarks", "draftMode", "leg");
 		super.getResponse().addData(dataset);
+
 	}
 }

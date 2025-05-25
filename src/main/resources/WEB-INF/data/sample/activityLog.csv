@@ -1,9 +1,40 @@
-key,registrationMoment,incidentType,description,severity,key:flightAssignment,draftMode
-log-01,2024/06/15 12:00,洛伦·伊普森,Lo,5,assignment-01,true
-log-02,2024/06/12 17:00,โลเร็ม อิปซัม,<script>alert('Hacked!');</script>,7,assignment-02,true
-log-03,2024/06/29 09:30,<marquee>Hacked</marquee>,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",9,assignment-03,true
-log-04,2024/06/17 13:45,لوريم إيبسوم,L,2,assignment-04,true
-log-05,2024/06/27 18:20,L,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",0,assignment-05,true
-log-06,2024/06/27 21:50,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut",4,assignment-06,false
-log-07,2024/06/27 08:45,L,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua!",3,assignment-07,true
-log-08,2024/06/27 12:15,"Lorem ipsum dolor sit amet, consectetur adipiscin","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",6,assignment-08,true
+key,registrationlastUpdate,incidentType,description,severity,key:flightAssignment,draftMode
+log-01,2020/09/01 10:05,"Despresurización de la cabina","La presión de la cabina disminuyó de manera repentina.",10,assignment-01,true
+log-02,2020/09/01 10:07,"Fallo de un motor","Uno de los motores del avión dejó de funcionar.",9,assignment-02,true
+log-03,2024/12/31 23:59,"Turbulencia severa","Una turbulencia causó sacudidas violentas en el avión.",6,assignment-03,true
+log-04,2024/12/31 23:59,"Error de comunicación con el control aéreo","El piloto no pudo comunicarse correctamente con el control aéreo.",7,assignment-04,true
+log-05,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum",0,assignment-01,true
+log-06,2022/11/01 17:43,"Lorem ipsum","Lorem ipsum",0,assignment-01,true
+log-07,2020/09/01 10:03,"Lorem ipsum","Lorem ipsum",0,assignment-01,true
+log-08,2020/09/01 10:04,"Lorem ipsum","Lorem ipsum",0,assignment-01,true
+log-09,2024/12/31 23:59,"Lorem ipsum","Lorem ipsum",0,assignment-01,true
+log-10,2025/01/01 00:00,"Lorem ipsum","Lorem ipsum",0,assignment-01,true
+log-11,2020/09/01 10:05,"Lorem ipsum dolor sit amet.","Lorem ipsum",0,assignment-01,true
+log-12,2020/09/01 10:05,"L","Lorem ipsum",0,assignment-01,true
+log-13,2020/09/01 10:05,"Lo","Lorem ipsum",0,assignment-01,true
+log-14,2020/09/01 10:05,"Lorem ipsum dolor sit amet; consectetur adipiscin","Lorem ipsum",0,assignment-01,true
+log-15,2020/09/01 10:05,"Lorem ipsum dolor sit amet; consectetur adipiscing","Lorem ipsum",0,assignment-01,true
+log-16,2020/09/01 10:05,"โลเร็ม อิปซัม","Lorem ipsum",0,assignment-01,true
+log-17,2020/09/01 10:05,"لوريم إيبسوم","Lorem ipsum",0,assignment-01,true
+log-18,2020/09/01 10:05,"洛伦·伊普森","Lorem ipsum",0,assignment-01,true
+log-19,2020/09/01 10:05,"<marquee>Hacked</marquee>","Lorem ipsum",0,assignment-01,true
+log-20,2020/09/01 10:05,"<script>alert(‘Hacked!’);</script>","Lorem ipsum",0,assignment-01,true
+log-21,2020/09/01 10:05,"'' or 'A' = 'A ","Lorem ipsum",0,assignment-01,true
+log-22,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum dolor sit amet; consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",0,assignment-01,true
+log-23,2020/09/01 10:05,"Lorem ipsum","L",0,assignment-01,true
+log-24,2020/09/01 10:05,"Lorem ipsum","Lo",0,assignment-01,true
+log-25,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum dolor sit amet; consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",0,assignment-01,true
+log-26,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum dolor sit amet; consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",0,assignment-01,true
+log-27,2020/09/01 10:05,"Lorem ipsum","โลเร็ม อิปซัม",0,assignment-01,true
+log-28,2020/09/01 10:05,"Lorem ipsum","при",0,assignment-01,true
+log-29,2020/09/01 10:05,"Lorem ipsum","洛伦·伊普森",0,assignment-01,true
+log-30,2020/09/01 10:05,"Lorem ipsum","<marquee>Hacked</marquee>",0,assignment-01,true
+log-31,2020/09/01 10:05,"Lorem ipsum","<script>alert(‘Hacked!’);</script>",0,assignment-01,true
+log-32,2020/09/01 10:05,"Lorem ipsum","'' or 'A' = 'A ",0,assignment-01,true
+log-33,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum",5,assignment-01,true
+log-34,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum",0,assignment-01,true
+log-35,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum",1,assignment-01,true
+log-36,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum",9,assignment-01,true
+log-37,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum",10,assignment-01,true
+log-38,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum",0,assignment-01,true
+log-39,2024/12/31 23:59,"Lorem ipsum","Lorem ipsum",0,assignment-25,false
