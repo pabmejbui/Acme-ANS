@@ -1,2 +1,2 @@
-key,maintenanceDate,maintenanceStatus,nextInspectionDate,estimatedCost,notes,draftMode,key:technician,key:aircraft
+key,moment,status,nextInspectionDate,estimatedCost,notes,draftMode,key:technician,key:aircraft
 maintenanceRecord-01,2000/01/01 00:00,PENDING,2025/09/01 10:00,EUR 500000.00,Lorem,false,technician-01,aircraft-01
