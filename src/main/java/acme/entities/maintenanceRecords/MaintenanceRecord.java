@@ -46,12 +46,12 @@ public class MaintenanceRecord extends AbstractEntity {
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				maintenanceDate;
+	private Date				moment;
 
 	@Mandatory
 	@Valid
 	@Automapped
-	private MaintenanceStatus	maintenanceStatus;
+	private MaintenanceStatus	status;
 
 	@Mandatory
 	@ValidMoment(past = false)
@@ -69,8 +69,9 @@ public class MaintenanceRecord extends AbstractEntity {
 	private String				notes;
 
 	@Mandatory
+	@Valid
 	@Automapped
-	private boolean				draftMode;
+	private Boolean				draftMode;
 
 	// Relationships  ---------------------------------------------------------
 
