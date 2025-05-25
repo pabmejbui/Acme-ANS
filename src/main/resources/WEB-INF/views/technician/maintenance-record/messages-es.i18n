@@ -14,13 +14,12 @@ technician.maintenance-record.form.button.delete = Borrar
 technician.maintenance-record.form.button.publish = Publicar
 technician.maintenance-record.form.add.task = Añadir tarea
 technician.maintenance-record.form.list.task = Mostrar tareas
-technician.maintenance-record.form.delete.task = Desenlazar tarea
+technician.maintenance-record.form.delete.task = Desvincular tarea
 technician.maintenance-record.form.label.moment = Momento
-
 
 technician.maintenance-record.form.label.moment = Momento
 technician.maintenance-record.form.label.status = Estado
 technician.maintenance-record.form.label.nextInspectionDate = Fecha de la próxima inspección
-technician.maintenance-record.form.label.estimatedCost = Coste Estimado
+technician.maintenance-record.form.label.estimatedCost = Coste estimado
 technician.maintenance-record.form.label.notes = Notas
 technician.maintenance-record.form.label.aircraft = Avión
