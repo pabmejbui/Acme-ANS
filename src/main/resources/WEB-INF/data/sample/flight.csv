@@ -1,8 +1,15 @@
 key,tag,selfTransfer,cost,description,draftMode,key:manager
-flight-01,"The best",true,EUR 1000.00,"Lorem ipsum",true,manager-01
-flight-02,"The cheapest",true,EUR 500.00,null,false,manager-01
-flight-03,"The fastest selftransfer flight in the whole world",true,GBP 2000.00,"Esta es la descripción de ejemplo para cumplir a rajatabla con los 255 caracteres solicitados en el requisito, y la única manera que se me ha ocurrido hacerlo es poniendo a escribir un texto sin sentido que cumpla con el máximo límite impuesto que es esto",false,manager-02
-flight-04,"The best of the west",false,EUR 1500.00,"Lorem ipsum",true,manager-01
-flight-05,"The longest flight in the less time",false,USD 5000.00,"Lorem ipsum",true,manager-02
-flight-06,"The best in the east",false,EUR 3300.00,"Lorem lorem lorem",true,manager-01
-flight-07,"The most popular in Serbia",false,EUR 3800.00,"Lorlorem",true,manager-02
+flight-01,The best,true,EUR 1000.00,Lorem ipsum,true,manager-01
+flight-02,The cheapest,true,EUR 500.00,null,false,manager-01
+flight-03,The fastest selftransfer flight in the whole world,true,GBP 2000.00,"Esta es la descripción de ejemplo para cumplir a rajatabla con los 255 caracteres solicitados en el requisito, y la única manera que se me ha ocurrido hacerlo es poniendo a escribir un texto sin sentido que cumpla con el máximo límite impuesto que es esto",false,manager-02
+flight-04,The best of the west,false,EUR 1500.00,Lorem ipsum,true,manager-01
+flight-05,The longest flight in the less time,false,USD 5000.00,Lorem ipsum,true,manager-02
+flight-06,The best in the east,false,EUR 3300.00,Lorem lorem lorem,true,manager-01
+flight-07,The most popular in Serbia,false,EUR 3800.00,Lorlorem,true,manager-02
+flight-08,El vuelo de ejemplo para caracteres máx posibleees,false,EUR 999.00,OLé,true,manager-01
+flight-09,A,false,EUR 999.00,Caracteres maximoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooos,true,manager-01
+flight-10,Aa,false,EUR 99999.00,O,true,manager-02
+flight-11,El vuelo de ejemplo para caracteres máxpos menos1,false,EUR 10.00,Olú,true,manager-01
+flight-12,โลเร็ม อิปซัม,true,EUR 0.10,Flight from city A to city B,true,manager-01
+flight-13,لوريم إيبسوم,true,EUR 10.00,Flight from city A to city B,true,manager-02
+

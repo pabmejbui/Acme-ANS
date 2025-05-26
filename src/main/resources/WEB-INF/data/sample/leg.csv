@@ -6,4 +6,4 @@ leg-04,AMX2002,2024/06/15 10:00,2024/06/15 13:45,LANDED,true,flight-02,airport-0
 leg-05,VYX3001,2024/06/20 15:20,2024/06/20 18:20,ON_TIME,false,flight-03,airport-04,airport-02,aircraft-05,airline-02
 leg-06,RYA3002,2024/06/20 19:00,2024/06/20 21:50,DELAYED,true,flight-03,airport-02,airport-05,aircraft-06,airline-03
 leg-07,VYX4001,2024/06/25 05:30,2024/06/25 08:45,ON_TIME,false,flight-04,airport-03,airport-05,aircraft-07,airline-02
-leg-08,RYA4002,2024/06/25 09:30,2024/06/25 12:15,CANCELLED,true,flight-04,airport-05,airport-01,aircraft-08,airline-03
+leg-08,RYA4002,2024/06/25 09:30,2024/06/25 12:15,CANCELLED,true,flight-04,airport-05,airport-08,aircraft-08,airline-03
