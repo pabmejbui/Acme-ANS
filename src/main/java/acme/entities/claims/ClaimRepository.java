@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
-import acme.entities.trackingLogs.TrackingLog;
+import acme.entities.trackingLog.TrackingLog;
 
 @Repository
 public interface ClaimRepository extends AbstractRepository {

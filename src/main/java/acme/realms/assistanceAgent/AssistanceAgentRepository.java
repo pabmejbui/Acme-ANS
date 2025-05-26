@@ -12,4 +12,6 @@ public interface AssistanceAgentRepository extends AbstractRepository {
 	@Query("select c from AssistanceAgent c where c.employeeCode = :employeeCode")
 	AssistanceAgent findAgentByEmployeeCode(String employeeCode);
 
+	AssistanceAgent findAssistanceAgentByEmployeeCode(String employeeCode);
+
 }

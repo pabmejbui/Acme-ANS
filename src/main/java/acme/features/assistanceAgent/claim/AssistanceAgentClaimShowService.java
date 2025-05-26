@@ -10,7 +10,7 @@ import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claims.Claim;
-import acme.entities.claims.ClaimIndicator;
+import acme.entities.claims.ClaimStatus;
 import acme.entities.claims.ClaimType;
 import acme.entities.flights.Leg;
 import acme.realms.assistanceAgent.AssistanceAgent;
@@ -66,7 +66,7 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 
 		Collection<Leg> legs;
 
-		ClaimIndicator indicator = claim.getIndicator();
+		ClaimStatus indicator = claim.getStatus();
 
 		typesChoices = SelectChoices.from(ClaimType.class, claim.getType());
 		legs = this.repository.findAllLeg();
