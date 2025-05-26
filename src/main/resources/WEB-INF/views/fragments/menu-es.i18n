@@ -52,10 +52,10 @@ master.menu.customer.dashboard = Panel de cliente
 # master.menu.flightCrewMember ##########################################################
  
 master.menu.flightCrewMember = Miembro de la tripulación de vuelo
-master.menu.flightCrewMember.flightAssignment = Asignación de vuelo
-master.menu.flightCrewMember.flightAssignmentCompleted = Asignaciones de vuelo completadas
-master.menu.flightCrewMember.flightAssignmentPlanned = Asignaciones de vuelo planeadas
-master.menu.flightCrewMember.activityLogs = Listado de activitylogs
+master.menu.flightCrewMember.flightAssignmentCompleted = Ver asignaciones de vuelo completadas
+master.menu.flightCrewMember.flightAssignmentPlanned = Ver asignaciones de vuelo planificadas
+master.menu.flightCrewMember.flightAssignmentMinePlanned = Ver mis asignaciones de vuelo planificadas
+master.menu.flightCrewMember.flightAssignmentMineCompleted = Ver mis asignaciones de vuelo completadas
 
 # master.menu.technician ########################################################
 master.menu.technician = Técnico
