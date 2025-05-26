@@ -35,12 +35,12 @@ public class Recommendation extends AbstractEntity {
 	@Mandatory
 	@ValidNumber(min = 0)
 	@Automapped
-	private double				dist;
+	private Double				dist;
 
 	@Mandatory
 	@ValidNumber(min = 0)
 	@Automapped
-	private int					rate;
+	private Integer				rate;
 
 	@Mandatory
 	@ValidString
