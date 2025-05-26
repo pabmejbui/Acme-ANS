@@ -1,46 +1,44 @@
-key,registrationMoment,passengerEmail,description,type,draftMode,key:assistanceAgent,key:leg
-claim-01,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-01,leg-01
-claim-02,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-01,leg-02
-claim-03,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-01,leg-03
-claim-04,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-01,leg-04
-claim-05,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-01,leg-05
-claim-06,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-01,leg-06
-claim-07,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-01,leg-01
-claim-08,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-01,leg-02
-claim-09,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-01,leg-03
-claim-10,2000/01/02 00:00,"margaret.nosek@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-01,leg-04
-
-
-claim-11,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight".,LUGGAGE_ISSUES,false,agent-02,leg-01
-claim-12,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-02,leg-02
-claim-13,2000/01/01 00:00,"margaret.nosek@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-02,leg-03
-claim-14,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-02,leg-04
-claim-15,2000/01/01 00:00,"margaret.nosek@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-02,leg-05
-claim-16,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-02,leg-06
-claim-17,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-02,leg-01
-claim-18,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-02,leg-01
-claim-19,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-02,leg-01
-claim-20,2000/01/02 00:00,"margaret.nosek@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-02,leg-01
-
-claim-21,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-01,leg-01
-claim-22,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-01,leg-02
-claim-23,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-01,leg-03
-claim-24,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-01,leg-04
-claim-25,2000/01/01 00:00,"margaret.nosek@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-01,leg-05
-claim-26,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-01,leg-06
-claim-27,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-01,leg-01
-claim-28,2000/01/02 00:00,"margaret.nosek@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-01,leg-02
-claim-29,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-01,leg-03
-claim-30,2000/01/02 00:00,"margaret.nosek@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-01,leg-04
-
-
-claim-31,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight".,LUGGAGE_ISSUES,false,agent-02,leg-01
-claim-32,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-02,leg-02
-claim-33,2000/01/01 00:00,"margaret.nosek@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-02,leg-03
-claim-34,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-02,leg-04
-claim-35,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-02,leg-05
-claim-36,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-02,leg-06
-claim-37,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-02,leg-01
-claim-38,2000/01/02 00:00,"margaret.nosek@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-02,leg-01
-claim-39,2000/01/01 00:00,"john.doe@example.com","Lost luggage during flight.",LUGGAGE_ISSUES,false,agent-02,leg-01
-claim-40,2000/01/02 00:00,"jane.smith@example.com","Flight delay compensation request.",FLIGHT_ISSUES,false,agent-02,leg-01
+key,registrationMoment,passengerEmail,description,type,status,draftMode,key:assistanceAgent,key:leg
+# base entity
+claim-00,2021/09/01 10:00,user00@example.com,Flight delay on AA123,FLIGHT_ISSUES,ACCEPTED,false,assistance-agent-01,leg-01
+# registrationMoment - standard variations
+claim-01,2022/01/01 00:00,user01@example.com,Flight delay,FLIGHT_ISSUES,PENDING,true,assistance-agent-01,leg-02
+claim-02,2022/01/01 00:01,user02@example.com,Flight delay,FLIGHT_ISSUES,DENIED,false,assistance-agent-01,leg-03
+claim-03,2021/09/01 10:00,user03@example.com,Flight delay,FLIGHT_ISSUES,ACCEPTED,true,assistance-agent-01,leg-04
+claim-04,2021/10/25 23:59,user04@example.com,Flight delay,FLIGHT_ISSUES,PENDING,false,assistance-agent-01,leg-05
+# registrationMoment - no singular values
+# passengerEmail - standard variations
+claim-05,2021/09/01 10:00,a@b.c,Short claim,FLIGHT_ISSUES,DENIED,true,assistance-agent-01,leg-06
+claim-06,2021/09/01 10:00,short@example.com,Short claim,FLIGHT_ISSUES,ACCEPTED,false,assistance-agent-01,leg-07
+claim-07,2021/09/01 10:00,typical.email-address_123@example.co.uk,Short claim,FLIGHT_ISSUES,PENDING,true,assistance-agent-01,leg-08
+claim-08,2021/09/01 10:00,very.long.email.address.with.many.parts.and.subdomains@subdomain.example.co.uk,Short claim,FLIGHT_ISSUES,ACCEPTED,false,assistance-agent-01,leg-01
+claim-09,2021/09/01 10:00,email+with-special_chars@example.com,Short claim,FLIGHT_ISSUES,DENIED,true,assistance-agent-01,leg-02
+# passengerEmail - no singular values
+# description - standard variations
+claim-15,2021/09/01 10:00,user15@example.com,L,FLIGHT_ISSUES,ACCEPTED,false,assistance-agent-01,leg-03
+claim-16,2021/09/01 10:00,user16@example.com,Lo,FLIGHT_ISSUES,PENDING,true,assistance-agent-01,leg-04
+claim-17,2021/09/01 10:00,user17@example.com,Flight delay claim with compensation request,FLIGHT_ISSUES,DENIED,false,assistance-agent-01,leg-05
+claim-18,2021/09/01 10:00,user18@example.com,Flight delay claim with compensation request,FLIGHT_ISSUES,ACCEPTED,true,assistance-agent-01,leg-06
+claim-19,2021/09/01 10:00,user19@example.com,เที่ยวบินล่าช้า ขอค่าชดเชย,FLIGHT_ISSUES,PENDING,false,assistance-agent-01,leg-07
+claim-20,2021/09/01 10:00,user20@example.com,تأخير الرحلة مع طلب تعويض,FLIGHT_ISSUES,DENIED,true,assistance-agent-01,leg-08
+claim-21,2021/09/01 10:00,user21@example.com,航班延误索赔请求,FLIGHT_ISSUES,ACCEPTED,false,assistance-agent-01,leg-01
+claim-22,2021/09/01 10:00,user22@example.com,Markup test,FLIGHT_ISSUES,PENDING,true,assistance-agent-01,leg-02
+claim-23,2021/09/01 10:00,user23@example.com,Script test,FLIGHT_ISSUES,DENIED,false,assistance-agent-01,leg-03
+claim-24,2021/09/01 10:00,user24@example.com,SQL test,FLIGHT_ISSUES,ACCEPTED,true,assistance-agent-01,leg-04
+# description - no singular values
+# type - standard variations
+claim-25,2021/09/01 10:00,user25@example.com,Flight delay,FLIGHT_ISSUES,PENDING,false,assistance-agent-01,leg-05
+claim-26,2021/09/01 10:00,user26@example.com,Lost luggage,LUGGAGE_ISSUES,DENIED,true,assistance-agent-01,leg-06
+claim-27,2021/09/01 10:00,user27@example.com,Cancelled flight,FLIGHT_ISSUES,ACCEPTED,false,assistance-agent-01,leg-07
+claim-28,2021/09/01 10:00,user28@example.com,Overbooking issue,OTHER_ISSUES,PENDING,true,assistance-agent-01,leg-08
+claim-29,2021/09/01 10:00,user29@example.com,Damaged luggage,LUGGAGE_ISSUES,DENIED,false,assistance-agent-01,leg-02
+claim-30,2021/09/01 10:00,user30@example.com,Invalid claim type,OTHER_ISSUES,ACCEPTED,true,assistance-agent-01,leg-03
+# type - no singular values
+# accepted - standard variations
+claim-31,2021/09/01 10:00,user31@example.com,Flight delay,FLIGHT_ISSUES,PENDING,false,assistance-agent-01,leg-01
+claim-32,2021/09/01 10:00,user32@example.com,Flight delay,FLIGHT_ISSUES,DENIED,true,assistance-agent-01,leg-02
+# accepted - no singular values
+# assistantAgent - standard variations
+claim-33,2021/09/01 10:00,user33@example.com,Flight delay,FLIGHT_ISSUES,ACCEPTED,false,assistance-agent-01,leg-03
+claim-34,2022/12/01 10:00,user34@example.com,Flight delay,FLIGHT_ISSUES,PENDING,true,assistance-agent-02,leg-04
+claim-35,2021/09/01 10:00,user35@example.com,Flight delay,FLIGHT_ISSUES,DENIED,false,assistance-agent-03,leg-05
