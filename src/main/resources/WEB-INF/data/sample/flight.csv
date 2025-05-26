@@ -5,3 +5,4 @@ flight-03,"The fastest selftransfer flight in the whole world",true,GBP 2000.00,
 flight-04,"The best of the west",false,EUR 1500.00,"Lorem ipsum",true,manager-01
 flight-05,"The longest flight in the less time",false,USD 5000.00,"Lorem ipsum",true,manager-02
 flight-06,"The best in the east",false,EUR 3300.00,"Lorem lorem lorem",true,manager-01
+flight-07,"The most popular in Serbia",false,EUR 3800.00,"Lorlorem",true,manager-02
