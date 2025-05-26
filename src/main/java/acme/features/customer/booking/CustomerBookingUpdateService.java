@@ -23,22 +23,35 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int bookingId;
-		Customer customer;
-		Booking booking;
+		boolean status = super.getRequest().getMethod().equals("POST");
 
-		bookingId = super.getRequest().getData("id", int.class);
-		booking = this.repository.findBookingById(bookingId);
-		customer = booking == null ? null : booking.getCustomer();
-		status = super.getRequest().getPrincipal().hasRealm(customer) && booking != null && booking.isDraftMode();
+		try {
+
+			Integer bookingId = super.getRequest().getData("id", Integer.class);
+			Booking booking = this.repository.findBookingById(bookingId);
+
+			status = status && booking != null;
+
+			Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+
+			status = status && booking.getCustomer().getId() == customerId && booking.isDraftMode();
+
+			Integer flightId = super.getRequest().getData("flight", Integer.class);
+			if (flightId == null || flightId != 0) {
+				Flight flight = this.repository.findFlightById(flightId);
+				status = status && flight != null && !flight.isDraftMode();
+			}
+
+		} catch (Throwable E) {
+			status = false;
+		}
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		int bookingId;
+		Integer bookingId;
 		Booking booking;
 
 		bookingId = super.getRequest().getData("id", int.class);
@@ -49,7 +62,7 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void bind(final Booking booking) {
-		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble", "flight");
+		super.bindObject(booking, "locatorCode", "travelClass", "lastCardNibble", "flight");
 	}
 
 	@Override

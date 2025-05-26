@@ -26,4 +26,5 @@ customer.passenger.list.label.specialNeeds = Necesidades especiales
 customer.passenger.list.label.draftMode = Modo borrador
 customer.passenger.list.button.create = Crear
 
-
+# error ####################################################
+customer.passenger.form.error.assBookings = Este pasajero está asociado a una reserva

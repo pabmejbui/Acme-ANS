@@ -8,3 +8,7 @@ customer.passenger.form.link.create = Crear nuevo pasajero
 
 customer.bookingRecord.list.label.passenger = Pasajero
 customer.bookingRecord.list.label.booking = Reserva
+
+
+# error ##########################################################
+acme.validation.noChoice = Pasajero no seleccionado

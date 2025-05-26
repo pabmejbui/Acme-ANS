@@ -25,29 +25,25 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 	public void authorise() {
 		Boolean status = true;
 
-		try {
-			Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-			Integer bookingId = super.getRequest().getData("bookingId", Integer.class);
-			Booking booking = this.repository.findBookingById(bookingId);
-			status = booking != null && customerId == booking.getCustomer().getId();
+		Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		Integer bookingId = super.getRequest().getData("bookingId", Integer.class);
+		Booking booking = this.repository.findBookingById(bookingId);
+		status = booking != null && customerId == booking.getCustomer().getId();
 
-			if (super.getRequest().hasData("id")) {
-				String locatorCode = super.getRequest().getData("locatorCode", String.class);
-				status = status && booking.getLocatorCode().equals(locatorCode);
+		if (super.getRequest().hasData("id")) {
+			String locatorCode = super.getRequest().getData("locatorCode", String.class);
+			status = status && booking.getLocatorCode().equals(locatorCode);
 
-				Integer passengerId = super.getRequest().getData("passenger", Integer.class);
-				Passenger passenger = null;
-				if (passengerId != null)
-					passenger = this.repository.findPassengerById(passengerId);
-				status = status && passengerId != null && (passenger != null && customerId == passenger.getCustomer().getId() || passengerId == 0);
+			Integer passengerId = super.getRequest().getData("passenger", Integer.class);
+			Passenger passenger = null;
+			if (passengerId != null)
+				passenger = this.repository.findPassengerById(passengerId);
+			status = status && passengerId != null && (passenger != null && customerId == passenger.getCustomer().getId() || passengerId == 0);
 
-				Collection<Passenger> alreadyAddedPassengers = this.repository.findAllPassengersByBookingId(bookingId);
-				status = status && (alreadyAddedPassengers.stream().anyMatch(p -> p.getId() == passengerId) || passengerId == 0);
-			}
-
-		} catch (Throwable E) {
-			status = false;
+			Collection<Passenger> alreadyAddedPassengers = this.repository.findAllPassengersByBookingId(bookingId);
+			status = status && (alreadyAddedPassengers.stream().anyMatch(p -> p.getId() == passengerId) || passengerId == 0);
 		}
+
 		super.getResponse().setAuthorised(status);
 
 	}
