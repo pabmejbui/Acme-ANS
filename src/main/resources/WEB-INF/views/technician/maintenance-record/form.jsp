@@ -14,12 +14,12 @@
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command,'show|update|delete|publish') && draftMode == true}">
-			<acme:submit code="technician.maintenance-record.form.button.publish" action="/technician/maintenance-record/publish"/>
-			<acme:submit code="technician.maintenance-record.form.button.update" action="/technician/maintenance-record/update"/>	
 			<acme:submit code="technician.maintenance-record.form.button.delete" action="/technician/maintenance-record/delete"/>
+			<acme:submit code="technician.maintenance-record.form.button.update" action="/technician/maintenance-record/update"/>	
+			<acme:submit code="technician.maintenance-record.form.button.publish" action="/technician/maintenance-record/publish"/>
 			<jstl:if test="${_command != 'create'}">
-				<acme:button code="technician.maintenance-record.form.add.task" action="/technician/involves/create?maintenanceRecordId=${id}"/>
-				<acme:button code="technician.maintenance-record.form.delete.task" action="/technician/involves/delete?maintenanceRecordId=${id}"/>								
+				<acme:button code="technician.maintenance-record.form.delete.task" action="/technician/maintenance-record-task/delete?maintenanceRecordId=${id}"/>								
+				<acme:button code="technician.maintenance-record.form.add.task" action="/technician/maintenance-record-task/create?maintenanceRecordId=${id}"/>
 				<acme:button code="technician.maintenance-record.form.list.task" action="/technician/task/involves-list?maintenanceRecordId=${id}"/>
 			</jstl:if>
 		</jstl:when>

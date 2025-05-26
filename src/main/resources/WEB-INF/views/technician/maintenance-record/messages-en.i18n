@@ -4,7 +4,8 @@ technician.maintenance-record.form.title = Maintenance Record details
 technician.maintenance-record.list.label.moment = Moment
 technician.maintenance-record.list.label.status = Status
 technician.maintenance-record.list.label.nextInspectionDate = Next Inspection Date
-technician.maintenance-record.list.label.published = Published
+technician.maintenance-record.list.label.estimatedCost = Estimated Cost
+technician.maintenance-record.list.label.published = Draft
 
 technician.maintenance-record.list.button.create = Create
 

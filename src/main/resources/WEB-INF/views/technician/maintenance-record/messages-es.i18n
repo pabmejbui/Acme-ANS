@@ -4,7 +4,8 @@ technician.maintenance-record.form.title = Detalles del registro de mantenimient
 technician.maintenance-record.list.label.moment = Momento
 technician.maintenance-record.list.label.status = Estado
 technician.maintenance-record.list.label.nextInspectionDate = Fecha de la próxima inspección
-technician.maintenance-record.list.label.published = Publicado
+technician.maintenance-record.list.label.estimatedCost = Coste estimado
+technician.maintenance-record.list.label.published = Borrador
 
 technician.maintenance-record.list.button.create = Crear
 

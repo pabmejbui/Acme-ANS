@@ -60,6 +60,7 @@ master.menu.customer.dashboard = Customer dashboard
 # master.menu.technician ########################################################
 master.menu.technician = Technician
 master.menu.technician.maintenanceRecords.maintenanceRecords-list = Maintenance records list
+master.menu.technician.tasks.tasks-list = Tasks List
  
 # master.menu.assistance-agent ##########################################################
 master.menu.assistance-agent.claims = Claims
