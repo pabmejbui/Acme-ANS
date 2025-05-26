@@ -7,3 +7,5 @@ leg-05,VYX3001,2024/06/20 15:20,2024/06/20 18:20,ON_TIME,false,flight-03,airport
 leg-06,RYA3002,2024/06/20 19:00,2024/06/20 21:50,DELAYED,true,flight-03,airport-02,airport-05,aircraft-06,airline-03
 leg-07,VYX4001,2024/06/25 05:30,2024/06/25 08:45,ON_TIME,false,flight-04,airport-03,airport-05,aircraft-07,airline-02
 leg-08,RYA4002,2024/06/25 09:30,2024/06/25 12:15,CANCELLED,true,flight-04,airport-05,airport-08,aircraft-08,airline-03
+leg-09,IBR1234,2025/06/20 06:30,2025/06/20 07:45,ON_TIME,false,flight-08,airport-07,airport-09,aircraft-09,airline-04
+leg-10,IBR1235,2025/06/21 12:30,2025/06/21 13:45,ON_TIME,false,flight-08,airport-09,airport-07,aircraft-09,airline-04
