@@ -27,7 +27,7 @@ public class CustomerBookingDeleteService extends AbstractGuiService<Customer, B
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
+		Integer masterId;
 		Booking booking;
 
 		masterId = super.getRequest().getData("id", int.class);
@@ -40,7 +40,7 @@ public class CustomerBookingDeleteService extends AbstractGuiService<Customer, B
 	@Override
 	public void load() {
 		Booking booking;
-		int id;
+		Integer id;
 
 		id = super.getRequest().getData("id", int.class);
 		booking = this.repository.findBookingById(id);
