@@ -6,7 +6,7 @@ flight-crew-member.flight-assignment.form.label.last-update = Momento de última
 flight-crew-member.flight-assignment.form.label.status = Estado:
 flight-crew-member.flight-assignment.form.label.remarks = Observaciones (Opcional):
 flight-crew-member.flight-assignment.form.label.leg = Escala:
-flight-crew-member.flight-assignment.form.label.flight-crew-member= Miembro de la tripulación de vuelo:
+flight-crew-member.flight-assignment.form.label.flightCrewMember= Miembro de la tripulación de vuelo:
 
 flight-crew-member.flight-assignment.form.button.create = Crear
 flight-crew-member.flight-assignment.form.button.update = Actualizar
