@@ -94,22 +94,23 @@
  			<acme:menu-suboption code="master.menu.flightCrewMember.flightAssignment" action="/flight-crew-member/flight-assignment/list"/>
  		</acme:menu-option> --%>
 
-		<acme:menu-option code="master.menu.flightCrewMember"
-			access="hasRealm('FlightCrewMember')">
-			<acme:menu-suboption
-				code="master.menu.flightCrewMember.flightAssignmentCompleted"
-				action="/flight-crew-member/flight-assignment/list-completed" />
-			<acme:menu-suboption
-				code="master.menu.flightCrewMember.flightAssignmentPlanned"
-				action="/flight-crew-member/flight-assignment/list-planned" />
-			<acme:menu-suboption code="master.menu.flightCrewMember.activityLogs"
-				action="/flight-crew-member/activity-log/list" />
+		<acme:menu-option code="master.menu.flightCrewMember" access="hasRealm('FlightCrewMember')">
+			<acme:menu-suboption code="master.menu.flightCrewMember.flightAssignmentCompleted" action="/flight-crew-member/flight-assignment/list-completed"/>
+			<acme:menu-suboption code="master.menu.flightCrewMember.flightAssignmentMineCompleted" action="/flight-crew-member/flight-assignment/list-mine-completed"/>
+			<acme:menu-suboption code="master.menu.flightCrewMember.flightAssignmentPlanned" action="/flight-crew-member/flight-assignment/list-planned"/>
+			<acme:menu-suboption code="master.menu.flightCrewMember.flightAssignmentMinePlanned" action="/flight-crew-member/flight-assignment/list-mine-planned"/>
 		</acme:menu-option>
 	
 		<acme:menu-option code="master.menu.manager" access="hasRealm('Manager')">
 			<acme:menu-suboption code="master.menu.manager.list-flights" action="/manager/flight/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.manager.dashboard" action="/manager/manager-dashboard/show"/>
+		</acme:menu-option>
+
+		<acme:menu-option code="master.menu.technician" access="hasRealm('Technician')">
+			<acme:menu-suboption code="master.menu.technician.maintenanceRecords.maintenanceRecords-list" action="/technician/maintenance-record/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.technician.tasks.tasks-list" action="/technician/task/list"/>	
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.assistance-agent.claims" access="hasRealm('AssistanceAgent')">

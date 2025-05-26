@@ -1,24 +1,21 @@
-flight-crew-member.flight-assignment.form.title = Detalles de la asignación de vuelo  
-flight-crew-member.flight-assignment.list.title = Listado de asignaciones de vuelo  
+flight-crew-member.flight-assignment.form.title = Detalles de asignación de vuelo
+flight-crew-member.flight-assignment.list.title = Listado de asignaciones de vuelo
 
-flight-crew-member.flight-assignment.form.label.duty = Deber:  
-flight-crew-member.flight-assignment.form.label.lastUpdate = Momento de la última actualización:  
-flight-crew-member.flight-assignment.form.label.status = Estado:  
-flight-crew-member.flight-assignment.form.label.remarks = Observaciones (Opcional):  
-flight-crew-member.flight-assignment.form.label.leg = Tramo  
-flight-crew-member.flight-assignment.form.label.flightCrewMember = Miembro de la tripulación de vuelo:  
+flight-crew-member.flight-assignment.form.label.duty = Tarea:
+flight-crew-member.flight-assignment.form.label.last-update = Momento de última actualización:
+flight-crew-member.flight-assignment.form.label.status = Estado:
+flight-crew-member.flight-assignment.form.label.remarks = Observaciones (Opcional):
+flight-crew-member.flight-assignment.form.label.leg = Escala:
+flight-crew-member.flight-assignment.form.label.flightCrewMember= Miembro de la tripulación de vuelo:
 
-flight-crew-member.flight-assignment.form.button.create = Crear  
-flight-crew-member.flight-assignment.form.button.update = Actualizar  
-flight-crew-member.flight-assignment.form.button.delete = Eliminar  
-flight-crew-member.flight-assignment.form.button.publish = Publicar  
-flight-crew-member.flight-assignment.form.label.confirmation = Confirme que la asignación de vuelo es correcta.
-flight-crew-member.flight-assignment.form.button.leg = Tramo  
-flight-crew-member.flight-assignment.form.button.member = Miembro
+flight-crew-member.flight-assignment.form.button.create = Crear
+flight-crew-member.flight-assignment.form.button.update = Actualizar
+flight-crew-member.flight-assignment.form.button.delete = Eliminar
+flight-crew-member.flight-assignment.form.button.publish = Publicar
+flight-crew-member.flight-assignment.form.button.activity-log = Registro de actividad
 
+flight-crew-member.flight-assignment.list.label.duty = Tarea:
+flight-crew-member.flight-assignment.list.label.lastUpdate = Momento de última actualización:
+flight-crew-member.flight-assignment.list.label.status = Estado:
 
-flight-crew-member.flight-assignment.list.label.duty = Deber:  
-flight-crew-member.flight-assignment.list.label.lastUpdate = Momento de la última actualización:  
-flight-crew-member.flight-assignment.list.label.status = Estado:  
-
-flight-crew-member.flight-assignment.list.button.create = Crear  
+flight-crew-member.flight-assignment.list.button.create = Crear

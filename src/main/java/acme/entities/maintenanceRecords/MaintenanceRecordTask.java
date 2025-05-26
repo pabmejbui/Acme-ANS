@@ -12,6 +12,8 @@
 
 package acme.entities.maintenanceRecords;
 
+import javax.persistence.Table;
+import javax.persistence.Index;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
@@ -25,6 +27,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+    @Index(columnList = "maintenance_record_id, task_id"),
+    @Index(columnList = "task_id")
+})
 public class MaintenanceRecordTask extends AbstractEntity {
 	// Serialisation identifier -----------------------------------------------
 
