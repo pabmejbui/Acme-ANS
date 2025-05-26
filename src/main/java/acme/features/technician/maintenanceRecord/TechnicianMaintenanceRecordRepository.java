@@ -17,8 +17,8 @@ public interface TechnicianMaintenanceRecordRepository extends AbstractRepositor
 	@Query("SELECT m FROM MaintenanceRecord m")
 	Collection<MaintenanceRecord> findAllMaintenanceRecords();
 	
-	@Query("SELECT m FROM MaintenanceRecord m WHERE m.id = :id")
-	MaintenanceRecord findMaintenanceRecordById(int id);
+	@Query("SELECT m FROM MaintenanceRecord m WHERE m.id = :maintenanceRecordId")
+	MaintenanceRecord findMaintenanceRecordById(int maintenanceRecordId);
 	
 	@Query("SELECT m FROM MaintenanceRecord m WHERE m.technician.id = :technicianId")
 	Collection<MaintenanceRecord> findMaintenanceRecordsByTechnicianId(int technicianId);
@@ -26,15 +26,15 @@ public interface TechnicianMaintenanceRecordRepository extends AbstractRepositor
 	@Query("SELECT a FROM Aircraft a")
 	Collection<Aircraft> findAllAircrafts();
 	
-	@Query("SELECT mt.task from MaintenanceRecordTask mt WHERE mt.maintenanceRecord.id = :id")
-	Collection<Task> findTasksByMaintenanceRecordId(int id);
+	@Query("SELECT mt.task from MaintenanceRecordTask mt WHERE mt.maintenanceRecord.id = :maintenanceRecordId")
+	Collection<Task> findTasksByMaintenanceRecordId(int maintenanceRecordId);
 	
-	@Query("SELECT mt FROM MaintenanceRecordTask mt WHERE mt.maintenanceRecord.id = :id")
-	Collection<MaintenanceRecordTask> findMaintenanceRecordTasksByMaintenanceRecordId(int id);
+	@Query("SELECT mt FROM MaintenanceRecordTask mt WHERE mt.maintenanceRecord.id = :maintenanceRecordId")
+	Collection<MaintenanceRecordTask> findMaintenanceRecordTasksByMaintenanceRecordId(int maintenanceRecordId);
 	
-	@Query("SELECT COUNT(mt.task) FROM MaintenanceRecordTask mt WHERE mt.maintenanceRecord.id = :id")
-	int countTasksByMaintenanceRecordId(int id);
+	@Query("SELECT COUNT(mt.task) FROM MaintenanceRecordTask mt WHERE mt.maintenanceRecord.id = :maintenanceRecordId")
+	int countTasksByMaintenanceRecordId(int maintenanceRecordId);
 	
-	@Query("SELECT COUNT(mt.task) FROM MaintenanceRecordTask mt WHERE mt.maintenanceRecord.id = :id AND mt.task.draftMode = true")
-	int countNotPublishedTasksByMaintenanceRecordId(int id);
+	@Query("SELECT COUNT(mt.task) FROM MaintenanceRecordTask mt WHERE mt.maintenanceRecord.id = :maintenanceRecordId AND mt.task.draftMode = true")
+	int countNotPublishedTasksByMaintenanceRecordId(int maintenanceRecordId);
 }

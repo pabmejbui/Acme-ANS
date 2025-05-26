@@ -11,7 +11,7 @@ import acme.client.services.GuiService;
 import acme.entities.maintenanceRecords.MaintenanceRecordTask;
 import acme.entities.tasks.Task;
 import acme.entities.tasks.TaskType;
-import acme.realms.Technician;
+import acme.realms.technician.Technician;
 
 @GuiService
 public class TechnicianTaskDeleteService extends AbstractGuiService<Technician, Task> {

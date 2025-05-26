@@ -10,8 +10,10 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.realms;
+package acme.realms.technician;
 
+import javax.persistence.Table;
+import javax.persistence.Index;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -29,6 +31,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+    @Index(columnList = "user_account_id")
+})
 public class Technician extends AbstractRole {
 
 	// Serialisation version --------------------------------------------------

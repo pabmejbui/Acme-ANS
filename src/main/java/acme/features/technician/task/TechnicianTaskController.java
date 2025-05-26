@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.controllers.AbstractGuiController;
 import acme.client.controllers.GuiController;
 import acme.entities.tasks.Task;
-import acme.realms.Technician;
+import acme.realms.technician.Technician;
 
 @GuiController
 public class TechnicianTaskController extends AbstractGuiController<Technician, Task> {
