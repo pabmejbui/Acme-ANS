@@ -19,7 +19,6 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
-import acme.constraints.ValidAssistanceAgent;
 import acme.entities.airlines.Airline;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,7 +26,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@ValidAssistanceAgent
 
 public class AssistanceAgent extends AbstractRole {
 
@@ -44,12 +42,12 @@ public class AssistanceAgent extends AbstractRole {
 	@Mandatory
 	@Automapped
 	@ValidString(min = 1, max = 255)
-	private String				spokenLanguages;
+	private String				languages;
 
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				startDate;
+	private Date				beginDate;
 
 	@Optional
 	@Automapped
@@ -59,12 +57,12 @@ public class AssistanceAgent extends AbstractRole {
 	@Optional
 	@Automapped
 	@ValidString(min = 1, max = 255)
-	private String				briefBio;
+	private String				bio;
 
 	@Optional
 	@Automapped
 	@ValidUrl
-	private String				picture;
+	private String				photoLink;
 
 	// Relationships -------------------------------------------------------------------------------------------------
 
