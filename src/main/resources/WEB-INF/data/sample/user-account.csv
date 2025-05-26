@@ -16,9 +16,9 @@ user-account-flight-crew-member-02,true,"UserIdentity{name: 'Teodoro', surname: 
 user-account-flight-crew-member-03,true,"UserIdentity{name: 'Jose', surname: 'JS', email: 'js@acme.com'}",member3,member3
 user-account-flight-crew-member-04,true,"UserIdentity{name: 'Pedro', surname: 'JS', email: 'pedri@acme.com'}",member4,member4
 user-account-flight-crew-member-05,true,"UserIdentity{name: 'Alberto', surname: 'JS', email: 'alb@acme.com'}",member,member
-user-account-agent-01,true,"UserIdentity{name: 'Alberto', surname: 'Campana', email: 'alb@acme.com'}",agent1,agent1
-user-account-agent-02,true,"UserIdentity{name: 'Denia', surname: 'Espeto', email: 'denia@acme.com'}",agent2,agent2
-user-account-agent-03,true,"UserIdentity{name: 'Gonzalo', surname: 'Hidalgo',email: 'gonsi@acme.com'}",agent3,agent3
+user-account-agent-01,true,"UserIdentity{name: 'Agent', surname: 'One', email: 'agent1@acme.com'}",agent1,agent1
+user-account-agent-02,true,"UserIdentity{name: 'Agent', surname: 'Two', email: 'agent2@acme.com'}",agent2,agent2
+user-account-agent-03,true,"UserIdentity{name: 'Manager', surname: 'Three', email: 'manager3@acme.com'}",agent3,agent3
 user-account-technician-01, true, "UserIdentity{name: 'Coque', surname: 'García',email: 'coque@acme.com'}",technician1,technician1
 user-account-technician-02, true, "UserIdentity{name: 'Jose María', surname: 'Güiza',email: 'dg90@acme.com'}",technician2,technician2
 user-account-technician-03, true, "UserIdentity{name: 'Rubén', surname: 'Hleb',email: 'fcb@acme.com'}",technician3,technician3

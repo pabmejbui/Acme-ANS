@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.basis.AbstractRealm;
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
@@ -24,27 +25,37 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status = true;
+
+		if (super.getRequest().hasData("id")) {
+			Integer flightId = super.getRequest().getData("flight", Integer.class);
+			if (flightId == null || flightId != 0) {
+				Flight flight = this.repository.findFlightById(flightId);
+				status = flight != null && !flight.isDraftMode();
+			}
+		}
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Booking booking;
-		Customer customer;
+		Booking booking = new Booking();
 
-		customer = (Customer) super.getRequest().getPrincipal().getActiveRealm();
+		AbstractRealm principal = super.getRequest().getPrincipal().getActiveRealm();
+		Integer customerId = principal.getId();
+		Customer customer = this.repository.findCustomerById(customerId);
 
-		booking = new Booking();
-		booking.setDraftMode(true);
 		booking.setCustomer(customer);
 		booking.setPurchaseMoment(MomentHelper.getCurrentMoment());
+		booking.setDraftMode(true);
 
 		super.getBuffer().addData(booking);
 	}
 
 	@Override
 	public void bind(final Booking booking) {
-		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastCardNibble", "flight");
+		super.bindObject(booking, "locatorCode", "travelClass", "lastCardNibble", "flight");
 	}
 
 	@Override

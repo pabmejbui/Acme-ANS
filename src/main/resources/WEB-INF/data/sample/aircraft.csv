@@ -11,9 +11,9 @@ aircraft-09,Antonov An-225,ABCDEFGHIJKLMNOPQRSTUVWXYZABCDHIJKLMN0123456789,50,25
 aircraft-11,Boeing 737-850,ECMLA,189,20700,ACTIVE_SERVICE,Standard aircraft model commonly used,true,airline-01
 aircraft-12,Airbus A320neo,N13AB,194,19500,UNDER_MAINTENANCE,Aircraft currently undergoing routine maintenance,false,airline-02
 aircraft-13,Boeing 787-9 Dreamliner,G-DML,290,35000,ACTIVE_SERVICE,Long-range aircraft for international flights,false,airline-01
-aircraft-14,Airbus A350-900,XA-PM,325,40000,UNDER_MAINTENANCE,Recently retired aircraft,true,airline-03
-aircraft-15,Embraer E192,LV-HQ,100,13000,ACTIVE_SERVICE,Regional aircraft for short flights,true,airline-02
-aircraft-16,CRJ-900,OY-KG,90,11500,ACTIVE_SERVICE,Operated on regional routes,false,airline-01
-aircraft-17,Boeing 777-300ER,HL782,396,50000,ACTIVE_SERVICE,Operates mostly transcontinental routes,false,airline-03
-aircraft-18,Airbus A221-300,C-FOU,145,16500,UNDER_MAINTENANCE,Unit scheduled for inspection,true,airline-02
+aircraft-14,Airbus A350-900,XA-PM,325,40000,UNDER_MAINTENANCE,Recently retired aircraft,true,airline-05
+aircraft-15,Embraer E192,LV-HQ,100,13000,ACTIVE_SERVICE,Regional aircraft for short flights,true,airline-04
+aircraft-16,CRJ-900,OY-KG,90,11500,ACTIVE_SERVICE,Operated on regional routes,false,airline-05
+aircraft-17,Boeing 777-300ER,HL782,396,50000,ACTIVE_SERVICE,Operates mostly transcontinental routes,false,airline-04
+aircraft-18,Airbus A221-300,C-FOU,145,16500,UNDER_MAINTENANCE,Unit scheduled for inspection,true,airline-05
 aircraft-19,Antonov An-225,ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMN0123456789,50,25000,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet color",false,airline-03

@@ -5,7 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -29,6 +31,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidBooking
+@Table(indexes = {
+	@Index(columnList = "locatorCode"), @Index(columnList = "customer_id"), @Index(columnList = "flight_id")
+})
 public class Booking extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -66,7 +71,7 @@ public class Booking extends AbstractEntity {
 	public Money getCost() {
 		BookingRepository repository = SpringHelper.getBean(BookingRepository.class);
 		Double flightPrice = this.flight != null ? this.flight.getCost().getAmount() : 0.00;
-		String currency = this.flight != null ? this.flight.getCost().getCurrency() : null;
+		String currency = this.flight != null ? this.flight.getCost().getCurrency() : "EUR";
 
 		Integer passengerCount = repository.countPassengersByLocatorCode(this.locatorCode);
 		passengerCount = passengerCount != null ? passengerCount : 0;

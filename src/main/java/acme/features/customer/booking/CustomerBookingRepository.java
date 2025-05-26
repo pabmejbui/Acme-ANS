@@ -13,9 +13,13 @@ import acme.entities.bookings.Booking;
 import acme.entities.bookings.BookingRecord;
 import acme.entities.flights.Flight;
 import acme.entities.passenger.Passenger;
+import acme.realms.customer.Customer;
 
 @Repository
 public interface CustomerBookingRepository extends AbstractRepository {
+
+	@Query("SELECT c FROM Customer c WHERE c.id = :customerId")
+	Customer findCustomerById(Integer customerId);
 
 	@Query("SELECT b FROM Booking b WHERE b.customer.id = :customerId")
 	Collection<Booking> findBookingsByCustomerId(int customerId);
@@ -37,6 +41,9 @@ public interface CustomerBookingRepository extends AbstractRepository {
 
 	@Query("SELECT br FROM BookingRecord br WHERE br.booking.id = :bookingId")
 	Collection<BookingRecord> findAllBookingRecordsByBookingId(int bookingId);
+
+	@Query("SELECT f FROM Flight f WHERE f.id = :flightId")
+	Flight findFlightById(Integer flightId);
 
 	@Query("SELECT f FROM Flight f WHERE f.draftMode = false")
 	Collection<Flight> findAllFlightsDraftModeFalse();

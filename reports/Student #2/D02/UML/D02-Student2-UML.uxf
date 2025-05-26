@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>5</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>120</x>
-      <y>200</y>
-      <w>315</w>
-      <h>95</h>
+      <x>0</x>
+      <y>91</y>
+      <w>441</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>      «Role»  
       Customer
@@ -26,10 +26,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>490</x>
-      <y>200</y>
-      <w>395</w>
-      <h>85</h>
+      <x>518</x>
+      <y>91</y>
+      <w>553</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>«Entity»  
 Booking
@@ -48,10 +48,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>490</x>
-      <y>470</y>
-      <w>380</w>
-      <h>85</h>
+      <x>518</x>
+      <y>469</y>
+      <w>532</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>      «Entity»  
       Passenger
@@ -71,10 +71,10 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>500</x>
-      <y>135</y>
-      <w>105</w>
-      <h>45</h>
+      <x>532</x>
+      <y>0</y>
+      <w>147</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enum&gt;&gt;
 TravelClass
@@ -88,10 +88,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>830</x>
-      <y>355</y>
-      <w>110</w>
-      <h>40</h>
+      <x>1078</x>
+      <y>231</y>
+      <w>154</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Flight
@@ -103,24 +103,24 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
-      <y>365</y>
-      <w>120</w>
-      <h>25</h>
+      <x>1064</x>
+      <y>133</y>
+      <w>161</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
 m2=0..n
 purhase a &gt;</panel_attributes>
-    <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>130.0;140.0;130.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>150</x>
-      <y>315</y>
-      <w>115</w>
-      <h>25</h>
+      <x>42</x>
+      <y>7</y>
+      <w>161</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>The first two or three letters of 
 the id correspond to their initials
@@ -131,21 +131,21 @@ bg=pink</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>185</x>
-      <y>290</y>
-      <w>15</w>
-      <h>35</h>
+      <x>91</x>
+      <y>35</y>
+      <w>21</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>430</x>
-      <y>230</y>
-      <w>70</w>
-      <h>25</h>
+      <x>434</x>
+      <y>133</y>
+      <w>98</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
@@ -156,10 +156,10 @@ make a</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>310</x>
-      <y>320</y>
-      <w>145</w>
-      <h>150</h>
+      <x>266</x>
+      <y>259</y>
+      <w>203</w>
+      <h>210</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 CustomerDashboard
@@ -185,10 +185,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>600</x>
-      <y>335</y>
-      <w>125</w>
-      <h>70</h>
+      <x>672</x>
+      <y>280</y>
+      <w>175</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>      «Entity»  
       BookingRecord
@@ -203,10 +203,10 @@ bg=green
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>655</x>
-      <y>400</y>
-      <w>50</w>
-      <h>80</h>
+      <x>749</x>
+      <y>371</y>
+      <w>70</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
@@ -217,15 +217,80 @@ m2=0..n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>660</x>
-      <y>280</y>
-      <w>55</w>
-      <h>65</h>
+      <x>756</x>
+      <y>203</y>
+      <w>77</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
 m2=0..n
 &lt; Belongs to </panel_attributes>
     <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>42</x>
+      <y>217</y>
+      <w>490</w>
+      <h>371</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=0..n
+&lt; Associated to</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;500.0;680.0;500.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>959</x>
+      <y>602</y>
+      <w>203</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Recomendation
+--
+
++xid: String{Mandatory,ValidString,Automapped}
++name:  String{Mandatory,ValidString,Automapped}
++dist: Double{Mandatory,ValidNumber(min=0),Automapped}
++rate: Integer{Mandatory,ValidNumber(min=0),Automapped}
++wikidata: String{Mandatory,ValidString,Automapped}
++osm: String{Mandatory,ValidString,Automapped}
++kinds: String{Mandatory,ValidString,Automapped}
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>679</x>
+      <y>644</y>
+      <w>154</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Airport
+--
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>826</x>
+      <y>651</y>
+      <w>140</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=0..n
+&lt; Refers to</panel_attributes>
+    <additional_attributes>10.0;30.0;180.0;20.0</additional_attributes>
   </element>
 </diagram>

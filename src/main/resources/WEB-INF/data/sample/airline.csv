@@ -2,3 +2,5 @@ key,name,iataCode,website,type,foundationMoment,optionalEmail,phoneNumber,draftM
 airline-01,AirlinesMAX,AMX,http://www.airlinesmax.com,LUXURY,2022/07/29 23:59,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@subdominio1.subdominio2.subdominio3.subdominiolargoacmeeeeeee.com,+34611111111,true
 airline-02,Vueling,VYX,http://www.vueling.com,STANDARD,2000/01/01 00:00,null,null,false
 airline-03,Ryanair,RYA,http://www.ryanair.com,LOW_COST,2000/01/01 00:01,null,+123456789,false
+airline-04,Iberia,IBR,http://www.iberia.es,LOW_COST,2010/12/12 12:12,null,+34900123456,true
+airline-05,Sochi Airlines,SAX,http://www.sochiairlines.com,LUXURY,2002/11/30 23:30,null,+4532212345,false

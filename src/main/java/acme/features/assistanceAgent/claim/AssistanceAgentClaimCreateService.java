@@ -12,7 +12,7 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claims.Claim;
-import acme.entities.claims.ClaimIndicator;
+import acme.entities.claims.ClaimStatus;
 import acme.entities.claims.ClaimType;
 import acme.entities.flights.Leg;
 import acme.realms.assistanceAgent.AssistanceAgent;
@@ -90,7 +90,7 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		legs = this.repository.findAllLeg();//NOT PUBLISH
 
 		types = SelectChoices.from(ClaimType.class, claim.getType());
-		indicators = SelectChoices.from(ClaimIndicator.class, claim.getIndicator());
+		indicators = SelectChoices.from(ClaimStatus.class, claim.getStatus());
 		legsChoices = SelectChoices.from(legs, "flightNumber", claim.getLeg());
 
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "indicator");

@@ -10,10 +10,10 @@ import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claims.Claim;
-import acme.entities.claims.ClaimIndicator;
+import acme.entities.claims.ClaimStatus;
 import acme.entities.claims.ClaimType;
 import acme.entities.flights.Leg;
-import acme.entities.trackingLogs.TrackingLog;
+import acme.entities.trackingLog.TrackingLog;
 import acme.realms.assistanceAgent.AssistanceAgent;
 
 @GuiService
@@ -82,7 +82,7 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 		legs = this.repository.findAllLeg();
 		legsChoices = SelectChoices.from(legs, "flightNumber", claim.getLeg());
 
-		ClaimIndicator indicator = claim.getIndicator();
+		ClaimStatus indicator = claim.getStatus();
 
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "publish");
 		dataset.put("types", typesChoices);

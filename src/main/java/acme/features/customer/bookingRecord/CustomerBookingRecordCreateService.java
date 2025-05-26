@@ -25,29 +25,23 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 	public void authorise() {
 		Boolean status = true;
 
-		try {
+		Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		Integer bookingId = super.getRequest().getData("bookingId", Integer.class);
+		Booking booking = this.repository.findBookingById(bookingId);
+		status = booking != null && customerId == booking.getCustomer().getId();
 
-			Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-			Integer bookingId = super.getRequest().getData("bookingId", Integer.class);
-			Booking booking = this.repository.findBookingById(bookingId);
-			status = booking != null && customerId == booking.getCustomer().getId();
+		if (super.getRequest().hasData("id")) {
+			String locatorCode = super.getRequest().getData("locatorCode", String.class);
+			status = status && booking.getLocatorCode().equals(locatorCode);
 
-			if (super.getRequest().hasData("id")) {
-				String locatorCode = super.getRequest().getData("locatorCode", String.class);
-				status = status && booking.getLocatorCode().equals(locatorCode);
+			Integer passengerId = super.getRequest().getData("passenger", Integer.class);
+			Passenger passenger = null;
+			if (passengerId != null)
+				passenger = this.repository.findPassengerById(passengerId);
+			status = status && passengerId != null && (passenger != null && customerId == passenger.getCustomer().getId() || passengerId == 0);
 
-				Integer passengerId = super.getRequest().getData("passenger", Integer.class);
-				Passenger passenger = null;
-				if (passengerId != null)
-					passenger = this.repository.findPassengerById(passengerId);
-				status = status && passengerId != null && (passenger != null && customerId == passenger.getCustomer().getId() || passengerId == 0);
-
-				Collection<Passenger> alreadyAddedPassengers = this.repository.findAllPassengersByBookingId(bookingId);
-				status = status && !alreadyAddedPassengers.stream().anyMatch(p -> p.getId() == passengerId);
-			}
-
-		} catch (Throwable E) {
-			status = false;
+			Collection<Passenger> alreadyAddedPassengers = this.repository.findAllPassengersByBookingId(bookingId);
+			status = status && !alreadyAddedPassengers.stream().anyMatch(p -> p.getId() == passengerId);
 		}
 
 		super.getResponse().setAuthorised(status);
@@ -69,7 +63,7 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 	@Override
 	public void validate(final BookingRecord bookingRecord) {
-		;
+		//intencionalmente en blanco;
 
 	}
 
@@ -81,14 +75,13 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 	@Override
 	public void unbind(final BookingRecord bookingRecord) {
 		Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-
+		Dataset dataset = super.unbindObject(bookingRecord, "passenger", "booking");
 		Integer bookingId = super.getRequest().getData("bookingId", int.class);
 
 		Collection<Passenger> alreadyAddedPassengers = this.repository.findAllPassengersByBookingId(bookingId);
 		Collection<Passenger> noAddedPassengers = this.repository.findAllPassengersByCustomerId(customerId).stream().filter(p -> !alreadyAddedPassengers.contains(p)).toList();
 		SelectChoices passengerChoices = SelectChoices.from(noAddedPassengers, "fullName", bookingRecord.getPassenger());
 
-		Dataset dataset = super.unbindObject(bookingRecord, "passenger", "booking");
 		dataset.put("locatorCode", bookingRecord.getBooking().getLocatorCode());
 		dataset.put("passengers", passengerChoices);
 
