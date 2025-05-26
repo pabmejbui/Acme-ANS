@@ -19,7 +19,7 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
-import acme.constraints.ValidEmployeeCode;
+import acme.constraints.ValidAssistanceAgent;
 import acme.entities.airlines.Airline;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,46 +27,47 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@ValidEmployeeCode
+@ValidAssistanceAgent
 
 public class AssistanceAgent extends AbstractRole {
 
+	// Serialisation version -----------------------------------------------------------------------------------------
 	private static final long	serialVersionUID	= 1L;
+	// Attributes ----------------------------------------------------------------------------------------------------
 
-	//Attributes
 	@Mandatory
-	@ValidEmployeeCode
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	@Column(unique = true)
+
 	private String				employeeCode;
 
 	@Mandatory
-	@ValidString(max = 255)
 	@Automapped
-	private String				languages;
+	@ValidString(min = 1, max = 255)
+	private String				spokenLanguages;
 
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				beginDate;
+	private Date				startDate;
 
 	@Optional
-	@ValidString(max = 255)
 	@Automapped
-	private String				bio;
-
-	@Optional
 	@ValidMoney
-	@Automapped
 	private Money				salary;
 
 	@Optional
-	@ValidUrl
 	@Automapped
-	private String				photoLink;
+	@ValidString(min = 1, max = 255)
+	private String				briefBio;
 
-	// Derived attributes -----------------------------------------------------
+	@Optional
+	@Automapped
+	@ValidUrl
+	private String				picture;
 
-	// Relationships ----------------------------------------------------------
+	// Relationships -------------------------------------------------------------------------------------------------
+
 	@Mandatory
 	@ManyToOne(optional = false)
 	@Valid

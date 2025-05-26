@@ -1,0 +1,4 @@
+key,employee-code,spoken-languages,start-date,salary,brief-bio,picture,key:userAccount,key:airline
+assistance-agent-01,AO123456,English;Spanish;French,2020/02/15 10:30,EUR 3500.00,Experienced assistance agent with 5 years in international,https://example.com/photos/agent1.jpg,user-account-assistance-agent-01,airline-01
+assistance-agent-02,AT456789,German;English;Italian,2021/10/22 09:15,EUR 3200.00,Multilingual agent specialized in customer service,https://example.com/photos/agent2.jpg,user-account-assistance-agent-02,airline-02
+assistance-agent-03,MT123456,French;Spanish;Arabic,2020/05/30 14:45,EUR 3800.00,Senior assistance agent with expertise in conflict resolution,https://example.com/photos/agent3.jpg,user-account-assistance-agent-03,airline-01
