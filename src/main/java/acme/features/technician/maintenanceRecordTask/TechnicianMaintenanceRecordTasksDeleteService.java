@@ -21,7 +21,6 @@ public class TechnicianMaintenanceRecordTasksDeleteService extends AbstractGuiSe
 	@Autowired
 	private TechnicianMaintenanceRecordTasksRepository repository;
 
-
 	// AbstractGuiService interface -------------------------------------------
 	
 	@Override

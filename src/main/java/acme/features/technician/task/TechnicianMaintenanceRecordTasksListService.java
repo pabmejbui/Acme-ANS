@@ -28,7 +28,10 @@ public class TechnicianMaintenanceRecordTasksListService extends AbstractGuiServ
 		int technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		int maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
 		MaintenanceRecord maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
-		super.getResponse().setAuthorised(technicianId == maintenanceRecord.getTechnician().getId());
+		boolean status = false;
+		if (maintenanceRecord != null)
+			status = technicianId == maintenanceRecord.getTechnician().getId();
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

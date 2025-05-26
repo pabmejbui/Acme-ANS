@@ -37,4 +37,7 @@ public interface TechnicianMaintenanceRecordRepository extends AbstractRepositor
 	
 	@Query("SELECT COUNT(mt.task) FROM MaintenanceRecordTask mt WHERE mt.maintenanceRecord.id = :maintenanceRecordId AND mt.task.draftMode = true")
 	int countNotPublishedTasksByMaintenanceRecordId(int maintenanceRecordId);
+
+	@Query("SELECT a FROM Aircraft a WHERE a.id = :aircraftId")
+	Aircraft findAircraftById(int aircraftId);
 }

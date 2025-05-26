@@ -32,9 +32,9 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 		id = super.getRequest().getData("id", int.class);
 		maintenanceRecord = this.repository.findMaintenanceRecordById(id);
 		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
-
-		if (technician.equals(maintenanceRecord.getTechnician()))
-			super.getResponse().setAuthorised(true);
+		
+		if (maintenanceRecord != null && technician.equals(maintenanceRecord.getTechnician()))
+				super.getResponse().setAuthorised(true);
 
 	}
 
@@ -62,6 +62,7 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 		aircraft = SelectChoices.from(aircrafts, "id", maintenanceRecord.getAircraft());
 
 		dataset = super.unbindObject(maintenanceRecord, "moment", "status", "nextInspectionDate", "estimatedCost", "notes", "aircraft", "draftMode");
+		
 		dataset.put("status", choices);
 		dataset.put("aircraft", aircraft);
 

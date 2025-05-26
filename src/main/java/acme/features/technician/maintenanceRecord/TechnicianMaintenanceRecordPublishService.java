@@ -1,5 +1,6 @@
 package acme.features.technician.maintenanceRecord;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,20 +26,31 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 	// AbstractGuiService interface -------------------------------------------
 	@Override
 	public void authorise() {
-		boolean exist;
 		MaintenanceRecord maintenanceRecord;
-		Technician technician;
-		int id;
+		int maintenanceRecordId;
+		int technicianId;
+		boolean status;
+		maintenanceRecordId = super.getRequest().getData("id", int.class);
+		maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
+		technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		status = maintenanceRecord != null && maintenanceRecord.getDraftMode() && maintenanceRecord.getTechnician().getId() == technicianId;
 
-		id = super.getRequest().getData("id", int.class);
-		maintenanceRecord = this.repository.findMaintenanceRecordById(id);
+		if (status) {
+			String method;
 
-		exist = maintenanceRecord != null;
-		if (exist) {
-			technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
-			if (technician.equals(maintenanceRecord.getTechnician()))
-				super.getResponse().setAuthorised(true);
+			method = super.getRequest().getMethod();
+			if (method.equals("GET"))
+				status = true;
+			else {
+				String maintenanceRecordStatus = super.getRequest().getData("status", String.class);
+				boolean correctStatus = "0".equals(maintenanceRecordStatus) || Arrays.stream(MaintenanceStatus.values()).map(MaintenanceStatus::name).anyMatch(name -> name.equals(maintenanceRecordStatus));
+				int aircraftId = super.getRequest().getData("aircraft", int.class);
+				Aircraft aircraft = this.repository.findAircraftById(aircraftId);
+				boolean aircraftExists = this.repository.findAllAircrafts().contains(aircraft);
+				status = (aircraftId == 0 || aircraftExists) && correctStatus;
+			}
 		}
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -59,8 +71,10 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 
 	@Override
 	public void validate(final MaintenanceRecord maintenanceRecord) {
-		int id;
-		id = super.getRequest().getData("id", int.class);
+		int id = super.getRequest().getData("id", int.class);
+		
+		if (!this.getBuffer().getErrors().hasErrors("nextInspectionDate"))
+			super.state(maintenanceRecord.getNextInspectionDate().compareTo(maintenanceRecord.getMoment()) > 0, "nextInspectionDate", "acme.validation.technician.maintenance-record.nextInspectionDate.message");
 
 		if (!this.getBuffer().getErrors().hasErrors("draftMode") && maintenanceRecord.getDraftMode() != null)
 			super.state(this.repository.countNotPublishedTasksByMaintenanceRecordId(id) == 0 && this.repository.countTasksByMaintenanceRecordId(id) != 0, "*", "acme.validation.technician.maintenance-record.published.message");
@@ -83,7 +97,7 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 		choices = SelectChoices.from(MaintenanceStatus.class, maintenanceRecord.getStatus());
 		aircraft = SelectChoices.from(aircrafts, "id", maintenanceRecord.getAircraft());
 
-		dataset = super.unbindObject(maintenanceRecord, "status", "nextInspectionDate", "estimatedCost", "notes", "aircraft", "draftMode");
+		dataset = super.unbindObject(maintenanceRecord, "moment", "status", "nextInspectionDate", "estimatedCost", "notes", "aircraft", "draftMode");
 
 		dataset.put("status", choices.getSelected().getKey());
 		dataset.put("status", choices);

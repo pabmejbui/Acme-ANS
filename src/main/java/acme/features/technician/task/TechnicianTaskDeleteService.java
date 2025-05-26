@@ -68,19 +68,4 @@ public class TechnicianTaskDeleteService extends AbstractGuiService<Technician, 
 		this.repository.deleteAll(mt);
 		this.repository.delete(task);
 	}
-
-	@Override
-	public void unbind(final Task task) {
-		SelectChoices choices;
-
-		Dataset dataset;
-		choices = SelectChoices.from(TaskType.class, task.getType());
-
-		dataset = super.unbindObject(task, "type", "description", "priority", "estimatedDuration", "draftMode");
-		dataset.put("type", choices.getSelected().getKey());
-		dataset.put("type", choices);
-
-		super.getResponse().addData(dataset);
-	}
-
 }

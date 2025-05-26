@@ -24,16 +24,7 @@ public class TechnicianTaskListService extends AbstractGuiService<Technician, Ta
 
 	@Override
 	public void authorise() {
-		boolean authorised = false;
-		Principal principal = super.getRequest().getPrincipal();
-		int userAccountId = principal.getAccountId();
-
-		Technician technician = this.repository.findTechnicianByUserAccountId(userAccountId);
-
-		if (technician != null)
-			authorised = true;
-
-		super.getResponse().setAuthorised(authorised);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
