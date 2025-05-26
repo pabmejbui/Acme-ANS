@@ -1,19 +1,19 @@
 key,name,iataCode,operationalScope,city,country,website,email,phoneNumber,draftMode
 airport-01,Jerez Aiport,XRY,REGIONAL,Jerez,Spain,http://www.lorem-ipsum.org,jerezairport@hotmail.es,+34655767676,false
-airport-02,L,LOR,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-03,Lo,AAA,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-04,Lorem ipsum dolor sit amete consectetur adipiscin,AAB,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-05,Lorem ipsum dolor sit amete consectetur adipiscing,AAC,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-06,Lorem,ZZY,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-07,Lorem,ZZZ,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-08,Lorem,AAD,DOMESTIC,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-09,Lorem,AAE,INTERNATIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-10,Lorem,AAF,REGIONAL,L,Lorem,http://www.lorem-ipsum.org,null,null,false
+airport-02,Málaga Airport,MAP,REGIONAL,Málaga,Spain,http://www.lorem-ipsum.org,null,null,false
+airport-03,Aeropuerto de Dalí,ADB,REGIONAL,Barcelona,Spain,http://www.lorem-ipsum.org,null,null,false
+airport-04,Aeropuerto Nacional de Valencia,ANV,DOMESTIC,Valencia,Spain,http://www.lorem-ipsum.org,null,null,false
+airport-05,Aeropuerto Andoni Zubizarreta,AZZ,REGIONAL,Bilbao,Spain,http://www.lorem-ipsum.org,null,null,false
+airport-06,Zurich,ZZY,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,false
+airport-07,Seville Airport,SVG,INTERNATIONAL,Sevilla,Spain,http://www.lorem-ipsum.org,null,null,false
+airport-08,Arabia Saudita Airport,AAD,DOMESTIC,Jeddah,Saudi Arabia,http://www.lorem-ipsum.org,null,null,true
+airport-09,Aeropuerto de Barajas,AEB,INTERNATIONAL,Madrid,Spain,http://www.lorem-ipsum.org,null,null,false
+airport-10,Aeroporto du Rio du Janeiro,ARJ,INTERNATIONAL,Rio de Janeiro,Brazil,http://www.lorem-ipsum.org,null,null,false
 airport-11,Lorem,AAG,REGIONAL,Lo,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-12,Lorem,AAH,REGIONAL,Lorem ipsum dolor sit amete consectetur adipiscin,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-13,Lorem,AAI,REGIONAL,Lorem ipsum dolor sit amete consectetur adipiscing,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-14,Lorem,AAJ,REGIONAL,Lorem,L,http://www.lorem-ipsum.org,null,null,false
-airport-15,Lorem,AAK,REGIONAL,Lorem,Lo,http://www.lorem-ipsum.org,null,null,false
-airport-16,Lorem,AAL,REGIONAL,Lorem,Lorem ipsum dolor sit amete consectetur adipiscin,http://www.lorem-ipsum.org,null,null,false
-airport-17,Lorem,AAM,REGIONAL,Lorem,Lorem ipsum dolor sit amete consectetur adipiscing,http://www.lorem-ipsum.org,null,null,false
-airport-18,Lorem,AAN,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,true
+airport-12,Lorem1,AAH,REGIONAL,Lorem ipsum dolor sit amete consectetur adipiscin,Lorem,http://www.lorem-ipsum.org,null,null,false
+airport-13,Lorem2,AAI,REGIONAL,Lorem ipsum dolor sit amete consectetur adipiscing,Lorem,http://www.lorem-ipsum.org,null,null,false
+airport-14,Lorem3,AAJ,REGIONAL,Lorem,L,http://www.lorem-ipsum.org,null,null,false
+airport-15,Lorem4,AAK,REGIONAL,Lorem,Lo,http://www.lorem-ipsum.org,null,null,false
+airport-16,Lorem5,AAL,REGIONAL,Lorem,Lorem ipsum dolor sit amete consectetur adipiscin,http://www.lorem-ipsum.org,null,null,false
+airport-17,Lorem6,AAM,REGIONAL,Lorem,Lorem ipsum dolor sit amete consectetur adipiscing,http://www.lorem-ipsum.org,null,null,false
+airport-18,Lorem7,AAN,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,true
