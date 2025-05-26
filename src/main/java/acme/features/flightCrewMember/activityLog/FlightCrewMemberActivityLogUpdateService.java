@@ -2,13 +2,11 @@
 package acme.features.flightCrewMember.activityLog;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
@@ -32,7 +30,7 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 		logId = super.getRequest().getData("id", int.class);
 		log = this.repository.findActivityLogById(logId);
 		member = log == null ? null : log.getFlightAssignment().getFlightCrewMember();
-		status = member != null && super.getRequest().getPrincipal().hasRealm(member);
+		status = log != null && log.isDraftMode() && super.getRequest().getPrincipal().hasRealm(member);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -40,27 +38,17 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 	@Override
 	public void load() {
 		ActivityLog log;
-		int logId;
+		int id;
 
-		logId = super.getRequest().getData("id", int.class);
-		log = this.repository.findActivityLogById(logId);
+		id = super.getRequest().getData("id", int.class);
+		log = this.repository.findActivityLogById(id);
 
 		super.getBuffer().addData(log);
 	}
 
 	@Override
 	public void bind(final ActivityLog log) {
-		Date now;
-		int assignmentId;
-		FlightAssignment assignment;
-
-		assignmentId = super.getRequest().getData("assignment", int.class);
-		assignment = this.repository.findFlightAssignmentById(assignmentId);
-		now = MomentHelper.getCurrentMoment();
-
 		super.bindObject(log, "incidentType", "description", "severity");
-		log.setRegistrationMoment(now);
-		log.setFlightAssignment(assignment);
 	}
 
 	@Override
@@ -78,13 +66,16 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 		Dataset dataset;
 		SelectChoices selectedAssignments;
 		Collection<FlightAssignment> assignments;
+		FlightCrewMember member;
 
-		assignments = this.repository.findAllAssignments();
-		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
+		member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+		assignments = this.repository.findFlightAssignmentsByMemberIdOrPublished(member.getId());
+		selectedAssignments = SelectChoices.from(assignments, "leg.flightNumber", log.getFlightAssignment());
 
 		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
 		dataset.put("assignments", selectedAssignments);
 		dataset.put("assignment", selectedAssignments.getSelected().getKey());
+		dataset.put("masterId", log.getFlightAssignment().getId());
 
 		super.getResponse().addData(dataset);
 	}
