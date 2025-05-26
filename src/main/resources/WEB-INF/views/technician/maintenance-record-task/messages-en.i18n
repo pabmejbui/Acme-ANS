@@ -1,0 +1,10 @@
+technician.involves.form.title = Task related to the maintenance record
+
+technician.involves.list.label.maintenanceRecord = Maintenance record
+technician.involves.form.label.task = Tasks
+technician.task.form.button.create = Create new task
+technician.involves.form.button.create = Add to maintenance record
+technician.involves.list.label.type = Type
+technician.involves.list.label.priority = Priority
+technician.involves.list.label.published = Draft	
+technician.involves.form.button.delete = Unlink task

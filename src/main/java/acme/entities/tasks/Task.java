@@ -38,7 +38,7 @@ public class Task extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@Automapped
-	private TaskType			taskType;
+	private TaskType			type;
 
 	@Mandatory
 	@ValidString(min = 1, max = 255)
@@ -56,8 +56,9 @@ public class Task extends AbstractEntity {
 	private Integer				estimatedDuration;
 
 	@Mandatory
+	@Valid
 	@Automapped
-	private boolean				draftMode;
+	private Boolean				draftMode;
 
 	// Relationships  ---------------------------------------------------------
 
