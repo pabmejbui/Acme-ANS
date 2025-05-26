@@ -97,6 +97,11 @@ acme.validation.technician.maintenance-record.estimatedCost.message = El coste e
 acme.validation.technician.maintenance-record.notes.message = La longitud máxima de las anotaciones es de 255 caractéres
 acme.validation.technician.maintenance-record.aircraft.message = El avión seleccionado no existe
 acme.validation.technician.maintenance-record.published.message = Para publicar un registro, tiene que estar relacionado con al menos una tarea y todas las tareas tienen que estar publicadas
+acme.validation.technician.task.noType.message = No se ha seleccionado ningún tipo
+acme.validation.technician.task.description.message =  La longitud máxima de la descripción es de 255 caractéres
+acme.validation.technician.task.priority.message = La prioridad debe ser mayor o igual a 0, y menor o igual a 10
+acme.validation.technician.task.estimatedDuration.message = La duración estimada debe ser mayor o igual a 0, y menor o igual a 1000
+acme.validation.technician.involves.noTask.message = No puede ser nulo
 
 # Mensajes de validación de las aerolíneas operadas por admins ##########################################
 acme.validation.confirmation.message = Debe confirmar la operación antes de continuar.

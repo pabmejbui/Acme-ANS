@@ -59,7 +59,8 @@ master.menu.flightCrewMember.activityLogs = Listado de activitylogs
 
 # master.menu.technician ########################################################
 master.menu.technician = Técnico
-master.menu.technician.maintenanceRecords.maintenanceRecords-list = Listado de los registros de mantenimiento
+master.menu.technician.maintenanceRecords.maintenanceRecords-list = Listado de registros de mantenimiento
+master.menu.technician.tasks.tasks-list = Listado de tareas
  
 # master.menu.menu.assistance-agent ##########################################################
 master.menu.assistance-agent.claims = Reclamaciones
