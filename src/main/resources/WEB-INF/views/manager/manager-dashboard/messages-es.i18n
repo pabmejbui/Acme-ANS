@@ -18,3 +18,5 @@ manager.dashboard.form.label.minCost = Coste mínimo
 manager.dashboard.form.label.maxCost = Coste máximo
 manager.dashboard.form.label.stdCost = Desviación estándar del coste
 manager.dashboard.form.title.leg-ratios = Ratio de tramos (puntuales vs. retrasados)
+
+manager.manager-dashboard.form.title = Tablero manager

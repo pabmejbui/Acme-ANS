@@ -3,7 +3,6 @@ package acme.features.manager.flight;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flights.Flight;
@@ -46,10 +45,4 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 		this.repository.delete(flight);
 	}
 
-	@Override
-	public void unbind(final Flight flight) {
-		Dataset dataset = super.unbindObject(flight, "tag", "selfTransfer", "cost", "description", "draftMode");
-		dataset.put("flightId", flight.getId());
-		super.getResponse().addData(dataset);
-	}
 }

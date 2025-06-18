@@ -19,6 +19,7 @@ manager.dashboard.form.label.maxCost = Maximum cost
 manager.dashboard.form.label.stdCost = Standard deviation of cost
 manager.dashboard.form.title.leg-ratios = Ratio of legs (on-time vs delayed)
 
+manager.manager-dashboard.form.title = Manager dashboard
 
 
 
