@@ -1,4 +1,30 @@
 key,name,iataCode,website,type,foundationMoment,optionalEmail,phoneNumber,draftMode
-airline-01,AirlinesMAX,AMX,http://www.airlinesmax.com,LUXURY,2022/07/29 23:59,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@subdominio1.subdominio2.subdominio3.subdominiolargoacmeeeeeee.com,+34611111111,true
-airline-02,Vueling,VYX,http://www.vueling.com,STANDARD,2000/01/01 00:00,null,null,false
-airline-03,Ryanair,RYA,http://www.ryanair.com,LOW_COST,2000/01/01 00:01,null,+123456789,false
+# Datos base
+airline-01,Iberia,IBX,https://www.iberia.es,LOW_COST,2000/01/23 00:34,iberia@example.com,+34901010101,false
+airline-02,Aeroméxico,AMX,https://www.aeromexico.com,STANDARD,2001/12/12 12:12,aeromexico@example.com,+521234456677886,false
+airline-03,British Airways,BAX,https://www.britishairways.com,STANDARD,2012/02/28 10:10,britishairways@example.com,+441234533432434,false
+airline-04,Lufthansa,LHX,https://www.lufthansa.com,LUXURY,2003/03/23 03:45,null,+12123434,true
+airline-05,Air France,AFX,https://www.airfrance.org,LOW_COST,2021/04/24 12:30,null,+13123454345,true
+# Datos límite atributo name.
+airline-06,Aerolínea con el nombre menos largo del continente,ARX,https://www.example.org,STANDARD,2010/10/10 01:01,null,null,true
+airline-07,A,AAX,https://www.example.org,LOW_COST,2022/12/03 04:54,null,null,false
+airline-08,Aerolínea con el nombre más largo del continente.,ALX,https://www.example.org,LOW_COST,2022/12/03 04:55,null,null,false
+airline-09,Ae,AEX,https://www.example.org,LOW_COST,2022/12/03 14:14,null,null,true
+airline-10,東京国,TXX,https://www.example.com,LUXURY,2002/02/02 02:02,null,null,true
+airline-11,<script>alert(‘Hacked!’);</script>,SCX,https://www.example.com,LUXURY,2009/09/02 09:02,null,null,true
+# Datos límite atributo website
+airline-12,Lorem,LRX,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",LUXURY,2003/11/13 13:11,null,null,false
+airline-13,Lorem ip,LEX,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",LOW_COST,2004/07/22 14:32,null,null,false
+airline-14,Lorem ipsum,LIX,http://example.org/a/b?a&b,STANDARD,2013/12/23 23:23,null,null,true
+
+# Datos límite atributo fundationMoment
+airline-15,Lorem i,LOX,http://example.org/a/b?a&b,STANDARD,2000/01/01 00:00,null,null,false
+airline-16,Lor,LOR,http://example.org/a/b?a&b,LOW_COST,2000/01/01 00:01,null,null,false
+airline-17,Lore lore lore,SHK,http://example.org,LUXURY,2024/12/31 23:59,null,null,true
+airline-18,Lore,SHX,http://example.org,LUXURY,2024/12/31 23:58,null,null,true
+
+# Datos límite atributos opcionales: optionalEmail y phoneNumber
+airline-19,Lorem ipsum dono,LXX,http://example.org/a/b?a&b,STANDARD,2000/01/01 00:00,北海道@example.com,null,false
+airline-20,Loremlorem,LMX,http://example.org/a/b?a&b,LOW_COST,2000/01/01 00:01,null,+131234566780941,false
+airline-21,Lore lore lore lore,SHC,http://example.org,LUXURY,2024/12/31 23:59,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@subdominio1.subdominio2.subdominio3.subdominiolargoacmeeeeeee.com,null,true
+airline-22,Lores,SHR,http://example.org,LUXURY,2024/12/31 23:58,null,+13123456,true

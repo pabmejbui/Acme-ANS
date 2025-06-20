@@ -1,19 +1,36 @@
 key,name,iataCode,operationalScope,city,country,website,email,phoneNumber,draftMode
-airport-01,Jerez Aiport,XRY,REGIONAL,Jerez,Spain,http://www.lorem-ipsum.org,jerezairport@hotmail.es,+34655767676,false
-airport-02,L,LOR,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-03,Lo,AAA,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-04,Lorem ipsum dolor sit amete consectetur adipiscin,AAB,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-05,Lorem ipsum dolor sit amete consectetur adipiscing,AAC,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-06,Lorem,ZZY,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-07,Lorem,ZZZ,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-08,Lorem,AAD,DOMESTIC,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-09,Lorem,AAE,INTERNATIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-10,Lorem,AAF,REGIONAL,L,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-11,Lorem,AAG,REGIONAL,Lo,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-12,Lorem,AAH,REGIONAL,Lorem ipsum dolor sit amete consectetur adipiscin,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-13,Lorem,AAI,REGIONAL,Lorem ipsum dolor sit amete consectetur adipiscing,Lorem,http://www.lorem-ipsum.org,null,null,false
-airport-14,Lorem,AAJ,REGIONAL,Lorem,L,http://www.lorem-ipsum.org,null,null,false
-airport-15,Lorem,AAK,REGIONAL,Lorem,Lo,http://www.lorem-ipsum.org,null,null,false
-airport-16,Lorem,AAL,REGIONAL,Lorem,Lorem ipsum dolor sit amete consectetur adipiscin,http://www.lorem-ipsum.org,null,null,false
-airport-17,Lorem,AAM,REGIONAL,Lorem,Lorem ipsum dolor sit amete consectetur adipiscing,http://www.lorem-ipsum.org,null,null,false
-airport-18,Lorem,AAN,REGIONAL,Lorem,Lorem,http://www.lorem-ipsum.org,null,null,true
+# Datos base (reales menos algunos correos y webs)
+airport-01,Aeropuerto de Barajas,MAD,INTERNATIONAL,Madrid,Spain,https://www.aeropuertomadrid-barajas.com,clientesmad@aena.es,+34913211000,false
+airport-02,Aeropuerto Los Llanos,ABC,DOMESTIC,Albacete,Spain,https://www.aena.es/es/albacete.html,clientesabc@aena.es,+34913211000,true
+airport-03,Heathrow Airport,LHR,INTERNATIONAL,London,United Kingdom,https://www.heathrow.com,heathrowairport@gmail.com,03443351801,false
+airport-04,Aeropuerto de Teruel,TEV,REGIONAL,Teruel,Spain,https://www.aeropuertoteruel.com,aeropuertoteruel@gmail.com,34913211000,true
+airport-05,Aeropuerto de San Pablo,SVQ,INTERNATIONAL,Sevilla,Spain,https://www.aena.es/es/sevilla.html,aeropuertosvq@hotmail.com,+34913211000,false
+airport-06,Aeropuerto de Alvedro,LCG,REGIONAL,Culleredo,Spain,null,aeroportoacoruña@hotmail.com,+34913211043,false
+
+# Datos probando límites de name y con caracteres especiales distintos
+airport-07,Airport que cumple los límites máximos permitidos.,AQC,DOMESTIC,Huelva,Spain,null,null,null,true
+airport-08,A,AXX,REGIONAL,Almería,Spain,null,null,null,true
+airport-09,Aeropuerto q no cumple el límite máximo permitido,ANC,DOMESTIC,Huesca,Spain,null,null,null,true
+airport-10,Ab,ABX,REGIONAL,Alcorcón,Spain,null,null,null,false
+airport-11,東京国際空港 Tōkyō Kokusai Kūkō,HND,INTERNATIONAL,Tokyo,Japan,null,null,null,false
+airport-12,مطار الملك عبدالعزيز الدولي,JED,REGIONAL,Jeddah,Saudi Arabia,null,null,null,false
+airport-13,<script>alert(‘Hacked!’);</script>,SCR,REGIONAL,San Sebastian,Spain,null,null,null,true
+
+# Datos probando límites de city y country.
+
+airport-14,Newcastle airport,NCL,INTERNATIONAL,Newcastle,United Kingdom of Great Britain & Northern Ireland,null,null,null,true
+airport-15,Webster Aiport,WBA,DOMESTIC,Chargoggagoggmanchauggagoggchaubunagungamaugg city,United States of America,null,null,null,true
+airport-16,Aeropuerto de prueba numero uno,ANU,INTERNATIONAL,I,Spain,null,null,null,true
+airport-17,Aeropuerto de prueba numero dos,AND,REGIONAL,Prueba,P,null,null,null,true
+airport-18,Doha International Airport,DOH,INTERNATIONAL,الدوحة,قطر,null,null,null,false
+airport-19,Hokkaido Airport,HKK,DOMESTIC,北海道,Japan,null,null,+8109012345678,false
+airport-20,Otro de prueba,ANT,REGIONAL,<script>alert(‘Hacked!’);</script>,Spain,null,null,null,true
+airport-21,Otro más de prueba,ANV,REGIONAL,Pruebecita,' or 'A' = 'A,null,null,null,true
+
+# Datos probando limites de los atributos opcionales website, email
+airport-22,Lorem ipsum,LIP,REGIONAL,Lorem,Lorem,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",null,null,true
+airport-23,Lorem ipsum donooooooo,LIO,REGIONAL,Lorem ip,Lorem,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",null,null,true
+airport-24,Lorem ipsum don,LIQ,REGIONAL,Lorem lor,Lorem,http://example.org/a/b?a&b,null,null,false
+airport-25,Lor,LOR,REGIONAL,Lor,Lorem,null,北海道@example.com,null,true
+airport-26,Lore,LER,REGIONAL,Lore,Lorem,null,acme@example.com,+131234566780941,true
+airport-27,Lorem,LRM,REGIONAL,Lorem,Lorem,null,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@subdominio1.subdominio2.subdominio3.subdominiolargoacmeeeeeee.com,+13123456,false
