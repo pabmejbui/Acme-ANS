@@ -10,7 +10,6 @@ import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircrafts.Aircraft;
-import acme.entities.airlines.Airline;
 import acme.entities.airports.Airport;
 import acme.entities.flights.Leg;
 import acme.entities.flights.LegStatus;
@@ -53,13 +52,11 @@ public class ManagerLegShowService extends AbstractGuiService<Manager, Leg> {
 	public void unbind(final Leg leg) {
 		Collection<Airport> airports = this.lr.findAllAirports();
 		Collection<Aircraft> aircrafts = this.lr.findAllAircrafts();
-		Collection<Airline> airlines = this.lr.findAllAirlines();
 
 		SelectChoices statuses = SelectChoices.from(LegStatus.class, leg.getStatus());
 		SelectChoices originChoices = SelectChoices.from(airports, "name", leg.getOriginAirport());
 		SelectChoices destinationChoices = SelectChoices.from(airports, "name", leg.getDestinationAirport());
 		SelectChoices aircraftChoices = SelectChoices.from(aircrafts, "model", leg.getAircraft());
-		SelectChoices airlineChoices = SelectChoices.from(airlines, "iataCode", leg.getAirline());
 
 		Dataset dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status", "draftMode");
 
@@ -77,9 +74,6 @@ public class ManagerLegShowService extends AbstractGuiService<Manager, Leg> {
 
 		dataset.put("aircraft", aircraftChoices.getSelected().getKey());
 		dataset.put("aircrafts", aircraftChoices);
-
-		dataset.put("airline", airlineChoices.getSelected().getKey());
-		dataset.put("airlines", airlineChoices);
 
 		dataset.put("masterId", leg.getFlight().getId());
 		dataset.put("allowUpdate", leg.isDraftMode());

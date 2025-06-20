@@ -1,19 +1,45 @@
 key,model,registrationNumber,capacity,cargoWeight,status,details,draftMode,key:airline
+# Datos base
 aircraft-01,Boeing 737-800,ECMLE,189,20700,ACTIVE_SERVICE,Standard aircraft model commonly used,true,airline-01
 aircraft-02,Airbus A320neo,N123AB,194,19500,UNDER_MAINTENANCE,Aircraft currently undergoing routine maintenance,false,airline-02
-aircraft-03,Boeing 787-9 Dreamliner,G-DMRL,290,35000,ACTIVE_SERVICE,Long-range aircraft for international flights,false,airline-01
-aircraft-04,Airbus A350-900,XA-PLM,325,40000,UNDER_MAINTENANCE,Recently retired aircraft,true,airline-03
-aircraft-05,Embraer E190,LV-GHQ,100,13000,ACTIVE_SERVICE,Regional aircraft for short flights,true,airline-02
+aircraft-03,Boeing 787-9 Dreamliner,G-DMRL,290,35000,ACTIVE_SERVICE,Long-range aircraft for international flights,false,airline-03
+aircraft-04,Airbus A350-900,XA-PLM,325,40000,UNDER_MAINTENANCE,Recently retired aircraft,true,airline-04
+aircraft-05,Embraer E190,LV-GHQ,100,13000,ACTIVE_SERVICE,Regional aircraft for short flights,true,airline-05
 aircraft-06,CRJ-900,OY-KFG,90,11500,ACTIVE_SERVICE,Operated on regional routes,false,airline-01
-aircraft-07,Boeing 777-300ER,HL7782,396,50000,ACTIVE_SERVICE,Operates mostly transcontinental routes,false,airline-03
-aircraft-08,Airbus A222-300,C-FOWU,145,16500,UNDER_MAINTENANCE,Unit scheduled for inspection,true,airline-02
-aircraft-09,Antonov An-225,ABCDEFGHIJKLMNOPQRSTUVWXYZABCDHIJKLMN0123456789,50,25000,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet color",false,airline-03
-aircraft-11,Boeing 737-850,ECMLA,189,20700,ACTIVE_SERVICE,Standard aircraft model commonly used,true,airline-01
-aircraft-12,Airbus A320neo,N13AB,194,19500,UNDER_MAINTENANCE,Aircraft currently undergoing routine maintenance,false,airline-02
-aircraft-13,Boeing 787-9 Dreamliner,G-DML,290,35000,ACTIVE_SERVICE,Long-range aircraft for international flights,false,airline-01
-aircraft-14,Airbus A350-900,XA-PM,325,40000,UNDER_MAINTENANCE,Recently retired aircraft,true,airline-03
-aircraft-15,Embraer E192,LV-HQ,100,13000,ACTIVE_SERVICE,Regional aircraft for short flights,true,airline-02
-aircraft-16,CRJ-900,OY-KG,90,11500,ACTIVE_SERVICE,Operated on regional routes,false,airline-01
-aircraft-17,Boeing 777-300ER,HL782,396,50000,ACTIVE_SERVICE,Operates mostly transcontinental routes,false,airline-03
-aircraft-18,Airbus A221-300,C-FOU,145,16500,UNDER_MAINTENANCE,Unit scheduled for inspection,true,airline-02
-aircraft-19,Antonov An-225,ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMN0123456789,50,25000,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet color",false,airline-03
+aircraft-07,Boeing 777-300ER,HL7782,396,50000,ACTIVE_SERVICE,Operates mostly transcontinental routes,false,airline-02
+aircraft-08,Airbus A222-300,C-FOWU,145,16500,UNDER_MAINTENANCE,Unit scheduled for inspection,true,airline-03
+
+# Datos límite atributo model
+aircraft-09,Aeronave con el nombre menos--largo del continente,ANV--NMLC,123,20321,ACTIVE_SERVICE,null,false,airline-06
+aircraft-10,Aeronave con el nombre menos-largo del continente,ANV-NLMC,124,21321,UNDER_MAINTENANCE,null,false,airline-07
+aircraft-11,Ae,AE-111,100,2010,UNDER_MAINTENANCE,null,false,airline-08
+aircraft-12,A,A-111,99,2009,ACTIVE_SERVICE,null,true,airline-09
+aircraft-13,洛伦·伊普森,RDEFEFEFE,130,2030,UNDER_MAINTENANCE,null,true,airline-10
+aircraft-14,' or 'A' = 'A,WEGWEGERG,199,2019,ACTIVE_SERVICE,null,true,airline-11
+
+# Datos límite atributo registrationNumber
+aircraft-15,Aeronave A33,Aeronave con el nombre menos--largo del continente,123,21324,ACTIVE_SERVICE,null,false,airline-12
+aircraft-16,Helicopter,Aeronave con el nombre menos-largo del continente,124,21321,UNDER_MAINTENANCE,null,false,airline-13
+aircraft-17,Ae 111MX,Ae,130,2030,UNDER_MAINTENANCE,null,true,airline-14
+aircraft-18,A 11134,A,199,2019,ACTIVE_SERVICE,null,true,airline-15
+aircraft-19,AeEEEE,โลเร็ม อิปซัม,130,2030,UNDER_MAINTENANCE,null,true,airline-16
+aircraft-20,AAaaas,<marquee>Hacked</marquee>,199,2019,ACTIVE_SERVICE,null,true,airline-17
+
+# Datos límite atributo cargo weight
+aircraft-21,Aerox 1234,ARX-1234,100,2000,ACTIVE_SERVICE,null,true,airline-18
+aircraft-22,Aerox 1235,ARX-1235,100,2001,UNDER_MAINTENANCE,null,true,airline-19
+aircraft-23,Aerox 1236,ARX-1236,100,50000,ACTIVE_SERVICE,null,true,airline-20
+aircraft-24,Aerox 1237,ARX-1237,100,49999,ACTIVE_SERVICE,null,true,airline-21
+
+# Datos límite atributo opcional details
+aircraft-25,Boeing SVQ,SVQ123,111,20000,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",false,airline-05
+aircraft-26,Boeing SVQ1,SVQ1,111,20000,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",true,airline-06
+aircraft-27,Airbus RTX,RTX-1080,100,20034,UNDER_MAINTENANCE,L,true,airline-01
+aircraft-28,Airbus RTX2-0,RTX-1080-2-0,100,20034,UNDER_MAINTENANCE,Lo,true,airline-07
+aircraft-29,Airbus RT,RTX-10,100,20034,UNDER_MAINTENANCE,โลเร็ม อิปซัม,true,airline-08
+aircraft-30,Airbus R,RTX-108,100,20034,UNDER_MAINTENANCE,<marquee>Hacked</marquee>,true,airline-11
+
+
+
+
+

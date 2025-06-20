@@ -1,9 +1,30 @@
-key,flightNumber,scheduledDeparture,scheduledArrival,status,draftMode,key:flight,key:originAirport,key:destinationAirport,key:aircraft,key:airline
-leg-01,AMX1001,2000/01/01 00:00,2000/01/01 12:00,ON_TIME,false,flight-01,airport-01,airport-02,aircraft-01,airline-01
-leg-02,AMX1002,2000/01/01 12:15,2000/01/01 17:00,DELAYED,true,flight-01,airport-02,airport-03,aircraft-02,airline-01
-leg-03,AMX2001,2024/06/15 06:30,2024/06/15 09:30,CANCELLED,false,flight-02,airport-03,airport-01,aircraft-03,airline-01
-leg-04,AMX2002,2024/06/15 10:00,2024/06/15 13:45,LANDED,true,flight-02,airport-01,airport-04,aircraft-04,airline-01
-leg-05,VYX3001,2024/06/20 15:20,2024/06/20 18:20,ON_TIME,false,flight-03,airport-04,airport-02,aircraft-05,airline-02
-leg-06,RYA3002,2024/06/20 19:00,2024/06/20 21:50,DELAYED,true,flight-03,airport-02,airport-05,aircraft-06,airline-03
-leg-07,VYX4001,2024/06/25 05:30,2024/06/25 08:45,ON_TIME,false,flight-04,airport-03,airport-05,aircraft-07,airline-02
-leg-08,RYA4002,2024/06/25 09:30,2024/06/25 12:15,CANCELLED,true,flight-04,airport-05,airport-01,aircraft-08,airline-03
+key,flightNumber,scheduledDeparture,scheduledArrival,status,draftMode,key:flight,key:originAirport,key:destinationAirport,key:aircraft
+# Datos base (probado los distintos tipos de status)
+leg-01,IBX1000,2014/10/12 07:30,2014/10/12 08:00,LANDED,true,flight-01,airport-02,airport-01,aircraft-01
+leg-02,IBX1001,2014/10/12 08:30,2014/10/12 11:00,LANDED,true,flight-01,airport-01,airport-03,aircraft-01
+leg-03,IBX1002,2014/10/14 06:00,2014/10/12 09:00,LANDED,true,flight-01,airport-03,airport-04,aircraft-01
+leg-04,IBX1003,2014/10/14 11:30,2014/10/12 12:00,LANDED,true,flight-01,airport-04,airport-02,aircraft-01
+leg-05,AMX1000,2002/01/02 12:00,2002/01/02 15:00,CANCELLED,true,flight-02,airport-05,airport-03,aircraft-02
+leg-06,AMX1001,2002/01/02 15:10,2002/01/02 18:00,LANDED,false,flight-02,airport-05,airport-03,aircraft-02
+leg-07,AMX1002,2002/01/05 10:00,2002/01/05 13:00,LANDED,true,flight-02,airport-03,airport-05,aircraft-02
+leg-08,AMX1003,2025/08/18 08:00,2025/08/18 09:30,ON_TIME,false,flight-03,airport-01,airport-06,aircraft-03
+leg-09,AMX1004,2025/08/21 20:00,2025/08/21 21:30,ON_TIME,false,flight-03,airport-06,airport-01,aircraft-03
+leg-10,LHX1000,2025/09/23 23:00,2025/09/24 00:25,DELAYED,true,flight-04,airport-06,airport-01,aircraft-04
+leg-11,LHX1001,2025/09/24 08:00,2025/09/24 09:25,ON_TIME,true,flight-04,airport-06,airport-01,aircraft-04
+leg-12,LHX1002,2025/09/24 11:00,2025/09/24 11:45,ON_TIME,false,flight-04,airport-01,airport-05,aircraft-04
+leg-13,AFX7002,2002/01/01 11:11,2002/01/01 14:00,CANCELLED,true,flight-05,airport-03,airport-06,aircraft-05
+
+# Datos límite atributos scheduledDeparture y scheduledArrival
+leg-14,ARX1000,2000/01/01 00:00,2000/01/01 00:01,CANCELLED,true,flight-06,airport-09,airport-08,aircraft-06
+leg-15,ARX1001,2000/01/01 00:01,2000/01/01 00:02,CANCELLED,false,flight-06,airport-09,airport-08,aircraft-06
+leg-16,ARX1002,2000/01/01 00:02,2000/01/01 02:00,LANDED,true,flight-06,airport-09,airport-08,aircraft-06
+leg-17,AAX1000,2200/12/31 16:00,2200/12/31 23:58,DELAYED,true,flight-07,airport-12,airport-11,aircraft-07
+leg-18,AAX1001,2200/12/31 17:00,2200/12/31 23:59,ON_TIME,true,flight-07,airport-12,airport-11,aircraft-07
+
+
+
+
+
+
+
+
