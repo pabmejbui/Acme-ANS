@@ -33,7 +33,7 @@ public class FlightNumberValidator extends AbstractValidator<ValidFlightNumber, 
 			result = false;
 		} else {
 			String flightNumber = leg.getFlightNumber();
-			String airlineIataCode = leg.getAirline().getIataCode();
+			String airlineIataCode = leg.getAircraft().getAirline().getIataCode();
 
 			// Validación del formato del número de vuelo
 			String pattern = "^" + airlineIataCode + "\\d{4}$";
