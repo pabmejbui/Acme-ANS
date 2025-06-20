@@ -18,7 +18,6 @@ import acme.client.components.validation.ValidMoment;
 import acme.constraints.flights.ValidFlightNumber;
 import acme.constraints.flights.ValidLeg;
 import acme.entities.aircrafts.Aircraft;
-import acme.entities.airlines.Airline;
 import acme.entities.airports.Airport;
 import lombok.Getter;
 import lombok.Setter;
@@ -90,8 +89,4 @@ public class Leg extends AbstractEntity {
 	@Mandatory
 	@ManyToOne(optional = false)
 	private Aircraft	aircraft;
-
-	@Mandatory
-	@ManyToOne(optional = false)
-	private Airline		airline;
 }
