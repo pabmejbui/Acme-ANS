@@ -1,42 +1,59 @@
 key,key:customer,fullName,email,passportNumber,dateOfBirth,specialNeeds,draftMode
-# base entity
 passenger-00,customer-01,Lorem Ipsum,passenger00@example.com,ABC12345,2023/07/19 19:30,None,true
-# fullName - variations
+
+#
+# Pruebas de longitudes y caracteres en fullName (mínimo, máximo, no latinos, HTML, SQL)
+#
 passenger-01,customer-01,L,passenger01@example.com,ABC12345,2025/01/01 00:00,None,true
 passenger-02,customer-01,Lo,passenger02@example.com,ABC12345,2025/01/01 00:00,None,true
 passenger-03,customer-01,Lorem ipsum dolor sit amet consectetur adipiscing elit,passenger03@example.com,ABC12345,2025/01/01 00:00,None,true
-passenger-04,customer-01,BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB,passenger04@example.com,ABC12345,2025/01/01 00:00,None,true
-passenger-05,customer-01,โลเร็ม อิปซัม,passenger05@example.com,ABC12345,2025/01/01 00:00,None,true
+passenger-04,customer-01,"Nombre muy largo que ocupa toda la línea y más allá hasta acercarse al máximo permitido por el sistema para campos de texto",passenger04@example.com,ABC12345,2025/01/01 00:00,None,true
+passenger-05,customer-01,โคโดโม อิปปง,passenger05@example.com,ABC12345,2025/01/01 00:00,None,true
 passenger-06,customer-01,لوريم إيبسوم,passenger06@example.com,ABC12345,2025/01/01 00:00,None,true
 passenger-07,customer-02,洛伦·伊普森,passenger07@example.com,ABC12345,2025/01/01 00:00,None,true
-passenger-08,customer-02,<marquee>Hacked</marquee>,passenger08@example.com,ABC12345,2025/01/01 00:00,None,false
-passenger-09,customer-02,<script>alert(‘Hacked!’);</script>,passenger09@example.com,ABC12345,2025/01/01 00:00,None,false
-passenger-10,customer-02,' or 'A' = 'A,passenger10@example.com,ABC12345,2025/01/01 00:00,None,true
-# email - variations
-passenger-11,customer-02,Lorem Ipsum,a@b.es,ABC12345,2025/01/01 00:00,None,true
-passenger-12,customer-02,Lorem Ipsum,acme@lorem-ipsum.org,ABC12345,2025/01/01 00:00,None,true
-passenger-13,customer-02,Lorem Ipsum,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,ABC12345,2025/01/01 00:00,None,true
-# passportNumber - variations
-passenger-14,customer-01,Lorem Ipsum,passenger14@example.com,A1B2C3,2025/01/01 00:00,None,true
-passenger-15,customer-01,Lorem Ipsum,passenger15@example.com,X7Y8Z9WQ,2025/01/01 00:00,None,true
+passenger-08,customer-02,<div>Test HTML</div>,passenger08@example.com,ABC12345,2025/01/01 00:00,None,false
+passenger-09,customer-02,<script>alert('xss')</script>,passenger09@example.com,ABC12345,2025/01/01 00:00,None,false
+passenger-10,customer-02,' or 1=1 --,passenger10@example.com,ABC12345,2025/01/01 00:00,None,true
+
+#
+# Pruebas de emails mínimos, subdominios, y longitudes
+#
+passenger-11,customer-02,Correo Mínimo,a@b.es,ABC12345,2025/01/01 00:00,None,true
+passenger-12,customer-02,Correo Subdominio,sub.alias+test@correo.prueba.org,ABC12345,2025/01/01 00:00,None,true
+passenger-13,customer-02,Correo Largo,"lorem.ipsum@sub.dominio.ejemplo.ultra.largo.que.se.usa.para.validar.los.limites.de.longitud.de.los.campos.de.correo.electronico.en.la.aplicacion.de.ejemplo.prueba.edu",ABC12345,2025/01/01 00:00,None,true
+
+#
+# Pasaportes con formatos variables (alfanuméricos, largo, corto)
+#
+passenger-14,customer-01,Lorem Ipsum,passenger14@example.com,X1Y2Z3,2025/01/01 00:00,None,true
+passenger-15,customer-01,Lorem Ipsum,passenger15@example.com,CD789012,2025/01/01 00:00,None,true
 passenger-16,customer-01,Lorem Ipsum,passenger16@example.com,123456789,2025/01/01 00:00,None,true
-passenger-17,customer-01,Lorem Ipsum,passenger17@example.com,QWER5678,2025/01/01 00:00,None,true
-# birthDate - variations
+passenger-17,customer-01,Lorem Ipsum,passenger17@example.com,QWE45678,2025/01/01 00:00,None,true
+
+#
+# Fechas de nacimiento extremas (mínimo, mínimo + 1 min, máximo - 1 min, exacto máximo)
+#
 passenger-18,customer-01,Lorem Ipsum,passenger18@example.com,ABC12345,2000/01/01 00:00,None,true
-passenger-19,customer-01,Lorem Ipsum,passenger18@example.com,ABC12345,2000/01/01 00:01,None,true
+passenger-19,customer-01,Lorem Ipsum,passenger19@example.com,ABC12345,2000/01/01 00:01,None,true
 passenger-20,customer-01,Lorem Ipsum,passenger20@example.com,ABC12345,2024/12/31 23:59,None,true
-passenger-21,customer-01,Lorem Ipsum,passenger19@example.com,ABC12345,2025/01/01 00:00,None,true
-# specialNeeds - variations
-passenger-22,customer-02,Lorem Ipsum,passenger21@example.com,ABC12345,2025/01/01 00:00,,true
-passenger-23,customer-02,Lorem Ipsum,passenger22@example.com,ABC12345,2025/01/01 00:00,L,true
-passenger-24,customer-02,Lorem Ipsum,passenger23@example.com,ABC12345,2025/01/01 00:00,Lo,true
-passenger-25,customer-02,Lorem Ipsum,passenger24@example.com,ABC12345,2025/01/01 00:00,Lorem ipsum dolor sit amet consectetur adipiscing,true
-passenger-26,customer-02,Lorem Ipsum,passenger25@example.com,ABC12345,2025/01/01 00:00,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,true
-passenger-27,customer-02,Lorem Ipsum,passenger26@example.com,ABC12345,2025/01/01 00:00,โลเร็ม อิปซัม,true
-passenger-28,customer-02,Lorem Ipsum,passenger27@example.com,ABC12345,2025/01/01 00:00,لوريم إيبسوم,true
-passenger-29,customer-02,Lorem Ipsum,passenger28@example.com,ABC12345,2025/01/01 00:00,洛伦伊普森,true
-passenger-30,customer-02,Lorem Ipsum,passenger29@example.com,ABC12345,2025/01/01 00:00,<marquee>Hacked</marquee>,true
-passenger-31,customer-02,Lorem Ipsum,passenger30@example.com,ABC12345,2025/01/01 00:00,<script>alert(‘Hacked!’);</script>,true
-passenger-32,customer-02,Lorem Ipsum,passenger31@example.com,ABC12345,2025/01/01 00:00,' or 'A' = 'A,true
-# draftMode - variations
-passenger-33,customer-02,Lorem Ipsum,passenger00@example.com,ABC66666,2023/07/19 19:30,None,false
+passenger-21,customer-01,Lorem Ipsum,passenger21@example.com,ABC12345,2025/01/01 00:00,None,true
+
+#
+# Campos de necesidades especiales con diferentes textos y longitudes
+#
+passenger-22,customer-02,Lorem Ipsum,passenger22@example.com,ABC12345,2025/01/01 00:00,,true
+passenger-23,customer-02,Lorem Ipsum,passenger23@example.com,ABC12345,2025/01/01 00:00,L,true
+passenger-24,customer-02,Lorem Ipsum,passenger24@example.com,ABC12345,2025/01/01 00:00,Lo,true
+passenger-25,customer-02,Lorem Ipsum,passenger25@example.com,ABC12345,2025/01/01 00:00,"Asistencia completa con comida vegana",true
+passenger-26,customer-02,Lorem Ipsum,passenger26@example.com,ABC12345,2025/01/01 00:00,"Necesita silla de ruedas y apoyo visual",true
+passenger-27,customer-02,Lorem Ipsum,passenger27@example.com,ABC12345,2025/01/01 00:00,โคโดโม อิปปง,true
+passenger-28,customer-02,Lorem Ipsum,passenger28@example.com,ABC12345,2025/01/01 00:00,لوريم إيبسوم,true
+passenger-29,customer-02,Lorem Ipsum,passenger29@example.com,ABC12345,2025/01/01 00:00,洛伦伊普森,true
+passenger-30,customer-02,Lorem Ipsum,passenger30@example.com,ABC12345,2025/01/01 00:00,<marquee>Hacked</marquee>,true
+passenger-31,customer-02,Lorem Ipsum,passenger31@example.com,ABC12345,2025/01/01 00:00,<script>alert('Hacked')</script>,true
+passenger-32,customer-02,Lorem Ipsum,passenger32@example.com,ABC12345,2025/01/01 00:00,' or 'x'='x,true
+
+#
+# Comprobación de draftMode (publicado/no publicado)
+#
+passenger-33,customer-02,Lorem Ipsum,passenger33@example.com,ABC66666,2023/07/19 19:30,None,false
