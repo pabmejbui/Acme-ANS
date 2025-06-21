@@ -1,5 +1,46 @@
 key,key:userAccount,idCustomer,phoneNumber,physicalAddress,city,country,earnedPoints
-customer-01,user-account-customer-01,BA987654,+19987654321,"Calle del Prado 5","Madrid","España",45210
-customer-02,user-account-customer-02,CD763412,345678901,"Avenida de los Pinos","Sevilla","España",2310
-customer-03,user-account-customer-03,HG763412,123456789,"Avenida Guadaira","Sevilla","España",
+customer-01,user-account-customer-01,BA987654,+19987654321,Calle del Prado 5,Madrid,España,45210
+customer-02,user-account-customer-02,CD763412,345678901,Avenida de los Pinos,Sevilla,España,2310
+customer-03,user-account-customer-03,HG763412,123456789,Avenida Guadaira,Sevilla,España,
+
+# Validación de identificadores de cliente
+# Ejemplos con prefijos variados y extremos en valores
+
+customer-04,user-account-customer-04,ZE000001,+34910000001,"Calle Primera","Cádiz","España",150
+customer-05,user-account-customer-05,CX999998,+34910000002,"Calle Segunda","Málaga","España",275
+
+# Números de teléfono con distintas longitudes dentro de los límites aceptables
+
+customer-06,user-account-customer-06,LM111112,654321,"Calle Cortita","Granada","España",60
+customer-07,user-account-customer-07,LN111113,+34912345678901,"Calle Larga Extensa","Tarragona","España",340
+
+# Direcciones físicas con diferentes longitudes y estructuras
+
+customer-08,user-account-customer-08,LE111114,+34910000003,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.","León","España",190
+customer-09,user-account-customer-09,LS111115,+34910000004,"Calle Ejemplar","Ciudad de Prueba Veintiocho","España",260
+
+# País con nombres largos o personalizados
+
+customer-10,user-account-customer-10,LR111116,+34910000005,"Calle Extendida","Tudela","República alternativa",320
+
+# Valores extremos y nulos en puntos acumulados
+
+customer-11,user-account-customer-11,LO111117,+34910000006,"Calle Sin Puntos","Badajoz","España",0
+customer-12,user-account-customer-12,LI111118,+34910000007,"Calle Punto Uno","Badajoz","España",1
+customer-13,user-account-customer-13,LU111119,+34910000008,"Calle Punto Medio","Badajoz","España",250
+customer-14,user-account-customer-14,LP111120,+34910000009,"Calle Punto Alto","Badajoz","España",500
+customer-15,user-account-customer-15,LN111121,+34910000010,"Calle Sin Registro","Badajoz","España",
+
+# Direcciones con longitud mínima, intermedia y máxima
+
+customer-16,user-account-customer-16,LA111122,+34910000011,"A","Mérida","España",125
+customer-17,user-account-customer-17,LH111123,+34910000012,"Av","Huelva","España",135
+customer-18,user-account-customer-18,LI111124,+34910000013,"Lorem ipsum dolor sit amet, consectetur adipiscing elit.","Cáceres","España",145
+customer-19,user-account-customer-19,LL111125,+34910000014,"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.","Albacete","España",155
+customer-20,user-account-customer-20,LV111126,+34910000015,"Excepteur sint occaecat cupidatat non proident.","Zamora","España",165
+
+# Ciudades con alfabetos no latinos
+
+customer-21,user-account-customer-21,LP111127,+34910000016,"Calle del Este","โคโดโม อิปปง","España",175
+customer-22,user-account-customer-22,LT111128,+34910000017,"Calle Traducida","洛伦·伊普森","España",185
 

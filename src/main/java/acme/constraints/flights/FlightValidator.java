@@ -3,19 +3,15 @@ package acme.constraints.flights;
 
 import javax.validation.ConstraintValidatorContext;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.entities.flights.Flight;
-import acme.entities.flights.FlightRepository;
 
 @Validator
 public class FlightValidator extends AbstractValidator<ValidFlight, Flight> {
 
-	@Autowired
-	private FlightRepository repository;
-
+	//	@Autowired
+	//	private FlightRepository repository;
 
 	@Override
 	protected void initialise(final ValidFlight annotation) {

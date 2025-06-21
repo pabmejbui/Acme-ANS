@@ -1,22 +1,61 @@
 key,key:flight,key:customer,locatorCode,purchaseMoment,travelClass,lastCardNibble,draftMode
-# base entity
 booking-00,flight-02,customer-01,ABC123,2023/07/19 19:30,ECONOMY,,true
-# locatorCode - variations
+
+# 
+# Casos con variaciones en locatorCode
+# Prueban distintos formatos y longitudes
+# 
 booking-01,flight-02,customer-01,A1B2C3,2024/12/31 23:59,ECONOMY,1234,true
-booking-02,flight-02,customer-01,XYZ789,2024/12/31 23:59,ECONOMY,1234,true
-booking-03,flight-02,customer-01,QWERTY,2024/12/31 23:59,ECONOMY,1234,true
-booking-04,flight-02,customer-01,ABCDEFGH,2024/12/31 23:59,ECONOMY,1234,true
-booking-05,flight-02,customer-01,12345678,2024/12/31 23:59,ECONOMY,1234,true
-# purchaseMoment - variations
+booking-02,flight-02,customer-01,XY9Z8W,2024/12/31 23:59,ECONOMY,1234,true
+booking-03,flight-02,customer-01,RTYU78,2024/12/31 23:59,ECONOMY,1234,true
+booking-04,flight-02,customer-01,LMNOPQRS,2024/12/31 23:59,ECONOMY,1234,true
+booking-05,flight-02,customer-01,87654321,2024/12/31 23:59,ECONOMY,1234,true
+
+# 
+# Fechas límite y valores extremos en purchaseMoment
+# 
 booking-06,flight-02,customer-01,DEF456,2000/01/01 00:00,ECONOMY,1234,true
 booking-07,flight-02,customer-02,GHI789,2000/01/01 00:01,ECONOMY,1234,true
 booking-08,flight-02,customer-02,JKL012,2023/12/31 23:59,ECONOMY,1234,true
-# travelClass - variations
+
+# 
+# travelClass combinando ECONOMY y BUSINESS
+# 
 booking-09,flight-03,customer-02,MNO345,2024/12/31 23:59,ECONOMY,1234,false
 booking-10,flight-03,customer-02,PQR678,2024/12/31 23:59,BUSINESS,1234,true
-# lastNibble - variations
+
+# 
+# lastCardNibble variado (dígitos extremos y nulos)
+# 
 booking-11,flight-03,customer-02,EFG123,2024/12/31 23:59,ECONOMY,0000,true
 booking-12,flight-03,customer-02,HIJ456,2024/12/31 23:59,ECONOMY,5555,true
 booking-13,flight-03,customer-02,KLM789,2024/12/31 23:59,ECONOMY,9999,true
-# isPublished - variations
+
+# 
+# Variación en el modo de publicación (draftMode)
+# 
 booking-14,flight-03,customer-02,ABC666,2023/07/19 19:30,ECONOMY,1234,true
+
+# 
+# Registros adicionales con vuelos válidos y campos diversos
+# 
+booking-15,flight-01,customer-03,ZX1Y2Z,2022/06/15 10:00,ECONOMY,0001,false
+booking-16,flight-04,customer-04,EZY456,2022/01/12 20:00,BUSINESS,2222,false
+booking-17,flight-05,customer-05,CXO789,2000/01/01 00:00,ECONOMY,3333,false
+booking-18,flight-06,customer-06,MLD123,2000/01/01 00:01,BUSINESS,4444,false
+booking-19,flight-07,customer-07,LNE234,2022/01/12 20:00,ECONOMY,5555,false
+booking-20,flight-08,customer-08,LEC345,2022/01/12 20:00,BUSINESS,6666,false
+booking-21,flight-09,customer-09,LSM456,2022/01/12 20:00,ECONOMY,7777,false
+booking-22,flight-10,customer-10,LRI567,2022/01/12 20:00,ECONOMY,8888,false
+booking-23,flight-11,customer-11,LOJ678,2022/01/12 20:00,ECONOMY,9999,false
+booking-24,flight-12,customer-12,LIJ789,2022/01/12 20:00,BUSINESS,1112,false
+booking-25,flight-13,customer-13,LUM890,2022/01/01 09:00,ECONOMY,3333,false
+booking-26,flight-14,customer-14,LPN901,2022/01/02 10:00,ECONOMY,4444,false
+booking-27,flight-15,customer-15,LNJ012,2022/01/03 11:00,BUSINESS,5555,false
+booking-28,flight-16,customer-16,LAO123,2022/01/04 12:00,BUSINESS,6666,false
+booking-29,flight-17,customer-17,LOS234,2022/01/05 13:00,ECONOMY,7777,false
+booking-30,flight-18,customer-18,UXC345,2022/01/06 14:00,BUSINESS,8888,false
+booking-31,flight-19,customer-19,TRV456,2022/01/07 15:00,BUSINESS,9999,false
+booking-32,flight-20,customer-20,FLY567,2022/01/08 16:00,ECONOMY,0000,false
+booking-33,flight-21,customer-21,AIR678,2022/01/09 17:00,ECONOMY,1111,false
+booking-34,flight-22,customer-22,SKY789,2022/01/10 18:00,BUSINESS,2222,false
