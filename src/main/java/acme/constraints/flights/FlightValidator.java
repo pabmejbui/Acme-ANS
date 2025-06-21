@@ -35,14 +35,9 @@ public class FlightValidator extends AbstractValidator<ValidFlight, Flight> {
 		} else if (tag.length() < 1 || tag.length() > 50) {
 			super.state(context, false, "tag", "flight.validation.tag.length");
 			result = false;
-		} else {
-			Flight existing = this.repository.findOneByTag(tag);
-			boolean duplicated = existing != null && existing.getId() != flight.getId();
-
-			super.state(context, !duplicated, "tag", "flight.validation.tag.duplicated");
-			result = result && !duplicated;
 		}
 
 		return result;
 	}
+
 }
