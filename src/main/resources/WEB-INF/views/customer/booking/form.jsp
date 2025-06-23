@@ -4,7 +4,14 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form readonly="${!draftMode}"> 
-	<acme:input-select code="customer.booking.form.label.flight" path="flight" choices="${flightChoices}" readonly="${!draftMode}"/>
+	<jstl:if test="${_command != 'create'}">
+        <acme:input-textbox code="customer.booking.form.label.flightData" path="flightData" readonly="true"/>
+    </jstl:if>
+    
+   	<jstl:if test="${_command == 'create'}">
+		<acme:input-select code="customer.booking.form.label.flight" path="flight" choices="${flightChoices}" readonly="${!draftMode}"/>
+    </jstl:if>
+    
 	<acme:input-textbox code="customer.booking.form.label.locatorCode" path="locatorCode"/>
 	<acme:input-textbox code="customer.booking.form.label.purchaseMoment" path="purchaseMoment" readonly="true"/>
 	<acme:input-select code="customer.booking.form.label.travelClass" path="travelClass" choices="${travelClasses}"/>	
