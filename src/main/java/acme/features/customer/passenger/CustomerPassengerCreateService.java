@@ -1,6 +1,8 @@
 
 package acme.features.customer.passenger;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.basis.AbstractRealm;
@@ -49,7 +51,13 @@ public class CustomerPassengerCreateService extends AbstractGuiService<Customer,
 	}
 
 	@Override
-	public void validate(final Passenger object) {
+	public void validate(final Passenger passenger) {
+		Integer customerId = passenger.getCustomer().getId();
+		String passportNumber = passenger.getPassportNumber();
+
+		Collection<Passenger> existingPassengers = this.repository.findPassengersByCustomerAndPassportNumber(customerId, passportNumber);
+		boolean isPassportDuplicated = !existingPassengers.isEmpty();
+		super.state(!isPassportDuplicated, "passportNumber", "customer.passenger.form.error.duplicatePassportNumber");
 
 	}
 

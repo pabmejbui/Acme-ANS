@@ -33,7 +33,7 @@ booking-14,flight-03,customer-02,ABC666,2023/07/19 19:30,ECONOMY,1234,true
 #
 # Registros adicionales con vuelos válidos y campos diversos
 #
-booking-15,flight-01,customer-03,ZX1Y2Z,2022/06/15 10:00,ECONOMY,0001,false
+booking-15,flight-01,customer-04,ZX1Y2Z,2022/06/15 10:00,ECONOMY,0001,false
 booking-16,flight-04,customer-04,EZY456,2022/01/12 20:00,BUSINESS,2222,false
 booking-17,flight-05,customer-05,CXO789,2000/01/01 00:00,ECONOMY,3333,false
 booking-18,flight-06,customer-06,MLD123,2000/01/01 00:01,BUSINESS,4444,false
