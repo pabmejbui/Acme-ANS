@@ -28,3 +28,4 @@ customer.passenger.list.button.create = Crear
 
 # error ####################################################
 customer.passenger.form.error.assBookings = Este pasajero está asociado a una reserva
+customer.passenger.form.error.duplicatePassportNumber = El pasaporte ya está registrado

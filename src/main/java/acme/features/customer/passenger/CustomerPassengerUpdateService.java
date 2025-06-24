@@ -1,6 +1,8 @@
 
 package acme.features.customer.passenger;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -51,7 +53,21 @@ public class CustomerPassengerUpdateService extends AbstractGuiService<Customer,
 
 	@Override
 	public void validate(final Passenger passenger) {
-		;
+		Integer customerId = passenger.getCustomer().getId();
+		String passportNumber = passenger.getPassportNumber();
+		Integer currentPassengerId = passenger.getId();
+
+		Collection<Passenger> existingPassengers = this.repository.findPassengersByCustomerAndPassportNumber(customerId, passportNumber);
+
+		boolean isPassportDuplicated = false;
+
+		for (Passenger existingPassenger : existingPassengers)
+			if (!(existingPassenger.getId() == currentPassengerId)) {
+				isPassportDuplicated = true;
+				break;
+			}
+
+		super.state(!isPassportDuplicated, "passportNumber", "customer.passenger.form.error.duplicatePassportNumber");
 	}
 
 	@Override

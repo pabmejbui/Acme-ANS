@@ -28,3 +28,4 @@ customer.passenger.list.button.create = Create
 
 # error ####################################################
 customer.passenger.form.error.assBookings = Can´t delete passenger associated with booking
+customer.passenger.form.error.duplicatePassportNumber = Passport already exist
