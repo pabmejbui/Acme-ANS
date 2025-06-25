@@ -1,7 +1,7 @@
 key,duty,lastUpdate,status,remarks,key:flightCrewMember,key:leg,draftMode
 assignment-01,PILOT,2012/07/02 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member1,leg-13,true
 assignment-02,PILOT,2012/07/02 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member1,leg-13,true
-assignment-03,CO_PILOT,2012/07/02 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member2,leg-13,true
+assignment-03,CO_PILOT,2012/07/02 0:00,CONFIRMED,"Lourem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member2,leg-13,true
 assignment-04,LEAD_ATTENDANT,2012/07/02 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member3,leg-13,true
 assignment-05,CABIN_ATTENDANT,2012/07/02 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member4,leg-13,true
 assignment-06,PILOT,2000/01/01 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member1,leg-13,true
@@ -9,18 +9,21 @@ assignment-07,PILOT,2000/01/01 0:01,CONFIRMED,"Lorem ipsum dolor sit amet, conse
 assignment-08,PILOT,2024/12/31 23:59,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member1,leg-13,true
 assignment-09,PILOT,2025/01/01 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member1,leg-13,true
 assignment-10,PILOT,2012/07/02 0:00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member1,leg-13,true
-assignment-11,PILOT,2012/07/02 0:00,CANCELLED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member1,leg-13,true
-assignment-12,PILOT,2012/07/02 0:00,CONFIRMED,L,member1,leg-13,true
-assignment-13,PILOT,2012/07/02 0:00,CONFIRMED,Lo,member1,leg-13,true
-assignment-14,PILOT,2012/07/02 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",member1,leg-13,true
-assignment-15,PILOT,2012/07/02 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",member1,leg-13,true
-assignment-16,PILOT,2012/07/02 0:00,CONFIRMED,โลเร็ม อิปซัม,member1,leg-13,true
-assignment-17,PILOT,2012/07/02 0:00,CONFIRMED,لوريم إيبسوم,member1,leg-13,true
-assignment-18,PILOT,2012/07/02 0:00,CONFIRMED,洛伦·伊普森,member1,leg-13,true
-assignment-19,PILOT,2012/07/02 0:00,CONFIRMED,<marquee>Hacked</marquee>,member1,leg-13,true
-assignment-20,PILOT,2012/07/02 0:00,CONFIRMED,<script>alert(‘Hacked!’);</script>,member1,leg-13,true
-assignment-21,PILOT,2012/07/02 0:00,CONFIRMED,' or 'A' = 'A,member1,leg-13,true
-assignment-22,PILOT,2012/07/02 0:00,CONFIRMED,null,member1,leg-13,true
-assignment-23,PILOT,2012/07/02 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member1,leg-16,true
-assignment-24,PILOT,2012/07/02 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member1,leg-17,true
-assignment-25,PILOT,2012/07/02 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member1,leg-13,false
+assignment-11,PILOT,2012/07/03 0:00,CANCELLED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member1,leg-13,true
+assignment-12,PILOT,2012/07/04 0:00,CONFIRMED,L,member1,leg-13,true
+assignment-13,PILOT,2012/07/05 0:00,CONFIRMED,Lo,member1,leg-13,true
+assignment-14,PILOT,2012/07/06 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",member1,leg-13,true
+assignment-15,PILOT,2012/07/07 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",member1,leg-13,true
+assignment-16,PILOT,2012/07/08 0:00,CONFIRMED,โลเร็ม อิปซัม,member1,leg-13,true
+assignment-17,PILOT,2012/07/09 0:00,CONFIRMED,لوريم إيبسوم,member1,leg-13,true
+assignment-18,PILOT,2012/07/10 0:00,CONFIRMED,洛伦·伊普森,member1,leg-13,true
+assignment-19,PILOT,2012/07/11 0:00,CONFIRMED,<marquee>Hacked</marquee>,member1,leg-13,true
+assignment-20,PILOT,2012/07/12 0:00,CONFIRMED,<script>alert(‘Hacked!’);</script>,member1,leg-13,true
+assignment-21,PILOT,2012/07/13 0:00,CONFIRMED,' or 'A' = 'A,member1,leg-13,true
+assignment-22,PILOT,2012/07/14 0:00,CONFIRMED,null,member1,leg-13,true
+assignment-23,PILOT,2012/07/15 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member1,leg-16,true
+assignment-24,PILOT,2012/07/16 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member1,leg-17,true
+assignment-25,PILOT,2012/07/17 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member1,leg-13,false
+assignment-26,LEAD_ATTENDANT,2024/07/18 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member3,leg-08,true
+assignment-27,CABIN_ATTENDANT,2024/07/19 0:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member4,leg-08,true
+assignment-28,CO_PILOT,2024/07/20 0:00,CONFIRMED,"Loirem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member2,leg-08,true
