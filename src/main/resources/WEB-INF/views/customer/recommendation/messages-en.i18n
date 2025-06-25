@@ -1,0 +1,17 @@
+# List view
+customer.recommendation.list.title = Recommendations for your arrivals
+customer.recommendation.list.label.name = Place Name
+customer.recommendation.list.label.category = Category
+customer.recommendation.list.label.city = City
+customer.recommendation.list.label.website = Website
+customer.recommendation.list.info.title = Information
+customer.recommendation.list.explanation = These recommendations are based on destinations from your arrivals.
+
+# Form view
+customer.recommendation.form.title = Recommendation Details
+customer.recommendation.form.label.name = Place Name
+customer.recommendation.form.label.category = Category
+customer.recommendation.form.label.city = City
+customer.recommendation.form.label.airport = Associated Airport
+customer.recommendation.form.label.website = Website
+customer.recommendation.form.label.description = Description

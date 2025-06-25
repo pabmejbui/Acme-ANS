@@ -1,5 +1,5 @@
 
-package acme.features.recommendation;
+package acme.entities.recomendations;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -8,8 +8,9 @@ import javax.validation.Valid;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
-import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidString;
+import acme.client.components.validation.ValidUrl;
 import acme.entities.airports.Airport;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,40 +23,44 @@ public class Recommendation extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	//Attributes -------------------------------------------------------
-	@Mandatory
-	@ValidString
-	@Automapped
-	private String				xid;
 
 	@Mandatory
-	@ValidString
+	@ValidString(max = 255)
 	@Automapped
 	private String				name;
 
-	@Mandatory
-	@ValidNumber(min = 0)
+	@Optional
+	@ValidString(max = 255)
 	@Automapped
-	private Double				dist;
+	private String				category;
 
-	@Mandatory
-	@ValidNumber(min = 0)
+	@Optional
+	@ValidString(max = 255)
 	@Automapped
-	private Integer				rate;
+	private String				address;
 
-	@Mandatory
-	@ValidString
+	@Optional
+	@ValidString(max = 50)
 	@Automapped
-	private String				wikidata;
+	private String				city;
 
-	@Mandatory
-	@ValidString
+	@Optional
+	@ValidString(max = 50)
 	@Automapped
-	private String				osm;
+	private String				country;
 
-	@Mandatory
-	@ValidString
+	@Optional
+	@ValidUrl
 	@Automapped
-	private String				kinds;
+	private String				website;
+
+	@Optional
+	@Automapped
+	private Double				latitude;
+
+	@Optional
+	@Automapped
+	private Double				longitude;
 
 	//Relationship ---------------------------------------------------------
 
