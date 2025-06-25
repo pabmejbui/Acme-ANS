@@ -56,6 +56,9 @@
 				action="/administrator/booking/list" />
 			<acme:menu-separator />
 			<acme:menu-suboption
+				code="master.menu.administrator.initialise-recommendation"
+				action="/administrator/system/initialise-recommendation" />
+			<acme:menu-suboption
 				code="master.menu.administrator.populate-db-initial"
 				action="/administrator/system/populate-initial" />
 			<acme:menu-suboption
@@ -87,6 +90,8 @@
 				action="/customer/passenger/list" />				
 			<acme:menu-suboption code="master.menu.customer.dashboard"
 				action="/customer/customer-dashboard/show" />
+			<acme:menu-suboption code="master.menu.customer.recommendations"
+			 action="/customer/recommendation/list"/>
 		</acme:menu-option>
 
 
