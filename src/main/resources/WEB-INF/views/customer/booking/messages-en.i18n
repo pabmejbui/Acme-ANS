@@ -32,5 +32,7 @@ customer.booking.delete.published-passengers = Can't delete bookings with publis
 customer.booking.publish.published-passengers = Can't publish bookings with unpublished passengers
 customer.validation.booking.form.error.noPassengers = Can't publish bookings unless there are unpublished passengers or none
 customer.booking.publish.missing-card-nibble = To publish the booking, the last 4 digits of the credit card must have been stored
+customer.booking.form.error.flight-draft = Flight is not published
+customer.booking.form.error.flight-not-available = Flight is not available
 
 
