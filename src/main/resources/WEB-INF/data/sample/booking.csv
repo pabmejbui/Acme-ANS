@@ -13,24 +13,24 @@ booking-05,flight-04,customer-01,87654321,2024/12/31 23:59,ECONOMY,1234,true
 # Fechas límite y valores extremos en purchaseMoment
 #
 booking-06,flight-04,customer-01,DEF456,2000/01/01 00:00,ECONOMY,1234,true
-booking-07,flight-03,customer-02,GHI789,2000/01/01 00:01,ECONOMY,1234,true
-booking-08,flight-03,customer-02,JKL012,2023/12/31 23:59,ECONOMY,1234,true
+booking-07,flight-03,customer-02,GHI789,2000/01/01 00:01,ECONOMY,1234,false
+booking-08,flight-03,customer-02,JKL012,2023/12/31 23:59,ECONOMY,1234,false
 #
 # travelClass combinando ECONOMY y BUSINESS
 #
 booking-09,flight-02,customer-02,MNO345,2001/12/31 23:59,ECONOMY,1234,false
-booking-10,flight-03,customer-02,PQR678,2024/12/31 23:59,BUSINESS,1234,true
+booking-10,flight-03,customer-02,PQR678,2024/12/31 23:59,BUSINESS,1234,false
 #
 # lastCardNibble variado (dígitos extremos y nulos)
 #
-booking-11,flight-03,customer-02,EFG123,2024/12/31 23:59,ECONOMY,0000,true
-booking-12,flight-03,customer-02,HIJ456,2024/12/31 23:59,ECONOMY,5555,true
-booking-13,flight-03,customer-02,KLM789,2024/12/31 23:59,ECONOMY,9999,true
+booking-11,flight-03,customer-02,EFG123,2024/12/31 23:59,ECONOMY,0000,false
+booking-12,flight-03,customer-02,HIJ456,2024/12/31 23:59,ECONOMY,5555,false
+booking-13,flight-03,customer-02,KLM789,2024/12/31 23:59,ECONOMY,9999,false
 #
 # Variación en el modo de publicación (draftMode)
 #
-booking-14,flight-03,customer-02,ABC666,2023/07/19 19:30,ECONOMY,1234,true
-#
+booking-14,flight-03,customer-02,ABC666,2023/07/19 19:30,ECONOMY,1234,false
+#,"","","","","","",""
 # Registros adicionales con vuelos válidos y campos diversos
 #
 booking-15,flight-01,customer-04,ZX1Y2Z,2022/06/15 10:00,ECONOMY,0001,false

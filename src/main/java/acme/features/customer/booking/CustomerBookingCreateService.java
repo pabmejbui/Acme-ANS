@@ -59,9 +59,7 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 	public void validate(final Booking booking) {
 		if (booking.getFlight() != null) {
 			Flight flight = booking.getFlight();
-
 			super.state(!flight.isDraftMode(), "flight", "customer.booking.form.error.flight-draft");
-
 			Date currentDate = MomentHelper.getCurrentMoment();
 			Collection<Flight> availableFlights = this.repository.findAvailableFlights(currentDate);
 

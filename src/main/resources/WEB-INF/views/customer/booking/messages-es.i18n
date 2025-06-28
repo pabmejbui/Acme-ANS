@@ -32,3 +32,5 @@ customer.booking.delete.published-passengers = No se pueden eliminar reservas co
 customer.booking.publish.published-passengers = No se pueden publicar reservas con pasajeros no publicados
 customer.validation.booking.form.error.noPassengers = No se pueden publicar reservas si no hay pasajeros sin publicar o si no hay ninguno
 customer.booking.publish.missing-card-nibble = Para publicar la reserva, deben haberse guardado los últimos 4 dígitos de la tarjeta de crédito
+customer.booking.form.error.flight-draft = Vuelo no publicado
+customer.booking.form.error.flight-not-available = Vuelo no disponible
