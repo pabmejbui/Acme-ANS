@@ -36,22 +36,18 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		flightAssignment = new FlightAssignment();
 		flightAssignment.setFlightCrewMember(flightCrewMember);
 		flightAssignment.setLastUpdate(MomentHelper.getCurrentMoment());
-		flightAssignment.setDraftMode(false);
+		flightAssignment.setDraftMode(true);
 		super.getBuffer().addData(flightAssignment);
 
 	}
 
 	@Override
 	public void bind(final FlightAssignment assignment) {
-		int legId;
-		Leg leg;
-		int memberId;
-		FlightCrewMember member;
+		int legId = super.getRequest().getData("leg", int.class);
+		Leg leg = this.repository.findLegById(legId);
 
-		legId = super.getRequest().getData("leg", int.class);
-		leg = this.repository.findLegById(legId);
-		memberId = super.getRequest().getData("member", int.class);
-		member = this.repository.findFlightCrewMemberById(memberId);
+		int memberId = super.getRequest().getData("member", int.class);
+		FlightCrewMember member = this.repository.findFlightCrewMemberById(memberId);
 
 		super.bindObject(assignment, "duty", "status", "remarks");
 		assignment.setLeg(leg);
@@ -79,7 +75,8 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		Collection<FlightCrewMember> members;
 		SelectChoices selectedMembers;
 
-		legs = this.repository.findAllLegs();
+		// Solo devuelve Legs publicadas y futuras
+		legs = this.repository.findPublishedFutureLegs(MomentHelper.getCurrentMoment());
 		members = this.repository.findAllFlightCrewMembers();
 
 		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
@@ -88,11 +85,14 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		selectedMembers = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
 
 		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
+
 		dataset.put("statuses", statuses);
 		dataset.put("duties", duties);
-		dataset.put("leg", selectedLegs.getSelected().getKey());
+
+		dataset.put("leg", selectedLegs.getSelected() != null ? selectedLegs.getSelected().getKey() : "");
 		dataset.put("legs", selectedLegs);
-		dataset.put("member", selectedMembers.getSelected().getKey());
+
+		dataset.put("flightCrewMember", selectedMembers.getSelected() != null ? selectedMembers.getSelected().getKey() : "");
 		dataset.put("members", selectedMembers);
 
 		super.getResponse().addData(dataset);
