@@ -2,7 +2,6 @@
 package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,7 +14,6 @@ import acme.entities.flightAssignment.AssignmentStatus;
 import acme.entities.flightAssignment.DutyType;
 import acme.entities.flightAssignment.FlightAssignment;
 import acme.entities.flights.Leg;
-import acme.realms.flightCrewMembers.AvailabilityStatus;
 import acme.realms.flightCrewMembers.FlightCrewMember;
 
 @GuiService
@@ -32,10 +30,8 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 
 	@Override
 	public void load() {
-		FlightAssignment assignment;
-
-		assignment = new FlightAssignment();
-
+		int id = super.getRequest().getData("id", int.class);
+		FlightAssignment assignment = this.repository.findFlightAssignmentById(id);
 		super.getBuffer().addData(assignment);
 	}
 
@@ -57,60 +53,60 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		assignment.setLastUpdate(MomentHelper.getCurrentMoment());
 	}
 
+	//	@Override
+	//	public void validate(final FlightAssignment assignment) {
+	//		this.validateLegHasNotOccurred(assignment.getLeg());
+	//		this.validateStatusAvailability(assignment.getFlightCrewMember());
+	//		this.validateLegCompatibility(assignment);
+	//		this.validateDutyAssignment(assignment);
+	//	}
+	//
+	//	private void validateLegHasNotOccurred(final Leg leg) {
+	//		Date scheduledArrival = leg.getScheduledArrival();
+	//		Date now = MomentHelper.getCurrentMoment();
+	//		boolean hasOccurred = now.after(scheduledArrival);
+	//		super.state(!hasOccurred, "*", "acme.validation.flight-assignment.leg-has-occurred.message. Cant validate a past flight");
+	//	}
+	//
+	//	private void validateStatusAvailability(final FlightCrewMember member) {
+	//		AvailabilityStatus status = member.getAvailabilityStatus();
+	//		boolean available = status.equals(AvailabilityStatus.AVAILABLE);
+	//		super.state(available, "*", "acme.validation.flight-assignment.member-not-available.message");
+	//	}
+	//
+	//	private void validateLegCompatibility(final FlightAssignment assignment) {
+	//		Collection<Leg> existingLegs = this.repository.findLegsByFlightCrewMemberId(assignment.getFlightCrewMember().getId());
+	//
+	//		boolean overlaps = existingLegs.stream().anyMatch(existingLeg -> this.legsOverlap(assignment.getLeg(), existingLeg));
+	//
+	//		super.state(!overlaps, "*", "acme.validation.flight-assignment.member-with-overlapping-legs.message");
+	//	}
+	//
+	//	private boolean legsOverlap(final Leg newLeg, final Leg existingLeg) {
+	//		boolean isDepartureOverlapping = MomentHelper.isInRange(newLeg.getScheduledDeparture(), existingLeg.getScheduledDeparture(), existingLeg.getScheduledArrival());
+	//
+	//		boolean isArrivalOverlapping = MomentHelper.isInRange(newLeg.getScheduledArrival(), existingLeg.getScheduledDeparture(), existingLeg.getScheduledArrival());
+	//
+	//		return isDepartureOverlapping || isArrivalOverlapping;
+	//	}
+	//
+	//	private void validateDutyAssignment(final FlightAssignment flightAssignment) {
+	//		Collection<FlightAssignment> assignedDuties = this.repository.findFlightAssignmentByLegId(flightAssignment.getLeg().getId());
+	//
+	//		boolean legHasPilot = assignedDuties.stream().anyMatch(a -> a.getDuty().equals(DutyType.PILOT));
+	//
+	//		boolean legHasCoPilot = assignedDuties.stream().anyMatch(a -> a.getDuty().equals(DutyType.CO_PILOT));
+	//
+	//		super.state(!(flightAssignment.getDuty().equals(DutyType.PILOT) && legHasPilot), "*", "acme.validation.flight-assignment.leg-has-pilot.message");
+	//
+	//		super.state(!(flightAssignment.getDuty().equals(DutyType.CO_PILOT) && legHasCoPilot), "*", "acme.validation.flight-assignment.leg-has-copilot.message");
+	//	}
 	@Override
 	public void validate(final FlightAssignment assignment) {
-		this.validateLegCompatibility(assignment);
-		this.validateDutyAssignment(assignment);
-		this.validateStatusAvailability(assignment.getFlightCrewMember());
-		this.validateLegHasNotOccurred(assignment.getLeg());
-	}
-
-	private void validateLegHasNotOccurred(final Leg leg) {
-		Date scheduledArrival = leg.getScheduledArrival();
-		Date now = MomentHelper.getCurrentMoment();
-		boolean hasOccurred = now.after(scheduledArrival);
-		if (!hasOccurred)
-			////////////////////////////////
-			super.state(false, "*", "acme.validation.flight-assignment.leg-has-occurred.message");
-
-	}
-
-	private void validateStatusAvailability(final FlightCrewMember member) {
-		AvailabilityStatus status = member.getAvailabilityStatus();
-		AvailabilityStatus requiredStatus = AvailabilityStatus.AVAILABLE;
-		boolean available = status.equals(requiredStatus);
-		if (available)
-
-			////////////////////
-			super.state(false, "*", "acme.validation.flight-assignment.member-not-available.message");
-	}
-
-	private void validateLegCompatibility(final FlightAssignment assignment) {
-		Collection<Leg> existingLegs = this.repository.findLegsByFlightCrewMemberId(assignment.getFlightCrewMember().getId());
-
-		boolean hasIncompatibleLeg = existingLegs.stream().anyMatch(existingLeg -> this.legIsNotOverlapping(assignment.getLeg(), existingLeg));
-
-		if (hasIncompatibleLeg)
-
-			//////////////////
-			super.state(false, "*", "acme.validation.flight-assignment.member-with-overlapping-legs.message");
-	}
-
-	private void validateDutyAssignment(final FlightAssignment flightAssignment) {
-		Collection<FlightAssignment> assignedDuties = this.repository.findFlightAssignmentByLegId(flightAssignment.getLeg().getId());
-
-		boolean legWithCopilot = assignedDuties.stream().anyMatch(assignment -> assignment.getDuty().equals(DutyType.CO_PILOT));
-		boolean legWithPilot = assignedDuties.stream().anyMatch(assignment -> assignment.getDuty().equals(DutyType.PILOT));
-
-		//////////////////////////////
-		super.state(flightAssignment.getDuty().equals(DutyType.PILOT) && legWithPilot, "*", "acme.validation.flight-assignment.leg-has-pilot.message");
-		super.state(flightAssignment.getDuty().equals(DutyType.CO_PILOT) && legWithCopilot, "*", "acme.validation.flight-assignment.leg-has-copilot.message");
-	}
-
-	private boolean legIsNotOverlapping(final Leg newLeg, final Leg existingLeg) {
-		boolean isDepartureOverlapping = MomentHelper.isInRange(newLeg.getScheduledDeparture(), existingLeg.getScheduledDeparture(), existingLeg.getScheduledArrival());
-		boolean isArrivalOverlapping = MomentHelper.isInRange(newLeg.getScheduledArrival(), existingLeg.getScheduledDeparture(), existingLeg.getScheduledArrival());
-		return isDepartureOverlapping && isArrivalOverlapping;
+		if (super.getRequest().getData("leg", int.class) != 0) {
+			boolean notYetOccurred = MomentHelper.isAfter(assignment.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
+			super.state(notYetOccurred, "leg", "flight-crew-member.flight-assignment.leg-has-not-finished-yet");
+		}
 	}
 
 	@Override

@@ -48,4 +48,8 @@ public interface FlightCrewMemberFlightAssignmentRepository extends AbstractRepo
 
 	@Query("select fa from FlightAssignment fa where fa.leg.id = :legId")
 	Collection<FlightAssignment> findFlightAssignmentByLegId(int legId);
+
+	@Query("select l from Leg l where l.draftMode = false and l.scheduledDeparture > :now")
+	Collection<Leg> findPublishedFutureLegs(Date now);
+
 }
