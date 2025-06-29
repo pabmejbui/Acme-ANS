@@ -1,6 +1,7 @@
 
 package acme.features.flightCrewMember.flightAssignment;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,36 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 	private FlightCrewMemberFlightAssignmentRepository repository;
 
 
+	//	@Override
+	//	public void authorise() {
+	//		super.getResponse().setAuthorised(true);
+	//	}
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean isPost = super.getRequest().getMethod().equals("POST");
+
+		boolean correctDuty = true;
+		boolean correctStatus = true;
+		boolean transientId = true;
+		boolean validLeg = true;
+
+		if (isPost) {
+			String duty = super.getRequest().getData("duty", String.class);
+			correctDuty = Arrays.stream(DutyType.values()).anyMatch(d -> d.toString().equals(duty)) || duty.equals("0");
+
+			String status = super.getRequest().getData("status", String.class);
+			correctStatus = Arrays.stream(AssignmentStatus.values()).anyMatch(s -> s.toString().equals(status)) || status.equals("0");
+
+			transientId = super.getRequest().getData("id", int.class) == 0;
+
+			if (super.getRequest().getData().containsKey("leg")) {
+				int legId = super.getRequest().getData("leg", int.class);
+				validLeg = legId == 0 || this.repository.findLegById(legId) != null;
+			} else
+				validLeg = false;
+		}
+
+		super.getResponse().setAuthorised(correctDuty && correctStatus && transientId && validLeg);
 	}
 
 	@Override

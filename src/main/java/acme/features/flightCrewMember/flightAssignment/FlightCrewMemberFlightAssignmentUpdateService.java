@@ -65,7 +65,14 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 
 	@Override
 	public void validate(final FlightAssignment assignment) {
-		;
+		Leg leg = assignment.getLeg();
+
+		if (leg == null)
+			super.state(false, "leg", "flightAssignment.error.leg-required");
+		else {
+			boolean isDraft = leg.isDraftMode();  // true si está en borrador (no publicado)
+			super.state(!isDraft, "leg", "flightAssignment.error.leg-not-published");
+		}
 	}
 
 	@Override
