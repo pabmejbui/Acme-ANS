@@ -1,6 +1,7 @@
 
 package acme.features.flightCrewMember.flightAssignment;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,34 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		super.getBuffer().addData(assignment);
 	}
 
+	//	@Override
+	//	public void unbind(final FlightAssignment assignment) {
+	//		Dataset dataset;
+	//		SelectChoices statuses;
+	//		SelectChoices duties;
+	//		Collection<Leg> legs;
+	//		SelectChoices selectedLegs;
+	//		Collection<FlightCrewMember> members;
+	//		SelectChoices selectedMembers;
+	//
+	//		legs = this.repository.findPublishedFutureLegs(MomentHelper.getCurrentMoment());
+	//		members = this.repository.findAllFlightCrewMembers();
+	//
+	//		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
+	//		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
+	//		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
+	//		selectedMembers = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
+	//
+	//		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
+	//		dataset.put("statuses", statuses);
+	//		dataset.put("duties", duties);
+	//		dataset.put("leg", selectedLegs.getSelected().getKey());
+	//		dataset.put("legs", selectedLegs);
+	//		dataset.put("member", selectedMembers.getSelected().getKey());
+	//		dataset.put("members", selectedMembers);
+	//
+	//		super.getResponse().addData(dataset);
+	//	}
 	@Override
 	public void unbind(final FlightAssignment assignment) {
 		Dataset dataset;
@@ -59,20 +88,33 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		Collection<FlightCrewMember> members;
 		SelectChoices selectedMembers;
 
+		// Legs futuras y publicadas para el desplegable
 		legs = this.repository.findPublishedFutureLegs(MomentHelper.getCurrentMoment());
+
+		// Si la leg asignada no está en esa lista, añádela para que no haya error
+		if (assignment.getLeg() != null && !legs.contains(assignment.getLeg())) {
+			legs = new ArrayList<>(legs);
+			legs.add(assignment.getLeg());
+		}
+
 		members = this.repository.findAllFlightCrewMembers();
 
 		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
 		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
+
 		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
 		selectedMembers = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
 
 		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
+
 		dataset.put("statuses", statuses);
 		dataset.put("duties", duties);
-		dataset.put("leg", selectedLegs.getSelected().getKey());
+
+		// Ya no debería dar null porque la leg está en la lista
+		dataset.put("leg", selectedLegs.getSelected() != null ? selectedLegs.getSelected().getKey() : "");
 		dataset.put("legs", selectedLegs);
-		dataset.put("member", selectedMembers.getSelected().getKey());
+
+		dataset.put("member", selectedMembers.getSelected() != null ? selectedMembers.getSelected().getKey() : "");
 		dataset.put("members", selectedMembers);
 
 		super.getResponse().addData(dataset);

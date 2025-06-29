@@ -1,6 +1,7 @@
 
 package acme.features.flightCrewMember.flightAssignment;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,50 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 	private FlightCrewMemberFlightAssignmentRepository repository;
 
 
+	//	@Override
+	//	public void authorise() {
+	//		super.getResponse().setAuthorised(true);
+	//	}
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		FlightAssignment assignment;
+		boolean validRequestMethod = true;
+		boolean validStatus = true;
+		boolean validDuty = true;
+		boolean validLeg = true;
+		boolean correctMember = false;
+		int assignmentId;
+
+		if (super.getRequest().getMethod().equals("GET"))
+			validRequestMethod = false;
+		else {
+			// Validar que el duty existe en el enum
+			String dutyString = super.getRequest().getData("duty", String.class);
+			validDuty = Arrays.stream(DutyType.values()).anyMatch(d -> d.toString().equals(dutyString));
+			validDuty = validDuty || dutyString.equals("0");  // Para cuando aún no se ha seleccionado nada
+
+			// Validar que el status existe en el enum
+			String statusString = super.getRequest().getData("status", String.class);
+			validStatus = Arrays.stream(AssignmentStatus.values()).anyMatch(s -> s.toString().equals(statusString));
+			validStatus = validStatus || statusString.equals("0");
+
+			// Validar que el Leg es válido
+			int legId = super.getRequest().getData("leg", int.class);
+			Collection<Leg> validLegs = this.repository.findAllLegs();
+			validLeg = legId != 0 && validLegs.stream().anyMatch(l -> l.getId() == legId);
+
+			// Validar que el assignment pertenece al usuario y está en draft
+			assignmentId = super.getRequest().getData("id", int.class);
+			assignment = this.repository.findFlightAssignmentById(assignmentId);
+
+			if (assignment != null) {
+				int principalId = super.getRequest().getPrincipal().getActiveRealm().getId();
+				correctMember = assignment.getFlightCrewMember().getId() == principalId && assignment.isDraftMode();
+			}
+		}
+
+		boolean authorised = validRequestMethod && validDuty && validStatus && validLeg && correctMember;
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -53,60 +95,21 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		assignment.setLastUpdate(MomentHelper.getCurrentMoment());
 	}
 
-	//	@Override
-	//	public void validate(final FlightAssignment assignment) {
-	//		this.validateLegHasNotOccurred(assignment.getLeg());
-	//		this.validateStatusAvailability(assignment.getFlightCrewMember());
-	//		this.validateLegCompatibility(assignment);
-	//		this.validateDutyAssignment(assignment);
-	//	}
-	//
-	//	private void validateLegHasNotOccurred(final Leg leg) {
-	//		Date scheduledArrival = leg.getScheduledArrival();
-	//		Date now = MomentHelper.getCurrentMoment();
-	//		boolean hasOccurred = now.after(scheduledArrival);
-	//		super.state(!hasOccurred, "*", "acme.validation.flight-assignment.leg-has-occurred.message. Cant validate a past flight");
-	//	}
-	//
-	//	private void validateStatusAvailability(final FlightCrewMember member) {
-	//		AvailabilityStatus status = member.getAvailabilityStatus();
-	//		boolean available = status.equals(AvailabilityStatus.AVAILABLE);
-	//		super.state(available, "*", "acme.validation.flight-assignment.member-not-available.message");
-	//	}
-	//
-	//	private void validateLegCompatibility(final FlightAssignment assignment) {
-	//		Collection<Leg> existingLegs = this.repository.findLegsByFlightCrewMemberId(assignment.getFlightCrewMember().getId());
-	//
-	//		boolean overlaps = existingLegs.stream().anyMatch(existingLeg -> this.legsOverlap(assignment.getLeg(), existingLeg));
-	//
-	//		super.state(!overlaps, "*", "acme.validation.flight-assignment.member-with-overlapping-legs.message");
-	//	}
-	//
-	//	private boolean legsOverlap(final Leg newLeg, final Leg existingLeg) {
-	//		boolean isDepartureOverlapping = MomentHelper.isInRange(newLeg.getScheduledDeparture(), existingLeg.getScheduledDeparture(), existingLeg.getScheduledArrival());
-	//
-	//		boolean isArrivalOverlapping = MomentHelper.isInRange(newLeg.getScheduledArrival(), existingLeg.getScheduledDeparture(), existingLeg.getScheduledArrival());
-	//
-	//		return isDepartureOverlapping || isArrivalOverlapping;
-	//	}
-	//
-	//	private void validateDutyAssignment(final FlightAssignment flightAssignment) {
-	//		Collection<FlightAssignment> assignedDuties = this.repository.findFlightAssignmentByLegId(flightAssignment.getLeg().getId());
-	//
-	//		boolean legHasPilot = assignedDuties.stream().anyMatch(a -> a.getDuty().equals(DutyType.PILOT));
-	//
-	//		boolean legHasCoPilot = assignedDuties.stream().anyMatch(a -> a.getDuty().equals(DutyType.CO_PILOT));
-	//
-	//		super.state(!(flightAssignment.getDuty().equals(DutyType.PILOT) && legHasPilot), "*", "acme.validation.flight-assignment.leg-has-pilot.message");
-	//
-	//		super.state(!(flightAssignment.getDuty().equals(DutyType.CO_PILOT) && legHasCoPilot), "*", "acme.validation.flight-assignment.leg-has-copilot.message");
-	//	}
 	@Override
 	public void validate(final FlightAssignment assignment) {
 		if (super.getRequest().getData("leg", int.class) != 0) {
 			boolean notYetOccurred = MomentHelper.isAfter(assignment.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
 			super.state(notYetOccurred, "leg", "flight-crew-member.flight-assignment.leg-has-not-finished-yet");
 		}
+		Leg leg = assignment.getLeg();
+
+		if (leg == null)
+			super.state(false, "leg", "flightAssignment.error.leg-required");
+		else {
+			boolean isDraft = leg.isDraftMode();  // true si está en borrador (no publicado)
+			super.state(!isDraft, "leg", "flightAssignment.error.leg-not-published");
+		}
+
 	}
 
 	@Override
