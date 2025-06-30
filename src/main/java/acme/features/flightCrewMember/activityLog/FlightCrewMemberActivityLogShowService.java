@@ -52,7 +52,8 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 		SelectChoices selectedAssignments;
 		Collection<FlightAssignment> assignments;
 
-		assignments = this.repository.findAllAssignments();
+		int userId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		assignments = this.repository.findAssignmentsByFlightCrewMemberId(userId);
 		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
 
 		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
