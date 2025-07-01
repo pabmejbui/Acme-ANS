@@ -12,6 +12,8 @@
 
 package acme.entities.tasks;
 
+import javax.persistence.Table;
+import javax.persistence.Index;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
@@ -28,6 +30,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+    @Index(columnList = "technician_id")
+})
 public class Task extends AbstractEntity {
 	// Serialisation version --------------------------------------------------
 
@@ -38,7 +43,7 @@ public class Task extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@Automapped
-	private TaskType			taskType;
+	private TaskType			type;
 
 	@Mandatory
 	@ValidString(min = 1, max = 255)
@@ -51,13 +56,14 @@ public class Task extends AbstractEntity {
 	private Integer				priority;
 
 	@Mandatory
-	@ValidNumber(min = 0, max = 1000)
+	@ValidNumber(min = 1, max = 1000)
 	@Automapped
 	private Integer				estimatedDuration;
 
 	@Mandatory
+	@Valid
 	@Automapped
-	private boolean				draftMode;
+	private Boolean				draftMode;
 
 	// Relationships  ---------------------------------------------------------
 

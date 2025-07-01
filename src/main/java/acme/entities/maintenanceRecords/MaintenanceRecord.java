@@ -16,6 +16,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Index;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -36,6 +38,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+    @Index(columnList = "technician_id")
+})
 public class MaintenanceRecord extends AbstractEntity {
 	// Serialisation version --------------------------------------------------
 
@@ -46,15 +51,15 @@ public class MaintenanceRecord extends AbstractEntity {
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				maintenanceDate;
+	private Date				moment;
 
 	@Mandatory
 	@Valid
 	@Automapped
-	private MaintenanceStatus	maintenanceStatus;
+	private MaintenanceStatus	status;
 
 	@Mandatory
-	@ValidMoment(past = false)
+	@ValidMoment
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				nextInspectionDate;
 
@@ -69,8 +74,9 @@ public class MaintenanceRecord extends AbstractEntity {
 	private String				notes;
 
 	@Mandatory
+	@Valid
 	@Automapped
-	private boolean				draftMode;
+	private Boolean				draftMode;
 
 	// Relationships  ---------------------------------------------------------
 
