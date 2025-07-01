@@ -14,7 +14,6 @@
 	<acme:input-select code="manager.leg.form.label.originAirport" path="originAirport" choices="${originAirports}"/>
 	<acme:input-select code="manager.leg.form.label.destinationAirport" path="destinationAirport" choices="${destinationAirports}"/>
 	<acme:input-select code="manager.leg.form.label.aircraft" path="aircraft" choices="${aircrafts}"/>
-	<acme:input-select code="manager.leg.form.label.airline" path="airline" choices="${airlines}"/>
 
 	<input type="hidden" name="masterId" value="${masterId}" />
 

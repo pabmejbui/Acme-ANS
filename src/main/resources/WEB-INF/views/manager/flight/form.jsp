@@ -37,7 +37,9 @@
 			<acme:submit code="manager.flight.form.button.create" action="/manager/flight/create"/>
 		</jstl:when>		
 	</jstl:choose>
-	
-	<acme:button code="manager.leg.list.button.my-legs" action="/manager/leg/list?flightId=${flightId}" />
-	
+
+	<jstl:if test="${not empty flightId}">
+		<acme:button code="manager.leg.list.button.my-legs" action="/manager/leg/list?flightId=${flightId}" />
+	</jstl:if>
 </acme:form>
+
