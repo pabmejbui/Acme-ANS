@@ -13,5 +13,5 @@
 package acme.entities.tasks;
 
 public enum TaskType {
-	MAINTENANCE, INSPECTION, REPAIR, SYSTEM, CHECK
+	MAINTENANCE, INSPECTION, REPAIR, SYSTEM_CHECK
 }
