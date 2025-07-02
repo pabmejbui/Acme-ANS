@@ -52,7 +52,6 @@ public class ManagerFlightCreateService extends AbstractGuiService<Manager, Flig
 	public void validate(final Flight flight) {
 
 		if (!super.getBuffer().getErrors().hasErrors("cost")) {
-			super.state(flight.getCost().getAmount() > 0, "cost", "manager.flight.form.error.cost-must-be-positive");
 			List<SystemConfiguration> conf = this.repository.findSystemConfiguration();
 			final boolean foundCurrency = Stream.of(conf.get(0).getAcceptedCurrencies().split(",")).anyMatch(c -> c.equals(flight.getCost().getCurrency()));
 
