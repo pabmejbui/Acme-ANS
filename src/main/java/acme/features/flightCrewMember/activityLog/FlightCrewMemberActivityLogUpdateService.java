@@ -22,19 +22,43 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 	private FlightCrewMemberActivityLogRepository repository;
 
 
+	//	@Override
+	//	public void authorise() {
+	//		boolean status;
+	//		int logId;
+	//		FlightCrewMember member;
+	//		ActivityLog log;
+	//
+	//		logId = super.getRequest().getData("id", int.class);
+	//		log = this.repository.findActivityLogById(logId);
+	//		member = log == null ? null : log.getFlightAssignment().getFlightCrewMember();
+	//		status = member != null && super.getRequest().getPrincipal().hasRealm(member);
+	//
+	//		super.getResponse().setAuthorised(status);
+	//	}
 	@Override
 	public void authorise() {
-		boolean status;
+		boolean status = false;
+		boolean completed = false;
+		boolean method = true;
 		int logId;
-		FlightCrewMember member;
 		ActivityLog log;
+		int memberId;
 
-		logId = super.getRequest().getData("id", int.class);
-		log = this.repository.findActivityLogById(logId);
-		member = log == null ? null : log.getFlightAssignment().getFlightCrewMember();
-		status = member != null && super.getRequest().getPrincipal().hasRealm(member);
+		if (super.getRequest().getMethod().equals("GET"))
+			method = false;
+		else {
+			logId = super.getRequest().getData("id", int.class);
+			log = this.repository.findActivityLogById(logId);
+			memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		super.getResponse().setAuthorised(status);
+			if (log != null) {
+				status = log.getFlightAssignment().getFlightCrewMember().getId() == memberId && log.isDraftMode();
+				completed = MomentHelper.isBefore(log.getFlightAssignment().getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
+			}
+		}
+
+		super.getResponse().setAuthorised(status && completed && method);
 	}
 
 	@Override
@@ -48,6 +72,20 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 		super.getBuffer().addData(log);
 	}
 
+	//	@Override
+	//	public void bind(final ActivityLog log) {
+	//		Date now;
+	//		int assignmentId;
+	//		FlightAssignment assignment;
+	//
+	//		assignmentId = super.getRequest().getData("assignment", int.class);
+	//		assignment = this.repository.findFlightAssignmentById(assignmentId);
+	//		now = MomentHelper.getCurrentMoment();
+	//
+	//		super.bindObject(log, "incidentType", "description", "severity");
+	//		log.setRegistrationMoment(now);
+	//		log.setFlightAssignment(assignment);
+	//	}
 	@Override
 	public void bind(final ActivityLog log) {
 		Date now;
@@ -63,8 +101,23 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 		log.setFlightAssignment(assignment);
 	}
 
+	//	@Override
+	//	public void validate(final ActivityLog log) {
+	//		;
+	//	}
+	//	@Override
+	//	public void validate(final ActivityLog log) {
+	//		ActivityLog original = this.repository.findActivityLogById(log.getId());
+	//
+	//		// Asegura que no se cambie el FlightAssignment
+	//		super.state(log.getFlightAssignment().getId() == original.getFlightAssignment().getId(), "assignment", "acme.validation.activity-log.cannot-change-assignment");
+	//
+	//		// Asegura que el assignment esté publicado
+	//		super.state(!log.getFlightAssignment().isDraftMode(), "assignment", "acme.validation.activity-log.flight-assignment-not-published.message");
+	//
+	//	}
 	@Override
-	public void validate(final ActivityLog log) {
+	public void validate(final ActivityLog activityLog) {
 		;
 	}
 
@@ -73,13 +126,50 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 		this.repository.save(log);
 	}
 
+	//	@Override
+	//	public void unbind(final ActivityLog log) {
+	//		Dataset dataset;
+	//		SelectChoices selectedAssignments;
+	//		Collection<FlightAssignment> assignments;
+	//
+	//		assignments = this.repository.findAllAssignments();
+	//		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
+	//
+	//		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
+	//		dataset.put("assignments", selectedAssignments);
+	//		dataset.put("assignment", selectedAssignments.getSelected().getKey());
+	//
+	//		super.getResponse().addData(dataset);
+	//	}
+	//	@Override
+	//	public void unbind(final ActivityLog log) {
+	//		Dataset dataset;
+	//		SelectChoices selectedAssignments;
+	//		Collection<FlightAssignment> assignments;
+	//
+	//		int userId = super.getRequest().getPrincipal().getActiveRealm().getId();
+	//		assignments = this.repository.findAssignmentsByFlightCrewMemberId(userId);
+	//		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
+	//
+	//		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
+	//		dataset.put("assignments", selectedAssignments);
+	//		dataset.put("assignment", selectedAssignments.getSelected().getKey());
+	//
+	//		super.getResponse().addData(dataset);
+	//	}
 	@Override
 	public void unbind(final ActivityLog log) {
 		Dataset dataset;
 		SelectChoices selectedAssignments;
 		Collection<FlightAssignment> assignments;
 
-		assignments = this.repository.findAllAssignments();
+		int userId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		assignments = this.repository.findPublishedAssignmentsByFlightCrewMemberId(userId);
+
+		// Asegurarse de incluir el assignment actual, aunque esté en draftMode
+		if (!assignments.contains(log.getFlightAssignment()))
+			assignments.add(log.getFlightAssignment());
+
 		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
 
 		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
@@ -88,4 +178,5 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 
 		super.getResponse().addData(dataset);
 	}
+
 }

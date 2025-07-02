@@ -22,11 +22,31 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 	private FlightCrewMemberActivityLogRepository repository;
 
 
+	//	@Override
+	//	public void authorise() {
+	//		super.getResponse().setAuthorised(true);
+	//	}
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
-	}
+		boolean status = false;
+		int userId, assignmentId;
+		FlightAssignment assignment;
 
+		userId = super.getRequest().getPrincipal().getActiveRealm().getId();
+
+		// Solo comprobamos el assignment en POST
+		if (super.getRequest().getMethod().equalsIgnoreCase("POST")) {
+			if (super.getRequest().getData().containsKey("assignment")) {
+				assignmentId = super.getRequest().getData("assignment", int.class);
+				assignment = this.repository.findFlightAssignmentById(assignmentId);
+				status = assignment != null && assignment.getFlightCrewMember().getId() == userId;
+			}
+		} else
+			// En GET basta con que esté autenticado
+			status = true;
+
+		super.getResponse().setAuthorised(status);
+	}
 	@Override
 	public void load() {
 		ActivityLog log;
@@ -50,13 +70,42 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		super.bindObject(log, "incidentType", "description", "severity");
 		log.setRegistrationMoment(now);
 		log.setFlightAssignment(assignment);
+		log.setDraftMode(true);
 	}
 
+	//	@Override
+	//	public void validate(final ActivityLog log) {
+	//		;
+	//	}
+	//	@Override
+	//	public void validate(final ActivityLog log) {
+	//		FlightAssignment assignment = log.getFlightAssignment();
+	//
+	//		// Validar que el vuelo esté publicado
+	//		if (assignment.isDraftMode())
+	//			super.state(false, "assignment", "acme.validation.activity-log.assignment-not-published");
+	//
+	//		// Validar que el vuelo esté en el futuro
+	//		if (!MomentHelper.isAfter(assignment.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment()))
+	//			super.state(false, "assignment", "acme.validation.activity-log.assignment-not-in-future");
+	//	}
 	@Override
 	public void validate(final ActivityLog log) {
-		;
-	}
+		FlightAssignment assignment = log.getFlightAssignment();
+		Date now = MomentHelper.getCurrentMoment();
+		Date scheduledArrival = assignment.getLeg().getScheduledArrival();
 
+		// Validar que el assignment esté publicado
+		super.state(!assignment.isDraftMode(), "assignment", "acme.validation.activity-log.assignment-not-published");
+
+		// Validar que la leg asociada al assignment esté publicada
+		super.state(!assignment.getLeg().isDraftMode(), "assignment", "acme.validation.activity-log.leg-not-published");
+
+		// Validar que la leg haya terminado (es decir, que ya haya llegado)
+		boolean legHasEnded = MomentHelper.isBefore(scheduledArrival, now);
+		super.state(legHasEnded, "assignment", "acme.validation.activity-log.leg-not-ended");
+
+	}
 	@Override
 	public void perform(final ActivityLog log) {
 		this.repository.save(log);
@@ -72,10 +121,10 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		assignments = this.repository.findAssignmentsByFlightCrewMemberId(userId);
 		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
 
-		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
+		dataset = super.unbindObject(log, "incidentType", "description", "severity", "draftMode");
 		dataset.put("assignments", selectedAssignments);
 		dataset.put("assignment", selectedAssignments.getSelected().getKey());
-
+		dataset.put("readonly", false);
 		super.getResponse().addData(dataset);
 	}
 
