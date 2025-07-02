@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
@@ -22,43 +23,50 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int logId;
-		FlightCrewMember member;
-		ActivityLog log;
+		boolean authorised = false;
 
-		logId = super.getRequest().getData("id", int.class);
-		log = this.repository.findActivityLogById(logId);
-		member = log == null ? null : log.getFlightAssignment().getFlightCrewMember();
-		status = member != null && super.getRequest().getPrincipal().hasRealm(member);
+		if (super.getRequest().hasData("id"))
+			try {
+				int logId = super.getRequest().getData("id", int.class);
+				ActivityLog log = this.repository.findActivityLogById(logId);
 
-		super.getResponse().setAuthorised(status);
+				if (log != null) {
+					boolean isOwner = super.getRequest().getPrincipal().hasRealm(log.getFlightAssignment().getFlightCrewMember());
+					boolean flightFinished = MomentHelper.isBefore(log.getFlightAssignment().getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
+					authorised = isOwner && flightFinished;
+				}
+			} catch (NumberFormatException e) {
+				authorised = false;
+			}
+
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
 	public void load() {
-		ActivityLog log;
-		int logId;
-
-		logId = super.getRequest().getData("id", int.class);
-		log = this.repository.findActivityLogById(logId);
-
+		int logId = super.getRequest().getData("id", int.class);
+		ActivityLog log = this.repository.findActivityLogById(logId);
 		super.getBuffer().addData(log);
 	}
 
 	@Override
 	public void unbind(final ActivityLog log) {
 		Dataset dataset;
-		SelectChoices selectedAssignments;
 		Collection<FlightAssignment> assignments;
+		SelectChoices assignmentChoices;
 
 		int userId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		assignments = this.repository.findAssignmentsByFlightCrewMemberId(userId);
-		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
+		assignments = this.repository.findPublishedAssignmentsByFlightCrewMemberId(userId);
+
+		// Nos aseguramos de que el assignment del log esté incluido aunque sea draft
+		if (!assignments.contains(log.getFlightAssignment()))
+			assignments.add(log.getFlightAssignment());
+
+		assignmentChoices = SelectChoices.from(assignments, "id", log.getFlightAssignment());
 
 		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
-		dataset.put("assignments", selectedAssignments);
-		dataset.put("assignment", selectedAssignments.getSelected().getKey());
+		dataset.put("assignments", assignmentChoices);
+		dataset.put("assignment", assignmentChoices.getSelected().getKey());
 
 		super.getResponse().addData(dataset);
 	}
