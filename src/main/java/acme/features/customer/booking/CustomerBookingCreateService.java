@@ -77,7 +77,6 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		Dataset dataset;
 		SelectChoices travelClasses;
 		SelectChoices flightChoices = new SelectChoices();
-		;
 		Collection<Flight> flights;
 
 		travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
