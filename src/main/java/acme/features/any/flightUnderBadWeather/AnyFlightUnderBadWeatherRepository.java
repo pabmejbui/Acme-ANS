@@ -13,7 +13,7 @@ import acme.entities.flights.Flight;
 @Repository
 public interface AnyFlightUnderBadWeatherRepository extends AbstractRepository {
 
-	@Query("SELECT f FROM Flight f WHERE f.draftMode = false AND f.cost.amount IS NOT NULL AND f.cost.currency IS NOT NULL AND f.manager IS NOT NULL")
+	@Query("SELECT f FROM Flight f WHERE f.draftMode = false")
 	Collection<Flight> findAllPublishedFlights();
 
 	@Query("SELECT MIN(wc.reportTime) FROM WeatherCondition wc")

@@ -16,12 +16,10 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="any.flight-under-bad-weather.list.label.tag" path="tag"/>
-	<acme:list-column code="any.flight-under-bad-weather.list.label.origin" path="originCity"/>
-	<acme:list-column code="any.flight-under-bad-weather.list.label.destination" path="destinationCity"/>
-	<acme:list-column code="any.flight-under-bad-weather.list.label.departure" path="departure"/>
-	<acme:list-column code="any.flight-under-bad-weather.list.label.arrival" path="arrival"/>
+    <acme:list-column code="any.flight.list.label.tag" path="tag" />
+    <acme:list-column code="any.flight.list.label.originCity" path="originCity" />
+    <acme:list-column code="any.flight.list.label.destinationCity" path="destinationCity" />
+    <acme:list-column code="any.flight.list.label.scheduledDeparture" path="scheduledDeparture" />
+    <acme:list-column code="any.flight.list.label.scheduledArrival" path="scheduledArrival" />
 </acme:list>
-
-
 

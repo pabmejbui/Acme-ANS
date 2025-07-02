@@ -18,10 +18,10 @@ public interface FlightRepository extends AbstractRepository {
 	@Query("select max(l.scheduledArrival) from Leg l where l.flight.id = :flightId")
 	Date findScheduledArrival(int flightId);
 
-	@Query("select l.destinationAirport.city from Leg l where l.flight.id = :flightId and l.scheduledDeparture = :departure")
+	@Query("select l.originAirport.city from Leg l where l.flight.id = :flightId and l.scheduledDeparture = :departure")
 	String findOriginCity(int flightId, Date departure);
 
-	@Query("select l.originAirport.city from Leg l where l.flight.id = :flightId and l.scheduledArrival = :arrival")
+	@Query("select l.destinationAirport.city from Leg l where l.flight.id = :flightId and l.scheduledArrival = :arrival")
 	String findDestinationCity(int flightId, Date arrival);
 
 	@Query("select count(l) from Leg l where l.flight.id = :flightId")

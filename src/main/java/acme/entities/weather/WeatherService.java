@@ -21,9 +21,10 @@ public class WeatherService {
 	private WeatherConditionRepository	repository;
 
 
-	public WeatherCondition getWeather(final String city) {
+	public WeatherCondition getWeather(final String city, final String country) {
 		RestTemplate restTemplate = new RestTemplate();
-		String url = String.format("%s?q=%s&units=metric&appid=%s", this.apiUrl, city, this.apiKey);
+		String location = city + "," + country;
+		String url = String.format("%s?q=%s&units=metric&appid=%s", this.apiUrl, location, this.apiKey);
 
 		WeatherResponse weatherResponse = restTemplate.getForObject(url, WeatherResponse.class);
 
@@ -45,7 +46,7 @@ public class WeatherService {
 				this.repository.save(weatherCondition);
 				return weatherCondition;
 			} else
-				throw new RuntimeException("⛔ Registro duplicado. Ya existe una condición meteorológica reciente para esta ciudad.");
+				throw new RuntimeException("⛔ Registro duplicado. Ya existe una condición meteorológica reciente para esta ciudad y país.");
 		}
 
 		throw new RuntimeException("⛔ No se pudo obtener datos del clima.");
@@ -56,5 +57,4 @@ public class WeatherService {
 		long truncated = date.getTime() / millisPerMinute * millisPerMinute;
 		return new Date(truncated);
 	}
-
 }

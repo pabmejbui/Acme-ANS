@@ -16,9 +16,9 @@ public class WeatherController {
 
 
 	@GetMapping("/weather")
-	public Object getWeather(@RequestParam final String city) {
+	public Object getWeather(@RequestParam final String city, @RequestParam final String country) {
 		try {
-			return this.weatherService.getWeather(city);
+			return this.weatherService.getWeather(city, country);
 		} catch (RuntimeException ex) {
 			return Map.of("message", ex.getMessage());
 		}
