@@ -1,4 +1,48 @@
 key,licenseNumber,phoneNumber,specialisation,healthTestPassed,yearsOfExperience,certifications,key:user-account
+# base
 technician-01,AB123456,+123456789,None,false,0,None,user-account-technician-01
 technician-02,XYZ987654,+987654321,Electronics,true,25,Certified Electronics Technician (CET),user-account-technician-02
 techinician-03,XXX987655,+34600900800,Suspension,true,60,Bilstein evo s,user-account-technician-03
+# licenseNumber variations
+technician-04,AA000000,+123456789,None,false,0,None,user-account-technician-01
+technician-05,AA000001,+123456789,None,false,0,None,user-account-technician-01
+technician-06,AAA000000,+123456789,None,false,0,None,user-account-technician-01
+technician-07,AAA000001,+123456789,None,false,0,None,user-account-technician-01
+technician-08,ZZ999998,+123456789,None,false,0,None,user-account-technician-01
+technician-09,ZZ999999,+123456789,None,false,0,None,user-account-technician-01
+technician-10,ZZZ999998,+123456789,None,false,0,None,user-account-technician-01
+technician-11,ZZZ999999,+123456789,None,false,0,None,user-account-technician-01
+# phoneNumber variations
+technician-12,AB123457,000000,None,false,0,None,user-account-technician-01
+technician-13,AB123458,000001,None,false,0,None,user-account-technician-01
+technician-14,AB123459,+999999999999998,None,false,0,None,user-account-technician-01
+technician-15,AB123460,+999999999999999,None,false,0,None,user-account-technician-01
+# specialisation variations
+technician-16,AB123461,+123456789,L,false,0,None,user-account-technician-01
+technician-17,AB123462,+123456789,Lo,false,0,None,user-account-technician-01
+technician-18,AB123463,+123456789,"Lorem ipsum dolor sit amet, consectetur adipiscin",false,0,None,user-account-technician-01
+technician-19,AB123464,+123456789,"Lorem ipsum dolor sit amet, consectetur adipiscing",false,0,None,user-account-technician-01
+technician-20,AB123465,+123456789,โลเร็ม อิปซัม,false,0,None,user-account-technician-01
+technician-21,AB123466,+123456789,لوريم إيبسوم,false,0,None,user-account-technician-01
+technician-22,AB123467,+123456789,洛伦·伊普森,false,0,None,user-account-technician-01
+technician-23,AB123468,+123456789,<marquee>Hacked</marquee>,false,0,None,user-account-technician-01
+technician-24,AB123469,+123456789,<script>alert(‘Hacked!’);</script>,false,0,None,user-account-technician-01
+technician-25,AB123470,+123456789,' or 'A' = 'A,false,0,None,user-account-technician-01
+# healthTestPassed variations
+technician-26,AB123471,+123456789,None,true,0,None,user-account-technician-01
+# yearsOfExperience variations
+technician-27,AB123472,+123456789,None,false,0,None,user-account-technician-01
+technician-28,AB123473,+123456789,None,false,1,None,user-account-technician-01
+technician-29,AB123474,+123456789,None,false,119,None,user-account-technician-01
+technician-30,AB123475,+123456789,None,false,120,None,user-account-technician-01
+# certifications variations
+technician-31,AB123476,+123456789,None,false,0,"",user-account-technician-01
+technician-32,AB123477,+123456789,None,false,0,L,user-account-technician-01
+technician-33,AB123478,+123456789,None,false,0,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.,user-account-technician-01
+technician-34,AB123479,+123456789,None,false,0,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor..,user-account-technician-01
+technician-35,AB123480,+123456789,None,false,0,โลเร็ม อิปซัม,user-account-technician-01
+technician-36,AB123481,+123456789,None,false,0,لوريم إيبسوم,user-account-technician-01
+technician-37,AB123482,+123456789,None,false,0,洛伦·伊普森,user-account-technician-01
+technician-38,AB123483,+123456789,None,false,0,<marquee>Hacked</marquee>,user-account-technician-01
+technician-39,AB123484,+123456789,None,false,0,<script>alert(‘Hacked!’);</script>,user-account-technician-01
+technician-40,AB123485,+123456789,None,false,0,' or 'A' = 'A,user-account-technician-01

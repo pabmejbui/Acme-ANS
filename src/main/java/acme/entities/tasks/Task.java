@@ -12,10 +12,10 @@
 
 package acme.entities.tasks;
 
-import javax.persistence.Table;
-import javax.persistence.Index;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -56,14 +56,13 @@ public class Task extends AbstractEntity {
 	private Integer				priority;
 
 	@Mandatory
-	@ValidNumber(min = 1, max = 1000)
+	@ValidNumber(min = 0, max = 1000)
 	@Automapped
 	private Integer				estimatedDuration;
 
 	@Mandatory
-	@Valid
 	@Automapped
-	private Boolean				draftMode;
+	private boolean				draftMode;
 
 	// Relationships  ---------------------------------------------------------
 
