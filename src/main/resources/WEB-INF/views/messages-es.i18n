@@ -31,6 +31,7 @@ flight.validation.flightNumber.not-null = El número de vuelo no puede estar vac
 flight.validation.flightNumber.bad-format = El número de vuelo debe tener tres letras mayúsculas seguidas de cuatro dígitos (ejemplo: AMX1234).
 flight.validation.flightNumber.missing-airline = No se puede determinar el código IATA de la aerolínea para este vuelo.
 flight.validation.flightNumber.mismatch = El número de vuelo debe comenzar con el código IATA de la aerolínea.
+acme.validation.manager.leg.flight-number.incomplete=Debe proporcionar el número de vuelo, la aeronave y la aerolínea.
 
 # Mensajes de validación de la etiqueta de vuelo #########################################################
 
@@ -67,7 +68,8 @@ manager.flight.not-owner = No tienes permiso para modificar este vuelo.
 manager.flight.not-in-draft = Solo puedes modificar, eliminar o publicar vuelos que estén en modo borrador.
 acme.validation.manager.flight.publish.requires-legs = Un vuelo debe tener al menos una escala antes de poder publicarse.
 acme.validation.manager.flight.publish.all-legs-must-be-published = Todas las escalas deben estar publicadas para poder publicar el vuelo.
-
+manager.flight.delete.error.flight-linked-bookings = No puedes borrar este vuelo porque tiene reservas asociadas
+manager.flight.delete.error.flight-linked-legs=No puedes borrar este vuelo porque tiene etapas asociadas
 
 # Mensajes de validación de las etapas de un vuelo de un manager ###############################################
 
@@ -84,6 +86,14 @@ acme.validation.manager.leg.valid-leg.time-conflict = La llegada debe ser al men
 acme.validation.manager.leg.valid-leg.sequence-order = Las etapas del vuelo deben estar en orden cronológico: cada llegada debe ser anterior a la siguiente salida.
 acme.validation.manager.leg.flight-number.format.message = El número de vuelo debe comenzar con el código IATA de la aerolínea seguido de 4 dígitos.
 acme.validation.leg.flight-number.duplicate.message = Ya existe otra etapa con el mismo número de vuelo.
+acme.validation.manager.leg.aircraft-required=Debe seleccionar una aeronave.
+acme.validation.manager.leg.origin-required=Debe seleccionar un aeropuerto de origen.
+acme.validation.manager.leg.destination-required=Debe seleccionar un aeropuerto de destino.
+acme.validation.manager.leg.flight-number-required=El número de vuelo no puede estar vacío.
+acme.validation.manager.leg.valid-leg.unrealistic-duration = La duración de la etapa es irreal (debe ser menor a 12 horas).
+acme.validation.manager.leg.not-connected-to-next = Esta etapa no conecta correctamente con la siguiente etapa.
+acme.validation.manager.leg.delete.has-claims = No puedes borrar un leg con claims asociadas.
+
 
 # Booking validation messages #########################################################
 acme.validation.booking.locator-code.message = Código localizador tiene un formato incorrecto.

@@ -1,10 +1,13 @@
 
 package acme.features.manager.leg;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.claims.Claim;
 import acme.entities.flights.Leg;
 import acme.realms.manager.Manager;
 
@@ -38,6 +41,10 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void validate(final Leg leg) {
 		super.state(leg.isDraftMode(), "*", "acme.validation.manager.leg.leg-not-in-draft");
+
+		Collection<Claim> claims = this.repository.findClaimsByLegId(leg.getId());
+		super.state(claims.isEmpty(), "*", "acme.validation.manager.leg.delete.has-claims");
+
 	}
 
 	@Override

@@ -15,7 +15,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
-import acme.constraints.flights.ValidTag;
+import acme.constraints.flights.ValidFlight;
 import acme.realms.manager.Manager;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +23,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidFlight
 public class Flight extends AbstractEntity {
 
 	// Serialisation version
@@ -32,7 +33,7 @@ public class Flight extends AbstractEntity {
 	// Attributes
 
 	@Mandatory
-	@ValidTag
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				tag;
 
@@ -103,16 +104,6 @@ public class Flight extends AbstractEntity {
 		FlightRepository repository;
 		repository = SpringHelper.getBean(FlightRepository.class);
 		result = repository.countLayovers(this.getId());
-		return result;
-	}
-
-	@Transient
-	public boolean isAvailable() {
-		boolean result;
-		FlightRepository repository;
-		repository = SpringHelper.getBean(FlightRepository.class);
-		result = !this.draftMode && repository.publishedLegs(this.getId()) != null;
-
 		return result;
 	}
 

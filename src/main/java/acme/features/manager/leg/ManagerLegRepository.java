@@ -9,6 +9,7 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.aircrafts.Aircraft;
 import acme.entities.airlines.Airline;
 import acme.entities.airports.Airport;
+import acme.entities.claims.Claim;
 import acme.entities.flights.Leg;
 
 public interface ManagerLegRepository extends AbstractRepository {
@@ -30,4 +31,11 @@ public interface ManagerLegRepository extends AbstractRepository {
 
 	@Query("select a from Airline a")
 	Collection<Airline> findAllAirlines();
+
+	@Query("SELECT l FROM Leg l WHERE l.flight.id = :flightId")
+	Collection<Leg> findLegsByFlightId(int flightId);
+
+	@Query("SELECT c FROM Claim c WHERE c.leg.id = :id")
+	Collection<Claim> findClaimsByLegId(int id);
+
 }
