@@ -91,8 +91,7 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 			String flightData = String.format("%s --- Dest: %s ---  %s", tag, destination, depDateStr);
 
 			dataset.put("flightData", flightData);
-		} else
-			dataset.put("flightData", "---");
+		}
 
 		dataset.put("bookingCost", booking.getCost());
 		dataset.put("travelClasses", travelClasses);
