@@ -69,7 +69,6 @@ Flight
 + originCity: String {Transient}
 + destinationCity: String {Transient}
 + numberOfLayovers: Integer {Transient}
-+ isAvailabre: Boolean {Transient}
 
 bg=green</panel_attributes>
     <additional_attributes/>

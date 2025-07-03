@@ -31,6 +31,7 @@ flight.validation.flightNumber.not-null = Flight number cannot be null or empty.
 flight.validation.flightNumber.bad-format = Flight number must have three uppercase letters followed by four digits (e.g., AMX1234).
 flight.validation.flightNumber.missing-airline = Cannot determine airline IATA code for this flight.
 flight.validation.flightNumber.mismatch = Flight number must start with the airline’s IATA code.
+acme.validation.manager.leg.flight-number.incomplete=Flight number, aircraft and airline must be provided.
 
 # Flight tag validation messages #########################################################
 
@@ -67,6 +68,8 @@ manager.flight.not-owner = You do not have permission to modify this flight.
 manager.flight.not-in-draft = You can only modify, delete or publish flights that are in draft mode.
 acme.validation.manager.flight.publish.requires-legs = A flight must have at least one leg before it can be published.
 acme.validation.manager.flight.publish.all-legs-must-be-published = All legs must be published before the flight can be published.
+manager.flight.delete.error.flight-linked-bookings=Cannot delete this flight because it has associated bookings.
+manager.flight.delete.error.flight-linked-legs=Cannot delete this flight because it has legs assigned.
 
 # Manager Leg messages ##############################################################
 acme.validation.manager.leg.departure-equals-arrival = The origin and destination airports cannot be the same.
@@ -82,6 +85,14 @@ acme.validation.manager.leg.valid-leg.time-conflict = The arrival must be at lea
 acme.validation.manager.leg.valid-leg.sequence-order = The flight legs must be in chronological order: each arrival must be before the next departure.
 acme.validation.manager.leg.flight-number.format.message = The flight number must start with the airline's IATA code followed by 4 digits.
 acme.validation.manager.leg.flight-number.duplicate.message = Another leg with the same flight number already exists.
+acme.validation.manager.leg.aircraft-required=You must select an aircraft.
+acme.validation.manager.leg.origin-required=You must select an origin airport.
+acme.validation.manager.leg.destination-required=You must select a destination airport.
+acme.validation.manager.leg.flight-number-required=The flight number cannot be empty.
+acme.validation.manager.leg.valid-leg.unrealistic-duration = The duration of the leg is unrealistic (must be under 12 hours).
+acme.validation.manager.leg.not-connected-to-next = This leg does not connect correctly to the next leg.
+acme.validation.manager.leg.delete.has-claims = Cannot delete this leg because it has associated claims.
+
 
 # Booking validation messages #########################################################
 acme.validation.booking.locator-code.message = Locator Code has an incorrect format

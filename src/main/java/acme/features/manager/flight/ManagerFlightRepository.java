@@ -35,4 +35,11 @@ public interface ManagerFlightRepository extends AbstractRepository {
 
 	@Query("SELECT sc FROM SystemConfiguration sc")
 	List<SystemConfiguration> findSystemConfiguration();
+
+	@Query("SELECT COUNT(b) > 0 FROM Booking b WHERE b.flight.id = :flightId")
+	boolean existsBookingsForFlight(int flightId);
+
+	@Query("SELECT COUNT(l) > 0 FROM Leg l WHERE l.flight.id = :flightId")
+	boolean existsLegsForFlight(int flightId);
+
 }

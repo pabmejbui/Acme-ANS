@@ -22,40 +22,6 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 	private FlightCrewMemberActivityLogRepository repository;
 
 
-	//	@Override
-	//	public void authorise() {
-	//		super.getResponse().setAuthorised(true);
-	//	}
-	//	@Override
-	//	public void authorise() {
-	//		boolean status = false;
-	//		int assignmentId;
-	//		int memberId;
-	//		boolean transientId = true;
-	//
-	//		// Detectar si se está haciendo un POST con un objeto que ya tiene ID (es decir, reenvío de formulario)
-	//		if (super.getRequest().getMethod().equals("POST") && super.getRequest().getData("id", int.class) != 0)
-	//			transientId = false;
-	//
-	//		if (super.getRequest().getMethod().equals("GET") && super.getRequest().getData().containsKey("id"))
-	//			transientId = false;
-	//
-	//		// Obtener el ID del crew member logueado
-	//		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-	//
-	//		// Obtener el assignment
-	//		assignmentId = super.getRequest().getData("assignment", int.class);
-	//		FlightAssignment assignment = this.repository.findFlightAssignmentById(assignmentId);
-	//
-	//		// Validar si pertenece al usuario y si el vuelo ya ha terminado
-	//		if (assignment != null) {
-	//			boolean belongsToMember = assignment.getFlightCrewMember().getId() == memberId;
-	//			boolean flightFinished = MomentHelper.isBefore(assignment.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
-	//			status = belongsToMember && flightFinished;
-	//		}
-	//
-	//		super.getResponse().setAuthorised(status && transientId);
-	//	}
 	@Override
 	public void authorise() {
 		boolean status = false;

@@ -28,27 +28,25 @@ public class FlightNumberValidator extends AbstractValidator<ValidFlightNumber, 
 
 		boolean result = true;
 
-		if (leg == null) {
-			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-			result = false;
-		} else {
-			String flightNumber = leg.getFlightNumber();
-			String airlineIataCode = leg.getAircraft().getAirline().getIataCode();
-
-			// Validación del formato del número de vuelo
-			String pattern = "^" + airlineIataCode + "\\d{4}$";
-			boolean validFormat = flightNumber.matches(pattern);
-
-			super.state(context, validFormat, "flightNumber", "acme.validation.manager.leg.flight-number.format.message");
-			result = result && validFormat;
-
-			// Validación de unicidad del número de vuelo
-			Leg existingLeg = this.repository.findLegByFlightNumber(flightNumber);
-			boolean uniqueFlightNumber = existingLeg == null || existingLeg.equals(leg);
-
-			super.state(context, uniqueFlightNumber, "flightNumber", "acme.validation.manager.leg.flight-number.duplicate.message");
-			result = result && uniqueFlightNumber;
+		if (leg == null || leg.getAircraft() == null || leg.getAircraft().getAirline() == null || leg.getFlightNumber() == null) {
+			super.state(context, false, "flightNumber", "acme.validation.manager.leg.flight-number.incomplete");
+			return false;
 		}
+
+		String flightNumber = leg.getFlightNumber();
+		String airlineIataCode = leg.getAircraft().getAirline().getIataCode();
+
+		String pattern = "^" + airlineIataCode + "\\d{4}$";
+		boolean validFormat = flightNumber.matches(pattern);
+
+		super.state(context, validFormat, "flightNumber", "acme.validation.manager.leg.flight-number.format.message");
+		result = result && validFormat;
+
+		Leg existingLeg = this.repository.findLegByFlightNumber(flightNumber);
+		boolean uniqueFlightNumber = existingLeg == null || existingLeg.equals(leg);
+
+		super.state(context, uniqueFlightNumber, "flightNumber", "acme.validation.manager.leg.flight-number.duplicate.message");
+		result = result && uniqueFlightNumber;
 
 		return result;
 	}
