@@ -23,16 +23,36 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 	private FlightCrewMemberFlightAssignmentRepository repository;
 
 
+	//	@Override
+	//	public void authorise() {
+	//		boolean status;
+	//		int id;
+	//		FlightAssignment assignment;
+	//
+	//		id = super.getRequest().getData("id", int.class);
+	//		assignment = this.repository.findFlightAssignmentById(id);
+	//
+	//		status = assignment.isDraftMode();
+	//		super.getResponse().setAuthorised(status);
+	//	}
 	@Override
 	public void authorise() {
-		boolean status;
+		boolean status = false;
 		int id;
 		FlightAssignment assignment;
+		int currentUserId;
 
+		// Obtiene el ID del assignment recibido desde el request
 		id = super.getRequest().getData("id", int.class);
 		assignment = this.repository.findFlightAssignmentById(id);
 
-		status = assignment.isDraftMode();
+		// ID del usuario actualmente autenticado
+		currentUserId = super.getRequest().getPrincipal().getActiveRealm().getId();
+
+		// Solo autoriza si el assignment está en borrador y pertenece al usuario actual
+		if (assignment != null)
+			status = assignment.isDraftMode() && assignment.getFlightCrewMember().getId() == currentUserId;
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -45,23 +65,6 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		super.getBuffer().addData(assignment);
 	}
 
-	//	@Override
-	//	public void bind(final FlightAssignment assignment) {
-	//		int legId;
-	//		Leg leg;
-	//		int memberId;
-	//		FlightCrewMember member;
-	//
-	//		legId = super.getRequest().getData("leg", int.class);
-	//		leg = this.repository.findLegById(legId);
-	//		memberId = super.getRequest().getData("member", int.class);
-	//		member = this.repository.findFlightCrewMemberById(memberId);
-	//
-	//		super.bindObject(assignment, "duty", "status", "remarks");
-	//		assignment.setLastUpdate(MomentHelper.getCurrentMoment());
-	//		assignment.setLeg(leg);
-	//		assignment.setFlightCrewMember(member);
-	//	}
 	@Override
 	public void bind(final FlightAssignment assignment) {
 		int legId;
@@ -94,34 +97,6 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		this.repository.save(assignment);
 	}
 
-	//	@Override
-	//	public void unbind(final FlightAssignment assignment) {
-	//		Dataset dataset;
-	//		SelectChoices statuses;
-	//		SelectChoices duties;
-	//		Collection<Leg> legs;
-	//		SelectChoices selectedLegs;
-	//		Collection<FlightCrewMember> members;
-	//		SelectChoices selectedMembers;
-	//
-	//		legs = this.repository.findAllLegs();
-	//		members = this.repository.findAllFlightCrewMembers();
-	//
-	//		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
-	//		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
-	//		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
-	//		selectedMembers = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
-	//
-	//		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
-	//		dataset.put("statuses", statuses);
-	//		dataset.put("duties", duties);
-	//		dataset.put("leg", selectedLegs.getSelected().getKey());
-	//		dataset.put("legs", selectedLegs);
-	//		dataset.put("member", selectedMembers.getSelected().getKey());
-	//		dataset.put("members", selectedMembers);
-	//
-	//		super.getResponse().addData(dataset);
-	//	}
 	@Override
 	public void unbind(final FlightAssignment assignment) {
 		Dataset dataset;
