@@ -117,3 +117,16 @@ airline.validation.foundation.future = El momento de la fundación no puede ser 
 
 # Mensajes de validación de aeronaves ########################################################
 aircraft.validation.registration.duplicate = El número de registro ya está en uso. Prueba con otro.
+
+# Mensajes de validación de técnicos ##########################################################
+acme.validation.technician.maintenance-record.noStatus.message = No se ha seleccionado ningún estado
+acme.validation.technician.maintenance-record.nextInspectionDate.message = La fecha y hora de la próxima inspección debe ser posterior al momento actual
+acme.validation.technician.maintenance-record.estimatedCost.message = El coste estimado debe ser mayor o igual a 0.00, y menor o igual a 1000000.00
+acme.validation.technician.maintenance-record.notes.message = La longitud máxima de las anotaciones es de 255 caractéres
+acme.validation.technician.maintenance-record.aircraft.message = El avión seleccionado no existe
+acme.validation.technician.maintenance-record.published.message = Para publicar un registro, tiene que estar relacionado con al menos una tarea y todas las tareas tienen que estar publicadas
+acme.validation.technician.task.noType.message = No se ha seleccionado ningún tipo
+acme.validation.technician.task.description.message =  La longitud máxima de la descripción es de 255 caractéres
+acme.validation.technician.task.priority.message = La prioridad debe ser mayor o igual a 0, y menor o igual a 10
+acme.validation.technician.task.estimatedDuration.message = La duración estimada debe ser mayor o igual a 0, y menor o igual a 1000
+acme.validation.technician.involves.noTask.message = No puede ser nulo
