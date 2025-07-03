@@ -60,6 +60,19 @@ acme.validation.promoCode.message = The promo code is invalid
 acme.validation.promoCode.bad-format-code.message = The promo code format is invalid. Please enter a valid promo code.
 acme.validation.promoCode.invalid-year.message = The last two digits of the promo code must match the current year (e.g., -{0}).
 
+# Technician validation messages #########################################################
+acme.validation.technician.maintenance-record.noStatus.message = Any status has been selected
+acme.validation.technician.maintenance-record.nextInspectionDate.message =  The date and time of the next inspection must be after the current moment
+acme.validation.technician.maintenance-record.estimatedCost.message = The estimated cost must be greater than or equal to 0.00, and less than or equal to 1000000.00
+acme.validation.technician.maintenance-record.notes.message = The maximum length of notes is 255 characters
+acme.validation.technician.maintenance-record.aircraft.message = The selected aircraft does not exist
+acme.validation.technician.maintenance-record.published.message = To publish a maintenance record, it must be related to at least one task, and all tasks must be published
+acme.validation.technician.task.noType.message = Any type has been selected
+acme.validation.technician.task.description.message =  The maximum length of description is 255 characters
+acme.validation.technician.task.priority.message = The priority must be greater than or equal to 0, and less than or equal to 10
+acme.validation.technician.task.estimatedDuration.message = The estimated duration must be greater than or equal to 0, and less than or equal to 1000
+acme.validation.technician.involves.noTask.message = May not be null
+
 # Manager flight messages #########################################################
 manager.flight.form.error.cost-must-be-positive = The cost of the flight must be positive
 manager.flight.form.error.currency-not-supported = The currency is not supported. The supported currencies are EUR, GBP or USD.
