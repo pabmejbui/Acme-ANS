@@ -4,7 +4,9 @@ package acme.entities.flights;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import acme.client.components.basis.AbstractEntity;
@@ -24,6 +26,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidFlight
+@Table(indexes = {
+	@Index(columnList = "tag"), @Index(columnList = "draftMode"), @Index(columnList = "selfTransfer"), @Index(columnList = "manager_id")
+})
+
 public class Flight extends AbstractEntity {
 
 	// Serialisation version
