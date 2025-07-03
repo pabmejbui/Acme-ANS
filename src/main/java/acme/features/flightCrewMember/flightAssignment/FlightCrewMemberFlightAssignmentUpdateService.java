@@ -106,7 +106,7 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		SelectChoices selectedLegs;
 		// Ya no se necesita la colección de 'members' ni 'selectedMembers'
 
-		legs = this.repository.findAllLegs();
+		legs = this.repository.findPublishedFutureLegs(MomentHelper.getCurrentMoment());
 
 		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
 		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
