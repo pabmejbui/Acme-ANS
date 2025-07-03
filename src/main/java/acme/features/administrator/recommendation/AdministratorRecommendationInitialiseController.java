@@ -100,9 +100,8 @@ public class AdministratorRecommendationInitialiseController {
 		List<Airport> allAirports = this.repository.findAllAirports();
 		int totalInsertedCount = 0;
 
-		//Si queremos consumir la API comentar linea 105 y descomentar linea 106
+		//Controla para usar api o mock (modificar dependiendo de donde se quiere ejecutar)
 		boolean useMock = SpringHelper.isRunningOn("development") || SpringHelper.isRunningOn("tester") || SpringHelper.isRunningOn("tester#replay");
-		//boolean useMock = false;  
 
 		for (Airport currentAirport : allAirports)
 			if (currentAirport.getCity() != null && !currentAirport.getCity().isEmpty() && !currentAirport.getCity().toLowerCase().contains("lorem")) {

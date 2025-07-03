@@ -51,8 +51,6 @@ public class CustomerRecommendationShowService extends AbstractGuiService<Custom
 
 		if (poiRecommendation.getLatitude() != null && poiRecommendation.getLongitude() != null)
 			dataset.put("hasLocation", true);
-		else
-			dataset.put("hasLocation", false);
 
 		super.getResponse().addData(dataset);
 	}
