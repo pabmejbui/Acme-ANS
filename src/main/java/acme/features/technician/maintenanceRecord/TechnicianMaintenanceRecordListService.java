@@ -20,7 +20,6 @@ public class TechnicianMaintenanceRecordListService extends AbstractGuiService<T
 
 	// AbstractGuiService interface -------------------------------------------
 
-
 	@Override
 	public void authorise() {
 		super.getResponse().setAuthorised(true);
@@ -51,7 +50,7 @@ public class TechnicianMaintenanceRecordListService extends AbstractGuiService<T
 	public void unbind(final MaintenanceRecord maintenanceRecord) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(maintenanceRecord, "moment", "status", "nextInspectionDate");
+		dataset = super.unbindObject(maintenanceRecord, "moment", "status", "nextInspectionDate", "estimatedCost", "notes", "draftMode");
 		super.addPayload(dataset, maintenanceRecord,
 			"estimatedCost", "notes", "draftMode", "aircraft.model",
 			"aircraft.registrationNumber", "technician.identity.fullName",

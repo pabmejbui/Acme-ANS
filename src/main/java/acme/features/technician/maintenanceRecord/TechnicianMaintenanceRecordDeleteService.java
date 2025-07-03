@@ -24,7 +24,6 @@ public class TechnicianMaintenanceRecordDeleteService extends AbstractGuiService
 
 	// AbstractGuiService interface -------------------------------------------
 
-
 	@Override
 	public void authorise() {
 		boolean status;
