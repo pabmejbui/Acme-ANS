@@ -59,6 +59,11 @@ master.menu.customer.recommendations = Recommendations
  master.menu.flightCrewMember.flightAssignmentPlanned = Flight Assignments Planned 
  master.menu.flightCrewMember.activityLogs = activityLogs List 
  
+# master.menu.technician ########################################################
+
+master.menu.technician = Technician
+master.menu.technician.list-my-maintenance-records= List my maintenance records
+ 
 # master.menu.assistance-agent ##########################################################
 master.menu.assistance-agent.claims = Claims
 master.menu.assistance-agent.claims.claims-list = Completed claims list

@@ -58,6 +58,11 @@ master.menu.flightCrewMember.flightAssignment = Asignación de vuelo
 master.menu.flightCrewMember.flightAssignmentCompleted = Asignaciones de vuelo completadas
 master.menu.flightCrewMember.flightAssignmentPlanned = Asignaciones de vuelo planeadas
 master.menu.flightCrewMember.activityLogs = Listado de activitylogs
+
+# master.menu.technician ########################################################
+
+master.menu.technician = Técnico
+master.menu.technician.list-my-maintenance-records= Listar mis registros de mantenimiento
  
 # master.menu.menu.assistance-agent ##########################################################
 master.menu.assistance-agent.claims = Reclamaciones
