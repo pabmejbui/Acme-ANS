@@ -47,11 +47,6 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 			validStatus = Arrays.stream(AssignmentStatus.values()).anyMatch(s -> s.toString().equals(statusString));
 			validStatus = validStatus || statusString.equals("0");
 
-			// Validar que el Leg es válido
-			int legId = super.getRequest().getData("leg", int.class);
-			Collection<Leg> validLegs = this.repository.findPublishedFutureLegs(MomentHelper.getCurrentMoment());
-			validLeg = legId != 0 && validLegs.stream().anyMatch(l -> l.getId() == legId);
-
 			// Validar que el assignment pertenece al usuario y está en draft
 			assignmentId = super.getRequest().getData("id", int.class);
 			assignment = this.repository.findFlightAssignmentById(assignmentId);
