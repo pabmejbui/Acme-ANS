@@ -31,7 +31,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(indexes = {
-    @Index(columnList = "technician_id")
+	@Index(columnList = "draftMode"),
+	@Index(columnList = "technician_id")
 })
 public class Task extends AbstractEntity {
 	// Serialisation version --------------------------------------------------
