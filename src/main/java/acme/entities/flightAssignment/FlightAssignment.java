@@ -26,7 +26,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(indexes = {
-	@Index(columnList = "flightCrewMember_id"), @Index(columnList = "leg_id"), @Index(columnList = "status"), @Index(columnList = "draftMode"), @Index(columnList = "lastUpdate")
+	@Index(columnList = "flight_crew_member_id"), @Index(columnList = "leg_id"), @Index(columnList = "status"), @Index(columnList = "draft_mode"), @Index(columnList = "last_update")
 })
 public class FlightAssignment extends AbstractEntity {
 
