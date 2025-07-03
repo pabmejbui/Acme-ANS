@@ -22,8 +22,6 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 	private TechnicianMaintenanceRecordRepository repository;
 
 	// AbstractGuiService interface -------------------------------------------
-
-
 	@Override
 	public void authorise() {
 

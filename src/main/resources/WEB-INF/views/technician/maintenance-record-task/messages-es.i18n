@@ -1,0 +1,16 @@
+technician.maintenance-record-task.form.title = Vinculación de tarea
+technician.maintenance-record-task.list.title = Lista de tareas vinculadas
+
+technician.maintenance-record-task.form.label.task = Tarea
+technician.maintenance-record-task.form.label.aircraft = Aeronave asociada
+
+
+technician.maintenance-record-task.form.button.link = Vincular
+technician.maintenance-record-task.form.button.unlink = Desvincular
+
+technician.maintenance-record-task.list.label.maintenanceRecord = Registro de mantenimiento
+technician.maintenance-record-task.list.label.task = Tarea
+
+technician.maintenance-record-task.list.button.create = Crear
+
+technician.maintenance-record-task.form.error.no-task-to-unlink = No puede ser nulo  

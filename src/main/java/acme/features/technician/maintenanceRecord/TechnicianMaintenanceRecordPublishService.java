@@ -24,7 +24,6 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 
 	// AbstractGuiService interface -------------------------------------------
 
-
 	@Override
 	public void authorise() {
 		boolean status = false;
