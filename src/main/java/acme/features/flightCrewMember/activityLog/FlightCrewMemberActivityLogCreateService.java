@@ -22,10 +22,6 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 	private FlightCrewMemberActivityLogRepository repository;
 
 
-	//	@Override
-	//	public void authorise() {
-	//		super.getResponse().setAuthorised(true);
-	//	}
 	@Override
 	public void authorise() {
 		boolean status = false;
@@ -73,22 +69,6 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		log.setDraftMode(true);
 	}
 
-	//	@Override
-	//	public void validate(final ActivityLog log) {
-	//		;
-	//	}
-	//	@Override
-	//	public void validate(final ActivityLog log) {
-	//		FlightAssignment assignment = log.getFlightAssignment();
-	//
-	//		// Validar que el vuelo esté publicado
-	//		if (assignment.isDraftMode())
-	//			super.state(false, "assignment", "acme.validation.activity-log.assignment-not-published");
-	//
-	//		// Validar que el vuelo esté en el futuro
-	//		if (!MomentHelper.isAfter(assignment.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment()))
-	//			super.state(false, "assignment", "acme.validation.activity-log.assignment-not-in-future");
-	//	}
 	@Override
 	public void validate(final ActivityLog log) {
 		FlightAssignment assignment = log.getFlightAssignment();
