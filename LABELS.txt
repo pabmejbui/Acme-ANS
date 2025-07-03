@@ -28,3 +28,5 @@ Its use is recommended to avoid duplicate issues in future deliverables.
 - *supplementary-II*: Label for issues corresponding to second-phase supplementary tasks.
 
 - *testing*: Label for issues related to testing tasks (not test cases). By testing, we refer to review tasks for the work we carry out. Every created task should have a review task to ensure proper functionality.
+
+- *reunion*: Label for issue related to group reunions. The issues that have this label are going to be the one that involves a planned reunion by many of the member of the group in order to organize or commentate the situation of the project and the tasks.
