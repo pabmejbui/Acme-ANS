@@ -22,20 +22,6 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 	private FlightCrewMemberActivityLogRepository repository;
 
 
-	//	@Override
-	//	public void authorise() {
-	//		boolean status;
-	//		int logId;
-	//		FlightCrewMember member;
-	//		ActivityLog log;
-	//
-	//		logId = super.getRequest().getData("id", int.class);
-	//		log = this.repository.findActivityLogById(logId);
-	//		member = log == null ? null : log.getFlightAssignment().getFlightCrewMember();
-	//		status = member != null && super.getRequest().getPrincipal().hasRealm(member);
-	//
-	//		super.getResponse().setAuthorised(status);
-	//	}
 	@Override
 	public void authorise() {
 		boolean status = false;
@@ -72,20 +58,6 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 		super.getBuffer().addData(log);
 	}
 
-	//	@Override
-	//	public void bind(final ActivityLog log) {
-	//		Date now;
-	//		int assignmentId;
-	//		FlightAssignment assignment;
-	//
-	//		assignmentId = super.getRequest().getData("assignment", int.class);
-	//		assignment = this.repository.findFlightAssignmentById(assignmentId);
-	//		now = MomentHelper.getCurrentMoment();
-	//
-	//		super.bindObject(log, "incidentType", "description", "severity");
-	//		log.setRegistrationMoment(now);
-	//		log.setFlightAssignment(assignment);
-	//	}
 	@Override
 	public void bind(final ActivityLog log) {
 		Date now;
@@ -101,62 +73,25 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 		log.setFlightAssignment(assignment);
 	}
 
-	//	@Override
-	//	public void validate(final ActivityLog log) {
-	//		;
-	//	}
-	//	@Override
-	//	public void validate(final ActivityLog log) {
-	//		ActivityLog original = this.repository.findActivityLogById(log.getId());
-	//
-	//		// Asegura que no se cambie el FlightAssignment
-	//		super.state(log.getFlightAssignment().getId() == original.getFlightAssignment().getId(), "assignment", "acme.validation.activity-log.cannot-change-assignment");
-	//
-	//		// Asegura que el assignment esté publicado
-	//		super.state(!log.getFlightAssignment().isDraftMode(), "assignment", "acme.validation.activity-log.flight-assignment-not-published.message");
-	//
-	//	}
 	@Override
-	public void validate(final ActivityLog activityLog) {
-		;
+	public void validate(final ActivityLog log) {
+		FlightAssignment assignment = log.getFlightAssignment();
+
+		// 1. El vuelo debe estar publicado (draftMode == false)
+		if (assignment.isDraftMode())
+			super.state(false, "*", "acme.validation.activity-log.flight-assignment-not-published.message");
+
+		// 2. El vuelo debe haber finalizado (scheduledArrival < ahora)
+		if (!MomentHelper.isBefore(assignment.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment()))
+			super.state(false, "*", "acme.validation.activity-log.flight-assignment-not-completed.message");
 	}
 
 	@Override
 	public void perform(final ActivityLog log) {
+		log.setDraftMode(false);
 		this.repository.save(log);
 	}
 
-	//	@Override
-	//	public void unbind(final ActivityLog log) {
-	//		Dataset dataset;
-	//		SelectChoices selectedAssignments;
-	//		Collection<FlightAssignment> assignments;
-	//
-	//		assignments = this.repository.findAllAssignments();
-	//		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
-	//
-	//		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
-	//		dataset.put("assignments", selectedAssignments);
-	//		dataset.put("assignment", selectedAssignments.getSelected().getKey());
-	//
-	//		super.getResponse().addData(dataset);
-	//	}
-	//	@Override
-	//	public void unbind(final ActivityLog log) {
-	//		Dataset dataset;
-	//		SelectChoices selectedAssignments;
-	//		Collection<FlightAssignment> assignments;
-	//
-	//		int userId = super.getRequest().getPrincipal().getActiveRealm().getId();
-	//		assignments = this.repository.findAssignmentsByFlightCrewMemberId(userId);
-	//		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
-	//
-	//		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
-	//		dataset.put("assignments", selectedAssignments);
-	//		dataset.put("assignment", selectedAssignments.getSelected().getKey());
-	//
-	//		super.getResponse().addData(dataset);
-	//	}
 	@Override
 	public void unbind(final ActivityLog log) {
 		Dataset dataset;
@@ -166,13 +101,9 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 		int userId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		assignments = this.repository.findPublishedAssignmentsByFlightCrewMemberId(userId);
 
-		// Asegurarse de incluir el assignment actual, aunque esté en draftMode
-		if (!assignments.contains(log.getFlightAssignment()))
-			assignments.add(log.getFlightAssignment());
-
 		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
 
-		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
+		dataset = super.unbindObject(log, "incidentType", "description", "severity", "draftMode");
 		dataset.put("assignments", selectedAssignments);
 		dataset.put("assignment", selectedAssignments.getSelected().getKey());
 

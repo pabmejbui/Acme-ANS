@@ -1,13 +1,10 @@
 
 package acme.features.flightCrewMember.activityLog;
 
-import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import acme.client.components.models.Dataset;
-import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
@@ -73,20 +70,20 @@ public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService
 		this.repository.delete(activityLog);
 	}
 
-	@Override
-	public void unbind(final ActivityLog log) {
-		Dataset dataset;
-		SelectChoices selectedAssignments;
-		Collection<FlightAssignment> assignments;
-
-		assignments = this.repository.findAllAssignments();
-		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
-
-		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
-		dataset.put("assignments", selectedAssignments);
-		dataset.put("assignment", selectedAssignments.getSelected().getKey());
-
-		super.getResponse().addData(dataset);
-	}
+	//	@Override
+	//	public void unbind(final ActivityLog log) {
+	//		Dataset dataset;
+	//		SelectChoices selectedAssignments;
+	//		Collection<FlightAssignment> assignments;
+	//
+	//		assignments = this.repository.findAllAssignments();
+	//		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
+	//
+	//		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
+	//		dataset.put("assignments", selectedAssignments);
+	//		dataset.put("assignment", selectedAssignments.getSelected().getKey());
+	//
+	//		super.getResponse().addData(dataset);
+	//	}
 
 }
