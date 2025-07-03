@@ -22,3 +22,6 @@ flight-crew-member.flight-assignment.list.label.lastUpdate = Momento de la últi
 flight-crew-member.flight-assignment.list.label.status = Estado:  
 
 flight-crew-member.flight-assignment.list.button.create = Crear  
+flightAssignment.error.leg-required = Se necesita tramo
+flightAssignment.error.leg-not-published = Tramo sin publicar
+flight-crew-member.flight-assignment.leg-has-not-finished-yet= El tramo no ha acabado aun

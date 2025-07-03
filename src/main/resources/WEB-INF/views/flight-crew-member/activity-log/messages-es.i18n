@@ -16,3 +16,7 @@ flight-crew-member.activity-log.list.label.incident-type = Tipo de incidente:
 flight-crew-member.activity-log.list.label.severity = Nivel de gravedad:
 
 flight-crew-member.activity-log.list.button.create = Crear
+acme.validation.activity-log.assignment-not-published= Asignación no publicada
+acme.validation.activity-log.leg-not-published= Tramo no publicado
+acme.validation.activity-log.flight-assignment-not-published.message= Asignación no publicada
+acme.validation.activity-log.flight-assignment-not-completed.message= El vuelo debe haber acabado
