@@ -8,7 +8,7 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-This is the official project of group C1.029, composed of five students from the Software 
+This is the official project of group C2.029, composed of five students from the Software 
 Engineering degree at the University of Seville. This project represents the most significant 
 part of the final grade in the third-year subject DP2, requiring the application of key 
 concepts and methodologies learned throughout the course. Our goal is to deliver a high-quality 
