@@ -14,6 +14,7 @@ flight-crew-member.activity-log.form.button.publish = Publicar
 flight-crew-member.activity-log.list.label.registration-moment = Momento de registro:
 flight-crew-member.activity-log.list.label.incident-type = Tipo de incidente:
 flight-crew-member.activity-log.list.label.severity = Nivel de gravedad:
+flight-crew-member.activity-log.list.label.flight-assignment = Asignación de vuelo:
 
 flight-crew-member.activity-log.list.button.create = Crear
 acme.validation.activity-log.assignment-not-published= Asignación no publicada
