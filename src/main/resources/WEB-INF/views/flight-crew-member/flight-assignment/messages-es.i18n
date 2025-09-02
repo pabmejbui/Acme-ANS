@@ -20,6 +20,7 @@ flight-crew-member.flight-assignment.form.button.member = Miembro
 flight-crew-member.flight-assignment.list.label.duty = Deber:  
 flight-crew-member.flight-assignment.list.label.lastUpdate = Momento de la última actualización:  
 flight-crew-member.flight-assignment.list.label.status = Estado:  
+flight-crew-member.flight-assignment.list.label.flight-assignment = Asignación de vuelo:
 
 flight-crew-member.flight-assignment.list.button.create = Crear  
 flightAssignment.error.leg-required = Se necesita tramo

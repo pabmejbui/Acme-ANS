@@ -20,6 +20,7 @@ flight-crew-member.flight-assignment.form.button.member = Member
 flight-crew-member.flight-assignment.list.label.duty = Duty:
 flight-crew-member.flight-assignment.list.label.lastUpdate = Last update moment:
 flight-crew-member.flight-assignment.list.label.status = Status:
+flight-crew-member.flight-assignment.list.label.flight-assignment = Flight Assignment:
 
 flight-crew-member.flight-assignment.list.button.create = Create
 flightAssignment.error.leg-required= Leg Required

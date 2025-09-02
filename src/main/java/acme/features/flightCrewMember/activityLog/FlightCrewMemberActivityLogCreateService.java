@@ -91,20 +91,46 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		this.repository.save(log);
 	}
 
+	//	@Override
+	//	public void unbind(final ActivityLog log) {
+	//		Dataset dataset;
+	//		SelectChoices selectedAssignments;
+	//		Collection<FlightAssignment> assignments;
+	//
+	//		int userId = super.getRequest().getPrincipal().getActiveRealm().getId();
+	//		assignments = this.repository.findAssignmentsByFlightCrewMemberId(userId);
+	//		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
+	//
+	//		dataset = super.unbindObject(log, "incidentType", "description", "severity", "draftMode");
+	//		dataset.put("assignments", selectedAssignments);
+	//		dataset.put("assignment", selectedAssignments.getSelected().getKey());
+	//		dataset.put("readonly", false);
+	//		super.getResponse().addData(dataset);
+	//	}
 	@Override
 	public void unbind(final ActivityLog log) {
 		Dataset dataset;
-		SelectChoices selectedAssignments;
 		Collection<FlightAssignment> assignments;
 
 		int userId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		assignments = this.repository.findAssignmentsByFlightCrewMemberId(userId);
-		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
+
+		// Construimos SelectChoices manualmente
+		SelectChoices assignmentChoices = new SelectChoices();
+		assignmentChoices.add("0", "----", log.getFlightAssignment() == null);
+
+		for (FlightAssignment a : assignments) {
+			String key = Integer.toString(a.getId());                  // ID puro (para BD)
+			String label = "assignment-" + a.getId();                 // Texto visible en el combo
+			boolean selected = a.equals(log.getFlightAssignment()); // Marca seleccionado si ya hay uno
+			assignmentChoices.add(key, label, selected);
+		}
 
 		dataset = super.unbindObject(log, "incidentType", "description", "severity", "draftMode");
-		dataset.put("assignments", selectedAssignments);
-		dataset.put("assignment", selectedAssignments.getSelected().getKey());
+		dataset.put("assignments", assignmentChoices);
+		dataset.put("assignment", log.getFlightAssignment() != null ? Integer.toString(log.getFlightAssignment().getId()) : "0");  // ID puro
 		dataset.put("readonly", false);
+
 		super.getResponse().addData(dataset);
 	}
 

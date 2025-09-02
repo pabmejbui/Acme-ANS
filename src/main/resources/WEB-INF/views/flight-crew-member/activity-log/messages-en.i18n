@@ -14,6 +14,8 @@ flight-crew-member.activity-log.form.button.publish = Publish
 flight-crew-member.activity-log.list.label.registration-moment = Registration moment:
 flight-crew-member.activity-log.list.label.incident-type = Incident type:
 flight-crew-member.activity-log.list.label.severity = Severity level:
+flight-crew-member.activity-log.list.label.flight-assignment = Flight Assignment:
+
 
 flight-crew-member.activity-log.list.button.create = Create
 acme.validation.activity-log.assignment-not-published= Assignment not published
