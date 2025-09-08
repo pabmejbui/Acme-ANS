@@ -13,3 +13,4 @@ D02 - This is the project version of the second deliverable
 D03 - This is the project version of the third deliverable
 D04 - This is the project version of the fourth deliverable
 C2 - This is the project version of the july delivery.
+C3 - This is the project version of the october delivery.
