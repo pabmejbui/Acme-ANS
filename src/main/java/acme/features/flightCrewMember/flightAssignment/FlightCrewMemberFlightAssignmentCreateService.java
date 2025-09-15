@@ -138,6 +138,35 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 	//	
 	//			super.getResponse().addData(dataset);
 	//		}
+	//	@Override
+	//	public void unbind(final FlightAssignment assignment) {
+	//		Dataset dataset;
+	//		SelectChoices statuses;
+	//		SelectChoices duties;
+	//		Collection<Leg> legs;
+	//		SelectChoices selectedLegs;
+	//		// Ya no necesitamos la colección de todos los miembros.
+	//
+	//		legs = this.repository.findPublishedFutureLegs(MomentHelper.getCurrentMoment());
+	//
+	//		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
+	//		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
+	//		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
+	//
+	//		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
+	//
+	//		// Añadimos el código del empleado como un atributo simple para mostrarlo.
+	//		dataset.put("flightCrewMemberCode", assignment.getFlightCrewMember().getEmployeeCode());
+	//
+	//		dataset.put("statuses", statuses);
+	//		dataset.put("duties", duties);
+	//		dataset.put("leg", selectedLegs.getSelected() != null ? selectedLegs.getSelected().getKey() : "");
+	//		dataset.put("legs", selectedLegs);
+	//
+	//		// Ya no se añaden 'flightCrewMember' ni 'members' al dataset.
+	//
+	//		super.getResponse().addData(dataset);
+	//	}
 	@Override
 	public void unbind(final FlightAssignment assignment) {
 		Dataset dataset;
@@ -145,25 +174,27 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		SelectChoices duties;
 		Collection<Leg> legs;
 		SelectChoices selectedLegs;
-		// Ya no necesitamos la colección de todos los miembros.
+		Collection<FlightCrewMember> members;
+		SelectChoices selectedMembers;
 
-		legs = this.repository.findPublishedFutureLegs(MomentHelper.getCurrentMoment());
+		FlightCrewMember activeMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+
+		legs = this.repository.findPublishedFutureOwnedLegs(MomentHelper.getCurrentMoment(), activeMember.getAirline());
+		members = this.repository.findCrewMembersByAirline(activeMember.getAirline());
 
 		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
 		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
 		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
+		selectedMembers = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
 
-		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
-
-		// Añadimos el código del empleado como un atributo simple para mostrarlo.
-		dataset.put("flightCrewMemberCode", assignment.getFlightCrewMember().getEmployeeCode());
+		dataset = super.unbindObject(assignment, "duty", "status", "remarks", "draftMode");
 
 		dataset.put("statuses", statuses);
 		dataset.put("duties", duties);
-		dataset.put("leg", selectedLegs.getSelected() != null ? selectedLegs.getSelected().getKey() : "");
+		dataset.put("leg", selectedLegs.getSelected().getKey());
 		dataset.put("legs", selectedLegs);
-
-		// Ya no se añaden 'flightCrewMember' ni 'members' al dataset.
+		dataset.put("flightCrewMember", selectedMembers.getSelected().getKey());
+		dataset.put("crewMembers", selectedMembers);
 
 		super.getResponse().addData(dataset);
 	}

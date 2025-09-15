@@ -99,6 +99,73 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		this.repository.save(assignment);
 	}
 
+	//	@Override
+	//	public void unbind(final FlightAssignment assignment) {
+	//		Dataset dataset;
+	//		SelectChoices statuses;
+	//		SelectChoices duties;
+	//		Collection<Leg> legs;
+	//		SelectChoices selectedLegs;
+	//		// La colección de todos los miembros ya no es necesaria.
+	//
+	//		// Solo se muestran legs futuros y publicados.
+	//		legs = this.repository.findPublishedFutureLegs(MomentHelper.getCurrentMoment());
+	//
+	//		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
+	//		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
+	//		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
+	//
+	//		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
+	//
+	//		// Se añade el código del empleado para mostrarlo en el campo de solo lectura.
+	//		if (assignment.getFlightCrewMember() != null)
+	//			dataset.put("flightCrewMemberCode", assignment.getFlightCrewMember().getEmployeeCode());
+	//
+	//		dataset.put("statuses", statuses);
+	//		dataset.put("duties", duties);
+	//
+	//		// Se gestiona el caso en que no haya un leg seleccionado.
+	//		dataset.put("leg", selectedLegs.getSelected() != null ? selectedLegs.getSelected().getKey() : "");
+	//		dataset.put("legs", selectedLegs);
+	//
+	//		// Los campos 'member' y 'members' ya no se añaden al dataset.
+	//
+	//		super.getResponse().addData(dataset);
+	//	}
+	//	@Override
+	//	public void unbind(final FlightAssignment assignment) {
+	//		Dataset dataset;
+	//		SelectChoices statuses;
+	//		SelectChoices duties;
+	//		Collection<Leg> legs;
+	//		SelectChoices selectedLegs;
+	//
+	//		// legs futuros publicados
+	//		legs = this.repository.findPublishedFutureLegs(MomentHelper.getCurrentMoment());
+	//
+	//		// ✅ añadir el leg actual si no está en la lista
+	//		Leg currentLeg = assignment.getLeg();
+	//		if (currentLeg != null && !legs.contains(currentLeg))
+	//			legs.add(currentLeg);
+	//
+	//		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
+	//		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
+	//		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
+	//
+	//		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
+	//
+	//		if (assignment.getFlightCrewMember() != null)
+	//			dataset.put("flightCrewMemberCode", assignment.getFlightCrewMember().getEmployeeCode());
+	//
+	//		dataset.put("statuses", statuses);
+	//		dataset.put("duties", duties);
+	//
+	//		// ahora sí puedes ponerlo directo porque siempre habrá seleccionado
+	//		dataset.put("leg", selectedLegs.getSelected().getKey());
+	//		dataset.put("legs", selectedLegs);
+	//
+	//		super.getResponse().addData(dataset);
+	//	}
 	@Override
 	public void unbind(final FlightAssignment assignment) {
 		Dataset dataset;
@@ -106,30 +173,33 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		SelectChoices duties;
 		Collection<Leg> legs;
 		SelectChoices selectedLegs;
-		// La colección de todos los miembros ya no es necesaria.
+		String employeeCode;
+		FlightCrewMember member;
+		Collection<FlightCrewMember> members;
+		SelectChoices selectedMembers;
 
-		// Solo se muestran legs futuros y publicados.
-		legs = this.repository.findPublishedFutureLegs(MomentHelper.getCurrentMoment());
+		member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 
+		legs = this.repository.findPublishedFutureOwnedLegs(MomentHelper.getCurrentMoment(), member.getAirline());
+		members = this.repository.findCrewMembersByAirline(member.getAirline());
+		Leg currentLeg = assignment.getLeg();
+		if (currentLeg != null && !legs.contains(currentLeg))
+			legs.add(currentLeg);
 		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
 		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
 		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
+		employeeCode = assignment.getFlightCrewMember() != null ? assignment.getFlightCrewMember().getEmployeeCode() : null;
+		selectedMembers = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
 
 		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
-
-		// Se añade el código del empleado para mostrarlo en el campo de solo lectura.
-		if (assignment.getFlightCrewMember() != null)
-			dataset.put("flightCrewMemberCode", assignment.getFlightCrewMember().getEmployeeCode());
-
+		dataset.put("employeeCode", employeeCode);
 		dataset.put("statuses", statuses);
 		dataset.put("duties", duties);
-
-		// Se gestiona el caso en que no haya un leg seleccionado.
-		dataset.put("leg", selectedLegs.getSelected() != null ? selectedLegs.getSelected().getKey() : "");
+		dataset.put("leg", selectedLegs.getSelected().getKey());
 		dataset.put("legs", selectedLegs);
-
-		// Los campos 'member' y 'members' ya no se añaden al dataset.
+		dataset.put("crewMembers", selectedMembers);
 
 		super.getResponse().addData(dataset);
 	}
+
 }
