@@ -49,55 +49,55 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 		super.getBuffer().addData(log);
 	}
 
-	//	@Override
-	//	public void unbind(final ActivityLog log) {
-	//		Dataset dataset;
-	//		Collection<FlightAssignment> assignments;
-	//		SelectChoices assignmentChoices;
-	//
-	//		int userId = super.getRequest().getPrincipal().getActiveRealm().getId();
-	//		assignments = this.repository.findPublishedAssignmentsByFlightCrewMemberId(userId);
-	//
-	//		// Nos aseguramos de que el assignment del log esté incluido aunque sea draft
-	//		if (!assignments.contains(log.getFlightAssignment()))
-	//			assignments.add(log.getFlightAssignment());
-	//
-	//		assignmentChoices = SelectChoices.from(assignments, "id", log.getFlightAssignment());
-	//
-	//		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
-	//		dataset.put("assignments", assignmentChoices);
-	//		dataset.put("assignment", assignmentChoices.getSelected().getKey());
-	//
-	//		super.getResponse().addData(dataset);
-	//	}
-
 	@Override
 	public void unbind(final ActivityLog log) {
 		Dataset dataset;
 		Collection<FlightAssignment> assignments;
+		SelectChoices assignmentChoices;
 
 		int userId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		assignments = this.repository.findPublishedAssignmentsByFlightCrewMemberId(userId);
 
+		// Nos aseguramos de que el assignment del log esté incluido aunque sea draft
 		if (!assignments.contains(log.getFlightAssignment()))
 			assignments.add(log.getFlightAssignment());
 
-		// Creamos SelectChoices manualmente
-		SelectChoices assignmentChoices = new SelectChoices();
-		assignmentChoices.add("0", "----", false);
-
-		for (FlightAssignment a : assignments) {
-			String key = Integer.toString(a.getId());                  // ID puro (para la BD)
-			String label = "assignment-" + a.getId();                 // Texto visible en el combo
-			boolean selected = a.equals(log.getFlightAssignment()); // Marca el seleccionado
-			assignmentChoices.add(key, label, selected);
-		}
+		assignmentChoices = SelectChoices.from(assignments, "id", log.getFlightAssignment());
 
 		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
 		dataset.put("assignments", assignmentChoices);
-		dataset.put("assignment", Integer.toString(log.getFlightAssignment().getId())); // ID puro para backend
+		dataset.put("assignment", assignmentChoices.getSelected().getKey());
 
 		super.getResponse().addData(dataset);
 	}
+
+	//	@Override
+	//	public void unbind(final ActivityLog log) {
+	//		Dataset dataset;
+	//		Collection<FlightAssignment> assignments;
+	//
+	//		int userId = super.getRequest().getPrincipal().getActiveRealm().getId();
+	//		assignments = this.repository.findPublishedAssignmentsByFlightCrewMemberId(userId);
+	//
+	//		if (!assignments.contains(log.getFlightAssignment()))
+	//			assignments.add(log.getFlightAssignment());
+	//
+	//		// Creamos SelectChoices manualmente
+	//		SelectChoices assignmentChoices = new SelectChoices();
+	//		assignmentChoices.add("0", "----", false);
+	//
+	//		for (FlightAssignment a : assignments) {
+	//			String key = Integer.toString(a.getId());                  // ID puro (para la BD)
+	//			String label = "assignment-" + a.getId();                 // Texto visible en el combo
+	//			boolean selected = a.equals(log.getFlightAssignment()); // Marca el seleccionado
+	//			assignmentChoices.add(key, label, selected);
+	//		}
+	//
+	//		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
+	//		dataset.put("assignments", assignmentChoices);
+	//		dataset.put("assignment", Integer.toString(log.getFlightAssignment().getId())); // ID puro para backend
+	//
+	//		super.getResponse().addData(dataset);
+	//	}
 
 }

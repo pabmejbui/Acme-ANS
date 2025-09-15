@@ -56,9 +56,6 @@ public class FlightCrewMemberFlightAssignmentListLegsPlannedService extends Abst
 		dataset = super.unbindObject(assignment, "lastUpdate", "status", "duty");
 		super.addPayload(dataset, assignment, "remarks");
 
-		// Añadimos el identificador con prefijo assignment-
-		dataset.put("flightAssignment", "assignment-" + assignment.getId());
-
 		super.getResponse().addData(dataset);
 	}
 }
