@@ -14,6 +14,11 @@
 	<acme:input-textarea code="flight-crew-member.flight-assignment.form.label.remarks" path="remarks"/>
 	
 	
+		<jstl:if test="${_command != 'create'}">
+    	<acme:button code="flight-crew-member.flight-assignment.form.button.activity-log" action="/flight-crew-member/activity-log/list?masterId=${id}"/>
+	</jstl:if>
+	
+	
 	<jstl:choose>
 		<jstl:when test="${_command == 'show' && draftMode == false}">
 								
