@@ -23,15 +23,24 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 		super.getResponse().setAuthorised(true);
 	}
 
+	//	@Override
+	//	public void load() {
+	//		FlightCrewMember member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+	//
+	//		Collection<ActivityLog> logs = this.repository.findAllLogsByFlightCrewMemberId(member.getId());
+	//
+	//		super.getBuffer().addData(logs);
+	//	}
 	@Override
 	public void load() {
-		FlightCrewMember member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+		int masterId;
+		Collection<ActivityLog> logs;
 
-		Collection<ActivityLog> logs = this.repository.findAllLogsByFlightCrewMemberId(member.getId());
+		masterId = super.getRequest().getData("masterId", int.class);
+		logs = this.repository.findActivityLogsByMasterId(masterId);
 
 		super.getBuffer().addData(logs);
 	}
-
 	@Override
 	public void unbind(final ActivityLog log) {
 		Dataset dataset;
