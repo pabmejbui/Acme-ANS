@@ -126,6 +126,47 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 	//
 	//		super.getResponse().addData(dataset);
 	//	}
+	/////////////////////////////////////////
+	//	@Override
+	//	public void unbind(final FlightAssignment assignment) {
+	//		Dataset dataset;
+	//		SelectChoices statuses;
+	//		SelectChoices duties;
+	//		Collection<Leg> legs;
+	//		SelectChoices selectedLegs;
+	//		String employeeCode;
+	//		FlightCrewMember member;
+	//		Collection<FlightCrewMember> members;
+	//		SelectChoices selectedMembers;
+	//
+	//		member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+	//
+	//		Collection<FlightCrewMember> crewMembers = this.repository.findCrewMembersByAirline(member.getAirline());
+	//		SelectChoices selectedCrew = SelectChoices.from(crewMembers, "employeeCode", assignment.getFlightCrewMember());
+	//		members = this.repository.findCrewMembersByAirline(member.getAirline());
+	//
+	//		legs = this.repository.findPublishedFutureOwnedLegs(MomentHelper.getCurrentMoment(), member.getAirline());
+	//		Leg currentLeg = assignment.getLeg();
+	//		if (currentLeg != null && !legs.contains(currentLeg))
+	//			legs.add(currentLeg);
+	//		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
+	//		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
+	//		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
+	//		employeeCode = assignment.getFlightCrewMember() != null ? assignment.getFlightCrewMember().getEmployeeCode() : null;
+	//		selectedMembers = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
+	//
+	//		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
+	//		dataset.put("employeeCode", employeeCode);
+	//		dataset.put("statuses", statuses);
+	//		dataset.put("duties", duties);
+	//		dataset.put("leg", selectedLegs.getSelected().getKey());
+	//		dataset.put("legs", selectedLegs);
+	//		dataset.put("flightCrewMember", selectedCrew.getSelected().getKey());
+	//		dataset.put("crewMembers", selectedCrew);
+	//		dataset.put("crewMembers", selectedMembers);
+	//
+	//		super.getResponse().addData(dataset);
+	//	}
 	@Override
 	public void unbind(final FlightAssignment assignment) {
 		Dataset dataset;
@@ -140,30 +181,44 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 
 		member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 
-		Collection<FlightCrewMember> crewMembers = this.repository.findCrewMembersByAirline(member.getAirline());
-		SelectChoices selectedCrew = SelectChoices.from(crewMembers, "employeeCode", assignment.getFlightCrewMember());
+		// Tripulantes de la aerolínea del miembro activo
 		members = this.repository.findCrewMembersByAirline(member.getAirline());
+		SelectChoices selectedCrew = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
 
+		// Piernas de vuelo
 		legs = this.repository.findPublishedFutureOwnedLegs(MomentHelper.getCurrentMoment(), member.getAirline());
 		Leg currentLeg = assignment.getLeg();
 		if (currentLeg != null && !legs.contains(currentLeg))
 			legs.add(currentLeg);
+
+		// Opciones de estado y duty
 		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
 		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
 		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
+
+		// Código de empleado del tripulante asignado
 		employeeCode = assignment.getFlightCrewMember() != null ? assignment.getFlightCrewMember().getEmployeeCode() : null;
 		selectedMembers = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
 
+		// Dataset principal
 		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
 		dataset.put("employeeCode", employeeCode);
 		dataset.put("statuses", statuses);
 		dataset.put("duties", duties);
-		dataset.put("leg", selectedLegs.getSelected().getKey());
+
+		if (selectedLegs.getSelected() != null)
+			dataset.put("leg", selectedLegs.getSelected().getKey());
 		dataset.put("legs", selectedLegs);
-		dataset.put("flightCrewMember", selectedCrew.getSelected().getKey());
-		dataset.put("crewMembers", selectedCrew);
+
+		if (selectedCrew.getSelected() != null)
+			dataset.put("flightCrewMember", selectedCrew.getSelected().getKey());
 		dataset.put("crewMembers", selectedMembers);
+
+		// 🔹 Campo de solo lectura con el código del tripulante
+		if (assignment.getFlightCrewMember() != null)
+			dataset.put("flightCrewMemberCode", assignment.getFlightCrewMember().getEmployeeCode());
 
 		super.getResponse().addData(dataset);
 	}
+
 }
