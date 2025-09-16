@@ -165,6 +165,10 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		log.setDraftMode(true);
 		log.setFlightAssignment(flightAssignment);
 
+		// 🔹 Inicializamos registrationMoment para que en el formulario CREATE
+		//     se muestre la fecha/hora actual como campo readonly (igual que lastUpdate).
+		log.setRegistrationMoment(MomentHelper.getCurrentMoment());
+
 		super.getBuffer().addData(log);
 	}
 
@@ -191,6 +195,25 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		this.repository.save(log);
 	}
 
+	//	@Override
+	//	public void unbind(final ActivityLog log) {
+	//		Dataset dataset;
+	//		SelectChoices selectedAssignments;
+	//		Collection<FlightAssignment> assignments;
+	//		FlightCrewMember member;
+	//
+	//		member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+	//		assignments = this.repository.findFlightAssignmentsByMemberId(member.getId());
+	//		selectedAssignments = SelectChoices.from(assignments, "leg.flightNumber", log.getFlightAssignment());
+	//
+	//		dataset = super.unbindObject(log, "incidentType", "description", "severity", "draftMode");
+	//		dataset.put("assignments", selectedAssignments);
+	//		dataset.put("assignment", selectedAssignments.getSelected().getKey());
+	//		dataset.put("registrationMoment", log.getRegistrationMoment());
+	//		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
+	//
+	//		super.getResponse().addData(dataset);
+	//	}
 	@Override
 	public void unbind(final ActivityLog log) {
 		Dataset dataset;
@@ -202,12 +225,14 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		assignments = this.repository.findFlightAssignmentsByMemberId(member.getId());
 		selectedAssignments = SelectChoices.from(assignments, "leg.flightNumber", log.getFlightAssignment());
 
-		dataset = super.unbindObject(log, "incidentType", "description", "severity", "draftMode");
+		// 🔹 Incluimos registrationMoment directamente en el unbind
+		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
+
 		dataset.put("assignments", selectedAssignments);
 		dataset.put("assignment", selectedAssignments.getSelected().getKey());
-		dataset.put("registrationMoment", log.getRegistrationMoment());
 		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
 
 		super.getResponse().addData(dataset);
 	}
+
 }

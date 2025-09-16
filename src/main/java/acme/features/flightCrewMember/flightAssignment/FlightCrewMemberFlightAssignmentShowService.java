@@ -49,38 +49,82 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		super.getBuffer().addData(assignment);
 	}
 
+	//		@Override
+	//		public void unbind(final FlightAssignment assignment) {
+	//			Dataset dataset;
+	//			SelectChoices statuses;
+	//			SelectChoices duties;
+	//			SelectChoices selectedLegs;
+	//	
+	//			// 1. Prepara los datos básicos del objeto.
+	//			dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
+	//	
+	//			// 2. Maneja el FlightCrewMember como texto de solo lectura (esto estaba bien).
+	//			if (assignment.getFlightCrewMember() != null)
+	//				dataset.put("flightCrewMemberCode", assignment.getFlightCrewMember().getEmployeeCode());
+	//	
+	//			// 3. Proporciona las opciones para 'status' y 'duty', con el valor actual seleccionado.
+	//			// El JSP necesita la lista completa para mostrar el texto correcto, aunque el campo esté deshabilitado.
+	//			statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
+	//			duties = SelectChoices.from(DutyType.class, assignment.getDuty());
+	//	
+	//			dataset.put("statuses", statuses);
+	//			dataset.put("duties", duties);
+	//	
+	//			// 4. Proporciona la opción para 'leg' de forma eficiente.
+	//			// Creamos una lista que solo contiene el 'leg' asignado actualmente.
+	//			Collection<Leg> assignedLegOnly = new ArrayList<>();
+	//			if (assignment.getLeg() != null)
+	//				assignedLegOnly.add(assignment.getLeg());
+	//			selectedLegs = SelectChoices.from(assignedLegOnly, "flightNumber", assignment.getLeg());
+	//	
+	//			dataset.put("legs", selectedLegs);
+	//			if (selectedLegs.getSelected() != null)
+	//				dataset.put("leg", selectedLegs.getSelected().getKey());
+	//	
+	//			super.getResponse().addData(dataset);
+	//		}
+	////////////////////////////////////////////////////////////////
 	//	@Override
 	//	public void unbind(final FlightAssignment assignment) {
 	//		Dataset dataset;
 	//		SelectChoices statuses;
 	//		SelectChoices duties;
+	//		Collection<Leg> legs;
 	//		SelectChoices selectedLegs;
+	//		String employeeCode;
+	//		FlightCrewMember member;
+	//		SelectChoices selectedMembers;
 	//
-	//		// 1. Prepara los datos básicos del objeto.
-	//		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
+	//		FlightCrewMember activeMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 	//
-	//		// 2. Maneja el FlightCrewMember como texto de solo lectura (esto estaba bien).
-	//		if (assignment.getFlightCrewMember() != null)
-	//			dataset.put("flightCrewMemberCode", assignment.getFlightCrewMember().getEmployeeCode());
+	//		member = assignment.getFlightCrewMember();
 	//
-	//		// 3. Proporciona las opciones para 'status' y 'duty', con el valor actual seleccionado.
-	//		// El JSP necesita la lista completa para mostrar el texto correcto, aunque el campo esté deshabilitado.
+	//		Collection<FlightCrewMember> crewMembers;
+	//
+	//		crewMembers = this.repository.findCrewMembersByAirline(activeMember.getAirline());
+	//
+	//		legs = this.repository.findPublishedFutureOwnedLegs(MomentHelper.getCurrentMoment(), member.getAirline());
+	//
+	//		if (!crewMembers.contains(assignment.getFlightCrewMember()))
+	//			crewMembers.add(assignment.getFlightCrewMember());
+	//		Leg currentLeg = assignment.getLeg();
+	//		if (!legs.contains(currentLeg))
+	//			legs.add(currentLeg);
+	//
+	//		employeeCode = assignment.getFlightCrewMember().getEmployeeCode();
 	//		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
 	//		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
+	//		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
+	//		selectedMembers = SelectChoices.from(crewMembers, "employeeCode", assignment.getFlightCrewMember());
 	//
+	//		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
 	//		dataset.put("statuses", statuses);
+	//		dataset.put("crewMembers", selectedMembers);
+	//		dataset.put("employeeCode", employeeCode);
 	//		dataset.put("duties", duties);
-	//
-	//		// 4. Proporciona la opción para 'leg' de forma eficiente.
-	//		// Creamos una lista que solo contiene el 'leg' asignado actualmente.
-	//		Collection<Leg> assignedLegOnly = new ArrayList<>();
-	//		if (assignment.getLeg() != null)
-	//			assignedLegOnly.add(assignment.getLeg());
-	//		selectedLegs = SelectChoices.from(assignedLegOnly, "flightNumber", assignment.getLeg());
-	//
+	//		dataset.put("leg", selectedLegs.getSelected().getKey());
 	//		dataset.put("legs", selectedLegs);
-	//		if (selectedLegs.getSelected() != null)
-	//			dataset.put("leg", selectedLegs.getSelected().getKey());
 	//
 	//		super.getResponse().addData(dataset);
 	//	}
@@ -100,13 +144,13 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		member = assignment.getFlightCrewMember();
 
 		Collection<FlightCrewMember> crewMembers;
-
 		crewMembers = this.repository.findCrewMembersByAirline(activeMember.getAirline());
 
 		legs = this.repository.findPublishedFutureOwnedLegs(MomentHelper.getCurrentMoment(), member.getAirline());
 
 		if (!crewMembers.contains(assignment.getFlightCrewMember()))
 			crewMembers.add(assignment.getFlightCrewMember());
+
 		Leg currentLeg = assignment.getLeg();
 		if (!legs.contains(currentLeg))
 			legs.add(currentLeg);
@@ -125,6 +169,11 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		dataset.put("leg", selectedLegs.getSelected().getKey());
 		dataset.put("legs", selectedLegs);
 
+		// 🔹 Añadido para mostrar el FlightCrewMember como campo de solo lectura
+		if (assignment.getFlightCrewMember() != null)
+			dataset.put("flightCrewMemberCode", assignment.getFlightCrewMember().getEmployeeCode());
+
 		super.getResponse().addData(dataset);
 	}
+
 }
