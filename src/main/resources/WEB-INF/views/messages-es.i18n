@@ -130,3 +130,6 @@ acme.validation.technician.task.description.message =  La longitud máxima de la
 acme.validation.technician.task.priority.message = La prioridad debe ser mayor o igual a 0, y menor o igual a 10
 acme.validation.technician.task.estimatedDuration.message = La duración estimada debe ser mayor o igual a 0, y menor o igual a 1000
 acme.validation.technician.involves.noTask.message = No puede ser nulo
+
+# Mensaje de validacion de activityLog sobre leg
+acme.validation.log.registration-moment.message = La incidencia debe estar registrado después de la fecha de llegada del tramo y no ser futura
