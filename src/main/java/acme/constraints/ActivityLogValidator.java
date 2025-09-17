@@ -31,7 +31,7 @@ public class ActivityLogValidator extends AbstractValidator<ValidActivityLog, Ac
 			Date endMoment = leg.getScheduledArrival();
 			Date registrationMoment = log.getRegistrationMoment();
 			Date now = MomentHelper.getCurrentMoment();
-			boolean isAfter = registrationMoment.after(endMoment) && registrationMoment.before(now);
+			boolean isAfter = registrationMoment.after(endMoment) && !registrationMoment.after(now);
 
 			super.state(context, isAfter, "registrationMoment", "acme.validation.log.registration-moment.message");
 		}
