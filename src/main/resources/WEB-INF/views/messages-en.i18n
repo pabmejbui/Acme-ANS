@@ -131,3 +131,7 @@ airline.validation.foundation.future = Fundation moment cannot be in the future.
 
 # Aircraft validation messages ########################################################
 aircraft.validation.registration.duplicate = The registration number is already in use. Try another
+
+
+# ActivityLog validation message on leg
+acme.validation.log.registration-moment.message = The activityLog registration moment must take place before the schedule arrival of the leg and can't not be in future
