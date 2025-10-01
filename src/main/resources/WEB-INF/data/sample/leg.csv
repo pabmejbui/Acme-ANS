@@ -13,11 +13,18 @@ leg-10,LHX1000,2025/09/23 23:00,2025/09/24 00:25,DELAYED,false,flight-04,airport
 leg-11,LHX1001,2025/09/24 08:00,2025/09/24 09:25,ON_TIME,false,flight-04,airport-06,airport-01,aircraft-04
 leg-12,LHX1002,2025/09/24 11:00,2025/09/24 11:45,ON_TIME,false,flight-04,airport-01,airport-05,aircraft-04
 leg-13,AFX7002,2002/01/01 11:11,2002/01/01 14:00,CANCELLED,true,flight-05,airport-03,airport-06,aircraft-05
-
 # Datos límite atributos scheduledDeparture y scheduledArrival
 leg-14,ARX1000,2000/01/01 00:00,2000/01/01 00:02,CANCELLED,false,flight-06,airport-09,airport-08,aircraft-06
 leg-15,ARX1001,2000/01/01 00:04,2000/01/01 00:06,CANCELLED,true,flight-06,airport-09,airport-08,aircraft-06
 leg-16,ARX1002,2000/01/01 00:08,2000/01/01 02:00,LANDED,true,flight-06,airport-09,airport-08,aircraft-06
 leg-17,AAX1000,2200/12/31 16:00,2200/12/31 19:58,DELAYED,false,flight-07,airport-12,airport-11,aircraft-07
 leg-18,AAX1001,2200/12/31 20:00,2200/12/31 23:59,ON_TIME,false,flight-07,airport-12,airport-11,aircraft-07
-
+#datos para todos los members)
+leg-19,IBX1006,2026/09/24 11:00,2026/09/24 11:45,ON_TIME,false,flight-04,airport-01,airport-05,aircraft-01
+leg-20,IBX1007,2027/09/24 11:00,2027/09/24 11:45,ON_TIME,false,flight-04,airport-01,airport-05,aircraft-01
+leg-21,AMX1005,2028/09/24 11:00,2028/09/24 11:45,ON_TIME,false,flight-04,airport-01,airport-05,aircraft-02
+leg-22,AMX1009,2029/09/24 11:00,2029/09/24 11:45,ON_TIME,false,flight-04,airport-01,airport-05,aircraft-02
+leg-23,BAX1010,2030/09/24 11:00,2030/09/24 11:45,ON_TIME,false,flight-04,airport-01,airport-05,aircraft-03
+leg-24,BAX1011,2031/09/24 11:00,2031/09/24 11:45,ON_TIME,false,flight-04,airport-01,airport-05,aircraft-03
+leg-25,AFX1012,2032/09/24 11:00,2032/09/24 11:45,ON_TIME,false,flight-04,airport-01,airport-05,aircraft-05
+leg-26,AFX1013,2033/09/24 11:00,2033/09/24 11:45,ON_TIME,false,flight-04,airport-01,airport-05,aircraft-05
