@@ -40,15 +40,6 @@ public class FlightCrewMemberFlightAssignmentListLegsPlannedService extends Abst
 
 	}
 
-	//	@Override
-	//	public void unbind(final FlightAssignment assignment) {
-	//		Dataset dataset;
-	//
-	//		dataset = super.unbindObject(assignment, "lastUpdate", "status", "duty");
-	//		super.addPayload(dataset, assignment, "remarks");
-	//
-	//		super.getResponse().addData(dataset);
-	//	}
 	@Override
 	public void unbind(final FlightAssignment assignment) {
 		Dataset dataset;

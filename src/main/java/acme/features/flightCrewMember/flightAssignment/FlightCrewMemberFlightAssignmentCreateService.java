@@ -24,10 +24,6 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 	private FlightCrewMemberFlightAssignmentRepository repository;
 
 
-	//	@Override
-	//	public void authorise() {
-	//		super.getResponse().setAuthorised(true);
-	//	}
 	@Override
 	public void authorise() {
 		boolean isPost = super.getRequest().getMethod().equals("POST");
@@ -69,19 +65,6 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 
 	}
 
-	//		@Override
-	//		public void bind(final FlightAssignment assignment) {
-	//			int legId = super.getRequest().getData("leg", int.class);
-	//			Leg leg = this.repository.findLegById(legId);
-	//	
-	//			int memberId = super.getRequest().getData("member", int.class);
-	//			FlightCrewMember member = this.repository.findFlightCrewMemberById(memberId);
-	//	
-	//			super.bindObject(assignment, "duty", "status", "remarks");
-	//			assignment.setLeg(leg);
-	//			assignment.setFlightCrewMember(member);
-	//			assignment.setLastUpdate(MomentHelper.getCurrentMoment());
-	//		}
 	@Override
 	public void bind(final FlightAssignment assignment) {
 		int legId = super.getRequest().getData("leg", int.class);
@@ -106,99 +89,6 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		this.repository.save(assignment);
 	}
 
-	//		@Override
-	//		public void unbind(final FlightAssignment assignment) {
-	//			Dataset dataset;
-	//			SelectChoices statuses;
-	//			SelectChoices duties;
-	//			Collection<Leg> legs;
-	//			SelectChoices selectedLegs;
-	//			Collection<FlightCrewMember> members;
-	//			SelectChoices selectedMembers;
-	//	
-	//			// Solo devuelve Legs publicadas y futuras
-	//			legs = this.repository.findPublishedFutureLegs(MomentHelper.getCurrentMoment());
-	//			members = this.repository.findAllFlightCrewMembers();
-	//	
-	//			statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
-	//			duties = SelectChoices.from(DutyType.class, assignment.getDuty());
-	//			selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
-	//			selectedMembers = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
-	//	
-	//			dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
-	//	
-	//			dataset.put("statuses", statuses);
-	//			dataset.put("duties", duties);
-	//	
-	//			dataset.put("leg", selectedLegs.getSelected() != null ? selectedLegs.getSelected().getKey() : "");
-	//			dataset.put("legs", selectedLegs);
-	//	
-	//			dataset.put("flightCrewMember", selectedMembers.getSelected() != null ? selectedMembers.getSelected().getKey() : "");
-	//			dataset.put("members", selectedMembers);
-	//	
-	//			super.getResponse().addData(dataset);
-	//		}
-	//	@Override
-	//	public void unbind(final FlightAssignment assignment) {
-	//		Dataset dataset;
-	//		SelectChoices statuses;
-	//		SelectChoices duties;
-	//		Collection<Leg> legs;
-	//		SelectChoices selectedLegs;
-	//		// Ya no necesitamos la colección de todos los miembros.
-	//
-	//		legs = this.repository.findPublishedFutureLegs(MomentHelper.getCurrentMoment());
-	//
-	//		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
-	//		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
-	//		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
-	//
-	//		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
-	//
-	//		// Añadimos el código del empleado como un atributo simple para mostrarlo.
-	//		dataset.put("flightCrewMemberCode", assignment.getFlightCrewMember().getEmployeeCode());
-	//
-	//		dataset.put("statuses", statuses);
-	//		dataset.put("duties", duties);
-	//		dataset.put("leg", selectedLegs.getSelected() != null ? selectedLegs.getSelected().getKey() : "");
-	//		dataset.put("legs", selectedLegs);
-	//
-	//		// Ya no se añaden 'flightCrewMember' ni 'members' al dataset.
-	//
-	//		super.getResponse().addData(dataset);
-	//	}
-	/////////////////////////////////////////////////////////////////7
-	//	@Override
-	//	public void unbind(final FlightAssignment assignment) {
-	//		Dataset dataset;
-	//		SelectChoices statuses;
-	//		SelectChoices duties;
-	//		Collection<Leg> legs;
-	//		SelectChoices selectedLegs;
-	//		Collection<FlightCrewMember> members;
-	//		SelectChoices selectedMembers;
-	//
-	//		FlightCrewMember activeMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
-	//
-	//		legs = this.repository.findPublishedFutureOwnedLegs(MomentHelper.getCurrentMoment(), activeMember.getAirline());
-	//		members = this.repository.findCrewMembersByAirline(activeMember.getAirline());
-	//
-	//		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
-	//		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
-	//		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
-	//		selectedMembers = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
-	//
-	//		dataset = super.unbindObject(assignment, "duty", "status", "remarks", "draftMode");
-	//
-	//		dataset.put("statuses", statuses);
-	//		dataset.put("duties", duties);
-	//		dataset.put("leg", selectedLegs.getSelected().getKey());
-	//		dataset.put("legs", selectedLegs);
-	//		dataset.put("flightCrewMember", selectedMembers.getSelected().getKey());
-	//		dataset.put("crewMembers", selectedMembers);
-	//
-	//		super.getResponse().addData(dataset);
-	//	}
 	@Override
 	public void unbind(final FlightAssignment assignment) {
 		Dataset dataset;
