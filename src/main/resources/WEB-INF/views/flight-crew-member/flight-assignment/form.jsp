@@ -6,7 +6,6 @@
 
 <acme:form>
 <acme:input-moment code="flight-crew-member.flight-assignment.form.label.lastUpdate" path="lastUpdate" readonly="true"/>
-<%-- 	<acme:input-select code="flight-crew-member.flight-assignment.form.label.flightCrewMember" path="member" choices= "${members}"/> --%>
 	<acme:input-textarea code="flight-crew-member.flight-assignment.form.label.flightCrewMember" path="flightCrewMemberCode" readonly="true"/>
 	<acme:input-select code="flight-crew-member.flight-assignment.form.label.duty" path="duty" choices= "${duties}"/>	
 	<acme:input-select code="flight-crew-member.flight-assignment.form.label.leg" path="leg" choices= "${legs}"/>
