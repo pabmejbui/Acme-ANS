@@ -61,7 +61,19 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		legId = super.getRequest().getData("leg", int.class);
 		leg = this.repository.findLegById(legId);
 
-		// El FlightCrewMember ya no se modifica, se mantiene el que se cargó de la BD.
+		//Que salte error 500 si el value de la leg no existe
+		if (legId != 0) {
+			leg = this.repository.findLegById(legId);
+
+			// 1️) Si el leg no existe → error 500
+			if (leg == null)
+				throw new IllegalStateException("El leg indicado no existe");
+
+			// 2️) Si el leg no pertenece a la aerolínea del miembro loggeado → error 500
+			FlightCrewMember activeMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+			if (!leg.getAircraft().getAirline().equals(activeMember.getAirline()))
+				throw new IllegalStateException("No tienes permiso para modificar este leg");
+		}
 
 		super.bindObject(assignment, "duty", "status", "remarks");
 		assignment.setLastUpdate(MomentHelper.getCurrentMoment());
@@ -103,7 +115,7 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		members = this.repository.findCrewMembersByAirline(member.getAirline());
 		SelectChoices selectedCrew = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
 
-		// Piernas de vuelo
+		// legs de vuelo
 		legs = this.repository.findPublishedFutureOwnedLegs(MomentHelper.getCurrentMoment(), member.getAirline());
 		Leg currentLeg = assignment.getLeg();
 		if (currentLeg != null && !legs.contains(currentLeg))

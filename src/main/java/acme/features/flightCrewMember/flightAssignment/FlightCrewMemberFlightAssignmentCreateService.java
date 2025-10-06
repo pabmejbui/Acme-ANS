@@ -70,6 +70,19 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		int legId = super.getRequest().getData("leg", int.class);
 		Leg leg = this.repository.findLegById(legId);
 
+		// Que salte error 500 si el value de la leg no existe o no pertenece a la aerolínea
+		if (legId != 0) {
+			leg = this.repository.findLegById(legId);
+
+			// 1️) Si el leg no existe → error 500
+			//			if (leg == null)
+			//				throw new IllegalStateException("El leg indicado no existe");
+
+			// 2️) Si el leg no pertenece a la aerolínea del miembro loggeado → error 500
+			FlightCrewMember activeMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+			if (!leg.getAircraft().getAirline().equals(activeMember.getAirline()))
+				throw new IllegalStateException("No tienes permiso para asignar este leg");
+		}
 		// Ya no se lee el 'member' desde el request.
 		// El FlightCrewMember correcto ya está en el objeto 'assignment' gracias al método load().
 

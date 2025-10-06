@@ -74,6 +74,19 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		int legId = super.getRequest().getData("leg", int.class);
 		Leg leg = this.repository.findLegById(legId);
 
+		if (legId != 0) {
+			leg = this.repository.findLegById(legId);
+
+			// 1️) Si el leg no existe → error 500
+			if (leg == null)
+				throw new IllegalStateException("El leg indicado no existe");
+
+			// 2️) Si el leg no pertenece a la aerolínea del miembro loggeado → error 500
+			FlightCrewMember activeMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+			if (!leg.getAircraft().getAirline().equals(activeMember.getAirline()))
+				throw new IllegalStateException("No tienes permiso para publicar este leg");
+		}
+
 		super.bindObject(assignment, "duty", "status", "remarks");
 		assignment.setLeg(leg);
 		assignment.setLastUpdate(MomentHelper.getCurrentMoment());
