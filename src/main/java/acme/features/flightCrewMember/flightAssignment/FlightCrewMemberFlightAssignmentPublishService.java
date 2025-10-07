@@ -37,23 +37,36 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		if (super.getRequest().getMethod().equals("GET"))
 			validRequestMethod = false;
 		else {
-			// Validar que el duty existe en el enum
+
 			String dutyString = super.getRequest().getData("duty", String.class);
 			validDuty = Arrays.stream(DutyType.values()).anyMatch(d -> d.toString().equals(dutyString));
-			validDuty = validDuty || dutyString.equals("0");  // Para cuando aún no se ha seleccionado nada
+			validDuty = validDuty || dutyString.equals("0");
 
-			// Validar que el status existe en el enum
 			String statusString = super.getRequest().getData("status", String.class);
 			validStatus = Arrays.stream(AssignmentStatus.values()).anyMatch(s -> s.toString().equals(statusString));
 			validStatus = validStatus || statusString.equals("0");
 
-			// Validar que el assignment pertenece al usuario y está en draft
 			assignmentId = super.getRequest().getData("id", int.class);
 			assignment = this.repository.findFlightAssignmentById(assignmentId);
 
 			if (assignment != null) {
 				int principalId = super.getRequest().getPrincipal().getActiveRealm().getId();
 				correctMember = assignment.getFlightCrewMember().getId() == principalId && assignment.isDraftMode();
+			}
+			if (super.getRequest().getData().containsKey("leg")) {
+				int legId = super.getRequest().getData("leg", int.class);
+				if (legId != 0) {
+					Leg leg = this.repository.findLegById(legId);
+
+					if (leg == null)
+						validLeg = false;
+
+					else {
+						FlightCrewMember activeMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+						if (!leg.getAircraft().getAirline().equals(activeMember.getAirline()))
+							validLeg = false;
+					}
+				}
 			}
 		}
 
@@ -70,22 +83,9 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 
 	@Override
 	public void bind(final FlightAssignment assignment) {
-		// El FlightCrewMember ya no se modifica, viene cargado en el objeto 'assignment'.
+
 		int legId = super.getRequest().getData("leg", int.class);
 		Leg leg = this.repository.findLegById(legId);
-
-		if (legId != 0) {
-			leg = this.repository.findLegById(legId);
-
-			// 1️) Si el leg no existe → error 500
-			if (leg == null)
-				throw new IllegalStateException("El leg indicado no existe");
-
-			// 2️) Si el leg no pertenece a la aerolínea del miembro loggeado → error 500
-			FlightCrewMember activeMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
-			if (!leg.getAircraft().getAirline().equals(activeMember.getAirline()))
-				throw new IllegalStateException("No tienes permiso para publicar este leg");
-		}
 
 		super.bindObject(assignment, "duty", "status", "remarks");
 		assignment.setLeg(leg);
@@ -94,7 +94,6 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 
 	@Override
 	public void validate(final FlightAssignment assignment) {
-		// La validación del Leg debe hacerse solo si se ha proporcionado uno.
 		if (assignment.getLeg() != null) {
 			boolean notYetOccurred = MomentHelper.isAfter(assignment.getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
 			super.state(notYetOccurred, "leg", "flight-crew-member.flight-assignment.leg-has-not-finished-yet");
@@ -102,7 +101,6 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 			boolean isDraft = assignment.getLeg().isDraftMode();
 			super.state(!isDraft, "leg", "flightAssignment.error.leg-not-published");
 		} else
-			// Si el leg es nulo, es un error de validación.
 			super.state(false, "leg", "flightAssignment.error.leg-required");
 	}
 
@@ -126,7 +124,6 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 
 		member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 
-		// Piernas de vuelo publicadas
 		legs = this.repository.findPublishedFutureOwnedLegs(MomentHelper.getCurrentMoment(), member.getAirline());
 		members = this.repository.findCrewMembersByAirline(member.getAirline());
 
@@ -134,14 +131,12 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		if (currentLeg != null && !legs.contains(currentLeg))
 			legs.add(currentLeg);
 
-		// Opciones
 		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
 		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
 		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
 		employeeCode = assignment.getFlightCrewMember() != null ? assignment.getFlightCrewMember().getEmployeeCode() : null;
 		selectedMembers = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
 
-		// Dataset principal
 		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
 		dataset.put("employeeCode", employeeCode);
 		dataset.put("statuses", statuses);
@@ -151,12 +146,10 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 			dataset.put("leg", selectedLegs.getSelected().getKey());
 		dataset.put("legs", selectedLegs);
 
-		// 🔹 Añadimos el miembro de tripulación para el select
 		if (selectedMembers.getSelected() != null)
 			dataset.put("flightCrewMember", selectedMembers.getSelected().getKey());
 		dataset.put("crewMembers", selectedMembers);
 
-		// 🔹 Campo de solo lectura con el código del tripulante
 		if (assignment.getFlightCrewMember() != null)
 			dataset.put("flightCrewMemberCode", assignment.getFlightCrewMember().getEmployeeCode());
 

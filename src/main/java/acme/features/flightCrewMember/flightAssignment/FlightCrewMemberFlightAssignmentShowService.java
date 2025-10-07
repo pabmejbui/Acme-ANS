@@ -90,7 +90,6 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		dataset.put("leg", selectedLegs.getSelected().getKey());
 		dataset.put("legs", selectedLegs);
 
-		// 🔹 Añadido para mostrar el FlightCrewMember como campo de solo lectura
 		if (assignment.getFlightCrewMember() != null)
 			dataset.put("flightCrewMemberCode", assignment.getFlightCrewMember().getEmployeeCode());
 
