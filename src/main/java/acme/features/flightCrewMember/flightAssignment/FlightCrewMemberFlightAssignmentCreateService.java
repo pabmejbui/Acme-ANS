@@ -44,9 +44,15 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 
 			if (super.getRequest().getData().containsKey("leg")) {
 				int legId = super.getRequest().getData("leg", int.class);
-				validLeg = legId == 0 || this.repository.findLegById(legId) != null;
-			} else
-				validLeg = false;
+
+				if (legId != 0) {
+					Leg leg = this.repository.findLegById(legId);
+					FlightCrewMember activeMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+
+					validLeg = leg != null && leg.getAircraft().getAirline().equals(activeMember.getAirline());
+				}
+			}
+
 		}
 
 		super.getResponse().setAuthorised(correctDuty && correctStatus && transientId && validLeg);
@@ -70,25 +76,8 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		int legId = super.getRequest().getData("leg", int.class);
 		Leg leg = this.repository.findLegById(legId);
 
-		// Que salte error 500 si el value de la leg no existe o no pertenece a la aerolínea
-		if (legId != 0) {
-			leg = this.repository.findLegById(legId);
-
-			// 1️) Si el leg no existe → error 500
-			//			if (leg == null)
-			//				throw new IllegalStateException("El leg indicado no existe");
-
-			// 2️) Si el leg no pertenece a la aerolínea del miembro loggeado → error 500
-			FlightCrewMember activeMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
-			if (!leg.getAircraft().getAirline().equals(activeMember.getAirline()))
-				throw new IllegalStateException("No tienes permiso para asignar este leg");
-		}
-		// Ya no se lee el 'member' desde el request.
-		// El FlightCrewMember correcto ya está en el objeto 'assignment' gracias al método load().
-
 		super.bindObject(assignment, "duty", "status", "remarks");
 		assignment.setLeg(leg);
-		// La línea assignment.setFlightCrewMember(member) se elimina.
 		assignment.setLastUpdate(MomentHelper.getCurrentMoment());
 	}
 
@@ -122,7 +111,6 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
 		selectedMembers = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
 
-		// 🔹 Incluimos lastUpdate en el unbind
 		dataset = super.unbindObject(assignment, "duty", "status", "remarks", "draftMode", "lastUpdate");
 
 		dataset.put("statuses", statuses);
@@ -136,11 +124,9 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 			dataset.put("flightCrewMember", selectedMembers.getSelected().getKey());
 		dataset.put("crewMembers", selectedMembers);
 
-		// 🔹 Solo lectura: código del miembro de la tripulación
 		if (assignment.getFlightCrewMember() != null)
 			dataset.put("flightCrewMemberCode", assignment.getFlightCrewMember().getEmployeeCode());
 
-		// 🔹 Solo lectura: fecha de última actualización
 		if (assignment.getLastUpdate() != null)
 			dataset.put("lastUpdate", assignment.getLastUpdate());
 

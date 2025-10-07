@@ -30,16 +30,31 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		FlightAssignment assignment;
 		int currentUserId;
 
-		// Obtiene el ID del assignment recibido desde el request
 		id = super.getRequest().getData("id", int.class);
 		assignment = this.repository.findFlightAssignmentById(id);
 
-		// ID del usuario actualmente autenticado
 		currentUserId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		// Solo autoriza si el assignment está en borrador y pertenece al usuario actual
+		boolean validLeg = true;
+
+		if (super.getRequest().getData().containsKey("leg")) {
+			int legId = super.getRequest().getData("leg", int.class);
+			if (legId != 0) {
+				Leg leg = this.repository.findLegById(legId);
+
+				if (leg == null)
+					validLeg = false;
+				else {
+
+					FlightCrewMember activeMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+					if (!leg.getAircraft().getAirline().equals(activeMember.getAirline()))
+						validLeg = false;
+				}
+			}
+		}
+
 		if (assignment != null)
-			status = assignment.isDraftMode() && assignment.getFlightCrewMember().getId() == currentUserId;
+			status = assignment.isDraftMode() && assignment.getFlightCrewMember().getId() == currentUserId && validLeg;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -60,20 +75,6 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 
 		legId = super.getRequest().getData("leg", int.class);
 		leg = this.repository.findLegById(legId);
-
-		//Que salte error 500 si el value de la leg no existe
-		if (legId != 0) {
-			leg = this.repository.findLegById(legId);
-
-			// 1️) Si el leg no existe → error 500
-			if (leg == null)
-				throw new IllegalStateException("El leg indicado no existe");
-
-			// 2️) Si el leg no pertenece a la aerolínea del miembro loggeado → error 500
-			FlightCrewMember activeMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
-			if (!leg.getAircraft().getAirline().equals(activeMember.getAirline()))
-				throw new IllegalStateException("No tienes permiso para modificar este leg");
-		}
 
 		super.bindObject(assignment, "duty", "status", "remarks");
 		assignment.setLastUpdate(MomentHelper.getCurrentMoment());
@@ -111,26 +112,21 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 
 		member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 
-		// Tripulantes de la aerolínea del miembro activo
 		members = this.repository.findCrewMembersByAirline(member.getAirline());
 		SelectChoices selectedCrew = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
 
-		// legs de vuelo
 		legs = this.repository.findPublishedFutureOwnedLegs(MomentHelper.getCurrentMoment(), member.getAirline());
 		Leg currentLeg = assignment.getLeg();
 		if (currentLeg != null && !legs.contains(currentLeg))
 			legs.add(currentLeg);
 
-		// Opciones de estado y duty
 		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
 		duties = SelectChoices.from(DutyType.class, assignment.getDuty());
 		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
 
-		// Código de empleado del tripulante asignado
 		employeeCode = assignment.getFlightCrewMember() != null ? assignment.getFlightCrewMember().getEmployeeCode() : null;
 		selectedMembers = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
 
-		// Dataset principal
 		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
 		dataset.put("employeeCode", employeeCode);
 		dataset.put("statuses", statuses);
@@ -144,7 +140,6 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 			dataset.put("flightCrewMember", selectedCrew.getSelected().getKey());
 		dataset.put("crewMembers", selectedMembers);
 
-		// 🔹 Campo de solo lectura con el código del tripulante
 		if (assignment.getFlightCrewMember() != null)
 			dataset.put("flightCrewMemberCode", assignment.getFlightCrewMember().getEmployeeCode());
 
