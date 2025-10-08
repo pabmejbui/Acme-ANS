@@ -71,7 +71,7 @@ public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService
 
 		member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 		assignments = this.repository.findFlightAssignmentsByMemberIdOrPublished(member.getId());
-		selectedAssignments = SelectChoices.from(assignments, "flightLeg.flightNumberDigits", log.getFlightAssignment());
+		selectedAssignments = SelectChoices.from(assignments, "leg.flightNumber", log.getFlightAssignment());
 
 		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
 		dataset.put("assignments", selectedAssignments);
