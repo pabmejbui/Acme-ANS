@@ -25,21 +25,19 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 	public void authorise() {
 		boolean authorised = false;
 
-		if (super.getRequest().hasData("id"))
-			try {
-				int logId = super.getRequest().getData("id", int.class);
-				ActivityLog log = this.repository.findActivityLogById(logId);
+		if (super.getRequest().hasData("id")) {
+			int logId = super.getRequest().getData("id", int.class);
+			ActivityLog log = this.repository.findActivityLogById(logId);
 
-				if (log != null) {
-					boolean isOwner = super.getRequest().getPrincipal().hasRealm(log.getFlightAssignment().getFlightCrewMember());
-					boolean flightFinished = MomentHelper.isBefore(log.getFlightAssignment().getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
-					authorised = isOwner && flightFinished;
-				}
-			} catch (NumberFormatException e) {
-				authorised = false;
+			if (log != null) {
+				boolean isOwner = super.getRequest().getPrincipal().hasRealm(log.getFlightAssignment().getFlightCrewMember());
+				boolean flightFinished = MomentHelper.isBefore(log.getFlightAssignment().getLeg().getScheduledArrival(), MomentHelper.getCurrentMoment());
+				authorised = isOwner && flightFinished;
 			}
+		}
 
 		super.getResponse().setAuthorised(authorised);
+
 	}
 
 	@Override
