@@ -54,8 +54,6 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		log.setDraftMode(true);
 		log.setFlightAssignment(flightAssignment);
 
-		// 🔹 Inicializamos registrationMoment para que en el formulario CREATE
-		//     se muestre la fecha/hora actual como campo readonly (igual que lastUpdate).
 		log.setRegistrationMoment(MomentHelper.getCurrentMoment());
 
 		super.getBuffer().addData(log);
@@ -94,8 +92,6 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 		assignments = this.repository.findFlightAssignmentsByMemberId(member.getId());
 		selectedAssignments = SelectChoices.from(assignments, "leg.flightNumber", log.getFlightAssignment());
-
-		// 🔹 Incluimos registrationMoment directamente en el unbind
 		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
 
 		dataset.put("assignments", selectedAssignments);
