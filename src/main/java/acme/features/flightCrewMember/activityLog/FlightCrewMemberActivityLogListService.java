@@ -42,15 +42,14 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 		int masterId;
 		int memberId;
 		int ownerId;
-		Collection<ActivityLog> logs;
+		Collection<ActivityLog> logs = java.util.Collections.emptyList();
+		;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		ownerId = this.repository.findFlightAssignmentById(masterId).getFlightCrewMember().getId();
 		if (ownerId == memberId)
 			logs = this.repository.findActivityLogsByMasterId(masterId);
-		else
-			logs = this.repository.findPublishedActivityLogsByMasterId(masterId);
 
 		super.getBuffer().addData(logs);
 	}
