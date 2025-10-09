@@ -43,7 +43,6 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 		int memberId;
 		int ownerId;
 		Collection<ActivityLog> logs = java.util.Collections.emptyList();
-		;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
