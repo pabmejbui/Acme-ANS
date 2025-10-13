@@ -72,6 +72,7 @@ acme.validation.technician.task.description.message =  The maximum length of des
 acme.validation.technician.task.priority.message = The priority must be greater than or equal to 0, and less than or equal to 10
 acme.validation.technician.task.estimatedDuration.message = The estimated duration must be greater than or equal to 0, and less than or equal to 1000
 acme.validation.technician.involves.noTask.message = May not be null
+acme.validation.task.maintenance-record-linked.message = The task must not be linked to a maintenance record
 
 # Manager flight messages #########################################################
 manager.flight.form.error.cost-must-be-positive = The cost of the flight must be positive
