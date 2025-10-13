@@ -1,3 +1,4 @@
+
 package acme.features.technician.task;
 
 import java.util.Collection;
@@ -20,6 +21,7 @@ public class TechnicianTaskListService extends AbstractGuiService<Technician, Ta
 	private TechnicianTaskRepository repository;
 
 	// AbstractGuiService interface -------------------------------------------
+
 
 	@Override
 	public void authorise() {
@@ -70,7 +72,7 @@ public class TechnicianTaskListService extends AbstractGuiService<Technician, Ta
 	public void unbind(final Task task) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(task, "description", "priority", "estimatedDuration", "draftMode");
+		dataset = super.unbindObject(task, "description", "priority", "estimatedDuration", "draftMode", "type");
 		super.addPayload(dataset, task, "estimatedDuration", "draftMode");
 
 		super.getResponse().addData(dataset);
@@ -83,8 +85,7 @@ public class TechnicianTaskListService extends AbstractGuiService<Technician, Ta
 		boolean showCreate = false;
 		boolean mine;
 
-		maintenanceRecordId = super.getRequest().hasData("maintenanceRecordId") ?
-			super.getRequest().getData("maintenanceRecordId", int.class) : null;
+		maintenanceRecordId = super.getRequest().hasData("maintenanceRecordId") ? super.getRequest().getData("maintenanceRecordId", int.class) : null;
 		mine = super.getRequest().hasData("mine");
 
 		if (maintenanceRecordId != null) {
