@@ -12,10 +12,10 @@
 
 package acme.entities.maintenanceRecords;
 
-import javax.persistence.Table;
-import javax.persistence.Index;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -28,8 +28,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(indexes = {
-    @Index(columnList = "maintenance_record_id, task_id"),
-	@Index(columnList = "task_id"),
+	@Index(columnList = "maintenance_record_id, task_id"), //
+	@Index(columnList = "task_id"), //
 	@Index(columnList = "maintenance_record_id")
 })
 public class MaintenanceRecordTask extends AbstractEntity {
